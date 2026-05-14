@@ -133,6 +133,8 @@ benchmark/
 
 Each folder can contain notebooks for the work naturally associated with that folder. For example, `specs/` can include design notebooks, `generators/` can include generator-development notebooks, and `data/` can include inspection notebooks.
 
+Training and evaluation experiments should live together under `training_eval/`, with one folder per concrete experiment. This matches the project workflow: define a model/training setup, run the corresponding evaluation, and save the resulting metrics and raw outputs as a single experiment artifact.
+
 The `train_like`, `dev`, and `private_test` splits should be generated from separate seeds, with `private_test` kept frozen and excluded from fine-tuning, teacher generation, and prompt iteration.
 
 ## Practical execution plan
