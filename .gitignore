@@ -1,0 +1,8 @@
+# Local environments
+.venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Personal Colab control notebooks
+colab_control.local.ipynb
