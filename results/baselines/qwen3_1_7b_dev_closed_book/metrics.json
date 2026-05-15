@@ -1,0 +1,9 @@
+{
+  "accuracy": 0.21666666666666667,
+  "max_new_tokens": 512,
+  "model_name": "Qwen/Qwen3-1.7B",
+  "num_correct": 13,
+  "num_records": 60,
+  "prompt_mode": "closed_book",
+  "temperature": 0.0
+}
