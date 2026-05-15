@@ -10,7 +10,7 @@ from typing import Any
 import pandas as pd
 
 
-def load_jsonl_records(data_dir: Path, pattern: str = "*_preview.jsonl") -> list[dict[str, Any]]:
+def load_jsonl_records(data_dir: Path, pattern: str = "*.jsonl") -> list[dict[str, Any]]:
     """Load benchmark records from a directory of JSONL files."""
     records = []
     for path in sorted(data_dir.glob(pattern)):
@@ -20,16 +20,59 @@ def load_jsonl_records(data_dir: Path, pattern: str = "*_preview.jsonl") -> list
     return records
 
 
+def balanced_eval_subset(records: list[dict[str, Any]], limit: int | None) -> list[dict[str, Any]]:
+    """Pick a small deterministic subset spread across families, types, and difficulties."""
+    if limit is None or limit >= len(records):
+        return records
+
+    selected = []
+    selected_ids = set()
+
+    sort_key = lambda record: (
+        record["family"],
+        record["problem_type"],
+        record["difficulty"],
+        record["id"],
+    )
+
+    buckets: dict[tuple[Any, ...], list[dict[str, Any]]] = {}
+    for record in sorted(records, key=sort_key):
+        key = (record["family"], record["problem_type"], record["difficulty"])
+        buckets.setdefault(key, []).append(record)
+
+    while len(selected) < limit:
+        added = False
+        for key in sorted(buckets):
+            if len(selected) >= limit:
+                break
+            while buckets[key] and buckets[key][0]["id"] in selected_ids:
+                buckets[key].pop(0)
+            if buckets[key]:
+                record = buckets[key].pop(0)
+                selected.append(record)
+                selected_ids.add(record["id"])
+                added = True
+        if not added:
+            break
+
+    return selected
+
+
 def default_dev_dir(project_root: Path) -> Path:
     """Return the current dev-preview dataset directory."""
     return project_root / "benchmark" / "data" / "dev"
 
 
+def default_private_test_dir(project_root: Path) -> Path:
+    """Return the current private-test dataset directory."""
+    return project_root / "benchmark" / "data" / "private_test"
+
+
 def make_closed_book_prompt(problem: str) -> str:
     """Prompt for closed-book evaluation: problem only, no theorem sheet."""
     return (
-        "Solve the following stochastic-process problem. "
-        "Return only the requested JSON inside the answer tags.\n\n"
+        "Return only the final JSON object. Do not explain. "
+        "Put it inside <answer>...</answer>.\n\n"
         f"{problem}\n\n"
         "Final answer:\n<answer>"
     )
