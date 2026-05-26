@@ -95,11 +95,45 @@ def make_closed_book_prompt(problem: str) -> str:
     )
 
 
+FINE_TUNE_SYSTEM_MESSAGE = (
+    "You solve discrete stochastic-process problems. Give the reasoning, then put "
+    "the final JSON answer inside <answer>...</answer>."
+)
+
+
+def make_fine_tuned_chat_messages(problem: str) -> list[dict[str, str]]:
+    """Chat messages aligned with the supervised fine-tuning data."""
+    return [
+        {"role": "system", "content": FINE_TUNE_SYSTEM_MESSAGE},
+        {"role": "user", "content": problem},
+    ]
+
+
 def answer_type_from_answer(answer: dict[str, Any] | None) -> str:
     """Classify the answer schema as binary or non-binary."""
     if answer and all(isinstance(value, bool) for value in answer.values()):
         return "binary"
     return "non_binary"
+
+
+def tolerant_json_loads(text: str) -> dict[str, Any] | None:
+    """Parse small JSON objects, allowing a few common model formatting slips."""
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        pass
+
+    repaired = text.strip()
+    repaired = re.sub(r":\s*(true|false|null)\"", r": \1", repaired, flags=re.I)
+    repaired = re.sub(r":\s*(-?\d+(?:\.\d+)?)\"", r": \1", repaired)
+    repaired = repaired.replace("True", "true").replace("False", "false").replace("None", "null")
+
+    try:
+        loaded = json.loads(repaired)
+    except json.JSONDecodeError:
+        return None
+
+    return loaded if isinstance(loaded, dict) else None
 
 
 def extract_json_object(text: str) -> dict[str, Any] | None:
@@ -108,26 +142,68 @@ def extract_json_object(text: str) -> dict[str, Any] | None:
     if tag_match:
         text = tag_match.group(1)
 
-    json_match = re.search(r"\{.*?\}", text, flags=re.S)
-    if not json_match:
-        return None
+    json_matches = re.findall(r"\{.*?\}", text, flags=re.S)
+    for json_text in json_matches:
+        parsed = tolerant_json_loads(json_text)
+        if parsed is not None:
+            return parsed
 
-    try:
-        return json.loads(json_match.group(0))
-    except json.JSONDecodeError:
+    return None
+
+
+def normalize_scalar(value: Any) -> str:
+    """Normalize scalar answer values for exact-ish grading."""
+    if isinstance(value, bool):
+        return str(value).lower()
+    if isinstance(value, int):
+        return str(value)
+    if isinstance(value, float):
+        return str(int(value)) if value.is_integer() else str(value)
+    return str(value).strip().lower()
+
+
+def coerce_answer_to_schema(answer: dict[str, Any] | None, canonical: dict[str, Any]) -> dict[str, Any] | None:
+    """Map common schema aliases onto the canonical answer key."""
+    if answer is None:
         return None
+    if set(answer) == set(canonical):
+        return answer
+
+    if len(canonical) != 1:
+        return answer
+
+    canonical_key = next(iter(canonical))
+    aliases = {
+        "is_martingale": ["is_martingale", "isMartingale", "martingale", "result", "answer", "boolean"],
+        "valid": ["valid", "validity", "is_valid", "is_justified", "justified", "result", "answer", "flag"],
+        "expected_time": ["expected_time", "expectation", "value", "answer"],
+        "value": ["value", "answer"],
+    }
+
+    for key in aliases.get(canonical_key, [canonical_key]):
+        if key in answer:
+            value = answer[key]
+            if canonical_key in {"is_martingale", "valid"} and isinstance(value, str):
+                lowered = value.strip().lower()
+                if lowered in {"yes", "true", "valid", "martingale"}:
+                    value = True
+                elif lowered in {"no", "false", "invalid", "not valid", "not martingale"}:
+                    value = False
+            return {canonical_key: value}
+
+    return answer
 
 
 def normalize_answer(answer: dict[str, Any] | None) -> dict[str, str] | None:
     """Normalize answer dictionaries for exact-match grading."""
     if answer is None:
         return None
-    return {str(key): str(value).lower() if isinstance(value, bool) else str(value) for key, value in answer.items()}
+    return {str(key): normalize_scalar(value) for key, value in answer.items()}
 
 
 def is_correct(predicted: dict[str, Any] | None, canonical: dict[str, Any]) -> bool:
     """Exact-match comparison after lightweight normalization."""
-    return normalize_answer(predicted) == normalize_answer(canonical)
+    return normalize_answer(coerce_answer_to_schema(predicted, canonical)) == normalize_answer(canonical)
 
 
 def rows_to_frame(rows: list[dict[str, Any]]) -> pd.DataFrame:

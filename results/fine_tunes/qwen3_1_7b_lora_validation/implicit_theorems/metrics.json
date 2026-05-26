@@ -1,0 +1,22 @@
+{
+  "accuracy": 0.375,
+  "adapter": "implicit_theorems",
+  "by_answer_type": {
+    "binary": {
+      "accuracy": 0.6333333333333333,
+      "num_correct": 76,
+      "num_records": 120
+    },
+    "non_binary": {
+      "accuracy": 0.11666666666666667,
+      "num_correct": 14,
+      "num_records": 120
+    }
+  },
+  "dataset": "benchmark/data/val or benchmark/data/val_implicit_theorems",
+  "model": "Qwen/Qwen3-1.7B-MLX-bf16",
+  "num_correct": 90,
+  "num_records": 240,
+  "regraded_with_current_evaluator": true,
+  "split_role": "validation_for_hyperparameter_selection"
+}

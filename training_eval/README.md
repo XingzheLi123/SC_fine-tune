@@ -15,3 +15,5 @@ Current datasets:
 - frozen test: `benchmark/data/test/`
 
 Baseline notebooks evaluate on the frozen 60-question test split. Fine-tuning should use train/val only, then report final results on test.
+
+If the grader changes, use `regrade_saved_outputs.py` to rescore existing `outputs.jsonl` files without rerunning model calls.

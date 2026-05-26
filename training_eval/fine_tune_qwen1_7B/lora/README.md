@@ -27,11 +27,17 @@ Both adapters should be evaluated on the same frozen test set:
    - Evaluates both adapters on the frozen 60-question test split.
    - Saves exact-match results and metrics.
 
+Validation cells in `02_train_lora_adapters.ipynb` evaluate on `benchmark/data/val/` and `benchmark/data/val_implicit_theorems/`. Use those validation results to choose LoRA settings before touching the frozen test split.
+
 ## Local Notes
 
 This path uses MLX-LM because it is the most practical local fine-tuning stack for Apple Silicon.
 
 The source-of-truth datasets remain in `benchmark/data/`. The `lora/data/` directory is only an MLX-LM-ready export with the filenames and chat schema expected by `mlx_lm.lora`; regenerate it whenever the benchmark records change.
+
+Training, validation, and LoRA evaluation now use the same chat shape: a system message asking for reasoning plus a final JSON answer in `<answer>...</answer>`, followed by the problem as the user message. This avoids teaching the adapter one format and evaluating it with another.
+
+The shared evaluator is intentionally tolerant of format-only slips such as `isMartingale` versus `is_martingale`, `validity` versus `valid`, simple yes/no result fields, and tiny JSON quoting mistakes. Wrong mathematical answers are still marked wrong.
 
 The initial training settings are intentionally conservative:
 
