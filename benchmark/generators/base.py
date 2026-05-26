@@ -45,6 +45,7 @@ class ProblemGenerator(ABC):
             "id": self.make_id(split=split, seed=seed),
             "family": self.family,
             "problem_type": params["problem_type"],
+            "answer_type": self.answer_type(solution),
             "difficulty": difficulty,
             "split": split,
             "seed": seed,
@@ -58,6 +59,13 @@ class ProblemGenerator(ABC):
     def make_id(self, split: str, seed: int) -> str:
         """Create a stable example id."""
         return f"{self.family}_{split}_{seed:06d}"
+
+    @staticmethod
+    def answer_type(answer: JsonDict) -> str:
+        """Classify the answer schema for stratified evaluation."""
+        if answer and all(isinstance(value, bool) for value in answer.values()):
+            return "binary"
+        return "non_binary"
 
     @staticmethod
     def answer_block(answer: JsonDict) -> str:
@@ -83,4 +91,3 @@ class ProblemGenerator(ABC):
         if value.denominator == 1:
             return str(value.numerator)
         return f"{value.numerator}/{value.denominator}"
-

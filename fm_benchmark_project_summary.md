@@ -6,11 +6,15 @@ This project builds a contamination-resistant benchmark for advanced stochastic 
 
 The project is not mainly a prompt-engineering exercise. Prompting and API baselines are useful controls, but the central question is whether lightweight adaptation of smaller models produces measurable gains on held-out stochastic reasoning tasks.
 
-The likely mathematical scope is one narrow domain chosen for depth and clean grading, such as:
+The current mathematical scope is a narrow martingale/stopping-time domain chosen for depth and clean grading:
 
 - martingale and stopping-time reasoning
-- Ito and stochastic-calculus derivations
-- no-arbitrage and consistency reasoning in mathematical finance
+- hitting-time expectations for random walks
+- optional-stopping validity checks
+- martingale verification
+- stopped-process expectations
+
+Ito/SDE and mathematical-finance variants are natural later extensions, but they are deliberately out of scope for the first fine-tuning pass.
 
 The core artifact is the benchmark plus a rigorous evaluation framework and at least one small-model adaptation experiment, most likely supervised fine-tuning or distillation.
 
@@ -50,13 +54,14 @@ benchmark -> synthetic training data -> baseline results -> small-model fine-tun
 
 A dataset of advanced reasoning problems in one narrow mathematical domain.
 
-The benchmark should ideally have:
+The current benchmark has:
 
-- 3 to 5 problem families
-- multiple difficulty levels
-- train, dev, and private test splits
-- exact or near-exact grading where possible
-- a contamination-resistant generation process
+- 4 problem families
+- 3 difficulty levels
+- exact JSON-formatted canonical answers
+- automatic grading for binary and non-binary answer types
+- generated `train`, `val`, and frozen `test` splits
+- theorem-explicit and theorem-implicit train/val variants
 
 The strongest version is to generate questions from private templates or procedural generators with hidden seeds.
 
@@ -70,7 +75,7 @@ A reusable evaluation pipeline that:
 - grades outputs automatically
 - reports metrics by model, family, and difficulty
 
-Preferred metrics include exact match, symbolic equivalence where possible, pass@k, and accuracy broken down by problem family.
+Preferred metrics include exact match, accuracy by problem family, accuracy by difficulty, and separate reporting for binary versus non-binary tasks.
 
 ### 3. Baseline results
 
@@ -118,7 +123,7 @@ A new training algorithm is not required. A benchmark plus a careful small-model
 
 The project should be notebook-first. Notebooks are the main place for exploration, dataset inspection, model experiments, plots, and error analysis. Small `.py` files should be used only for helper classes, reusable generators, graders, or utilities that become annoying to duplicate across notebooks.
 
-The first concrete folder should be the benchmark folder:
+The current benchmark folder is:
 
 ```text
 benchmark/
@@ -126,16 +131,18 @@ benchmark/
   specs/
   generators/
   data/
-    train_like/
-    dev/
-    private_test/
+    train/
+    train_implicit_theorems/
+    val/
+    val_implicit_theorems/
+    test/
 ```
 
 Each folder can contain notebooks for the work naturally associated with that folder. For example, `specs/` can include design notebooks, `generators/` can include generator-development notebooks, and `data/` can include inspection notebooks.
 
-Training and evaluation experiments should live together under `training_eval/`, with one folder per concrete experiment. This matches the project workflow: define a model/training setup, run the corresponding evaluation, and save the resulting metrics and raw outputs as a single experiment artifact.
+Training and evaluation experiments live together under `training_eval/`, with one folder per concrete experiment. This matches the project workflow: define a model/training setup, run the corresponding evaluation, and save the resulting metrics and raw outputs as a single experiment artifact.
 
-The `train_like`, `dev`, and `private_test` splits should be generated from separate seeds, with `private_test` kept frozen and excluded from fine-tuning, teacher generation, and prompt iteration.
+The `test` split is the original 60-question set with existing baseline results. It is frozen and excluded from fine-tuning, teacher generation, and prompt iteration. The larger `train` and `val` splits are for adaptation and development checks.
 
 ## Practical execution plan
 
@@ -147,12 +154,13 @@ Pick one domain only. The best default is martingale and stopping-time reasoning
 
 Create a benchmark specification and generate the first version of the dataset.
 
-Target structure:
+Current structure:
 
-- 200 to 300 total problems initially
-- 50 to 100 held-out private test questions
-- multiple problem families
-- exact or tightly constrained outputs
+- 480 train records
+- 240 validation records
+- 60 frozen test records
+- balanced binary/non-binary answer types
+- separate theorem-explicit and theorem-implicit train/val variants
 
 Training-style data should be generated separately from the evaluation data. It can use the same broad mathematical families, but should use different seeds and, where possible, different parameter ranges or surface forms.
 
@@ -220,11 +228,17 @@ The project should use a hybrid setup.
 
 ### Remote models
 
-Use 1 or 2 strong API models as teacher or upper-bound baselines.
+Use 1 or 2 stronger API models as teacher or upper-bound baselines.
+
+The current remote-baseline lane is Qwen-family first, while still allowing opportunistic large-model comparisons when an endpoint is available.
+
+Default remote references are larger Qwen models through OpenRouter, such as Qwen3 8B, Qwen3 32B, and Qwen3 235B-A22B. DeepSeek or other very large MoE systems can be recorded as upper-bound references rather than fair size-matched baselines.
 
 ### Local models
 
-Use 1 or 2 small open models that can run on a MacBook for repeated evaluation and lightweight adaptation.
+Use a small open model that can run on a MacBook for repeated evaluation and lightweight adaptation.
+
+The current default local model is Qwen3 1.7B. It is the primary baseline and first fine-tuning target. Because the available local machine is a 16GB MacBook Air, the first adaptation pass should prioritize parameter-efficient methods rather than full fine-tuning.
 
 The local model does not need to be frontier-scale. The point is to show measurable gains on a hard benchmark.
 

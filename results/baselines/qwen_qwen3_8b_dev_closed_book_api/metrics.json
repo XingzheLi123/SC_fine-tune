@@ -1,0 +1,11 @@
+{
+  "accuracy": 0.6666666666666666,
+  "checkpointed_after_each_record": true,
+  "dataset": "benchmark/data/dev/*_preview.jsonl",
+  "model": "qwen/qwen3-8b",
+  "num_api_errors": 0,
+  "num_correct": 40,
+  "num_empty_outputs": 0,
+  "num_records": 60,
+  "provider": "openrouter"
+}

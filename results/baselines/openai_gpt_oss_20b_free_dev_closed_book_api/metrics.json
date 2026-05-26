@@ -1,0 +1,11 @@
+{
+  "accuracy": 0.8666666666666667,
+  "checkpointed_after_each_record": true,
+  "dataset": "benchmark/data/dev/*_preview.jsonl",
+  "model": "openai/gpt-oss-20b:free",
+  "num_api_errors": 0,
+  "num_correct": 52,
+  "num_empty_outputs": 0,
+  "num_records": 60,
+  "provider": "openrouter"
+}

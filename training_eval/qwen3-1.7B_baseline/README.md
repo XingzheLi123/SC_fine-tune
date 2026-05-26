@@ -1,13 +1,19 @@
-# Qwen3 1.7B Baseline
+# Qwen3 1.7B Local Baseline
 
-This folder contains the first closed-book baseline evaluation for `Qwen/Qwen3-1.7B` on the dev preview benchmark.
+Primary small-model baseline and likely LoRA fine-tuning target.
 
-The intended workflow is:
+Model:
 
-1. Open `qwen3_1_7b_dev_baseline.ipynb` in Colab.
-2. Pull or clone this repo into the Colab runtime.
-3. Run the notebook cells.
-4. Inspect the accuracy tables.
-5. Commit useful results under `results/`.
+- `Qwen/Qwen3-1.7B`
 
-The model is loaded directly from Hugging Face in the Colab runtime. Do not download model weights locally or commit them to GitHub.
+Dataset:
+
+- all 60 fixed test records in `benchmark/data/test`
+
+Results save to:
+
+- `results/baselines/qwen3_1_7b_dev_closed_book/`
+
+The notebook is set up for local VS Code usage with the project root pinned to this local checkout.
+
+This baseline is the pre-fine-tuning comparison point for experiments in `training_eval/fine_tune_qwen1_7B/`.

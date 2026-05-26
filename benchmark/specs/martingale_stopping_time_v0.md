@@ -19,13 +19,15 @@ Each generated problem should be representable as one JSON-like record:
 
 ```text
 {
-  "id": "mst_v0_dev_0001",
+  "id": "martingale_verification_train_0001",
   "family": "martingale_verification",
+  "problem_type": "centered_walk_basic",
+  "answer_type": "binary",
   "difficulty": 1,
-  "split": "dev",
+  "split": "train",
   "seed": 12345,
   "problem": "...",
-  "answer_schema": "...",
+  "reasoning": "...",
   "canonical_answer": {...},
   "metadata": {...}
 }
@@ -37,17 +39,17 @@ The `problem` field should contain the exact prompt shown to the model. The `can
 
 Use disjoint seeds for each split:
 
-- `train_like`: synthetic fine-tuning and distillation data
-- `dev`: prompt, generator, and grading debugging
-- `private_test`: frozen held-out evaluation
+- `train`: synthetic fine-tuning and distillation data
+- `val`: generator, training, and grading debugging
+- `test`: frozen held-out evaluation
 
-The `private_test` split must not be used for fine-tuning, teacher generation, prompt selection, example selection, or manual error-driven redesign.
+The `test` split must not be used for fine-tuning, teacher generation, prompt selection, example selection, or manual error-driven redesign.
 
-Suggested first sizes:
+Current first-version sizes:
 
-- `train_like`: 500 to 2,000 examples
-- `dev`: 50 to 100 examples
-- `private_test`: 100 examples
+- `train`: 480 examples
+- `val`: 240 examples
+- `test`: 60 frozen examples
 
 ## Common Prompt Contract
 
@@ -210,7 +212,7 @@ Parse exact integers and rational numbers. Avoid decimal answers unless the prob
 
 The benchmark should be generated from private seeds and parameterized templates. Public write-ups may describe the family-level logic but should not publish private-test seeds.
 
-For each family, generate train-like and evaluation examples from separate seed ranges. Where possible, change surface forms between splits:
+For each family, generate training and evaluation examples from separate seed ranges. Where possible, change surface forms between splits:
 
 - notation variants, such as `X_n` versus `S_n`
 - boundary labels, such as `{0, ..., a}` versus `{L, ..., U}`
@@ -224,6 +226,6 @@ The first benchmark version is acceptable when:
 
 - all four families have at least one working generator path
 - every generated record has a canonical answer
-- `dev` examples can be graded automatically
-- `private_test` examples are generated once and then frozen
+- `val` and `test` examples can be graded automatically
+- `test` examples are generated once and then frozen
 - at least 20 examples have been manually spot-checked for mathematical correctness

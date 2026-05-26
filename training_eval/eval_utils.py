@@ -16,7 +16,9 @@ def load_jsonl_records(data_dir: Path, pattern: str = "*.jsonl") -> list[dict[st
     for path in sorted(data_dir.glob(pattern)):
         with path.open() as f:
             for line in f:
-                records.append(json.loads(line))
+                record = json.loads(line)
+                record.setdefault("answer_type", answer_type_from_answer(record["canonical_answer"]))
+                records.append(record)
     return records
 
 
@@ -58,14 +60,29 @@ def balanced_eval_subset(records: list[dict[str, Any]], limit: int | None) -> li
     return selected
 
 
+def default_train_dir(project_root: Path) -> Path:
+    """Return the current training dataset directory."""
+    return project_root / "benchmark" / "data" / "train"
+
+
+def default_val_dir(project_root: Path) -> Path:
+    """Return the current validation dataset directory."""
+    return project_root / "benchmark" / "data" / "val"
+
+
+def default_test_dir(project_root: Path) -> Path:
+    """Return the current fixed test dataset directory."""
+    return project_root / "benchmark" / "data" / "test"
+
+
 def default_dev_dir(project_root: Path) -> Path:
-    """Return the current dev-preview dataset directory."""
-    return project_root / "benchmark" / "data" / "dev"
+    """Backward-compatible alias for the validation dataset directory."""
+    return default_val_dir(project_root)
 
 
 def default_private_test_dir(project_root: Path) -> Path:
-    """Return the current private-test dataset directory."""
-    return project_root / "benchmark" / "data" / "private_test"
+    """Backward-compatible alias for the fixed test dataset directory."""
+    return default_test_dir(project_root)
 
 
 def make_closed_book_prompt(problem: str) -> str:
@@ -76,6 +93,13 @@ def make_closed_book_prompt(problem: str) -> str:
         f"{problem}\n\n"
         "Final answer:\n<answer>"
     )
+
+
+def answer_type_from_answer(answer: dict[str, Any] | None) -> str:
+    """Classify the answer schema as binary or non-binary."""
+    if answer and all(isinstance(value, bool) for value in answer.values()):
+        return "binary"
+    return "non_binary"
 
 
 def extract_json_object(text: str) -> dict[str, Any] | None:
@@ -108,16 +132,29 @@ def is_correct(predicted: dict[str, Any] | None, canonical: dict[str, Any]) -> b
 
 def rows_to_frame(rows: list[dict[str, Any]]) -> pd.DataFrame:
     """Convert raw result rows to a dataframe."""
-    return pd.DataFrame(rows)
+    df = pd.DataFrame(rows)
+    if "answer_type" not in df and "canonical_answer" in df:
+        df["answer_type"] = df["canonical_answer"].apply(answer_type_from_answer)
+    return df
 
 
 def summarize_accuracy(df: pd.DataFrame) -> dict[str, Any]:
     """Return a compact metrics dictionary."""
-    return {
+    metrics = {
         "num_records": int(len(df)),
         "num_correct": int(df["correct"].sum()),
         "accuracy": float(df["correct"].mean()),
     }
+    if "answer_type" in df:
+        by_answer_type = {}
+        for answer_type, group in df.groupby("answer_type"):
+            by_answer_type[str(answer_type)] = {
+                "num_records": int(len(group)),
+                "num_correct": int(group["correct"].sum()),
+                "accuracy": float(group["correct"].mean()),
+            }
+        metrics["by_answer_type"] = by_answer_type
+    return metrics
 
 
 def save_results(rows: list[dict[str, Any]], result_dir: Path, metrics: dict[str, Any]) -> tuple[Path, Path, Path]:
