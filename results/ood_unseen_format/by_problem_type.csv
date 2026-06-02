@@ -1,0 +1,53 @@
+run,answer_type,problem_type,accuracy,correct,count
+LoRA algorithmic_scaffold_v2,non_binary,derive_drift_compensation,1.0,1,1
+LoRA algorithmic_scaffold_v3_5,non_binary,derive_drift_compensation,0.0,0,1
+LoRA algorithmic_scaffold_v3_5_lora12,non_binary,derive_drift_compensation,0.0,0,1
+Qwen3 1.7B base,non_binary,derive_drift_compensation,0.0,0,1
+LoRA algorithmic_scaffold_v2,non_binary,derive_exponential_base,0.0,0,1
+LoRA algorithmic_scaffold_v3_5,non_binary,derive_exponential_base,0.0,0,1
+LoRA algorithmic_scaffold_v3_5_lora12,non_binary,derive_exponential_base,0.0,0,1
+Qwen3 1.7B base,non_binary,derive_exponential_base,0.0,0,1
+LoRA algorithmic_scaffold_v2,non_binary,derive_increment_variance,1.0,1,1
+LoRA algorithmic_scaffold_v3_5,non_binary,derive_increment_variance,1.0,1,1
+LoRA algorithmic_scaffold_v3_5_lora12,non_binary,derive_increment_variance,1.0,1,1
+Qwen3 1.7B base,non_binary,derive_increment_variance,0.0,0,1
+LoRA algorithmic_scaffold_v2,non_binary,derive_quadratic_coefficient,1.0,2,2
+LoRA algorithmic_scaffold_v3_5,non_binary,derive_quadratic_coefficient,0.0,0,2
+LoRA algorithmic_scaffold_v3_5_lora12,non_binary,derive_quadratic_coefficient,0.0,0,2
+Qwen3 1.7B base,non_binary,derive_quadratic_coefficient,0.0,0,2
+LoRA algorithmic_scaffold_v2,non_binary,proof_biased_exit_probability,0.0,0,2
+LoRA algorithmic_scaffold_v3_5,non_binary,proof_biased_exit_probability,0.0,0,2
+LoRA algorithmic_scaffold_v3_5_lora12,non_binary,proof_biased_exit_probability,0.0,0,2
+Qwen3 1.7B base,non_binary,proof_biased_exit_probability,0.0,0,2
+LoRA algorithmic_scaffold_v2,non_binary,proof_biased_hitting_time,0.0,0,3
+LoRA algorithmic_scaffold_v3_5,non_binary,proof_biased_hitting_time,0.0,0,3
+LoRA algorithmic_scaffold_v3_5_lora12,non_binary,proof_biased_hitting_time,0.0,0,3
+Qwen3 1.7B base,non_binary,proof_biased_hitting_time,0.0,0,3
+LoRA algorithmic_scaffold_v3_5_lora12,non_binary,proof_bounded_stopped_value,1.0,2,2
+LoRA algorithmic_scaffold_v2,non_binary,proof_bounded_stopped_value,0.5,1,2
+LoRA algorithmic_scaffold_v3_5,non_binary,proof_bounded_stopped_value,0.5,1,2
+Qwen3 1.7B base,non_binary,proof_bounded_stopped_value,0.5,1,2
+LoRA algorithmic_scaffold_v2,non_binary,proof_exit_probability,0.0,0,1
+LoRA algorithmic_scaffold_v3_5,non_binary,proof_exit_probability,0.0,0,1
+LoRA algorithmic_scaffold_v3_5_lora12,non_binary,proof_exit_probability,0.0,0,1
+Qwen3 1.7B base,non_binary,proof_exit_probability,0.0,0,1
+LoRA algorithmic_scaffold_v2,non_binary,proof_expected_exit_time,0.0,0,1
+LoRA algorithmic_scaffold_v3_5,non_binary,proof_expected_exit_time,0.0,0,1
+LoRA algorithmic_scaffold_v3_5_lora12,non_binary,proof_expected_exit_time,0.0,0,1
+Qwen3 1.7B base,non_binary,proof_expected_exit_time,0.0,0,1
+Qwen3 1.7B base,non_binary,proof_finite_interval_stopped_value,1.0,1,1
+LoRA algorithmic_scaffold_v2,non_binary,proof_finite_interval_stopped_value,0.0,0,1
+LoRA algorithmic_scaffold_v3_5,non_binary,proof_finite_interval_stopped_value,0.0,0,1
+LoRA algorithmic_scaffold_v3_5_lora12,non_binary,proof_finite_interval_stopped_value,0.0,0,1
+LoRA algorithmic_scaffold_v2,non_binary,proof_quadratic_exit_time,0.0,0,1
+LoRA algorithmic_scaffold_v3_5,non_binary,proof_quadratic_exit_time,0.0,0,1
+LoRA algorithmic_scaffold_v3_5_lora12,non_binary,proof_quadratic_exit_time,0.0,0,1
+Qwen3 1.7B base,non_binary,proof_quadratic_exit_time,0.0,0,1
+LoRA algorithmic_scaffold_v3_5,non_binary,proof_shifted_exit_probability,1.0,2,2
+LoRA algorithmic_scaffold_v2,non_binary,proof_shifted_exit_probability,0.0,0,2
+LoRA algorithmic_scaffold_v3_5_lora12,non_binary,proof_shifted_exit_probability,0.0,0,2
+Qwen3 1.7B base,non_binary,proof_shifted_exit_probability,0.0,0,2
+LoRA algorithmic_scaffold_v2,non_binary,proof_shifted_expected_exit_time,0.0,0,2
+LoRA algorithmic_scaffold_v3_5,non_binary,proof_shifted_expected_exit_time,0.0,0,2
+LoRA algorithmic_scaffold_v3_5_lora12,non_binary,proof_shifted_expected_exit_time,0.0,0,2
+Qwen3 1.7B base,non_binary,proof_shifted_expected_exit_time,0.0,0,2

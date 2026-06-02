@@ -1,0 +1,546 @@
+run,id,family,problem_type,difficulty,answer_type,problem,canonical_answer,raw_output,predicted_answer,correct
+Qwen3 1.7B base,ood_control_nt_0001,ood_math_control,crt_three_moduli,3,non_binary,"Number theory proof-style control. Use the Chinese remainder theorem to find the least nonnegative integer x satisfying x ≡ 2 mod 9, x ≡ 3 mod 10, and x ≡ 4 mod 11. Show enough derivation to identify the residue class, then finish with JSON {""least_residue"": ""...""}.",{'least_residue': '983'},"We are given the system of congruences:
+$$
+\begin{cases}
+x \equiv 2 \pmod{9} \\
+x \equiv 3 \pmod{10} \\
+x \equiv 4 \pmod{11}
+\end{cases}
+$$
+
+### Step 1: Use the Chinese Remainder Theorem (CRT)
+The CRT states that if the moduli are pairwise coprime, there exists a unique solution modulo the product of the moduli. Here, 9, 10, and 11 are pairwise coprime (since 9 and 10 are coprime, 9 and 11 are coprime, and 10 and 11 are coprime). Thus, there is a unique solution modulo $9 \times 10 \times 11 = 990$.
+
+### Step 2: Solve the congruences step by step
+
+#### First, solve $x \equiv 2 \pmod{9}$ and $x \equiv 3 \pmod{10}$.
+
+Let $x = 9k + 2$ for some integer $k$. Substitute into the second congruence:
+$$
+9k + 2 \equiv 3 \pmod{10} \Rightarrow 9k \equiv 1 \pmod{10}
+$$
+
+Find the modular inverse of 9 modulo 10. Since $9 \equiv -1 \pmod{10}$, the inverse of 9 modulo 10 is $-1 \equiv 9 \pmod{10}$. Thus:
+$$
+k \equiv 9 \cdot 1 \equiv 9 \pmod{10}
+$$
+
+So, $k = 10m + 9$ for some integer $m$. Substitute back into $x = 9k + 2$:
+$$
+x = 9(10m + 9) + 2 = 90m + 81 + 2 = 90m + 83
+$$
+
+Thus, $x \equiv 83 \pmod{90}$.
+
+#### Now solve $x \equiv 83 \pmod{90}$ and $x \equiv 4 \pmod{11}$.
+
+Let $x = 90m + 83$. Substitute into the third congruence:
+$$
+90m + 83 \equiv 4 \pmod{11}
+$$
+
+Compute $90 \mod 11$ and $83 \mod 11$:
+$$
+90 \equiv 9 \pmod{11}, \quad 83 \equiv 4 \pmod{11}
+$$
+
+So:
+$$
+9m + 4 \equiv 4 \pmod{11} \Rightarrow 9m \equiv 0 \pmod{11}
+$$
+
+Since 9 and 11 are coprime, the inverse of 9 modulo 11 is 5 (since $9 \cdot 5 = 45 \equiv 1 \pmod{11}$). Thus:
+$$
+m \equiv 0 \cdot 5 \equiv 0 \pmod{11}
+$$
+
+So, $m = 11n$ for some integer $n$. Substitute back into $x = 90m + 83$:
+$$
+x = 90(11n) + 83 = 990n + 83
+$$
+
+Thus, $x \equiv",,False
+Qwen3 1.7B base,ood_control_nt_0002,ood_math_control,multiplicative_order,3,non_binary,"Find the multiplicative order of 2 modulo 29. Give a divisor-check argument rather than just guessing powers, then return JSON {""order"": ""...""}.",{'order': '28'},"To find the multiplicative order of 2 modulo 29, we need to find the smallest positive integer $ k $ such that:
+
+$$
+2^k \equiv 1 \pmod{29}
+$$
+
+We can use the **divisor-check argument** to find the order. The order must divide $ \phi(29) = 28 $, since 29 is prime. The divisors of 28 are: 1, 2, 4, 7, 14, 28.
+
+We check each divisor in ascending order:
+
+- $ 2^1 = 2 \not\equiv 1 \pmod{29} $
+- $ 2^2 = 4 \not\equiv 1 \pmod{29} $
+- $ 2^4 = 16 \not\equiv 1 \pmod{29} $
+- $ 2^7 = 128 \equiv 128 - 4 \times 29 = 128 - 116 = 12 \not\equiv 1 \pmod{29} $
+- $ 2^{14} = (2^7)^2 = 12^2 = 144 \equiv 144 - 4 \times 29 = 144 - 116 = 28 \not\equiv 1 \pmod{29} $
+- $ 2^{28} = (2^{14})^2 = 28^2 = 784 \equiv 784 - 27 \times 29 = 784 - 783 = 1 \pmod{29} $
+
+Thus, the multiplicative order of 2 modulo 29 is:
+
+$$
+\boxed{28}
+$$
+
+Final answer:
+{""order"": ""28""}",{'order': '28'},True
+Qwen3 1.7B base,ood_control_nt_0003,ood_math_control,totient_composite,3,non_binary,"Factor 840 and compute Euler's totient phi(840). Give the multiplicative formula step and finish with JSON {""phi"": ""...""}.",{'phi': '192'},"To factor 840 and compute Euler's totient function $\phi(840)$, we proceed as follows:
+
+### Step 1: Prime Factorization of 840
+$$
+840 = 2^3 \times 3^1 \times 5^1 \times 7^1
+$$
+
+### Step 2: Use the Multiplicative Formula for Euler's Totient Function
+$$
+\phi(n) = n \prod_{p|n} \left(1 - \frac{1}{p}\right)
+$$
+where the product is over the distinct prime factors of $n$.
+
+### Step 3: Apply the Formula
+$$
+\phi(840) = 840 \left(1 - \frac{1}{2}\right) \left(1 - \frac{1}{3}\right) \left(1 - \frac{1}{5}\right) \left(1 - \frac{1}{7}\right)
+$$
+$$
+= 840 \times \frac{1}{2} \times \frac{2}{3} \times \frac{4}{5} \times \frac{6}{7}
+$$
+$$
+= 840 \times \frac{1}{2} \times \frac{2}{3} \times \frac{4}{5} \times \frac{6}{7}
+$$
+$$
+= 840 \times \frac{1}{3} \times \frac{4}{5} \times \frac{6}{7}
+$$
+$$
+= 840 \times \frac{24}{105}
+$$
+$$
+= 840 \times \frac{8}{35}
+$$
+$$
+= 840 \times \frac{8}{35}
+$$
+$$
+= 192
+$$
+
+### Final Answer:
+```json
+{""phi"": 192}
+```",{'phi': 192},True
+Qwen3 1.7B base,ood_control_nt_0004,ood_math_control,carmichael_lambda,4,non_binary,"Compute the Carmichael function lambda(840). Use the prime-power decomposition and lcm rule, then return JSON {""lambda"": ""...""}.",{'lambda': '12'},"To compute the Carmichael function $\lambda(840)$, we use the prime-power decomposition and the lcm rule. The prime factorization of 840 is:
+
+$$
+840 = 2^3 \times 3^1 \times 5^1 \times 7^1
+$$
+
+The Carmichael function for a number $n = p_1^{k_1} p_2^{k_2} \cdots p_m^{k_m}$ is given by:
+
+$$
+\lambda(n) = \text{lcm}(\lambda(p_1^{k_1}), \lambda(p_2^{k_2}), \ldots, \lambda(p_m^{k_m}))
+$$
+
+For a prime power $p^k$:
+- If $p$ is an odd prime, $\lambda(p^k) = p^{k-1}(p-1)$
+- If $p = 2$, $\lambda(2^k) = 2^{k-2} \cdot (2-1)$ for $k \geq 3$, and $\lambda(2^k) = 2$ for $k = 1, 2$
+
+Now compute $\lambda(840)$:
+
+- $\lambda(2^3) = 2^{3-2} \cdot (2-1) = 2$
+- $\lambda(3^1) = 3^{1-1}(3-1) = 2$
+- $\lambda(5^1) = 5^{1-1}(5-1) = 4$
+- $\lambda(7^1) = 7^{1-1}(7-1) = 6$
+
+Now compute the lcm of these values:
+
+$$
+\lambda(840) = \text{lcm}(2, 2, 4, 6) = 12
+$$
+
+Final answer:
+```json
+{""lambda"": 12}
+```",{'lambda': 12},True
+Qwen3 1.7B base,ood_control_nt_0005,ood_math_control,extended_euclidean_inverse,3,non_binary,"Use the extended Euclidean algorithm to find the inverse of 37 modulo 101. Return the least nonnegative inverse as JSON {""inverse"": ""...""}.",{'inverse': '71'},"To find the inverse of 37 modulo 101 using the extended Euclidean algorithm, we need to solve the equation:
+
+$$
+37x + 101y = 1
+$$
+
+We apply the extended Euclidean algorithm to find integers $x$ and $y$ such that this equation holds.
+
+### Step 1: Apply the Euclidean Algorithm
+We compute the GCD of 37 and 101:
+
+$$
+\begin{align*}
+101 &= 2 \cdot 37 + 27 \\
+37 &= 1 \cdot 27 + 10 \\
+27 &= 2 \cdot 10 + 7 \\
+10 &= 1 \cdot 7 + 3 \\
+7 &= 2 \cdot 3 + 1 \\
+3 &= 3 \cdot 1 + 0 \\
+\end{align*}
+$$
+
+The GCD is 1, so 37 and 101 are coprime, and an inverse exists.
+
+### Step 2: Back-substitute to find $x$
+We backtrack to express 1 as a linear combination of 37 and 101:
+
+$$
+\begin{align*}
+1 &= 7 - 2 \cdot 3 \\
+&= 7 - 2 \cdot (10 - 1 \cdot 7) \\
+&= 3 \cdot 7 - 2 \cdot 10 \\
+&= 3 \cdot (27 - 2 \cdot 10) - 2 \cdot 10 \\
+&= 3 \cdot 27 - 6 \cdot 10 \\
+&= 3 \cdot 27 - 6 \cdot (37 - 1 \cdot 27) \\
+&= 9 \cdot 27 - 6 \cdot 37 \\
+&= 9 \cdot (101 - 2 \cdot 37) - 6 \cdot 37 \\
+&= 9 \cdot 101 - 24 \cdot 37 \\
+\end{align*}
+$$
+
+So, $1 = -24 \cdot 37 + 9 \cdot 101$, which implies:
+
+$$
+x = -24 \quad \text{and} \quad y = 9
+$$
+
+### Step 3: Find the Least Nonnegative Inverse
+Since $x = -24$, we add 101 to make it nonnegative:
+
+$$
+x = -24 + 101 = 77
+$$
+
+### Final Answer:
+```json
+{""inverse"": 77}
+```",{'inverse': 77},False
+Qwen3 1.7B base,ood_control_nt_0006,ood_math_control,modular_power_prime,3,non_binary,"Compute the remainder of 7^222 modulo 13. Explain the exponent reduction and finish with JSON {""remainder"": ""...""}.",{'remainder': '12'},"To compute $ 7^{222} \mod 13 $, we can use modular exponentiation and properties of modular arithmetic.
+
+### Step 1: Use Fermat's Little Theorem
+Since 13 is a prime number, Fermat's Little Theorem tells us:
+$$
+7^{12} \equiv 1 \mod 13
+$$
+This means that the exponent can be reduced modulo 12.
+
+### Step 2: Reduce the exponent
+$$
+222 \mod 12 = 6
+$$
+So,
+$$
+7^{222} \equiv 7^6 \mod 13
+$$
+
+### Step 3: Compute $ 7^6 \mod 13 $
+We compute step by step:
+$$
+7^2 = 49 \equiv 1 \mod 13
+$$
+$$
+7^4 = (7^2)^2 \equiv 1^2 = 1 \mod 13
+$$
+$$
+7^6 = 7^4 \cdot 7^2 \equiv 1 \cdot 1 = 1 \mod 13
+$$
+
+### Final Answer:
+$$
+\boxed{1}
+$$
+
+Final answer:
+```json
+{""remainder"": 1}
+```",{'remainder': 1},False
+Qwen3 1.7B base,ood_control_nt_0007,ood_math_control,factorial_p_adic_valuation,3,non_binary,"Use Legendre's formula to compute the exponent of 3 in the prime factorization of 100!. Return JSON {""valuation"": ""...""}.",{'valuation': '48'},"Legendre's formula states that the exponent of a prime $ p $ in the prime factorization of $ n! $ is given by:
+
+$$
+\sum_{k=1}^{\infty} \left\lfloor \frac{n}{p^k} \right\rfloor
+$$
+
+For $ p = 3 $ and $ n = 100 $, we compute:
+
+$$
+\left\lfloor \frac{100}{3} \right\rfloor + \left\lfloor \frac{100}{9} \right\rfloor + \left\lfloor \frac{100}{27} \right\rfloor + \left\lfloor \frac{100}{81} \right\rfloor + \cdots
+$$
+
+$$
+= 33 + 11 + 3 + 1 + 0 + \cdots = 48
+$$
+
+Final answer:
+```json
+{""valuation"": 48}
+```",{'valuation': 48},True
+Qwen3 1.7B base,ood_control_nt_0008,ood_math_control,factorial_base_trailing_zeros,4,non_binary,"How many trailing zeros does 200! have when written in base 12? Use prime valuations of 200! and finish with JSON {""zeros"": ""...""}.",{'zeros': '97'},"To find the number of trailing zeros in 200! when written in base 12, we need to determine how many times 12 divides 200!.
+
+Since $12 = 2^2 \times 3$, we need to find the number of times 2 and 3 divide 200! and then take the minimum of these two values.
+
+### Step 1: Prime factorization of 200!
+- Number of factors of 2 in 200!:
+  $$
+  \left\lfloor \frac{200}{2} \right\rfloor + \left\lfloor \frac{200}{4} \right\rfloor + \left\lfloor \frac{200}{8} \right\rfloor + \left\lfloor \frac{200}{16} \right\rfloor + \left\lfloor \frac{200}{32} \right\rfloor + \left\lfloor \frac{200}{64} \right\rfloor + \left\lfloor \frac{200}{128} \right\rfloor = 100 + 50 + 25 + 12 + 6 + 3 + 1 = 197
+  $$
+
+- Number of factors of 3 in 200!:
+  $$
+  \left\lfloor \frac{200}{3} \right\rfloor + \left\lfloor \frac{200}{9} \right\rfloor + \left\lfloor \frac{200}{27} \right\rfloor + \left\lfloor \frac{200}{81} \right\rfloor + \left\lfloor \frac{200}{243} \right\rfloor = 66 + 22 + 7 + 2 + 0 = 97
+  $$
+
+### Step 2: Determine the number of trailing zeros in base 12
+- Since $12 = 2^2 \times 3$, the number of times 12 divides 200! is the minimum of the number of factors of 2 and 3 divided by 2:
+  $$
+  \left\lfloor \frac{197}{2} \right\rfloor = 98, \quad \left\lfloor \frac{97}{1} \right\rfloor = 97
+  $$
+  $$
+  \text{Minimum of } 98 \text{ and } 97 = 97
+  $$
+
+### Final Answer:
+```json
+{""zeros"": 97}
+```",{'zeros': 97},True
+Qwen3 1.7B base,ood_control_nt_0009,ood_math_control,quadratic_congruence_solution_count,4,non_binary,"Count the number of incongruent solutions modulo 45 to x^2 ≡ 1. Use CRT reasoning and return JSON {""count"": ""...""}.",{'count': '4'},"To solve $ x^2 \equiv 1 \pmod{45} $, we use the Chinese Remainder Theorem (CRT). The modulus 45 factors as $ 45 = 9 \times 5 $, and since 9 and 5 are coprime, we can solve the congruence modulo 9 and modulo 5 separately and then combine the solutions.
+
+### Step 1: Solve $ x^2 \equiv 1 \pmod{9} $
+The solutions to $ x^2 \equiv 1 \pmod{9} $ are $ x \equiv \pm 1 \pmod{9} $, so there are 2 solutions modulo 9.
+
+### Step 2: Solve $ x^2 \equiv 1 \pmod{5} $
+The solutions to $ x^2 \equiv 1 \pmod{5} $ are $ x \equiv \pm 1 \pmod{5} $, so there are 2 solutions modulo 5.
+
+### Step 3: Combine using CRT
+Since the moduli 9 and 5 are coprime, the total number of incongruent solutions modulo 45 is the product of the number of solutions modulo 9 and modulo 5:
+
+$$
+\text{Total solutions} = 2 \times 2 = 4
+$$
+
+### Final Answer:
+```json
+{""count"": 4}
+```",{'count': 4},True
+Qwen3 1.7B base,ood_control_nt_0010,ood_math_control,multiplicative_order,3,non_binary,"Find the multiplicative order of 3 modulo 17. Use the fact that the order divides 16 and rule out smaller divisors. Return JSON {""order"": ""...""}.",{'order': '16'},"To find the multiplicative order of 3 modulo 17, we need to find the smallest positive integer $ k $ such that:
+
+$$
+3^k \equiv 1 \pmod{17}
+$$
+
+We know that the order must divide $ \phi(17) = 16 $, so the possible values for $ k $ are the divisors of 16: 1, 2, 4, 8, 16.
+
+We test each divisor:
+
+- $ 3^1 = 3 \not\equiv 1 \pmod{17} $
+- $ 3^2 = 9 \not\equiv 1 \pmod{17} $
+- $ 3^4 = 81 \equiv 13 \pmod{17} \not\equiv 1 \pmod{17} $
+- $ 3^8 = (3^4)^2 = 13^2 = 169 \equiv 16 \pmod{17} \not\equiv 1 \pmod{17} $
+- $ 3^{16} = (3^8)^2 = 16^2 = 256 \equiv 1 \pmod{17} $
+
+Thus, the multiplicative order of 3 modulo 17 is:
+
+$$
+\boxed{16}
+$$
+
+Final answer:
+```json
+{""order"": ""16""}
+```",{'order': '16'},True
+Qwen3 1.7B base,ood_control_nt_0011,ood_math_control,quadratic_residue_count_prime,3,non_binary,"How many quadratic residues modulo 31 are there if 0 is included as a residue? Give the finite-field counting argument and return JSON {""count"": ""...""}.",{'count': '16'},"To determine the number of quadratic residues modulo 31, we consider the finite field $\mathbb{F}_{31}$, which has 31 elements. A quadratic residue is an element $a \in \mathbb{F}_{31}$ such that there exists some $x \in \mathbb{F}_{31}$ with $x^2 \equiv a \pmod{31}$.
+
+The number of quadratic residues modulo a prime $p$ is $\frac{p-1}{2}$, because for each non-zero element $x$, $x^2$ and $-x^2$ are distinct unless $x = 0$, and each quadratic residue is counted twice (once as $x^2$ and once as $(-x)^2$).
+
+Since 31 is a prime, the number of quadratic residues modulo 31 (including 0) is:
+
+$$
+\frac{31 - 1}{2} + 1 = \frac{30}{2} + 1 = 15 + 1 = 16
+$$
+
+Final answer:
+```json
+{""count"": ""16""}
+```",{'count': '16'},True
+Qwen3 1.7B base,ood_control_nt_0012,ood_math_control,linear_congruence_solution_count,3,non_binary,"How many incongruent solutions modulo 35 does the congruence 14x ≡ 21 mod 35 have? Justify using the gcd criterion and return JSON {""count"": ""...""}.",{'count': '7'},"To determine the number of incongruent solutions modulo 35 for the congruence $14x \equiv 21 \pmod{35}$, we use the gcd criterion.
+
+1. Compute $\gcd(14, 35)$:
+   $$
+   \gcd(14, 35) = 7
+   $$
+
+2. Check if the right-hand side of the congruence is divisible by this gcd:
+   $$
+   21 \div 7 = 3
+   $$
+   Since 21 is divisible by 7, the congruence has solutions.
+
+3. The number of incongruent solutions modulo 35 is given by:
+   $$
+   \frac{\gcd(14, 35)}{1} = 7
+   $$
+
+Final answer:
+```json
+{""count"": ""7""}
+```",{'count': '7'},True
+Qwen3 1.7B base,ood_control_nt_0013,ood_math_control,totient_divisor_sum,3,non_binary,"Use the identity sum_{d|n} phi(d)=n to compute sum_{d|36} phi(d). Return JSON {""sum"": ""...""}.",{'sum': '36'},"The identity sum_{d|n} phi(d) = n holds for any positive integer $ n $. Here, $ n = 36 $, so the sum of Euler's totient function over all divisors of 36 is equal to 36.
+
+Final answer:
+{""sum"": 36}",{'sum': 36},True
+Qwen3 1.7B base,ood_control_nt_0014,ood_math_control,mobius_value,3,non_binary,"Compute the Mobius value mu(2310). Factor the integer, explain the squarefree sign rule, and return JSON {""mu"": ""...""}.",{'mu': '-1'},"Factorization of 2310: 2310 = 2 × 3 × 5 × 7 × 11  
+The squarefree sign rule states that the Möbius function μ(n) is defined as:  
+- μ(n) = (-1)^k if n is squarefree with k prime factors  
+- μ(n) = 0 if n has a squared prime factor  
+
+Since 2310 is squarefree and has 5 prime factors, μ(2310) = (-1)^5 = -1  
+
+Final answer:
+{""mu"": ""-1""}",{'mu': '-1'},True
+Qwen3 1.7B base,ood_control_nt_0015,ood_math_control,divisor_count,3,non_binary,"Compute the number of positive divisors of 756. Factor it and use the divisor-counting formula. Return JSON {""divisors"": ""...""}.",{'divisors': '24'},"Factor 756: $756 = 2^2 \times 3^3 \times 7^1$.
+
+Using the divisor-counting formula, the number of positive divisors is:
+$$
+(2+1)(3+1)(1+1) = 3 \times 4 \times 2 = 24
+$$
+
+Final answer:
+{""divisors"": 24}",{'divisors': 24},True
+Qwen3 1.7B base,ood_control_nt_0016,ood_math_control,sum_of_divisors,3,non_binary,"Compute the sum of positive divisors sigma(72). Use the prime-power product formula and return JSON {""sigma"": ""...""}.",{'sigma': '195'},"To compute the sum of positive divisors of 72, we first factorize 72 into its prime factors:
+
+$$
+72 = 2^3 \times 3^2
+$$
+
+The formula for the sum of divisors of a number $ n = p_1^{e_1} \times p_2^{e_2} \times \dots \times p_k^{e_k} $ is:
+
+$$
+\sigma(n) = (1 + p_1 + p_1^2 + \dots + p_1^{e_1}) \times (1 + p_2 + p_2^2 + \dots + p_2^{e_2}) \times \dots
+$$
+
+Applying this to $ 72 = 2^3 \times 3^2 $:
+
+$$
+\sigma(72) = (1 + 2 + 2^2 + 2^3) \times (1 + 3 + 3^2)
+$$
+
+$$
+= (1 + 2 + 4 + 8) \times (1 + 3 + 9)
+$$
+
+$$
+= 15 \times 13 = 195
+$$
+
+Final answer:
+```json
+{""sigma"": 195}
+```",{'sigma': 195},True
+Qwen3 1.7B base,ood_control_nt_0017,ood_math_control,binomial_p_adic_valuation,4,non_binary,"Compute the exponent of 2 dividing the binomial coefficient C(64,16). You may use Legendre's formula or Kummer's theorem. Return JSON {""valuation"": ""...""}.",{'valuation': '2'},"Using Legendre's formula, the exponent of a prime $ p $ in the binomial coefficient $ \binom{n}{k} $ is given by:
+
+$$
+\text{val}_p\left(\binom{n}{k}\right) = \sum_{i=1}^{\infty} \left( \left\lfloor \frac{n}{p^i} \right\rfloor - \left\lfloor \frac{k}{p^i} \right\rfloor - \left\lfloor \frac{n - k}{p^i} \right\rfloor \right)
+$$
+
+For $ p = 2 $, $ n = 64 $, and $ k = 16 $, we compute:
+
+$$
+\text{val}_2\left(\binom{64}{16}\right) = \left\lfloor \frac{64}{2} \right\rfloor + \left\lfloor \frac{64}{4} \right\rfloor + \left\lfloor \frac{64}{8} \right\rfloor + \left\lfloor \frac{64}{16} \right\rfloor + \left\lfloor \frac{64}{32} \right\rfloor + \left\lfloor \frac{64}{64} \right\rfloor - 16 \left( \left\lfloor \frac{16}{2} \right\rfloor + \left\lfloor \frac{16}{4} \right\rfloor + \left\lfloor \frac{16}{8} \right\rfloor + \left\lfloor \frac{16}{16} \right\rfloor + \left\lfloor \frac{16}{32} \right\rfloor + \left\lfloor \frac{16}{64} \right\rfloor \right)
+$$
+
+$$
+= 32 + 16 + 8 + 4 + 2 + 1 - 16 \left( 8 + 4 + 2 + 1 + 0 + 0 \right)
+$$
+
+$$
+= 59 - 16 \times 15 = 59 - 240 = -181
+$$
+
+However, this result is negative, which indicates an error in the application of Legendre's formula. The correct approach is to compute the exponents of 2 in the factorials $ 64! $ and $ 16! $ and $ 48! $, and then use the formula:
+
+$$
+\text{val}_2\left(\binom{64}{16}\right) = \left( \text{val}_2(64!) - \text{val}_2(16!) - \text{val}_2(48!) \right)
+$$
+
+$$
+\text{val}_2(64!) = \left\lfloor \frac{64}{2} \right\rfloor + \left\lfloor \frac{64}{4} \right\rfloor + \left\lfloor \frac{64}{8} \right\rfloor + \left\lfloor \frac{64}{16} \right\rfloor + \left\lfloor \frac{64}{32} \right\rfloor + \left\lfloor \frac{64}{64} \right\rfloor = 32 +",,False
+Qwen3 1.7B base,ood_control_nt_0018,ood_math_control,modular_power_prime,3,non_binary,"Compute 11^100 modulo 17. Show the exponent reduction and return JSON {""remainder"": ""...""}.",{'remainder': '4'},"To compute $ 11^{100} \mod 17 $, we can use modular exponentiation and properties of modular arithmetic.
+
+### Step 1: Use Fermat's Little Theorem
+Since 17 is a prime number, Fermat's Little Theorem tells us:
+$$
+11^{16} \equiv 1 \mod 17
+$$
+
+### Step 2: Reduce the exponent modulo 16
+$$
+100 \mod 16 = 4
+$$
+
+### Step 3: Compute $ 11^4 \mod 17 $
+$$
+11^2 = 121 \equiv 121 - 7 \times 17 = 121 - 119 = 2 \mod 17
+$$
+$$
+11^4 = (11^2)^2 \equiv 2^2 = 4 \mod 17
+$$
+
+### Final Answer:
+$$
+\boxed{4}
+$$",,False
+Qwen3 1.7B base,ood_control_nt_0019,ood_math_control,multiplicative_order,3,non_binary,"Find the multiplicative order of 5 modulo 31. Give the power check and return JSON {""order"": ""...""}.",{'order': '3'},"To find the multiplicative order of 5 modulo 31, we need to find the smallest positive integer $ k $ such that:
+
+$$
+5^k \equiv 1 \pmod{31}
+$$
+
+We can check powers of 5 modulo 31:
+
+- $ 5^1 \equiv 5 \pmod{31} $
+- $ 5^2 \equiv 25 \pmod{31} $
+- $ 5^3 \equiv 125 \equiv 125 - 4 \times 31 = 125 - 124 = 1 \pmod{31} $
+
+Thus, the multiplicative order of 5 modulo 31 is 3.
+
+Final answer:
+```json
+{""order"": ""3""}
+```",{'order': '3'},True
+Qwen3 1.7B base,ood_control_nt_0020,ood_math_control,legendre_symbol,4,non_binary,"Compute the Legendre symbol (5/23). Justify whether 5 is a quadratic residue modulo 23 and return JSON {""legendre"": ""...""}.",{'legendre': '-1'},"To compute the Legendre symbol $(5/23)$, we need to determine whether 5 is a quadratic residue modulo 23.
+
+### Step 1: Use Euler's criterion
+The Legendre symbol $(a/p)$ is 1 if $a$ is a quadratic residue modulo $p$, and -1 otherwise. Euler's criterion states:
+$$
+(a/p) = a^{(p-1)/2} \mod p
+$$
+
+For $p = 23$ and $a = 5$:
+$$
+(5/23) = 5^{(23-1)/2} \mod 23 = 5^{11} \mod 23
+$$
+
+### Step 2: Compute $5^{11} \mod 23$
+We can compute this step by step:
+- $5^2 = 25 \equiv 2 \mod 23$
+- $5^4 = (5^2)^2 \equiv 2^2 = 4 \mod 23$
+- $5^8 = (5^4)^2 \equiv 4^2 = 16 \mod 23$
+
+Now compute $5^{11} = 5^8 \cdot 5^2 \cdot 5^1 \equiv 16 \cdot 2 \cdot 5 = 160 \mod 23$
+
+$$
+160 \div 23 = 6 \text{ remainder } 14 \Rightarrow 160 \equiv 14 \mod 23
+$$
+
+### Final Answer:
+$$
+(5/23) = 14 \mod 23
+$$
+
+Final answer:
+```json
+{""legendre"": 14}
+```",{'legendre': 14},False

@@ -1,0 +1,16 @@
+{
+  "accuracy": 0.55,
+  "by_answer_type": {
+    "non_binary": {
+      "accuracy": 0.55,
+      "num_correct": 11,
+      "num_records": 20
+    }
+  },
+  "dataset": "benchmark/data/ood_math_control/*.jsonl",
+  "grading_policy": "schema_tolerant_exact_match_v2",
+  "model": "Qwen/Qwen3-1.7B-MLX-bf16",
+  "num_correct": 11,
+  "num_records": 20,
+  "run": "LoRA algorithmic_scaffold_v2"
+}

@@ -1,0 +1,77 @@
+run,answer_type,problem_type,accuracy,correct,count
+LoRA algorithmic_scaffold_v2,non_binary,bijection_count,1.0,1,1
+LoRA algorithmic_scaffold_v3_5,non_binary,bijection_count,1.0,1,1
+LoRA algorithmic_scaffold_v3_5_lora12,non_binary,bijection_count,1.0,1,1
+Qwen3 1.7B base,non_binary,bijection_count,1.0,1,1
+LoRA algorithmic_scaffold_v2,non_binary,binomial_coefficient,1.0,1,1
+LoRA algorithmic_scaffold_v3_5,non_binary,binomial_coefficient,1.0,1,1
+LoRA algorithmic_scaffold_v3_5_lora12,non_binary,binomial_coefficient,1.0,1,1
+Qwen3 1.7B base,non_binary,binomial_coefficient,1.0,1,1
+LoRA algorithmic_scaffold_v2,non_binary,combination_count,1.0,1,1
+LoRA algorithmic_scaffold_v3_5,non_binary,combination_count,1.0,1,1
+LoRA algorithmic_scaffold_v3_5_lora12,non_binary,combination_count,1.0,1,1
+Qwen3 1.7B base,non_binary,combination_count,1.0,1,1
+LoRA algorithmic_scaffold_v3_5,non_binary,cyclic_group_element_order,1.0,1,1
+LoRA algorithmic_scaffold_v3_5_lora12,non_binary,cyclic_group_element_order,1.0,1,1
+Qwen3 1.7B base,non_binary,cyclic_group_element_order,1.0,1,1
+LoRA algorithmic_scaffold_v2,non_binary,cyclic_group_element_order,0.0,0,1
+LoRA algorithmic_scaffold_v2,non_binary,euclidean_gcd,1.0,1,1
+LoRA algorithmic_scaffold_v3_5,non_binary,euclidean_gcd,1.0,1,1
+LoRA algorithmic_scaffold_v3_5_lora12,non_binary,euclidean_gcd,1.0,1,1
+Qwen3 1.7B base,non_binary,euclidean_gcd,1.0,1,1
+LoRA algorithmic_scaffold_v3_5_lora12,non_binary,finite_field_roots,1.0,1,1
+LoRA algorithmic_scaffold_v2,non_binary,finite_field_roots,0.0,0,1
+LoRA algorithmic_scaffold_v3_5,non_binary,finite_field_roots,0.0,0,1
+Qwen3 1.7B base,non_binary,finite_field_roots,0.0,0,1
+LoRA algorithmic_scaffold_v2,non_binary,generated_subgroup_size,1.0,1,1
+LoRA algorithmic_scaffold_v3_5,non_binary,generated_subgroup_size,1.0,1,1
+LoRA algorithmic_scaffold_v3_5_lora12,non_binary,generated_subgroup_size,1.0,1,1
+Qwen3 1.7B base,non_binary,generated_subgroup_size,1.0,1,1
+LoRA algorithmic_scaffold_v2,non_binary,inclusion_exclusion,1.0,1,1
+LoRA algorithmic_scaffold_v3_5,non_binary,inclusion_exclusion,1.0,1,1
+LoRA algorithmic_scaffold_v3_5_lora12,non_binary,inclusion_exclusion,1.0,1,1
+Qwen3 1.7B base,non_binary,inclusion_exclusion,1.0,1,1
+LoRA algorithmic_scaffold_v2,non_binary,linear_congruence,1.0,1,1
+LoRA algorithmic_scaffold_v3_5_lora12,non_binary,linear_congruence,1.0,1,1
+Qwen3 1.7B base,non_binary,linear_congruence,1.0,1,1
+LoRA algorithmic_scaffold_v3_5,non_binary,linear_congruence,0.0,0,1
+LoRA algorithmic_scaffold_v3_5_lora12,non_binary,matrix_determinant,1.0,1,1
+Qwen3 1.7B base,non_binary,matrix_determinant,1.0,1,1
+LoRA algorithmic_scaffold_v2,non_binary,matrix_determinant,0.0,0,1
+LoRA algorithmic_scaffold_v3_5,non_binary,matrix_determinant,0.0,0,1
+LoRA algorithmic_scaffold_v2,non_binary,matrix_trace,1.0,1,1
+LoRA algorithmic_scaffold_v3_5,non_binary,matrix_trace,1.0,1,1
+LoRA algorithmic_scaffold_v3_5_lora12,non_binary,matrix_trace,1.0,1,1
+Qwen3 1.7B base,non_binary,matrix_trace,1.0,1,1
+LoRA algorithmic_scaffold_v2,non_binary,modular_inverse,1.0,1,1
+Qwen3 1.7B base,non_binary,modular_inverse,1.0,1,1
+LoRA algorithmic_scaffold_v3_5,non_binary,modular_inverse,0.0,0,1
+LoRA algorithmic_scaffold_v3_5_lora12,non_binary,modular_inverse,0.0,0,1
+LoRA algorithmic_scaffold_v2,non_binary,modular_power,1.0,1,1
+LoRA algorithmic_scaffold_v3_5,non_binary,modular_power,1.0,1,1
+LoRA algorithmic_scaffold_v3_5_lora12,non_binary,modular_power,1.0,1,1
+Qwen3 1.7B base,non_binary,modular_power,1.0,1,1
+LoRA algorithmic_scaffold_v2,non_binary,permutation_order,1.0,2,2
+LoRA algorithmic_scaffold_v3_5,non_binary,permutation_order,1.0,2,2
+Qwen3 1.7B base,non_binary,permutation_order,1.0,2,2
+LoRA algorithmic_scaffold_v3_5_lora12,non_binary,permutation_order,0.5,1,2
+LoRA algorithmic_scaffold_v2,non_binary,rank_nullity,1.0,1,1
+LoRA algorithmic_scaffold_v3_5_lora12,non_binary,rank_nullity,1.0,1,1
+Qwen3 1.7B base,non_binary,rank_nullity,1.0,1,1
+LoRA algorithmic_scaffold_v3_5,non_binary,rank_nullity,0.0,0,1
+LoRA algorithmic_scaffold_v2,non_binary,stars_and_bars,1.0,1,1
+LoRA algorithmic_scaffold_v3_5,non_binary,stars_and_bars,1.0,1,1
+LoRA algorithmic_scaffold_v3_5_lora12,non_binary,stars_and_bars,1.0,1,1
+Qwen3 1.7B base,non_binary,stars_and_bars,1.0,1,1
+LoRA algorithmic_scaffold_v2,non_binary,subgroup_index,1.0,1,1
+LoRA algorithmic_scaffold_v3_5,non_binary,subgroup_index,1.0,1,1
+LoRA algorithmic_scaffold_v3_5_lora12,non_binary,subgroup_index,1.0,1,1
+Qwen3 1.7B base,non_binary,subgroup_index,1.0,1,1
+LoRA algorithmic_scaffold_v2,non_binary,totient,1.0,1,1
+LoRA algorithmic_scaffold_v3_5,non_binary,totient,1.0,1,1
+Qwen3 1.7B base,non_binary,totient,1.0,1,1
+LoRA algorithmic_scaffold_v3_5_lora12,non_binary,totient,0.0,0,1
+LoRA algorithmic_scaffold_v3_5_lora12,non_binary,tower_law_degree,1.0,1,1
+Qwen3 1.7B base,non_binary,tower_law_degree,1.0,1,1
+LoRA algorithmic_scaffold_v2,non_binary,tower_law_degree,0.0,0,1
+LoRA algorithmic_scaffold_v3_5,non_binary,tower_law_degree,0.0,0,1

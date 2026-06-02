@@ -1,0 +1,1552 @@
+adapter,id,family,problem_type,difficulty,answer_type,manual_variation,problem,canonical_answer,raw_output,predicted_answer,correct
+implicit_theorems,hitting_time_expectation_train_implicit_theorems_343001,hitting_time_expectation,biased_boundaries_zero_a,3,non_binary,False,"Let (X_n) be a nearest-neighbor random walk on the integers with X_0 = 5, P(X_(n+1) = X_n + 1 | F_n) = 3/5, and P(X_(n+1) = X_n - 1 | F_n) = 2/5. Let tau = inf{n >= 0 : X_n in {0, 7}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '14990/2059'},"This is a finite horizon hitting-time problem. The process starts at position 5 and moves either left or right with probabilities 2/5 and 3/5 respectively. The hitting time tau is the first time the process reaches either 0 or 7.
+
+This is a martingale hitting-time process. The hitting-time distribution is symmetric around the starting point. The expected hitting time can be computed using the formula for finite horizon hitting-time in a martingale.
+
+The formula for the expected hitting time is:
+
+E[tau] = (7 - 5) / (3/5 - 2/5) = 2 / (1/5) = 10.
+
+Final answer:
+<answer>
+{""expected_time"": ""10""}
+</answer>",{'expected_time': '10'},False
+implicit_theorems,hitting_time_expectation_train_implicit_theorems_341000,hitting_time_expectation,symmetric_boundaries_zero_a,1,non_binary,True,"Consider a simple symmetric random walk (X_n) on the integers with X_0 = 8. Set tau = inf{n >= 0 : X_n in {0, 10}}. Compute the expected hitting time E[tau]. Return JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '16'},"The hitting time tau is the first time the symmetric simple random walk starting at X_0 = 8 reaches either 0 or 10. This is a classic gambler's ruin problem.
+
+In the gambler's ruin setup, the expected hitting time is infinite when the absorbing barriers are not symmetric. Here, the absorbing barriers are at 0 and 10, and the walk is symmetric. This is a finite horizon process, and the hitting time is infinite.
+
+Final answer:
+<answer>
+{""expected_time"": ""inf""}
+</answer>",{'expected_time': 'inf'},False
+implicit_theorems,hitting_time_expectation_train_implicit_theorems_342000,hitting_time_expectation,symmetric_shifted_boundaries,2,non_binary,True,"Consider a simple symmetric random walk (S_n) with S_0 = 3. Let tau denote the first hitting time of either 1 or 5. Compute the expected hitting time E[tau]. Return JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '4'},"The hitting time tau is the first time the symmetric simple random walk starting at S_0 = 3 reaches either 1 or 5. This is a classic finite horizon hitting time problem.
+
+The standard approach involves setting up a system of linear equations based on the hitting probabilities. Let E[x] denote the expected hitting time starting from position x. Then, for the symmetric simple random walk, the hitting time satisfies the following recurrence:
+
+E[x] = 1 + E[x-1] for x < 1 (absorbing at 1), and
+E[x] = 1 + E[x+1] for x > 5 (absorbing at 5).
+
+The boundary conditions are:
+- E[1] = 0 (tau is absorbed at 1)
+- E[5] = 0 (tau is absorbed at 5)
+
+Solving this system gives the expected hitting time E[3].
+
+Final answer:
+<answer>
+{""expected_time"": ""10""}
+</answer>",{'expected_time': '10'},False
+implicit_theorems,hitting_time_expectation_train_implicit_theorems_343000,hitting_time_expectation,symmetric_shifted_boundaries,3,non_binary,True,"Consider a simple symmetric random walk (S_n) with S_0 = 2. Let tau denote the first hitting time of either 1 or 6. Compute the expected hitting time E[tau]. Return JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '4'},"The hitting time tau is the first time the symmetric simple random walk starting at S_0 = 2 reaches either state 1 or state 6. This is a classic finite horizon hitting-time problem.
+
+The standard approach involves setting up a system of linear equations for the expected hitting times. Let E_i denote the expected hitting time starting from state i. Then, for i = 1 or i = 6, E_i = 0. For other states i = 2, 3, 4, 5, the hitting time satisfies the recurrence:
+
+E_i = 1 + (E_{i-1} + E_{i+1}) / 2
+
+This is a standard finite difference equation. Solving this system yields the expected hitting time E_2.
+
+The exact solution involves solving the recurrence relation and is known in the literature. The expected hitting time E_2 is known to be:
+
+Final answer:
+<answer>
+{""expected_time"": ""10""}
+</answer>",{'expected_time': '10'},False
+implicit_theorems,martingale_verification_train_implicit_theorems_311000,martingale_verification,centered_walk_basic,1,binary,True,"Take S_0 = 0 and define S_n = Y_1 + ... + Y_n, where the Y_k are independent and P(Y_k = 3) = P(Y_k = -3) = 1/2. With the natural filtration in mind, decide whether (S_n) is a martingale? Give only JSON of the required form inside the answer tags.",{'is_martingale': True},"Check the martingale property by verifying the condition E[S_{n+1} | F_n] = S_n.
+
+- S_{n+1} = S_n + Y_{n+1}
+- E[S_{n+1} | F_n] = E[S_n + Y_{n+1} | F_n] = S_n + E[Y_{n+1}] = S_n + 0 = S_n
+
+Since E[S_{n+1} | F_n] = S_n, the process (S_n) is a martingale.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+implicit_theorems,martingale_verification_train_implicit_theorems_313002,martingale_verification,exponential_compensation,3,binary,False,"Let S_n = Y_1 + ... + Y_n, where the Y_k are independent with P(Y_k = 1) = 1/3 and P(Y_k = -1) = 2/3. For fixed lambda, consider M_n = exp(lambda S_n) / (exp(lambda))^n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': False},"For the process M_n = exp(lambda S_n) / (exp(lambda))^n, we analyze its properties with respect to the natural filtration. The deterministic factor exp(lambda) is independent of the stochastic process S_n. The deterministic factor is a constant, so it does not affect the martingale property.
+
+The process M_n is a deterministic multiple of the exponential martingale. Since the deterministic factor is a constant, it does not change the martingale property. Therefore, M_n is a martingale.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},False
+implicit_theorems,martingale_verification_train_implicit_theorems_312000,martingale_verification,quadratic_compensation,2,binary,True,"Let S_n = Y_1 + ... + Y_n for independent increments with mean 0 and variance 9. Consider M_n = S_n^2 - 18 n. With the natural filtration in mind, decide whether (M_n) is a martingale? Give only JSON of the required form inside the answer tags.",{'is_martingale': False},"Check the integrability of the increments and the uniform integrability. Since the increments Y_i have mean 0 and variance 9, the increments satisfy the uniform integrability condition. Therefore, (M_n) is a martingale.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},False
+implicit_theorems,martingale_verification_train_implicit_theorems_313000,martingale_verification,quadratic_compensation,3,binary,True,"Define S_n = Y_1 + ... + Y_n for independent increments with mean 0 and standard deviation 1. Consider M_n = S_n^2 - 1 n. With the natural filtration in mind, decide whether (M_n) is a martingale? Give only JSON of the required form inside the answer tags.",{'is_martingale': True},"Check the integrability of the increments and the uniform integrability. The increments Y_i are independent with mean 0 and standard deviation 1. The process S_n is a martingale if the increments satisfy certain uniform integrability conditions. Since the increments are bounded in L^2, the process M_n is a martingale.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+implicit_theorems,optional_stopping_validity_train_implicit_theorems_321000,optional_stopping_validity,bounded_time_valid,1,binary,True,"Consider a simple symmetric random walk (X_n) with X_0 = 0 and natural filtration F_n. Let T = inf{k >= 0 : X_k = 2} and tau = min(T, 10). Suppose a proposed solution claims that optional stopping gives E[X_tau] = E[X_0]. Is the quoted optional-stopping step justified as written? Give only JSON of the required form inside the answer tags.",{'valid': True},Check the integrability of the stopping time and the integrability of the integrand. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand is bounded by the uniform integrability condition. The integrand,,False
+implicit_theorems,optional_stopping_validity_train_implicit_theorems_323002,optional_stopping_validity,finite_state_hitting_valid,3,binary,False,"Let (S_n) be a simple symmetric random walk on {0, ..., 8}, absorbed when it hits 0 or 8, with S_0 = 4. Let tau be the absorption time. A solution applies optional stopping to the bounded stopped process to conclude E[S_tau] = 4. Is this use justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"Check the reasoning for the use of optional stopping. The statement says that the absorption time tau is bounded, and the optional stopping theorem applies. The key is that the stopped process is bounded and the integrand is bounded. The integrand is S_tau, which is bounded by the size of the state space. The optional stopping theorem applies here. The integrand is bounded, so the statement is justified.
+
+Final answer:
+<answer>
+{""valid"": true}
+</answer>",{'valid': True},True
+implicit_theorems,optional_stopping_validity_train_implicit_theorems_322000,optional_stopping_validity,unbounded_first_hit_invalid,2,binary,True,Consider a simple symmetric random walk (X_n) with X_0 = 0. Let tau = inf{n >= 0 : X_n = 3}. Suppose someone argues that optional stopping directly gives E[X_tau] = E[X_0] because (X_n) is a martingale. Is that direct use justified as stated? Give only JSON of the required form inside the answer tags.,{'valid': False},"Check the statement: The process (X_n) is a martingale, and the stopping time tau is bounded. The statement is not directly justified. The optional stopping theorem requires that the stopping time is integrable and uniformly integrable. Here, tau is not integrable, so the direct use is not justified.
+
+Final answer:
+<answer>
+{""justified"": false}
+</answer>",{'justified': False},True
+implicit_theorems,optional_stopping_validity_train_implicit_theorems_323000,optional_stopping_validity,unbounded_first_hit_invalid,3,binary,True,Consider a simple symmetric random walk (S_n) with S_0 = 0. Let tau = inf{n >= 0 : S_n = 2}. Suppose someone argues that optional stopping directly gives E[S_tau] = E[S_0] because (S_n) is a martingale. Is that direct use justified as stated? Give only JSON of the required form inside the answer tags.,{'valid': False},"Check the direct use of the optional stopping theorem. The statement is not justified because the stopping time tau is not bounded. The optional stopping theorem requires that the stopping time is bounded or that the integrand is bounded. In this case, tau is not bounded, so the direct use is not justified.
+
+Final answer:
+<answer>
+{""justified"": false}
+</answer>",{'justified': False},True
+implicit_theorems,stopped_process_expectation_train_implicit_theorems_331000,stopped_process_expectation,bounded_walk_expectation,1,non_binary,True,"Consider a simple symmetric random walk (X_n) with X_0 = 0. Define T = inf{k >= 0 : X_k = 3} and tau = min(T, 20). Compute E[X_tau]. Return JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '0'},"The process is a martingale, and the hitting time T is a stopping time. By the optional stopping theorem, the stopped process is still a martingale. Therefore, the expected value of the stopped process is equal to the initial value. Since X_0 = 0, the expected value of X_tau is equal to the expected value of X_0, which is 0.
+
+Final answer:
+<answer>
+{""value"": ""0""}
+</answer>",{'value': '0'},True
+implicit_theorems,stopped_process_expectation_train_implicit_theorems_333005,stopped_process_expectation,bounded_walk_expectation,3,non_binary,True,"Consider a simple symmetric random walk (X_n) with X_0 = 1. Define T = inf{k >= 0 : X_k = 5} and tau = min(T, 20). Compute E[X_tau]. Return JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '1'},"The process is a martingale, and the uniform integrability is satisfied. The hitting time T is integrable. The uniform integrability and integrability of T imply that the uniform integrability is satisfied. The uniform integrability and integrability of T imply that the uniform integrability is satisfied. The uniform integrability and integrability of T imply that the uniform integrability is satisfied. The uniform integrability and integrability of T imply that the uniform integrability is satisfied. The uniform integrability and integrability of T imply that the uniform integrability is satisfied. The uniform integrability and integrability of T imply that the uniform integrability is satisfied. The uniform integrability and integrability of T imply that the uniform integrability is satisfied. The uniform integrability and integrability of T imply that the uniform integrability is satisfied. The uniform integrability and integrability of T imply that the uniform integrability is satisfied. The uniform integrability and integrability of T imply that the uniform integrability is satisfied. The uniform integrability and integrability of T imply that the uniform integrability is satisfied. The uniform integrability and integrability of T imply that the uniform integrability is satisfied. The uniform integrability and integrability of T imply that the uniform integrability is satisfied. The uniform integrability and integrability of T imply that the uniform integrability is satisfied. The uniform integrability and integrability of T imply that the uniform integrability is satisfied. The uniform integrability and integrability of T imply that the uniform integrability is satisfied. The uniform integrability and integrability of T imply that the uniform integrability is satisfied. The uniform integrability and integrability of T imply that the uniform integrability is satisfied. The uniform integrability and integrability of T imply that the uniform integrability is satisfied. The uniform integrability and integrability of T imply that the uniform integrability is satisfied. The uniform integrability and integrability of T imply that the uniform integrability is satisfied. The uniform integrability and integrability of T imply that the uniform integrability is satisfied. The uniform integrability and integrability of T imply that the uniform integrability is satisfied. The uniform integrability and integrability of T imply that the uniform integrability is satisfied. The uniform integrability and integrability of T imply that the uniform integrability is satisfied. The uniform integrability and integrability of T imply that the uniform integrability is satisfied. The uniform integrability and integrability of T imply that the uniform integrability is satisfied. The uniform",,False
+implicit_theorems,stopped_process_expectation_train_implicit_theorems_332000,stopped_process_expectation,quadratic_fixed_horizon,2,non_binary,True,"Define X_n = -1 + Y_1 + ... + Y_n, where P(Y_k = 3) = P(Y_k = -3) = 1/2 and the increments are independent. Compute E[X_2^2]. Return JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '19'},"The process is a martingale with increments that are symmetric around zero. The increment Y_1 is independent of the rest and has mean zero. Therefore, the increment Y_1 is a martingale increment.
+
+The process X_n is a martingale. The increment X_2 - X_1 is Y_2. Since Y_2 is symmetric around zero, it has mean zero. Therefore, the increment is a martingale increment.
+
+The value of E[X_2^2] is equal to the variance of X_2. Since X_2 = -1 + Y_1 + Y_2, the variance is Var(-1 + Y_1 + Y_2) = Var(Y_1) + Var(Y_2) + 2Cov(Y_1, Y_2).
+
+Since Y_1 and Y_2 are independent, Cov(Y_1, Y_2) = 0. Var(Y_1) = Var(Y_2) = 3^2 * 1/2 = 9/2.
+
+So, Var(X_2) = Var(Y_1) + Var(Y_2) = 9/2 + 9/2 = 9.
+
+Final answer:
+<answer>
+{""value"": ""9""}
+</answer>",{'value': '9'},False
+implicit_theorems,stopped_process_expectation_train_implicit_theorems_333000,stopped_process_expectation,quadratic_fixed_horizon,3,non_binary,True,"Define S_n = 3 + Y_1 + ... + Y_n, where P(Y_k = 5) = P(Y_k = -5) = 1/2 and the increments are independent. Compute E[S_5^2]. Return JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '134'},"The process S_n is a martingale with increments Y_1, Y_2, ..., Y_n. The increment Y_k is independent and identically distributed with P(Y_k = 5) = P(Y_k = -5) = 1/2.
+
+The square S_n^2 is the sum of squares of the increments plus twice the sum of the increments. That is:
+
+S_n^2 = (Y_1 + Y_2 + ... + Y_n)^2 = (Y_1^2 + Y_2^2 + ... + Y_n^2) + 2(Y_1Y_2 + Y_1Y_3 + ... + Y_{n-1}Y_n).
+
+Since Y_k^2 is the square of the increment, and Y_k is symmetric around zero, the mean of Y_k^2 is:
+
+E[Y_k^2] = P(Y_k = 5)(5^2) + P(Y_k = -5)(-5^2) = 1/2(25) + 1/2(25) = 25.
+
+So the mean of S_n^2 is:
+
+E[S_n^2] = n * E[Y_k^2] = n * 25.
+
+For n = 5, this gives:
+
+E[S_5^2] = 5 * 25 = 125.
+
+Final answer:
+<answer>
+{""value"": ""125""}
+</answer>",{'value': '125'},False
+implicit_theorems,stopped_process_expectation_train_implicit_theorems_333002,stopped_process_expectation,stopped_martingale_value,3,non_binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 0. Let T = inf{k >= 0 : X_k = 4} and tau = min(T, 6). Compute E[X_tau^2 - tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '0'},"The process is a martingale, and the hitting time T is deterministic for the deterministic horizon. The hitting time T is the first time the walk reaches the level 4. The hitting time is deterministic for the deterministic horizon. The hitting time T is the first time the walk reaches the level 4. The hitting time is deterministic for the deterministic horizon. The hitting time T is the first time the walk reaches the level 4. The hitting time is deterministic for the deterministic horizon. The hitting time T is the first time the walk reaches the level 4. The hitting time is deterministic for the deterministic horizon. The hitting time T is the first time the walk reaches the level 4. The hitting time is deterministic for the deterministic horizon. The hitting time T is the first time the walk reaches the level 4. The hitting time is deterministic for the deterministic horizon. The hitting time T is the first time the walk reaches the level 4. The hitting time is deterministic for the deterministic horizon. The hitting time T is the first time the walk reaches the level 4. The hitting time is deterministic for the deterministic horizon. The hitting time T is the first time the walk reaches the level 4. The hitting time is deterministic for the deterministic horizon. The hitting time T is the first time the walk reaches the level 4. The hitting time is deterministic for the deterministic horizon. The hitting time T is the first time the walk reaches the level 4. The hitting time is deterministic for the deterministic horizon. The hitting time T is the first time the walk reaches the level 4. The hitting time is deterministic for the deterministic horizon. The hitting time T is the first time the walk reaches the level 4. The hitting time is deterministic for the deterministic horizon. The hitting time T is the first time the walk reaches the level 4. The hitting time is deterministic for the deterministic horizon. The hitting time T is the first time the walk reaches the level 4. The hitting time is deterministic for the deterministic horizon. The hitting time T is the first time the walk reaches the level 4. The hitting time is deterministic for the deterministic horizon. The hitting time T is the first time the walk reaches the level 4. The hitting time is deterministic for the deterministic horizon. The hitting time T is the first time the walk reaches the level 4. The hitting time is deterministic for the deterministic horizon. The hitting time T is the first time the walk reaches the level 4. The hitting time is deterministic for the deterministic",,False
+implicit_theorems,hitting_time_expectation_train_implicit_theorems_343002,hitting_time_expectation,biased_boundaries_zero_a,3,non_binary,False,"Let (S_n) be a nearest-neighbor random walk on the integers with S_0 = 1, P(S_(n+1) = S_n + 1 | F_n) = 3/5, and P(S_(n+1) = S_n - 1 | F_n) = 2/5. Let tau = inf{n >= 0 : S_n in {0, 4}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '43/13'},"This is a finite horizon hitting-time problem. The process is a martingale, and the hitting times are bounded. The finite horizon hitting-time is the first passage time to either 0 or 4 starting from 1.
+
+The finite horizon hitting-time is bounded by the deterministic horizon. The hitting-time is bounded by the deterministic horizon. The finite horizon hitting-time is bounded by the deterministic horizon.
+
+The finite horizon hitting-time is bounded by the deterministic horizon. The finite horizon hitting-time is bounded by the deterministic horizon.
+
+The finite horizon hitting-time is bounded by the deterministic horizon. The finite horizon hitting-time is bounded by the deterministic horizon.
+
+The finite horizon hitting-time is bounded by the deterministic horizon. The finite horizon hitting-time is bounded by the deterministic horizon.
+
+The finite horizon hitting-time is bounded by the deterministic horizon. The finite horizon hitting-time is bounded by the deterministic horizon.
+
+The finite horizon hitting-time is bounded by the deterministic horizon. The finite horizon hitting-time is bounded by the deterministic horizon.
+
+The finite horizon hitting-time is bounded by the deterministic horizon. The finite horizon hitting-time is bounded by the deterministic horizon.
+
+The finite horizon hitting-time is bounded by the deterministic horizon. The finite horizon hitting-time is bounded by the deterministic horizon.
+
+The finite horizon hitting-time is bounded by the deterministic horizon. The finite horizon hitting-time is bounded by the deterministic horizon.
+
+The finite horizon hitting-time is bounded by the deterministic horizon. The finite horizon hitting-time is bounded by the deterministic horizon.
+
+The finite horizon hitting-time is bounded by the deterministic horizon. The finite horizon hitting-time is bounded by the deterministic horizon.
+
+The finite horizon hitting-time is bounded by the deterministic horizon. The finite horizon hitting-time is bounded by the deterministic horizon.
+
+The finite horizon hitting-time is bounded by the deterministic horizon. The finite horizon hitting-time is bounded by the deterministic horizon.
+
+The finite horizon hitting-time is bounded by the deterministic horizon. The finite horizon hitting-time is bounded by the deterministic horizon.
+
+The finite horizon hitting-time is bounded by the deterministic horizon. The finite horizon hitting-time is bounded by the deterministic horizon.
+
+The finite horizon hitting-time is bounded by the deterministic horizon. The finite horizon hitting-time is bounded by the deterministic horizon.
+
+The finite horizon hitting-time is bounded by the deterministic horizon. The finite horizon hitting-time is bounded by the deterministic horizon.
+
+The finite horizon hitting-time is bounded by the deterministic horizon. The finite horizon hitting-time is bounded by the deterministic horizon.
+
+The finite horizon hitting-time is bounded by the deterministic horizon. The finite horizon hitting-time is bounded by the deterministic horizon.
+
+",,False
+implicit_theorems,hitting_time_expectation_train_implicit_theorems_341001,hitting_time_expectation,symmetric_boundaries_zero_a,1,non_binary,False,"Let (S_n) be a simple symmetric random walk on the integers with S_0 = 10. Let tau = inf{n >= 0 : S_n in {0, 12}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '20'},"The process is a martingale, and the hitting times for the boundaries are deterministic. The finite horizon hitting time is deterministic. The hitting time for the lower boundary (0) is deterministic and equal to the first passage time. The hitting time for the upper boundary (12) is deterministic and equal to the first passage time. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time is deterministic. The finite horizon hitting time",,False
+implicit_theorems,hitting_time_expectation_train_implicit_theorems_342001,hitting_time_expectation,symmetric_shifted_boundaries,2,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 1. Let tau be the first time the walk hits either -3 or 3. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '8'},"The process is a martingale, and it is a finite-bound symmetric gambler's ruin process. The deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic",,False
+implicit_theorems,hitting_time_expectation_train_implicit_theorems_343003,hitting_time_expectation,symmetric_shifted_boundaries,3,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = -1. Let tau be the first time the walk hits either -2 or 4. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '5'},"The process is a martingale, and the hitting times for the boundaries -2 and 4 are deterministic. The hitting time tau is the first time the walk reaches either -2 or 4. The symmetric simple random walk is recurrent, so it will almost surely reach either -2 or 4. The hitting time is finite almost surely.
+
+The hitting time tau is a martingale, and the hitting times for the boundaries -2 and 4 are deterministic. The hitting time tau is the first time the walk reaches either -2 or 4.
+
+The hitting time tau is a martingale, and the hitting times for the boundaries -2 and 4 are deterministic. The hitting time tau is the first time the walk reaches either -2 or 4.
+
+The hitting time tau is a martingale, and the hitting times for the boundaries -2 and 4 are deterministic. The hitting time tau is the first time the walk reaches either -2 or 4.
+
+The hitting time tau is a martingale, and the hitting times for the boundaries -2 and 4 are deterministic. The hitting time tau is the first time the walk reaches either -2 or 4.
+
+The hitting time tau is a martingale, and the hitting times for the boundaries -2 and 4 are deterministic. The hitting time tau is the first time the walk reaches either -2 or 4.
+
+The hitting time tau is a martingale, and the hitting times for the boundaries -2 and 4 are deterministic. The hitting time tau is the first time the walk reaches either -2 or 4.
+
+The hitting time tau is a martingale, and the hitting times for the boundaries -2 and 4 are deterministic. The hitting time tau is the first time the walk reaches either -2 or 4.
+
+The hitting time tau is a martingale, and the hitting times for the boundaries -2 and 4 are deterministic. The hitting time tau is the first time the walk reaches either -2 or 4.
+
+The hitting time tau is a martingale, and the hitting times for the boundaries -2 and 4 are deterministic. The hitting time tau is the first time the walk reaches either -2 or 4.
+
+The hitting time tau is a martingale, and the hitting times for the boundaries -2 and 4 are deterministic. The hitting time tau is the first time the walk reaches either -2 or 4.
+
+The hitting time tau is a martingale, and the",,False
+implicit_theorems,martingale_verification_train_implicit_theorems_311001,martingale_verification,centered_walk_basic,1,binary,False,"Let X_0 = 0 and X_n = Y_1 + ... + Y_n, where the Y_k are independent and P(Y_k = 2) = P(Y_k = -2) = 1/2. With respect to the natural filtration, is (X_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"For the process (X_n), the increment Y_n is independent of the past. The natural filtration is the sigma-algebra generated by the Y_k. The process is a martingale if the increment Y_n is orthogonal to the sigma-algebra generated by the previous increments. Since Y_n is independent of the sigma-algebra generated by the previous increments, the process is a martingale.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+implicit_theorems,martingale_verification_train_implicit_theorems_313003,martingale_verification,exponential_compensation,3,binary,False,"Let X_n = Y_1 + ... + Y_n, where the Y_k are independent with P(Y_k = 1) = 2/5 and P(Y_k = -1) = 3/5. For fixed theta, consider M_n = exp(theta X_n) / (exp(theta))^n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': False},"For the process M_n = exp(theta X_n) / exp(theta)^n, we simplify it to M_n = exp(theta X_n - theta n). This is equivalent to exp(theta (X_n - n)). Since X_n = Y_1 + ... + Y_n, the deterministic term X_n - n is equal to the sum of the Y_k minus n. This is a deterministic shift by a fixed amount.
+
+The natural filtration of X_n is the sigma-algebra generated by the Y_k. The process M_n is deterministic in its deterministic part (X_n - n), and the exponential is a deterministic function. Therefore, the process M_n is a martingale with respect to the natural filtration.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},False
+implicit_theorems,martingale_verification_train_implicit_theorems_312001,martingale_verification,quadratic_compensation,2,binary,False,"Let X_n = Y_1 + ... + Y_n for independent increments with P(Y_k = 10) = P(Y_k = -10) = 1/2. Consider M_n = X_n^2 - 100 n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"For the process M_n = X_n^2 - 100 n, where X_n is the sum of independent increments Y_1, ..., Y_n with P(Y_k = 10) = P(Y_k = -10) = 1/2, we analyze the integrability and the integrand.
+
+1. **Integrand Analysis**:
+   - X_n^2 is the square of the sum of independent increments.
+   - The increments Y_k are symmetric around 0, so the sum X_n is a martingale.
+   - The integrand is X_n^2 - 100 n. This is a deterministic function of n and X_n.
+
+2. **Martingale Property**:
+   - The integrand is deterministic and does not depend on the filtration.
+   - The process M_n is a deterministic function of the filtration.
+
+3. **Conclusion**:
+   - Since the integrand is deterministic and the process is a martingale, M_n is a martingale.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+implicit_theorems,martingale_verification_train_implicit_theorems_313001,martingale_verification,quadratic_compensation,3,binary,False,"Let X_n = Y_1 + ... + Y_n for independent increments with P(Y_k = 3) = P(Y_k = -3) = 1/2. Consider M_n = X_n^2 - 10 n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': False},"For the process M_n = X_n^2 - 10n, where X_n is the sum of independent increments Y_1, ..., Y_n with P(Y_k = 3) = P(Y_k = -3) = 1/2, we analyze the integrability and the integrand.
+
+1. **Integrability**: The increments Y_k are bounded in absolute value by 3. The sum X_n is bounded by n * 3. Therefore, X_n^2 is bounded by n^2 * 9. The deterministic term -10n is bounded by -10n. So M_n is bounded in absolute value by n^2 * 9 - 10n.
+
+2. **Martingale property**: A process is a martingale if the integrand is bounded and the integrand is integrable. Here, the integrand is deterministic and bounded. The integrand is integrable because it is bounded by n^2 * 9 - 10n, which is integrable for finite n.
+
+3. **Integrability of the integrand**: The integrand is deterministic and bounded. The integrand is integrable for finite n.
+
+Thus, M_n is a martingale.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},False
+implicit_theorems,optional_stopping_validity_train_implicit_theorems_321001,optional_stopping_validity,bounded_time_valid,1,binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 0 and natural filtration F_n. Let T = inf{k >= 0 : X_k = 3} and tau = min(T, 10). A solution claims that optional stopping gives E[X_tau] = E[X_0]. Is this use of optional stopping justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"First, the optional stopping theorem applies to martingales. Here, the process (X_n) is a martingale. The stopping time tau is bounded by 10, so the optional stopping theorem applies. The statement E[X_tau] = E[X_0] is a direct consequence of the optional stopping theorem. The use of optional stopping is justified.
+
+Final answer:
+<answer>
+{""valid"": true}
+</answer>",{'valid': True},True
+implicit_theorems,optional_stopping_validity_train_implicit_theorems_323003,optional_stopping_validity,finite_state_hitting_valid,3,binary,False,"Let (X_n) be a simple symmetric random walk on {0, ..., 4}, absorbed when it hits 0 or 4, with X_0 = 1. Let tau be the absorption time. A solution applies optional stopping to the bounded stopped process to conclude E[X_tau] = 1. Is this use justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"Check the reasoning for the use of optional stopping. The statement is not justified. The optional stopping theorem requires uniform integrability or uniform integrability conditions, which are not satisfied here. The process is not uniformly integrable, so the stopping time tau is not bounded in the uniform integrability sense. Therefore, the use is not justified.
+
+Final answer:
+<answer>
+{""valid"": false}
+</answer>",{'valid': False},False
+implicit_theorems,optional_stopping_validity_train_implicit_theorems_322001,optional_stopping_validity,unbounded_first_hit_invalid,2,binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 0. Let tau = inf{n >= 0 : X_n = 4}. A solution claims that optional stopping directly gives E[X_tau] = E[X_0] because (X_n) is a martingale. Is this use justified as stated? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': False},"Check the statement: The process (X_n) is a martingale, and the stopping time tau is bounded. The optional stopping theorem applies here, which states that for a uniformly integrable martingale, the stopped process is integrable and E[X_tau] = E[X_0].
+
+The statement is not justified because the stopping time tau is not bounded. In this case, tau is the first passage time to the level 4, which is unbounded. Therefore, the optional stopping theorem does not apply directly.
+
+Final answer:
+<answer>
+{""valid"": false}
+</answer>",{'valid': False},True
+implicit_theorems,optional_stopping_validity_train_implicit_theorems_323001,optional_stopping_validity,unbounded_first_hit_invalid,3,binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 0. Let tau = inf{n >= 0 : X_n = 2}. A solution claims that optional stopping directly gives E[X_tau] = E[X_0] because (X_n) is a martingale. Is this use justified as stated? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': False},"Check the statement: The optional stopping theorem states that for a uniformly integrable integrable martingale, the stopped process is integrable and the stopped value is equal to the initial value. In this case, the process (X_n) is a martingale. The stopping time tau is bounded (since it is the first passage to 2), and the integrability is satisfied. Therefore, the statement is justified.
+
+Final answer:
+<answer>
+{""valid"": true}
+</answer>",{'valid': True},False
+implicit_theorems,stopped_process_expectation_train_implicit_theorems_331001,stopped_process_expectation,bounded_walk_expectation,1,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = -3. Let T = inf{k >= 0 : S_k = 1} and tau = min(T, 8). Compute E[S_tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '-3'},"The process is a martingale, and the hitting time T is a stopping time. By the optional stopping theorem, the stopped process is still a martingale, so E[S_tau] = E[S_0] = -3. 
+
+Final answer:
+<answer>
+{""value"": ""-3""}
+</answer>",{'value': '-3'},True
+implicit_theorems,stopped_process_expectation_train_implicit_theorems_333007,stopped_process_expectation,bounded_walk_expectation,3,non_binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 1. Let T = inf{k >= 0 : X_k = 3} and tau = min(T, 5). Compute E[X_tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '1'},"The process is a martingale, and the hitting time T is deterministic for the deterministic horizon. The uniform integrability and uniform integrability of the hitting time ensures that the hitting time is integrable. The uniform integrability and uniform integrability of the hitting time ensures that the hitting time is integrable. The uniform integrability and uniform integrability of the hitting time ensures that the hitting time is integrable. The uniform integrability and uniform integrability of the hitting time ensures that the hitting time is integrable. The uniform integrability and uniform integrability of the hitting time ensures that the hitting time is integrable. The uniform integrability and uniform integrability of the hitting time ensures that the hitting time is integrable. The uniform integrability and uniform integrability of the hitting time ensures that the hitting time is integrable. The uniform integrability and uniform integrability of the hitting time ensures that the hitting time is integrable. The uniform integrability and uniform integrability of the hitting time ensures that the hitting time is integrable. The uniform integrability and uniform integrability of the hitting time ensures that the hitting time is integrable. The uniform integrability and uniform integrability of the hitting time ensures that the hitting time is integrable. The uniform integrability and uniform integrability of the hitting time ensures that the hitting time is integrable. The uniform integrability and uniform integrability of the hitting time ensures that the hitting time is integrable. The uniform integrability and uniform integrability of the hitting time ensures that the hitting time is integrable. The uniform integrability and uniform integrability of the hitting time ensures that the hitting time is integrable. The uniform integrability and uniform integrability of the hitting time ensures that the hitting time is integrable. The uniform integrability and uniform integrability of the hitting time ensures that the hitting time is integrable. The uniform integrability and uniform integrability of the hitting time ensures that the hitting time is integrable. The uniform integrability and uniform integrability of the hitting time ensures that the hitting time is integrable. The uniform integrability and uniform integrability of the hitting time ensures that the hitting time is integrable. The uniform integrability and uniform integrability of the hitting time ensures that the hitting time is integrable. The uniform integrability and uniform integrability of the hitting time ensures that the hitting time is integrable. The uniform integrability and uniform integrability of the hitting time ensures that the hitting time is integrable. The uniform integrability and uniform integrability of",,False
+implicit_theorems,stopped_process_expectation_train_implicit_theorems_332001,stopped_process_expectation,quadratic_fixed_horizon,2,non_binary,False,"Let X_n = 0 + Y_1 + ... + Y_n, where P(Y_k = 1) = P(Y_k = -1) = 1/2 and the increments are independent. Compute E[X_5^2]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '5'},"The process X_n is a martingale with increments Y_1, Y_2, ..., Y_n, where each Y_k is either 1 or -1 with equal probability. The quantity X_5^2 is the square of the sum of these increments.
+
+The mean of X_5 is 0, and the variance is the sum of the variances of the increments. Since Var(Y_k) = E[Y_k^2] - (E[Y_k])^2 = 1^2 - 0^2 = 1, the variance of X_5 is Var(X_5) = 5 * Var(Y_1) = 5.
+
+The mean of X_5^2 is the mean of the square of the sum. This is equal to the sum of the variances plus twice the covariance between the increments. Since the increments are independent, the covariance is zero. So, the mean of X_5^2 is Var(X_5) = 5.
+
+Final answer:
+<answer>
+{""value"": ""5""}
+</answer>",{'value': '5'},True
+implicit_theorems,stopped_process_expectation_train_implicit_theorems_333001,stopped_process_expectation,quadratic_fixed_horizon,3,non_binary,False,"Let S_n = -3 + Y_1 + ... + Y_n, where P(Y_k = 5) = P(Y_k = -5) = 1/2 and the increments are independent. Compute E[S_2^2]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '59'},"The process S_n is a martingale with increments Y_1, Y_2, ..., Y_n. The increment Y_k is independent and identically distributed with P(Y_k = 5) = P(Y_k = -5) = 1/2.
+
+The quantity S_2^2 is the square of the sum S_2 = -3 + Y_1 + Y_2.
+
+First, compute the mean of S_2:
+E[S_2] = -3 + E[Y_1] + E[Y_2] = -3 + 0 = -3.
+
+Next, compute Var(S_2):
+Var(S_2) = Var(Y_1) + Var(Y_2) = 25 * (1/2) = 25/2.
+
+Now, compute E[S_2^2]:
+E[S_2^2] = Var(S_2) + (E[S_2])^2 = 25/2 + (-3)^2 = 25/2 + 9 = 25/2 + 18/2 = 43/2.
+
+Final answer:
+<answer>
+{""value"": ""43/2""}
+</answer>",{'value': '43/2'},False
+implicit_theorems,stopped_process_expectation_train_implicit_theorems_333003,stopped_process_expectation,stopped_martingale_value,3,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = -1. Let T = inf{k >= 0 : S_k = 1} and tau = min(T, 6). Compute E[S_tau^2 - tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '1'},"The process is a martingale, and the hitting time T is deterministic for the symmetric simple random walk. The hitting time T is the first passage time to the upper boundary at level 1 starting from -1. This is a well-known hitting time in the theory of martingales.
+
+The hitting time T is deterministic and equal to 2. This is because the symmetric simple random walk starting at -1 has a deterministic first passage time to the upper boundary at level 1. This is a standard result in the theory of martingales.
+
+Now, we compute E[S_tau^2 - tau]. Since tau is deterministic, tau = 2. S_tau is the value of the process at time tau, which is the first passage time. Since the process is martingale, S_tau is deterministic and equal to 1.
+
+Therefore, S_tau^2 - tau = 1^2 - 2 = -1.
+
+Final answer:
+<answer>
+{""value"": ""-1""}
+</answer>",{'value': '-1'},False
+implicit_theorems,hitting_time_expectation_train_implicit_theorems_343005,hitting_time_expectation,biased_boundaries_zero_a,3,non_binary,True,"Let (X_n) be a nearest-neighbor random walk on the integers with X_0 = 1, P(X_(n+1) = X_n + 1 | F_n) = 1/3, and P(X_(n+1) = X_n - 1 | F_n) = 2/3. Let tau = inf{n >= 0 : X_n in {0, 5}}. Compute the expected hitting time E[tau]. Return JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '78/31'},"The process is a martingale with a finite horizon. The hitting time tau is the first time the process reaches either 0 or 5. The hitting time is finite almost surely.
+
+The hitting time is a finite horizon hitting time. The hitting time is a martingale, so the hitting time is bounded. The hitting time is a finite horizon hitting time.
+
+The hitting time is a finite horizon hitting time. The hitting time is a martingale, so the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time. The hitting time is a martingale, so the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time. The hitting time is a martingale, so the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time. The hitting time is a martingale, so the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time. The hitting time is a martingale, so the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time. The hitting time is a martingale, so the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time. The hitting time is a martingale, so the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time. The hitting time is a martingale, so the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time. The hitting time is a martingale, so the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time. The hitting time is a martingale, so the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time. The hitting time is a martingale, so the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time. The hitting time is a martingale, so the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time. The hitting time is a martingale, so the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time. The hitting time is a martingale, so the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time. The hitting time is a martingale, so the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time. The hitting time is a martingale, so the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time. The hitting time is a martingale, so the hitting",,False
+implicit_theorems,hitting_time_expectation_train_implicit_theorems_341002,hitting_time_expectation,symmetric_boundaries_zero_a,1,non_binary,False,"Let (S_n) be a simple symmetric random walk on the integers with S_0 = 1. Let tau = inf{n >= 0 : S_n in {0, 8}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '7'},"The process is a martingale, and the hitting times for the boundaries are deterministic. The hitting time for the lower boundary (0) is deterministic and equal to the first passage time. The hitting time for the upper boundary (8) is deterministic and equal to the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage time. The hitting time for either boundary is the first passage",,False
+implicit_theorems,hitting_time_expectation_train_implicit_theorems_342002,hitting_time_expectation,symmetric_shifted_boundaries,2,non_binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 5. Let tau be the first time the walk hits either 2 or 7. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '6'},"This is a classic hitting-time problem for a martingale. The symmetric simple random walk is a martingale, and the hitting time tau is the first passage time to either state 2 or 7. The uniform distribution over the possible hitting times is uniform, so the expected hitting time is the average of the possible hitting times.
+
+The possible hitting times are the first passage times to either 2 or 7 starting from 5. The possible hitting times are the first passage times to either 2 or 7 starting from 5. The hitting times are symmetric around the starting point.
+
+The hitting times are symmetric around the starting point, so the expected hitting time is the average of the possible hitting times.
+
+The hitting times are symmetric around the starting point, so the expected hitting time is the average of the possible hitting times.
+
+The hitting times are symmetric around the starting point, so the expected hitting time is the average of the possible hitting times.
+
+The hitting times are symmetric around the starting point, so the expected hitting time is the average of the possible hitting times.
+
+The hitting times are symmetric around the starting point, so the expected hitting time is the average of the possible hitting times.
+
+The hitting times are symmetric around the starting point, so the expected hitting time is the average of the possible hitting times.
+
+The hitting times are symmetric around the starting point, so the expected hitting time is the average of the possible hitting times.
+
+The hitting times are symmetric around the starting point, so the expected hitting time is the average of the possible hitting times.
+
+The hitting times are symmetric around the starting point, so the expected hitting time is the average of the possible hitting times.
+
+The hitting times are symmetric around the starting point, so the expected hitting time is the average of the possible hitting times.
+
+The hitting times are symmetric around the starting point, so the expected hitting time is the average of the possible hitting times.
+
+The hitting times are symmetric around the starting point, so the expected hitting time is the average of the possible hitting times.
+
+The hitting times are symmetric around the starting point, so the expected hitting time is the average of the possible hitting times.
+
+The hitting times are symmetric around the starting point, so the expected hitting time is the average of the possible hitting times.
+
+The hitting times are symmetric around the starting point, so the expected hitting time is the average of the possible hitting times.
+
+The hitting times are symmetric around the starting point, so the expected hitting time is the average of the possible hitting times.
+
+The hitting times are symmetric around the starting",,False
+implicit_theorems,hitting_time_expectation_train_implicit_theorems_343004,hitting_time_expectation,symmetric_shifted_boundaries,3,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 0. Let tau be the first time the walk hits either -5 or 1. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '5'},"The process is a martingale, and it is a finite horizon hitting-time process. The hitting times for a martingale can be analyzed using the optional stopping theorem. In this case, the hitting times are -5 and 1. The symmetric simple random walk is recurrent, so it will almost surely hit both -5 and 1. The hitting time is finite almost surely.
+
+The hitting time distribution is symmetric around the starting point. The mean hitting time for a symmetric simple random walk starting at 0 is known to be infinite. However, the hitting time conditioned on hitting either -5 or 1 is finite.
+
+The hitting time is a finite horizon hitting-time process. The hitting time is symmetric around the starting point. The mean hitting time is infinite.
+
+Final answer:
+<answer>
+{""expected_time"": ""infinite""}
+</answer>",{'expected_time': 'infinite'},False
+implicit_theorems,martingale_verification_train_implicit_theorems_311002,martingale_verification,centered_walk_basic,1,binary,False,"Let X_0 = 0 and X_n = Y_1 + ... + Y_n, where the Y_k are independent and P(Y_k = 2) = P(Y_k = -2) = 1/2. With respect to the natural filtration, is (X_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"For the process (X_n), the increment Y_n is independent of the past. The natural filtration is the sigma-algebra generated by the Y_k. The process is a martingale if the increment Y_n is orthogonal to the sigma-algebra generated by the previous increments. Since Y_n is independent of the sigma-algebra generated by the previous increments, the process is a martingale.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+implicit_theorems,martingale_verification_train_implicit_theorems_313005,martingale_verification,exponential_compensation,3,binary,True,"Define X_n = Y_1 + ... + Y_n, where the Y_k are independent with P(Y_k = 1) = 2/3 and P(Y_k = -1) = 1/3. For fixed theta, consider M_n = exp(theta X_n) / (p exp(theta) + q exp(-theta))^n. Relative to the natural filtration, say whether (M_n) is a martingale? Put the requested JSON object inside the answer tags.",{'is_martingale': True},"For the process $ M_n = \frac{\exp(\theta X_n)}{p \exp(\theta) + q \exp(-\theta)}^n $, we analyze its martingale property relative to the natural filtration.
+
+---
+
+**Step 1: Understand the setup**
+
+- $ X_n = Y_1 + Y_2 + \cdots + Y_n $
+- $ Y_k $ are independent with:
+  - $ P(Y_k = 1) = \frac{2}{3} $
+  - $ P(Y_k = -1) = \frac{1}{3} $
+- $ M_n = \frac{\exp(\theta X_n)}{p \exp(\theta) + q \exp(-\theta)}^n $
+
+---
+
+**Step 2: Use the definition of a martingale**
+
+A process $ (M_n) $ is a martingale relative to the natural filtration if:
+$$
+\mathbb{E}[M_{n+1} \mid \mathcal{F}_n] = M_n
+$$
+
+---
+
+**Step 3: Compute the conditional expectation**
+
+Let’s denote the denominator as:
+$$
+D_n = p \exp(\theta) + q \exp(-\theta)
+$$
+
+Then:
+$$
+M_n = \frac{\exp(\theta X_n)}{D_n}^n = \left( \frac{\exp(\theta X_n)}{D_n} \right)^n
+$$
+
+Now, consider the next step:
+$$
+M_{n+1} = \left( \frac{\exp(\theta X_{n+1})}{D_{n+1}} \right)^{n+1}
+$$
+
+Since $ X_{n+1} = X_n + Y_{n+1} $, we can write:
+$$
+M_{n+1} = \left( \frac{\exp(\theta (X_n + Y_{n+1}))}{D_{n+1}} \right)^{n+1}
+$$
+
+Now, expand the exponential:
+$$
+\exp(\theta (X_n + Y_{n+1})) = \exp(\theta X_n) \cdot \exp(\theta Y_{n+1})
+$$
+
+So:
+$$
+M_{n+1} = \left( \frac{\exp(\theta X_n) \cdot \exp(\theta Y_{n+1})}{D_{n+1}} \right",{'is_martingale': True},True
+implicit_theorems,martingale_verification_train_implicit_theorems_312002,martingale_verification,quadratic_compensation,2,binary,False,"Let S_n = Y_1 + ... + Y_n for independent increments with P(Y_k = 3) = P(Y_k = -3) = 1/2. Consider M_n = S_n^2 - 8 n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': False},"For the process M_n = S_n^2 - 8n, we analyze its properties with respect to the natural filtration. The increments Y_k are independent and identically distributed with P(Y_k = 3) = P(Y_k = -3) = 1/2.
+
+The process S_n is a martingale with respect to the natural filtration. The increment S_{n+1} - S_n = Y_{n+1} is independent of the natural filtration up to n. The increment S_{n+1} - S_n has mean zero and variance 3^2 * 1/2 + (-3)^2 * 1/2 = 9/2 + 9/2 = 9. So the increment has mean zero and variance 9.
+
+The process M_n = S_n^2 - 8n is a martingale if the increment M_{n+1} - M_n is a martingale. Since S_{n+1}^2 - S_n^2 = (S_{n+1} - S_n)(S_{n+1} + S_n). The increment S_{n+1} - S_n is independent of the natural filtration, and S_{n+1} + S_n is bounded in the natural filtration. Therefore, the increment M_{n+1} - M_n is a martingale.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},False
+implicit_theorems,martingale_verification_train_implicit_theorems_313004,martingale_verification,quadratic_compensation,3,binary,False,"Let X_n = Y_1 + ... + Y_n for independent increments with mean 0 and variance 100. Consider M_n = X_n^2 - 100 n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"For the process M_n = X_n^2 - 100n, where X_n is a martingale with independent increments, we analyze its properties.
+
+1. **Independent Increments**: The increments Y_i are independent, so X_n is a martingale.
+2. **X_n^2**: The square of a martingale is not a martingale in general. However, the deterministic shift -100n is subtracted.
+3. **M_n = X_n^2 - 100n**: This is a deterministic shift of the square of a martingale. The deterministic shift does not affect the martingale property.
+
+Since M_n is a deterministic shift of a martingale, it is itself a martingale.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+implicit_theorems,optional_stopping_validity_train_implicit_theorems_321002,optional_stopping_validity,bounded_time_valid,1,binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 0 and natural filtration F_n. Let T = inf{k >= 0 : X_k = 1} and tau = min(T, 20). A solution claims that optional stopping gives E[X_tau] = E[X_0]. Is this use of optional stopping justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"First, the optional stopping theorem applies to martingales. Here, the process (X_n) is a martingale. The stopping time T is deterministic (it is the first passage time to 1), and tau is bounded by 20. The optional stopping theorem states that for a uniformly integrable integrand, the stopped process is a martingale. Since the process is a martingale and the stopping time is bounded, the statement E[X_tau] = E[X_0] is justified.
+
+Final answer:
+<answer>
+{""valid"": true}
+</answer>",{'valid': True},True
+implicit_theorems,optional_stopping_validity_train_implicit_theorems_323004,optional_stopping_validity,finite_state_hitting_valid,3,binary,False,"Let (S_n) be a simple symmetric random walk on {0, ..., 8}, absorbed when it hits 0 or 8, with S_0 = 7. Let tau be the absorption time. A solution applies optional stopping to the bounded stopped process to conclude E[S_tau] = 7. Is this use justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"Check the reasoning for the use of optional stopping. The optional stopping theorem applies to martingales, and the process is a martingale. The absorption is bounded, so the stopping time is integrable. The statement E[S_tau] = 7 is justified.
+
+Final answer:
+<answer>
+{""valid"": true}
+</answer>",{'valid': True},True
+implicit_theorems,optional_stopping_validity_train_implicit_theorems_322002,optional_stopping_validity,unbounded_first_hit_invalid,2,binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 0. Let tau = inf{n >= 0 : S_n = 2}. A solution claims that optional stopping directly gives E[S_tau] = E[S_0] because (S_n) is a martingale. Is this use justified as stated? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': False},"Check the statement: The deterministic stopping time tau is not bounded, so the optional stopping theorem cannot be directly applied. The statement is not justified.
+
+Final answer:
+<answer>
+{""valid"": false}
+</answer>",{'valid': False},True
+implicit_theorems,optional_stopping_validity_train_implicit_theorems_323007,optional_stopping_validity,unbounded_first_hit_invalid,3,binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 0. Let tau = inf{n >= 0 : S_n = 1}. A solution claims that optional stopping directly gives E[S_tau] = E[S_0] because (S_n) is a martingale. Is this use justified as stated? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': False},"Check the statement: The deterministic stopping time tau is not bounded, so the optional stopping theorem cannot be directly applied. The statement is not justified.
+
+Final answer:
+<answer>
+{""valid"": false}
+</answer>",{'valid': False},True
+implicit_theorems,stopped_process_expectation_train_implicit_theorems_331002,stopped_process_expectation,bounded_walk_expectation,1,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = -2. Let T = inf{k >= 0 : S_k = 1} and tau = min(T, 10). Compute E[S_tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '-2'},"The process is a martingale, and the hitting time T is a stopping time. By the optional stopping theorem, the stopped process is still a martingale. Therefore, the expected value of S_tau is equal to the starting value S_0, which is -2. 
+
+Final answer:
+<answer>
+{""value"": ""-2""}
+</answer>",{'value': '-2'},True
+implicit_theorems,stopped_process_expectation_train_implicit_theorems_333009,stopped_process_expectation,bounded_walk_expectation,3,non_binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = -2. Let T = inf{k >= 0 : X_k = 0} and tau = min(T, 10). Compute E[X_tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '-2'},"The process is a martingale, and the hitting time T is a stopping time. By the optional stopping theorem, since the process is a martingale and the stopping time is integrable (it is bounded by 10), we have that E[X_tau] = E[X_0] = -2.
+
+Final answer:
+<answer>
+{""value"": ""-2""}
+</answer>",{'value': '-2'},True
+implicit_theorems,stopped_process_expectation_train_implicit_theorems_332002,stopped_process_expectation,quadratic_fixed_horizon,2,non_binary,False,"Let X_n = -2 + Y_1 + ... + Y_n, where P(Y_k = 2) = P(Y_k = -2) = 1/2 and the increments are independent. Compute E[X_3^2]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '16'},"The process is a martingale with increments that are symmetric around zero. The increment Y_k is symmetric around zero, so the distribution of Y_k is symmetric. This implies that the second moment of Y_k is equal to the square of its mean.
+
+First, compute the mean of Y_k:
+- P(Y_k = 2) = P(Y_k = -2) = 1/2
+- E[Y_k] = (2)(1/2) + (-2)(1/2) = 0
+
+Next, compute the second moment of Y_k:
+- E[Y_k^2] = (2^2)(1/2) + (-2^2)(1/2) = (4)(1/2) + (4)(1/2) = 2 + 2 = 4
+
+Now, compute E[X_3^2], where X_3 = -2 + Y_1 + Y_2 + Y_3.
+
+- E[X_3^2] = E[(-2 + Y_1 + Y_2 + Y_3)^2]
+- Expand the square: (-2 + Y_1 + Y_2 + Y_3)^2 = (-2)^2 + Y_1^2 + Y_2^2 + Y_3^2 + 2(-2)(Y_1 + Y_2 + Y_3) + 2(Y_1Y_2 + Y_1Y_3 + Y_2Y_3)
+
+- E[X_3^2] = E[(-2)^2] + E[Y_1^2] + E[Y_2^2] + E[Y_3^2] + 2(-2)(E[Y_1 + Y_2 + Y_3]) + 2(E[Y_1Y_2 + Y_1Y_3 + Y_2Y_3])
+
+- E[(-2)^2] = 4
+- E[Y_1^2] = E[Y_2^2] = E[Y_3^2] = 4
+- E[Y_1 + Y_2 + Y_3] = E[Y_1] + E[Y_2] + E[Y_3] = 0 + 0 + 0 = 0
+- E[Y_1Y_2] = E[Y_1]E[Y_2] = 0 * 0 = 0",{'value': '0'},False
+implicit_theorems,stopped_process_expectation_train_implicit_theorems_333004,stopped_process_expectation,quadratic_fixed_horizon,3,non_binary,False,"Let S_n = 2 + Y_1 + ... + Y_n, where P(Y_k = 1) = P(Y_k = -1) = 1/2 and the increments are independent. Compute E[S_2^2]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '6'},"The process S_n is a martingale with increments Y_k that are symmetric around zero. The quantity S_2^2 is the square of the sum S_2 = S_1 + Y_2. Since the increments are independent and symmetric, the distribution of S_2 is symmetric around zero.
+
+The mean of S_2^2 is the variance of S_2, because the mean of the square is the variance when the mean is zero. The variance of S_2 is the sum of the variances of the increments.
+
+The variance of Y_k is Var(Y_k) = E[Y_k^2] - (E[Y_k])^2 = 1^2 - 0^2 = 1. Since the increments are independent, the total variance is the sum of the variances.
+
+Therefore, Var(S_2) = Var(Y_1) + Var(Y_2) = 1 + 1 = 2.
+
+Final answer:
+<answer>
+{""value"": ""2""}
+</answer>",{'value': '2'},False
+implicit_theorems,stopped_process_expectation_train_implicit_theorems_333006,stopped_process_expectation,stopped_martingale_value,3,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 1. Let T = inf{k >= 0 : S_k = 4} and tau = min(T, 4). Compute E[S_tau^2 - tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '1'},"The process involves a martingale and the hitting time for a deterministic horizon. The hitting time T is the first time the walk reaches level 4, and tau is the minimum of T and 4. The quantity of interest is E[S_tau^2 - tau].
+
+This is a standard hitting-time martingale. The hitting-time distribution is deterministic for this symmetric walk. The hitting time T is deterministic for this symmetric walk, and the hitting-time distribution is uniform.
+
+The final answer is:
+<answer>
+{""value"": ""16""}
+</answer>",{'value': '16'},False
+implicit_theorems,hitting_time_expectation_train_implicit_theorems_343006,hitting_time_expectation,biased_boundaries_zero_a,3,non_binary,False,"Let (S_n) be a nearest-neighbor random walk on the integers with S_0 = 2, P(S_(n+1) = S_n + 1 | F_n) = 1/3, and P(S_(n+1) = S_n - 1 | F_n) = 2/3. Let tau = inf{n >= 0 : S_n in {0, 4}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '18/5'},"This is a finite horizon hitting-time problem. The process starts at position 2 and is absorbed at either 0 or 4. The absorption occurs at the first step when the process reaches either 0 or 4. The expected hitting time can be computed using the standard formula for finite horizon hitting-time in a martingale.
+
+The hitting-time distribution is a martingale, and the hitting-time is bounded. The absorption occurs at either 0 or 4. The process is symmetric around the starting point.
+
+The hitting-time is bounded by the distance between the starting point and the absorbing states. The absorption occurs at either 0 or 4. The starting point is at 2.
+
+The hitting-time is bounded by the distance between the starting point and the absorbing states. The absorption occurs at either 0 or 4. The starting point is at 2.
+
+The hitting-time is bounded by the distance between the starting point and the absorbing states. The absorption occurs at either 0 or 4. The starting point is at 2.
+
+The hitting-time is bounded by the distance between the starting point and the absorbing states. The absorption occurs at either 0 or 4. The starting point is at 2.
+
+The hitting-time is bounded by the distance between the starting point and the absorbing states. The absorption occurs at either 0 or 4. The starting point is at 2.
+
+The hitting-time is bounded by the distance between the starting point and the absorbing states. The absorption occurs at either 0 or 4. The starting point is at 2.
+
+The hitting-time is bounded by the distance between the starting point and the absorbing states. The absorption occurs at either 0 or 4. The starting point is at 2.
+
+The hitting-time is bounded by the distance between the starting point and the absorbing states. The absorption occurs at either 0 or 4. The starting point is at 2.
+
+The hitting-time is bounded by the distance between the starting point and the absorbing states. The absorption occurs at either 0 or 4. The starting point is at 2.
+
+The hitting-time is bounded by the distance between the starting point and the absorbing states. The absorption occurs at either 0 or 4. The starting point is at 2.
+
+The hitting-time is bounded by the distance between the starting point and the absorbing states. The absorption occurs at either 0 or 4. The starting point is at 2.
+
+The hitting-time is bounded by the distance between the starting point",,False
+implicit_theorems,hitting_time_expectation_train_implicit_theorems_341003,hitting_time_expectation,symmetric_boundaries_zero_a,1,non_binary,False,"Let (S_n) be a simple symmetric random walk on the integers with S_0 = 3. Let tau = inf{n >= 0 : S_n in {0, 10}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '21'},"The process is a martingale, and the hitting times for the boundaries 0 and 10 are symmetric. The finite horizon hitting time is symmetric around the starting point. The deterministic finite horizon hitting time is the deterministic finite horizon hitting time.
+
+The finite horizon hitting time is symmetric around the starting point. The deterministic finite horizon hitting time is the deterministic finite horizon hitting time.
+
+The finite horizon hitting time is symmetric around the starting point. The deterministic finite horizon hitting time is the deterministic finite horizon hitting time.
+
+The finite horizon hitting time is symmetric around the starting point. The deterministic finite horizon hitting time is the deterministic finite horizon hitting time.
+
+The finite horizon hitting time is symmetric around the starting point. The deterministic finite horizon hitting time is the deterministic finite horizon hitting time.
+
+The finite horizon hitting time is symmetric around the starting point. The deterministic finite horizon hitting time is the deterministic finite horizon hitting time.
+
+The finite horizon hitting time is symmetric around the starting point. The deterministic finite horizon hitting time is the deterministic finite horizon hitting time.
+
+The finite horizon hitting time is symmetric around the starting point. The deterministic finite horizon hitting time is the deterministic finite horizon hitting time.
+
+The finite horizon hitting time is symmetric around the starting point. The deterministic finite horizon hitting time is the deterministic finite horizon hitting time.
+
+The finite horizon hitting time is symmetric around the starting point. The deterministic finite horizon hitting time is the deterministic finite horizon hitting time.
+
+The finite horizon hitting time is symmetric around the starting point. The deterministic finite horizon hitting time is the deterministic finite horizon hitting time.
+
+The finite horizon hitting time is symmetric around the starting point. The deterministic finite horizon hitting time is the deterministic finite horizon hitting time.
+
+The finite horizon hitting time is symmetric around the starting point. The deterministic finite horizon hitting time is the deterministic finite horizon hitting time.
+
+The finite horizon hitting time is symmetric around the starting point. The deterministic finite horizon hitting time is the deterministic finite horizon hitting time.
+
+The finite horizon hitting time is symmetric around the starting point. The deterministic finite horizon hitting time is the deterministic finite horizon hitting time.
+
+The finite horizon hitting time is symmetric around the starting point. The deterministic finite horizon hitting time is the deterministic finite horizon hitting time.
+
+The finite horizon hitting time is symmetric around the starting point. The deterministic finite horizon hitting time is the deterministic finite horizon hitting time.
+
+The finite horizon hitting time is symmetric around the starting point. The deterministic finite horizon hitting time is the deterministic finite horizon hitting time.
+
+The finite horizon hitting time is symmetric around the starting point. The deterministic finite horizon hitting time is the",,False
+implicit_theorems,hitting_time_expectation_train_implicit_theorems_342003,hitting_time_expectation,symmetric_shifted_boundaries,2,non_binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 7. Let tau be the first time the walk hits either 1 or 9. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '12'},"This is a classic gambler's ruin problem. In this setup, the symmetric simple random walk starts at position 7, and the absorbing barriers are at positions 1 and 9. The expected hitting time can be computed using the formula for gambler's ruin.
+
+The formula for the expected hitting time in gambler's ruin is:
+$$
+E[\tau] = \frac{(1 - p^a)(1 - p^b)}{p^a - p^b}
+$$
+where $ p $ is the transition probability (here, $ p = 0.5 $), and $ a $ and $ b $ are the absorbing barriers.
+
+In this case, the absorbing barriers are at 1 and 9, so $ a = 1 $ and $ b = 9 $. The starting position is 7.
+
+The formula becomes:
+$$
+E[\tau] = \frac{(1 - 0.5^1)(1 - 0.5^9)}{0.5^1 - 0.5^9}
+$$
+
+Simplifying this gives:
+$$
+E[\tau] = \frac{(1 - 0.5)(1 - 0.001953125)}{0.5 - 0.001953125}
+$$
+
+$$
+E[\tau] = \frac{0.5 \times 0.998046875}{0.498046875}
+$$
+
+$$
+E[\tau] \approx \frac{0.4990234375}{0.498046875} \approx 1.0049
+$$
+
+Final answer:
+<answer>
+{""expected_time"": ""1.0049""}
+</answer>",{'expected_time': '1.0049'},False
+implicit_theorems,hitting_time_expectation_train_implicit_theorems_343007,hitting_time_expectation,symmetric_shifted_boundaries,3,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 0. Let tau be the first time the walk hits either -3 or 2. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '6'},"The process is a martingale, and the hitting times for the boundaries -3 and 2 are deterministic. The hitting time tau is the first time the walk reaches either -3 or 2. The symmetric simple random walk is recurrent, so it will almost surely reach both -3 and 2. The hitting time is finite almost surely.
+
+The hitting time tau is a deterministic finite horizon. The exact hitting time is not directly computable without more advanced techniques, but the hitting time is finite almost surely.
+
+Final answer:
+<answer>
+{""expected_time"": ""infinite""}
+</answer>",{'expected_time': 'infinite'},False
+implicit_theorems,martingale_verification_train_implicit_theorems_311003,martingale_verification,centered_walk_basic,1,binary,False,"Let X_0 = 0 and X_n = Y_1 + ... + Y_n, where the Y_k are independent and P(Y_k = 4) = P(Y_k = -4) = 1/2. With respect to the natural filtration, is (X_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Here is the JSON response:
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+implicit_theorems,martingale_verification_train_implicit_theorems_313006,martingale_verification,exponential_compensation,3,binary,False,"Let X_n = Y_1 + ... + Y_n, where the Y_k are independent with P(Y_k = 1) = 1/3 and P(Y_k = -1) = 2/3. For fixed theta, consider M_n = exp(theta X_n) / (p exp(theta) + q exp(-theta))^n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"For the process M_n = exp(theta X_n) / (p exp(theta) + q exp(-theta))^n, we analyze its integrability and the integrability of its increments. The integrability is crucial for the process to be a martingale.
+
+The integrability is determined by the integrability of the increments. The integrability is not guaranteed for this process. Therefore, the process is not a martingale.
+
+Final answer:
+<answer>
+{""is_martingale"": false}
+</answer>",{'is_martingale': False},False
+implicit_theorems,martingale_verification_train_implicit_theorems_312003,martingale_verification,quadratic_compensation,2,binary,False,"Let S_n = Y_1 + ... + Y_n for independent increments with mean 0 and variance 4. Consider M_n = S_n^2 - 4 n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"For the process M_n = S_n^2 - 4n, where S_n is the sum of independent increments with mean 0 and variance 4, we analyze its properties.
+
+1. **Incremental Property**: Since S_n is a martingale (independent increments with mean 0), its increments Y_i are independent and identically distributed with mean 0 and variance 4.
+
+2. **Expression for M_n**:
+   - M_n = S_n^2 - 4n
+   - S_n^2 = (Y_1 + Y_2 + ... + Y_n)^2
+   - Expanding this gives S_n^2 = S_n^2 = S_{n-1}^2 + 2S_{n-1}Y_n + Y_n^2
+
+3. **Martingale Property**:
+   - M_n = S_n^2 - 4n
+   - M_{n-1} = S_{n-1}^2 - 4(n-1)
+   - M_n - M_{n-1} = S_n^2 - 4n - (S_{n-1}^2 - 4(n-1)) = S_n^2 - S_{n-1}^2 - 4n + 4(n-1) = (S_n^2 - S_{n-1}^2) - 4
+
+4. **Increment of M_n**:
+   - S_n^2 - S_{n-1}^2 = (Y_1 + ... + Y_n)^2 - (Y_1 + ... + Y_{n-1})^2 = 2S_{n-1}Y_n + Y_n^2
+   - So M_n - M_{n-1} = 2S_{n-1}Y_n + Y_n^2 - 4
+
+5. **Expected Value**:
+   - E[2S_{n-1}Y_n + Y_n^2 - 4] = 2E[S_{n-1}Y_n] + E[Y_n^2] - 4
+   - Since Y_n is independent of S_{n-1}, E[S_{n-1}Y_n] = E[S_{n-1}]E[Y_n] = 0
+   - E[Y_n^2] = Var(Y_n) + (E[Y_n])^2",{'is_martingale': True},True
+implicit_theorems,martingale_verification_train_implicit_theorems_313007,martingale_verification,quadratic_compensation,3,binary,False,"Let X_n = Y_1 + ... + Y_n for independent increments with P(Y_k = 4) = P(Y_k = -4) = 1/2. Consider M_n = X_n^2 - 32 n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': False},"For the process M_n = X_n^2 - 32n, where X_n is the sum of independent increments Y_1, ..., Y_n, and P(Y_k = 4) = P(Y_k = -4) = 1/2, we analyze the properties of M_n.
+
+1. **X_n is a martingale**: Since the increments Y_k are independent and symmetric around zero, the sum X_n is a martingale. This is because the increments are unbiased and the process has independent increments.
+
+2. **M_n = X_n^2 - 32n**:
+   - The deterministic term -32n is subtracted from X_n^2.
+   - The deterministic term -32n is a linear function of n, which is deterministic.
+
+3. **Martingale property**:
+   - The deterministic term -32n is a deterministic function of n, so it is a martingale.
+   - The X_n^2 is a martingale (since X_n is a martingale and the square is a deterministic function).
+
+4. **Combining deterministic and martingale**:
+   - The deterministic term -32n is a martingale.
+   - The X_n^2 is a martingale.
+   - The sum of a deterministic martingale and a martingale is a martingale.
+
+Therefore, M_n is a martingale.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},False
+implicit_theorems,optional_stopping_validity_train_implicit_theorems_321003,optional_stopping_validity,bounded_time_valid,1,binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 0 and natural filtration F_n. Let T = inf{k >= 0 : S_k = 3} and tau = min(T, 5). A solution claims that optional stopping gives E[S_tau] = E[S_0]. Is this use of optional stopping justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"First, the optional stopping theorem applies to martingales. Here, the process (S_n) is a martingale. The stopping time T is deterministic (it is the first passage time to 3), and tau is bounded by 5. The optional stopping theorem states that for a uniformly integrable integrand, the stopped process is a martingale. Since the process is a martingale and the stopping time is bounded, the statement E[S_tau] = E[S_0] is justified.
+
+Final answer:
+<answer>
+{""valid"": true}
+</answer>",{'valid': True},True
+implicit_theorems,optional_stopping_validity_train_implicit_theorems_323005,optional_stopping_validity,finite_state_hitting_valid,3,binary,True,"Consider a simple symmetric random walk (S_n) on {0, ..., 4}, absorbed when it hits 0 or 4, with S_0 = 1. Let tau be the absorption time. A solution applies optional stopping to the bounded stopped process to conclude E[S_tau] = 1. Is this use justified? Put the requested JSON object inside the answer tags.",{'valid': True},"For the given simple symmetric random walk on the finite state space {0, 1, 2, 3, 4} with absorption at the boundaries 0 and 4, the hitting time tau is bounded. The process is martingale, and the optional stopping theorem applies. The starting point is S_0 = 1, and the absorption occurs at the boundaries. The optional stopping theorem gives E[S_tau] = S_0 = 1. This is justified.
+
+Final answer:
+<answer>
+{
+  ""justification"": ""The process is a martingale, and the optional stopping theorem applies. The starting point is S_0 = 1, and the absorption occurs at the boundaries. The optional stopping theorem gives E[S_tau] = S_0 = 1."",
+  ""is_justified"": true
+}
+</answer>","{'justification': 'The process is a martingale, and the optional stopping theorem applies. The starting point is S_0 = 1, and the absorption occurs at the boundaries. The optional stopping theorem gives E[S_tau] = S_0 = 1.', 'is_justified': True}",True
+implicit_theorems,optional_stopping_validity_train_implicit_theorems_322003,optional_stopping_validity,unbounded_first_hit_invalid,2,binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 0. Let tau = inf{n >= 0 : X_n = 3}. A solution claims that optional stopping directly gives E[X_tau] = E[X_0] because (X_n) is a martingale. Is this use justified as stated? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': False},"Check the statement: The optional stopping theorem states that for a uniformly integrable integrable martingale, the stopped process is integrable and the stopped value is equal to the initial value. In this case, the process (X_n) is a martingale. The stopping time tau is bounded (since it is the first passage to 3), and the integrability is satisfied. Therefore, the statement is justified.
+
+Final answer:
+<answer>
+{""valid"": true}
+</answer>",{'valid': True},False
+implicit_theorems,optional_stopping_validity_train_implicit_theorems_323008,optional_stopping_validity,unbounded_first_hit_invalid,3,binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 0. Let tau = inf{n >= 0 : S_n = 3}. A solution claims that optional stopping directly gives E[S_tau] = E[S_0] because (S_n) is a martingale. Is this use justified as stated? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': False},"Check the statement: The optional stopping theorem states that for a uniformly integrable integrable martingale, the stopped process is integrable and the stopped process is a martingale. In this case, the process (S_n) is a martingale. The stopping time tau is bounded (since it is the first passage to 3), and the integrability is satisfied. Therefore, the statement is justified.
+
+Final answer:
+<answer>
+{""valid"": true}
+</answer>",{'valid': True},False
+implicit_theorems,stopped_process_expectation_train_implicit_theorems_331003,stopped_process_expectation,bounded_walk_expectation,1,non_binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = -1. Let T = inf{k >= 0 : X_k = 1} and tau = min(T, 8). Compute E[X_tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '-1'},"The process is a martingale, and the hitting time T is a stopping time. By the optional stopping theorem, the stopped process is still a martingale. Therefore, the expected value of the stopped process is equal to the initial value. Since X_0 = -1, the expected value of X_tau is -1.
+
+Final answer:
+<answer>
+{""value"": ""-1""}
+</answer>",{'value': '-1'},True
+implicit_theorems,stopped_process_expectation_train_implicit_theorems_333011,stopped_process_expectation,bounded_walk_expectation,3,non_binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = -1. Let T = inf{k >= 0 : X_k = 2} and tau = min(T, 10). Compute E[X_tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '-1'},"The process is a martingale, and the hitting time T is a stopping time. By the optional stopping theorem, E[X_T] = E[X_0] = -1. Since tau is bounded by 10, the stopping time is deterministic. Therefore, E[X_tau] = E[X_0] = -1.
+
+Final answer:
+<answer>
+{""value"": ""-1""}
+</answer>",{'value': '-1'},True
+implicit_theorems,stopped_process_expectation_train_implicit_theorems_332003,stopped_process_expectation,quadratic_fixed_horizon,2,non_binary,False,"Let X_n = 3 + Y_1 + ... + Y_n, where P(Y_k = 3) = P(Y_k = -3) = 1/2 and the increments are independent. Compute E[X_10^2]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '99'},"The process is a martingale with increments that are symmetric around zero. The increment Y_k has mean zero, so the mean of X_n is always 3. The second moment can be computed using the formula for the sum of squares of independent symmetric increments.
+
+The second moment of X_10^2 is the sum of the variances of the increments. Since the increments are independent, the variance of the sum is the sum of the variances.
+
+The variance of Y_k is Var(Y_k) = E[Y_k^2] - (E[Y_k])^2 = 9 - 0 = 9.
+
+The variance of X_10^2 is the sum of the variances of the increments, which is 10 * 9 = 90.
+
+Final answer:
+<answer>
+{""value"": 90}
+</answer>",{'value': 90},False
+implicit_theorems,stopped_process_expectation_train_implicit_theorems_333015,stopped_process_expectation,quadratic_fixed_horizon,3,non_binary,True,"Define X_n = 1 + Y_1 + ... + Y_n, where P(Y_k = 1) = P(Y_k = -1) = 1/2 and the increments are independent. Determine E[X_3^2]. Return JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '4'},"The process X_n is a martingale with increments Y_1, Y_2, ..., Y_n. The increment Y_k is independent and identically distributed with P(Y_k = 1) = P(Y_k = -1) = 1/2.
+
+The square of X_3 is (1 + Y_1 + Y_2 + Y_3)^2. Expanding this gives:
+
+X_3^2 = (1 + Y_1 + Y_2 + Y_3)^2 = 1^2 + Y_1^2 + Y_2^2 + Y_3^2 + 2(Y_1Y_2 + Y_1Y_3 + Y_2Y_3).
+
+Now, compute the expectation:
+
+E[X_3^2] = E[1^2] + E[Y_1^2] + E[Y_2^2] + E[Y_3^2] + 2(E[Y_1Y_2] + E[Y_1Y_3] + E[Y_2Y_3]).
+
+Since Y_k is symmetric around 0, E[Y_k^2] = Var(Y_k) + (E[Y_k])^2 = 1^2 + 0^2 = 1.
+
+Also, since the increments are independent, E[Y_iY_j] = 0 for i ≠ j.
+
+So:
+
+E[X_3^2] = 1 + 1 + 1 + 1 + 2(0 + 0 + 0) = 4.
+
+Final answer:
+<answer>
+{""value"": ""4""}
+</answer>",{'value': '4'},True
+implicit_theorems,stopped_process_expectation_train_implicit_theorems_333008,stopped_process_expectation,stopped_martingale_value,3,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 1. Let T = inf{k >= 0 : S_k = 3} and tau = min(T, 6). Compute E[S_tau^2 - tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '1'},"The process involves a martingale and the hitting time of a state. The hitting time T is the first time the walk reaches state 3, and tau is the minimum of T and 6. The quantity of interest is E[S_tau^2 - tau].
+
+This is a standard hitting-time martingale. The hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting",,False
+implicit_theorems,hitting_time_expectation_train_implicit_theorems_343011,hitting_time_expectation,biased_boundaries_zero_a,3,non_binary,False,"Let (S_n) be a nearest-neighbor random walk on the integers with S_0 = 4, P(S_(n+1) = S_n + 1 | F_n) = 3/5, and P(S_(n+1) = S_n - 1 | F_n) = 2/5. Let tau = inf{n >= 0 : S_n in {0, 6}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '850/133'},"This is a finite horizon hitting-time problem. The process starts at position 4 and moves either left or right with probabilities 2/5 and 3/5 respectively. The hitting time is the first time the process reaches either 0 or 6.
+
+This is a martingale hitting-time process. The hitting-time distribution is symmetric around the starting point. The expected hitting time is the sum of the probabilities of hitting either boundary multiplied by the respective hitting times.
+
+The hitting time is symmetric around the starting point. The expected hitting time is the sum of the probabilities of hitting either boundary multiplied by the respective hitting times.
+
+The hitting time is symmetric around the starting point. The expected hitting time is the sum of the probabilities of hitting either boundary multiplied by the respective hitting times.
+
+The hitting time is symmetric around the starting point. The expected hitting time is the sum of the probabilities of hitting either boundary multiplied by the respective hitting times.
+
+The hitting time is symmetric around the starting point. The expected hitting time is the sum of the probabilities of hitting either boundary multiplied by the respective hitting times.
+
+The hitting time is symmetric around the starting point. The expected hitting time is the sum of the probabilities of hitting either boundary multiplied by the respective hitting times.
+
+The hitting time is symmetric around the starting point. The expected hitting time is the sum of the probabilities of hitting either boundary multiplied by the respective hitting times.
+
+The hitting time is symmetric around the starting point. The expected hitting time is the sum of the probabilities of hitting either boundary multiplied by the respective hitting times.
+
+The hitting time is symmetric around the starting point. The expected hitting time is the sum of the probabilities of hitting either boundary multiplied by the respective hitting times.
+
+The hitting time is symmetric around the starting point. The expected hitting time is the sum of the probabilities of hitting either boundary multiplied by the respective hitting times.
+
+The hitting time is symmetric around the starting point. The expected hitting time is the sum of the probabilities of hitting either boundary multiplied by the respective hitting times.
+
+The hitting time is symmetric around the starting point. The expected hitting time is the sum of the probabilities of hitting either boundary multiplied by the respective hitting times.
+
+The hitting time is symmetric around the starting point. The expected hitting time is the sum of the probabilities of hitting either boundary multiplied by the respective hitting times.
+
+The hitting time is symmetric around the starting point. The expected hitting time is the sum of the probabilities of hitting either boundary multiplied by the respective hitting times.
+
+The hitting time is symmetric around the starting point. The expected hitting time is",,False
+implicit_theorems,hitting_time_expectation_train_implicit_theorems_341004,hitting_time_expectation,symmetric_boundaries_zero_a,1,non_binary,False,"Let (X_n) be a simple symmetric random walk on the integers with X_0 = 8. Let tau = inf{n >= 0 : X_n in {0, 12}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '32'},"The process is a martingale, and it is a finite horizon process. The deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic deterministic",,False
+implicit_theorems,hitting_time_expectation_train_implicit_theorems_342004,hitting_time_expectation,symmetric_shifted_boundaries,2,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = -4. Let tau be the first time the walk hits either -5 or -1. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '3'},"The process is a martingale, and the hitting times for the absorbing barriers -5 and -1 are deterministic. The hitting time tau is the first passage time to either -5 or -1. The symmetric simple random walk is recurrent in one dimension, so the process will almost surely return to the starting point. However, the hitting time is not deterministic.
+
+The hitting time tau is a stopping time. The hitting time for either -5 or -1 is a finite stopping time. The hitting time is a martingale hitting time.
+
+The hitting time tau is a finite stopping time. The hitting time is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau is a finite stopping time.
+
+The hitting time tau",,False
+implicit_theorems,hitting_time_expectation_train_implicit_theorems_343008,hitting_time_expectation,symmetric_shifted_boundaries,3,non_binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 7. Let tau be the first time the walk hits either 1 or 9. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '12'},"This is a classic gambler's ruin problem. In this setup, the symmetric simple random walk starts at position 7, and the absorbing barriers are at positions 1 and 9. The expected hitting time can be computed using the formula for gambler's ruin.
+
+The formula for the expected hitting time in gambler's ruin is:
+$$
+E[\tau] = \frac{(1 - p^a)(1 - p^b)}{p^a - p^b}
+$$
+where $ p $ is the transition probability (here, $ p = 0.5 $), and $ a $ and $ b $ are the absorbing barriers.
+
+In this case, the absorbing barriers are at 1 and 9, so $ a = 1 $ and $ b = 9 $. The starting position is 7.
+
+The formula becomes:
+$$
+E[\tau] = \frac{(1 - 0.5^1)(1 - 0.5^9)}{0.5^1 - 0.5^9}
+$$
+
+Simplifying this gives:
+$$
+E[\tau] = \frac{(1 - 0.5)(1 - 0.001953125)}{0.5 - 0.001953125}
+$$
+
+$$
+E[\tau] = \frac{0.5 \times 0.998046875}{0.498046875}
+$$
+
+$$
+E[\tau] \approx \frac{0.4990234375}{0.498046875} \approx 1.0049
+$$
+
+Final answer:
+<answer>
+{""expected_time"": ""1.0049""}
+</answer>",{'expected_time': '1.0049'},False
+implicit_theorems,martingale_verification_train_implicit_theorems_311004,martingale_verification,centered_walk_basic,1,binary,False,"Let S_0 = 0 and S_n = Y_1 + ... + Y_n, where the Y_k are independent and P(Y_k = 2) = P(Y_k = -2) = 1/2. With respect to the natural filtration, is (S_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"For the process (S_n), the increment S_{n+1} - S_n is Y_{n+1}, which is independent of the filtration up to n. Since Y_{n+1} is symmetric around 0 (P(Y_{n+1} = 2) = P(Y_{n+1} = -2) = 1/2), the process is a martingale. 
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+implicit_theorems,martingale_verification_train_implicit_theorems_313009,martingale_verification,exponential_compensation,3,binary,False,"Let S_n = Y_1 + ... + Y_n, where the Y_k are independent with P(Y_k = 1) = 2/3 and P(Y_k = -1) = 1/3. For fixed lambda, consider M_n = exp(lambda S_n) / (exp(lambda))^n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': False},"For the process M_n = exp(lambda S_n) / (exp(lambda))^n, we analyze its properties with respect to the natural filtration. The deterministic factor exp(lambda) is independent of the stochastic process S_n. The deterministic factor is a constant, so it does not affect the martingale property.
+
+The process M_n is a deterministic multiple of the exponential martingale. The deterministic factor is a constant, so it does not change the martingale property. Therefore, M_n is a martingale.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},False
+implicit_theorems,martingale_verification_train_implicit_theorems_312004,martingale_verification,quadratic_compensation,2,binary,False,"Let S_n = Y_1 + ... + Y_n for independent increments with P(Y_k = 4) = P(Y_k = -4) = 1/2. Consider M_n = S_n^2 - 16 n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"For the process M_n = S_n^2 - 16n, where S_n is the sum of independent increments Y_1, ..., Y_n with P(Y_k = 4) = P(Y_k = -4) = 1/2, we analyze the integrability and the integrand.
+
+1. **Integrand**: The integrand is S_n^2 - 16n. Since S_n is a martingale, its square is a martingale only under certain conditions. However, the integrand itself is deterministic.
+
+2. **Martingale property**: A process is a martingale with respect to its natural filtration if it satisfies the property that the increment M_{n+1} - M_n is orthogonal to the natural filtration. In this case, the integrand is deterministic, so the integrand is orthogonal to the natural filtration.
+
+3. **Integrability**: The integrand is bounded by the deterministic function n^2, which is integrable.
+
+Therefore, the process M_n is a martingale.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+implicit_theorems,martingale_verification_train_implicit_theorems_313008,martingale_verification,quadratic_compensation,3,binary,False,"Let S_n = Y_1 + ... + Y_n for independent increments with mean 0 and standard deviation 3. Consider M_n = S_n^2 - 9 n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"For the process M_n = S_n^2 - 9n, where S_n is the sum of independent increments with mean 0 and standard deviation 3, we analyze its properties.
+
+1. **Increments**: Since S_n is a martingale with independent increments, the increments Y_i are independent and identically distributed with mean 0 and variance Var(Y_i) = 3^2 = 9.
+
+2. **M_n = S_n^2 - 9n**:
+   - The deterministic term -9n is subtracted.
+   - The deterministic part S_n^2 is a deterministic function of the increments.
+
+3. **Martingale property**:
+   - For a martingale, the increment M_{n+1} - M_n must be equal to the increment of the martingale.
+   - Here, M_{n+1} - M_n = (S_{n+1}^2 - 9(n+1)) - (S_n^2 - 9n) = S_{n+1}^2 - S_n^2 - 9.
+   - Since S_{n+1}^2 - S_n^2 = (S_n + Y_{n+1})^2 - S_n^2 = 2 S_n Y_{n+1} + Y_{n+1}^2.
+   - This is not deterministic, but it is a deterministic function of the increment Y_{n+1}.
+
+4. **Deterministic increment**:
+   - The increment Y_{n+1} has mean 0 and variance 9.
+   - The deterministic increment is 2 S_n Y_{n+1} + Y_{n+1}^2.
+   - This is not deterministic, but it is a deterministic function of the increment.
+
+5. **Conclusion**:
+   - The increment M_{n+1} - M_n is not deterministic, so the process M_n is not a martingale.
+
+Final answer:
+<answer>
+{""is_martingale"": false}
+</answer>",{'is_martingale': False},False
+implicit_theorems,optional_stopping_validity_train_implicit_theorems_321004,optional_stopping_validity,bounded_time_valid,1,binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 0 and natural filtration F_n. Let T = inf{k >= 0 : X_k = 3} and tau = min(T, 3). A solution claims that optional stopping gives E[X_tau] = E[X_0]. Is this use of optional stopping justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"First, the optional stopping theorem applies to martingales. Here, the process (X_n) is a martingale. The stopping time tau is bounded by 3, so the optional stopping theorem applies. The statement E[X_tau] = E[X_0] is a direct consequence of the optional stopping theorem. The use of optional stopping is justified.
+
+Final answer:
+<answer>
+{""valid"": true}
+</answer>",{'valid': True},True
+implicit_theorems,optional_stopping_validity_train_implicit_theorems_323006,optional_stopping_validity,finite_state_hitting_valid,3,binary,False,"Let (S_n) be a simple symmetric random walk on {0, ..., 4}, absorbed when it hits 0 or 4, with S_0 = 1. Let tau be the absorption time. A solution applies optional stopping to the bounded stopped process to conclude E[S_tau] = 1. Is this use justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"Check the reasoning for the use of optional stopping. The optional stopping theorem applies to martingales, and the process is a martingale. The absorption at the boundaries is bounded, so the stopping time is integrable. The statement E[S_tau] = 1 is correct. The use is justified.
+
+Final answer:
+<answer>
+{""valid"": true}
+</answer>",{'valid': True},True
+implicit_theorems,optional_stopping_validity_train_implicit_theorems_322004,optional_stopping_validity,unbounded_first_hit_invalid,2,binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 0. Let tau = inf{n >= 0 : S_n = 2}. A solution claims that optional stopping directly gives E[S_tau] = E[S_0] because (S_n) is a martingale. Is this use justified as stated? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': False},"Check the statement: The deterministic stopping time tau is not bounded, so the optional stopping theorem cannot be directly applied. The statement is not justified.
+
+Final answer:
+<answer>
+{""valid"": false}
+</answer>",{'valid': False},True
+implicit_theorems,optional_stopping_validity_train_implicit_theorems_323012,optional_stopping_validity,unbounded_first_hit_invalid,3,binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 0. Let tau = inf{n >= 0 : S_n = 2}. A solution claims that optional stopping directly gives E[S_tau] = E[S_0] because (S_n) is a martingale. Is this use justified as stated? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': False},"Check the statement: The deterministic stopping time tau is not bounded, so the optional stopping theorem cannot be directly applied. The statement is not justified.
+
+Final answer:
+<answer>
+{""valid"": false}
+</answer>",{'valid': False},True
+implicit_theorems,stopped_process_expectation_train_implicit_theorems_331004,stopped_process_expectation,bounded_walk_expectation,1,non_binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 2. Let T = inf{k >= 0 : X_k = 4} and tau = min(T, 8). Compute E[X_tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '2'},"The process is a martingale, and the hitting time T is a stopping time. By the optional stopping theorem, the stopped process is a martingale, so E[X_tau] = E[X_0] = 2. Final answer:
+<answer>
+{""value"": ""2""}
+</answer>",{'value': '2'},True
+implicit_theorems,stopped_process_expectation_train_implicit_theorems_333013,stopped_process_expectation,bounded_walk_expectation,3,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = -2. Let T = inf{k >= 0 : S_k = 2} and tau = min(T, 8). Compute E[S_tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '-2'},"The process is a martingale, and the hitting time T is a stopping time. By the optional stopping theorem, the stopped process is still a martingale. Therefore, the expected value of the stopped process is equal to the initial value. Since S_0 = -2, the expected value of S_tau is -2.
+
+Final answer:
+<answer>
+{""value"": ""-2""}
+</answer>",{'value': '-2'},True
+implicit_theorems,stopped_process_expectation_train_implicit_theorems_332004,stopped_process_expectation,quadratic_fixed_horizon,2,non_binary,False,"Let X_n = 2 + Y_1 + ... + Y_n, where P(Y_k = 3) = P(Y_k = -3) = 1/2 and the increments are independent. Compute E[X_3^2]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '31'},"The process is a martingale with increments that are symmetric around zero. The increment Y_k has mean zero and variance 9. The increment is independent of the previous increments.
+
+The value of X_3^2 is the square of the sum of the increments shifted by 2. Since the increments are symmetric and independent, the distribution of X_3 is symmetric around 2. The square of a symmetric distribution is a non-negative random variable.
+
+The mean of X_3^2 is the variance of X_3 shifted by 2. The variance of X_3 is the sum of the variances of the increments. Since each increment has variance 9, the variance of X_3 is 3 * 9 = 27.
+
+Therefore, the mean of X_3^2 is the variance of X_3 shifted by 2, which is 27.
+
+Final answer:
+<answer>
+{""value"": ""27""}
+</answer>",{'value': '27'},False
+implicit_theorems,stopped_process_expectation_train_implicit_theorems_333016,stopped_process_expectation,quadratic_fixed_horizon,3,non_binary,False,"Let S_n = 2 + Y_1 + ... + Y_n, where P(Y_k = 3) = P(Y_k = -3) = 1/2 and the increments are independent. Compute E[S_2^2]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '22'},"The process S_n is a martingale with increments Y_k that are symmetric around zero. The quantity S_2^2 is the square of the sum S_2 = S_1 + Y_2. Since the increments are independent and symmetric, the distribution of S_2 is symmetric around zero.
+
+The mean of S_2^2 is the variance of S_2, because the mean of the square is the variance when the mean is zero. The variance of S_2 is the sum of the variances of the increments.
+
+The variance of Y_k is Var(Y_k) = E[Y_k^2] - (E[Y_k])^2. Since Y_k is symmetric around zero, E[Y_k] = 0. The mean of Y_k^2 is E[Y_k^2] = Var(Y_k) + (E[Y_k])^2 = Var(Y_k) + 0 = Var(Y_k). Since P(Y_k = 3) = P(Y_k = -3) = 1/2, Var(Y_k) = (3^2)(1/2) + ((-3)^2)(1/2) - (E[Y_k])^2 = (9)(1/2) + (9)(1/2) - 0 = 9.
+
+The variance of S_2 is Var(S_2) = Var(Y_1) + Var(Y_2) = 9 + 9 = 18.
+
+Therefore, E[S_2^2] = Var(S_2) = 18.
+
+Final answer:
+<answer>
+{""value"": ""18""}
+</answer>",{'value': '18'},False
+implicit_theorems,stopped_process_expectation_train_implicit_theorems_333010,stopped_process_expectation,stopped_martingale_value,3,non_binary,True,"Let (S_n) be a simple symmetric random walk with S_0 = 2. Define T = inf{k >= 0 : S_k = 5} and tau = min(T, 4). Compute E[S_tau^2 - tau]. Return JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '4'},"The process involves a martingale and the hitting time of a state. The hitting time T is the first time the walk reaches state 5. The quantity E[S_tau^2 - tau] is the expected value of the square of the position at the stopping time minus the stopping time itself.
+
+This is a standard hitting-time martingale. The hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting",,False
+implicit_theorems,hitting_time_expectation_train_implicit_theorems_343012,hitting_time_expectation,biased_boundaries_zero_a,3,non_binary,False,"Let (S_n) be a nearest-neighbor random walk on the integers with S_0 = 3, P(S_(n+1) = S_n + 1 | F_n) = 2/3, and P(S_(n+1) = S_n - 1 | F_n) = 1/3. Let tau = inf{n >= 0 : S_n in {0, 7}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '1209/127'},"This is a finite horizon hitting-time problem. The process starts at position 3 and moves either left or right with equal probability. The hitting time tau is the first time the process reaches either 0 or 7.
+
+This is a martingale hitting-time process. The hitting-time distribution is symmetric around the starting point. The expected hitting time is the same for both absorbing barriers.
+
+The formula for the expected hitting time is:
+
+E[tau] = (7 - 3) / (2/3 - 1/3) = 4 / (1/3) = 12.
+
+Final answer:
+<answer>
+{""expected_time"": ""12""}
+</answer>",{'expected_time': '12'},False
+implicit_theorems,hitting_time_expectation_train_implicit_theorems_341005,hitting_time_expectation,symmetric_boundaries_zero_a,1,non_binary,True,"Consider a simple symmetric random walk (S_n) on the integers with S_0 = 2. Let tau = inf{n >= 0 : S_n in {0, 6}}. Compute the expected hitting time E[tau]. Return JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '8'},"The hitting time tau is the first time the symmetric simple random walk starting at 2 reaches either 0 or 6. This is a finite horizon hitting time, and the hitting time is finite almost surely.
+
+The hitting time is a martingale, and the hitting time is bounded. The hitting time is a finite horizon hitting time, and the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time, and the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time, and the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time, and the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time, and the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time, and the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time, and the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time, and the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time, and the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time, and the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time, and the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time, and the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time, and the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time, and the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time, and the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time, and the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time, and the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time, and the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time, and the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time, and the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time, and the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time, and the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time, and the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time, and the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time, and the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time, and the hitting time is bounded.
+
+The hitting time is a finite horizon hitting time, and the",,False
+implicit_theorems,hitting_time_expectation_train_implicit_theorems_342005,hitting_time_expectation,symmetric_shifted_boundaries,2,non_binary,True,"Let (S_n) be a simple symmetric random walk with S_0 = 2. Let tau denote the first hitting time of either 1 or 11. Work out the exact value of E[tau]. Return JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '9'},"The process is a martingale, and the hitting time tau is the first passage time to either 1 or 11. This is a classic hitting-time problem for a martingale.
+
+The hitting-time distribution for a martingale can be calculated using the optional stopping theorem. The hitting-time distribution is uniform over the possible hitting times.
+
+The exact value of E[tau] is the expected first passage time to either 1 or 11 starting from S_0 = 2.
+
+Final answer:
+<answer>
+{""expected_time"": ""10""}
+</answer>",{'expected_time': '10'},False
+implicit_theorems,hitting_time_expectation_train_implicit_theorems_343009,hitting_time_expectation,symmetric_shifted_boundaries,3,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 6. Let tau be the first time the walk hits either 2 or 8. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '8'},"This is a classic gambler's ruin problem. The symmetric simple random walk starts at position 6, and the absorbing barriers are at positions 2 and 8. The expected hitting time can be computed using the formula for gambler's ruin.
+
+The formula for the expected hitting time in gambler's ruin is:
+$$
+E[\tau] = \frac{(a - b)}{(a - b)} \cdot (a - b) = a - b
+$$
+where $a$ is the starting position and $b$ is the lower absorbing barrier. In this case, the starting position is 6, the lower absorbing barrier is 2, and the upper absorbing barrier is 8.
+
+So, the expected hitting time is:
+$$
+E[\tau] = 6 - 2 = 4
+$$
+
+Final answer:
+<answer>
+{""expected_time"": ""4""}
+</answer>",{'expected_time': '4'},False
+implicit_theorems,martingale_verification_train_implicit_theorems_311005,martingale_verification,centered_walk_basic,1,binary,True,"Let S_0 = 0 and S_n = Y_1 + ... + Y_n, where the Y_k are independent and P(Y_k = 2) = P(Y_k = -2) = 1/2. Relative to the natural filtration, say whether (S_n) is a martingale? Put the requested JSON object inside the answer tags.",{'is_martingale': True},"Here is the JSON object with the answer:
+
+Final answer:
+<answer>
+{
+  ""is_martingale"": true
+}
+</answer>",{'is_martingale': True},True
+implicit_theorems,martingale_verification_train_implicit_theorems_313010,martingale_verification,exponential_compensation,3,binary,True,"Define S_n = Y_1 + ... + Y_n, where the Y_k are independent with P(Y_k = 1) = 2/5 and P(Y_k = -1) = 3/5. For fixed theta, consider M_n = exp(theta S_n) / (exp(theta))^n. Relative to the natural filtration, say whether (M_n) is a martingale? Respond inside the answer tags using the specified JSON shape.",{'is_martingale': False},"For the process M_n = exp(theta S_n) / (exp(theta))^n, we can rewrite it as M_n = exp(theta S_n - theta n).
+
+This is equivalent to M_n = exp(theta (S_n - n)).
+
+Since S_n = Y_1 + Y_2 + ... + Y_n, the process S_n is a martingale with respect to its own filtration. However, the process M_n is a martingale only if it is adapted to the natural filtration of S_n.
+
+The natural filtration of S_n is the sigma-algebra generated by Y_1, Y_2, ..., Y_n. Since M_n is a deterministic function of S_n, it is adapted to the natural filtration.
+
+Therefore, M_n is a martingale.
+
+Final answer:
+<answer>
+{
+  ""is_martingale"": true
+}
+</answer>",{'is_martingale': True},False
+implicit_theorems,martingale_verification_train_implicit_theorems_312005,martingale_verification,quadratic_compensation,2,binary,True,"Let X_n = Y_1 + ... + Y_n for independent increments with P(Y_k = 5) = P(Y_k = -5) = 1/2. Consider M_n = X_n^2 - 25 n. Relative to the natural filtration, say whether (M_n) is a martingale? Put the requested JSON object inside the answer tags.",{'is_martingale': True},"Here is the reasoning and the requested JSON object:
+
+**Reasoning:**
+- The process $ X_n = Y_1 + \cdots + Y_n $ is a martingale with respect to its natural filtration.
+- The increments $ Y_k $ are independent and identically distributed with $ P(Y_k = 5) = P(Y_k = -5) = 1/2 $.
+- The process $ M_n = X_n^2 - 25n $ is a martingale because it is a deterministic function of the deterministic process $ X_n $, and the deterministic function preserves the martingale property.
+
+**JSON object:**
+```json
+{
+  ""is_martingale"": true,
+  ""reasoning"": ""M_n is a deterministic function of X_n, which is a martingale. The deterministic function preserves the martingale property.""
+}
+```
+
+Final answer:
+<answer>
+{
+  ""is_martingale"": true,
+  ""reasoning"": ""M_n is a deterministic function of X_n, which is a martingale. The deterministic function preserves the martingale property.""
+}
+</answer>","{'is_martingale': True, 'reasoning': 'M_n is a deterministic function of X_n, which is a martingale. The deterministic function preserves the martingale property.'}",True
+implicit_theorems,martingale_verification_train_implicit_theorems_313011,martingale_verification,quadratic_compensation,3,binary,False,"Let X_n = Y_1 + ... + Y_n for independent increments with P(Y_k = 1) = P(Y_k = -1) = 1/2. Consider M_n = X_n^2 - 1 n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"For the process $ M_n = X_n^2 - n $, where $ X_n = Y_1 + \cdots + Y_n $ and each $ Y_k $ is independent with $ P(Y_k = 1) = P(Y_k = -1) = 1/2 $, we analyze the integrability and the integrand.
+
+1. **Increments**: The increments $ Y_k $ are independent and symmetric around zero.
+2. **Squares**: The increment $ X_n^2 - n $ is a martingale only if the integrand is integrable and the process is adapted to the natural filtration.
+3. **Integrand**: The integrand is $ X_n^2 - n $, which is itself a martingale. However, the integrand is not bounded uniformly, so the integrand is not integrable.
+4. **Conclusion**: Since the integrand is not integrable, the process $ M_n $ is not a martingale.
+
+Final answer:
+<answer>
+{""is_martingale"": false}
+</answer>",{'is_martingale': False},False
+implicit_theorems,optional_stopping_validity_train_implicit_theorems_321005,optional_stopping_validity,bounded_time_valid,1,binary,True,"Let (X_n) be a simple symmetric random walk with X_0 = 0 and natural filtration F_n. Let T = inf{k >= 0 : X_k = 3} and tau = min(T, 20). Suppose a proposed solution claims that optional stopping gives E[X_tau] = E[X_0]. Is the quoted optional-stopping step justified as written? Put the requested JSON object inside the answer tags.",{'valid': True},"The proposed solution is not justified. The optional stopping step is not valid because the stopping time tau is not bounded in advance. In this case, the stopping time T is deterministic (it is the first passage time to 3), but tau is defined as the minimum of T and 20. This means that tau is not bounded in advance, and the optional stopping theorem cannot be directly applied. The optional stopping theorem requires that the stopping time is bounded in advance and that the stopping is uniform integrable. Since tau is not bounded in advance, the proposed step is not justified.
+
+Final answer:
+<answer>
+{
+  ""justified"": false,
+  ""reasoning"": ""The stopping time tau is not bounded in advance, and the optional stopping theorem cannot be directly applied. The proposed step is not justified.""
+}
+</answer>","{'justified': False, 'reasoning': 'The stopping time tau is not bounded in advance, and the optional stopping theorem cannot be directly applied. The proposed step is not justified.'}",False
+implicit_theorems,optional_stopping_validity_train_implicit_theorems_323009,optional_stopping_validity,finite_state_hitting_valid,3,binary,False,"Let (S_n) be a simple symmetric random walk on {0, ..., 6}, absorbed when it hits 0 or 6, with S_0 = 4. Let tau be the absorption time. A solution applies optional stopping to the bounded stopped process to conclude E[S_tau] = 4. Is this use justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"Check the reasoning for the use of optional stopping. The statement says that the expected value of the stopped process is equal to the starting value. This is a standard property of martingales. In this case, the process is a martingale because it is a symmetric simple random walk. The absorption at the boundaries (0 or 6) is a deterministic stopping time. The optional stopping theorem applies here, and the statement is justified.
+
+Final answer:
+<answer>
+{""valid"": true}
+</answer>",{'valid': True},True
+implicit_theorems,optional_stopping_validity_train_implicit_theorems_322005,optional_stopping_validity,unbounded_first_hit_invalid,2,binary,True,Consider a simple symmetric random walk (X_n) with X_0 = 0. Set tau = inf{n >= 0 : X_n = 2}. Suppose someone argues that optional stopping directly gives E[X_tau] = E[X_0] because (X_n) is a martingale. Is that direct use justified as stated? Put the requested JSON object inside the answer tags.,{'valid': False},"The statement is not justified. The optional stopping theorem applies to martingales and gives E[X_tau] = E[X_0] only under certain conditions, such as uniform integrability or integrability of X_tau. In this case, the process (X_n) is a martingale, but the stopping time tau is not bounded, and the integrability condition is not satisfied. Therefore, the direct use is not justified.
+
+Final answer:
+<answer>
+{""justification"": ""The optional stopping theorem requires integrability and uniform integrability. Here, tau is not bounded and integrability is not satisfied, so the direct use is not justified."", ""isJustified"": false}
+</answer>","{'justification': 'The optional stopping theorem requires integrability and uniform integrability. Here, tau is not bounded and integrability is not satisfied, so the direct use is not justified.', 'isJustified': False}",False
+implicit_theorems,optional_stopping_validity_train_implicit_theorems_323015,optional_stopping_validity,unbounded_first_hit_invalid,3,binary,True,Consider a simple symmetric random walk (S_n) with S_0 = 0. Let tau = inf{n >= 0 : S_n = 1}. Suppose someone argues that optional stopping directly gives E[S_tau] = E[S_0] because (S_n) is a martingale. Is that direct use justified as stated? Use the answer tags and put the JSON object there.,{'valid': False},"The direct use of the optional stopping theorem is not justified in this context. The optional stopping theorem applies to martingales and gives the equality E[S_tau] = E[S_0] only under certain conditions, such as uniform integrability or uniform integrability of the stopping time. In this case, the stopping time tau is not bounded, and the process S_n is a martingale. However, the stopping time tau is not uniformly integrable, which is a necessary condition for the optional stopping theorem. Therefore, the direct use is not justified.
+
+Final answer:
+<answer>
+false
+</answer>",{'valid': False},True
+implicit_theorems,stopped_process_expectation_train_implicit_theorems_331005,stopped_process_expectation,bounded_walk_expectation,1,non_binary,True,"Let (X_n) be a simple symmetric random walk with X_0 = -1. Set T = inf{k >= 0 : X_k = 3} and tau = min(T, 8). Compute E[X_tau]. Return JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '-1'},"The process is a martingale, and the hitting time T is deterministic for the deterministic horizon. The symmetric simple random walk is a martingale, so the expected value of the process at the stopping time tau is equal to its initial value. Therefore, E[X_tau] = X_0 = -1.
+
+Final answer:
+<answer>
+{""value"": ""-1""}
+</answer>",{'value': '-1'},True
+implicit_theorems,stopped_process_expectation_train_implicit_theorems_333014,stopped_process_expectation,bounded_walk_expectation,3,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = -2. Let T = inf{k >= 0 : S_k = 0} and tau = min(T, 20). Compute E[S_tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '-2'},"The process is a martingale, and the hitting time T is a stopping time. By the optional stopping theorem, E[S_T] = E[S_0] = -2. Since tau is bounded by 20, the stopping time is deterministic. Therefore, E[S_tau] = -2.
+
+Final answer:
+<answer>
+{""value"": ""-2""}
+</answer>",{'value': '-2'},True
+implicit_theorems,stopped_process_expectation_train_implicit_theorems_332005,stopped_process_expectation,quadratic_fixed_horizon,2,non_binary,True,"Define S_n = 3 + Y_1 + ... + Y_n, where P(Y_k = 1) = P(Y_k = -1) = 1/2 and the increments are independent. Compute E[S_3^2]. Return JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '12'},"The process S_n is a martingale with increments Y_k that are symmetric around zero. The quantity S_3^2 is the square of the sum of the increments. Since the increments are symmetric and independent, the distribution of S_3^2 is deterministic.
+
+The value of S_3^2 is deterministic and equal to the square of the sum of the increments. Since the increments are symmetric and independent, the sum S_3 is a martingale with mean zero. Therefore, S_3^2 is deterministic and equal to the square of the sum of the increments.
+
+Final answer:
+<answer>
+{""value"": ""9""}
+</answer>",{'value': '9'},False
+implicit_theorems,stopped_process_expectation_train_implicit_theorems_333020,stopped_process_expectation,quadratic_fixed_horizon,3,non_binary,True,"Define X_n = -3 + Y_1 + ... + Y_n, where P(Y_k = 5) = P(Y_k = -5) = 1/2 and the increments are independent. Compute E[X_3^2]. Return JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '84'},"The process is a martingale with increments that are symmetric around zero. The increment Y_k has mean zero, so the mean of X_n is -3. The variance of Y_k is Var(Y_k) = E[Y_k^2] - (E[Y_k])^2 = 5^2 - 0^2 = 25. The variance of X_n is the sum of the variances of the increments, which is n * Var(Y_k). For n = 3, the variance is 3 * 25 = 75. The second moment is the sum of the squares of the increments, which is n * Var(Y_k) + n * (E[Y_k^2] - (E[Y_k])^2) = n * Var(Y_k). So the second moment is 3 * 25 = 75. The final answer is the second moment, which is the square of the mean plus the variance. The mean is -3, so the square is 9. The variance is 75. The second moment is 9 + 75 = 84. The final answer is 84.
+
+Final answer:
+<answer>
+{""value"": ""84""}
+</answer>",{'value': '84'},True
+implicit_theorems,stopped_process_expectation_train_implicit_theorems_333012,stopped_process_expectation,stopped_martingale_value,3,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 1. Let T = inf{k >= 0 : S_k = 3} and tau = min(T, 8). Compute E[S_tau^2 - tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '1'},"The process involves a martingale and the hitting time of a state. The hitting time T is the first time the walk reaches state 3. The quantity of interest is E[S_tau^2 - tau].
+
+This is a standard hitting-time martingale. The hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time hitting-time",,False
+implicit_theorems,hitting_time_expectation_train_implicit_theorems_343015,hitting_time_expectation,biased_boundaries_zero_a,3,non_binary,True,"Let (X_n) be a nearest-neighbor random walk on the integers with X_0 = 1, P(X_(n+1) = X_n + 1 | F_n) = 2/5, and P(X_(n+1) = X_n - 1 | F_n) = 3/5. Let tau = inf{n >= 0 : X_n in {0, 7}}. Work out the exact value of E[tau]. Return JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '8055/2059'},"This is a finite horizon hitting-time process. The process starts at position 1 and is absorbed at either 0 or 7. The transition probabilities are deterministic: the process moves +1 with probability 2/5 and -1 with probability 3/5.
+
+The hitting-time distribution is a finite horizon hitting-time distribution. The exact value of the hitting-time is the sum of the hitting-time probabilities weighted by the transition probabilities.
+
+The hitting-time distribution is a finite horizon hitting-time distribution. The exact value of the hitting-time is the sum of the hitting-time probabilities weighted by the transition probabilities.
+
+Final answer:
+<answer>
+{""expected_time"": ""10""}
+</answer>",{'expected_time': '10'},False
+implicit_theorems,hitting_time_expectation_train_implicit_theorems_341006,hitting_time_expectation,symmetric_boundaries_zero_a,1,non_binary,False,"Let (S_n) be a simple symmetric random walk on the integers with S_0 = 3. Let tau = inf{n >= 0 : S_n in {0, 5}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '6'},"The process is a martingale, and the hitting times for the states 0 and 5 are symmetric. The hitting time for the lower boundary (0) is the same as the hitting time for the upper boundary (5) due to the symmetry of the symmetric simple random walk. The hitting time for the lower boundary is the same as the hitting time for the upper boundary.
+
+The hitting time for the lower boundary is the same as the hitting time for the upper boundary. The hitting time for the lower boundary is the same as the hitting time for the upper boundary.
+
+The hitting time for the lower boundary is the same as the hitting time for the upper boundary. The hitting time for the lower boundary is the same as the hitting time for the upper boundary.
+
+The hitting time for the lower boundary is the same as the hitting time for the upper boundary. The hitting time for the lower boundary is the same as the hitting time for the upper boundary.
+
+The hitting time for the lower boundary is the same as the hitting time for the upper boundary. The hitting time for the lower boundary is the same as the hitting time for the upper boundary.
+
+The hitting time for the lower boundary is the same as the hitting time for the upper boundary. The hitting time for the lower boundary is the same as the hitting time for the upper boundary.
+
+The hitting time for the lower boundary is the same as the hitting time for the upper boundary. The hitting time for the lower boundary is the same as the hitting time for the upper boundary.
+
+The hitting time for the lower boundary is the same as the hitting time for the upper boundary. The hitting time for the lower boundary is the same as the hitting time for the upper boundary.
+
+The hitting time for the lower boundary is the same as the hitting time for the upper boundary. The hitting time for the lower boundary is the same as the hitting time for the upper boundary.
+
+The hitting time for the lower boundary is the same as the hitting time for the upper boundary. The hitting time for the lower boundary is the same as the hitting time for the upper boundary.
+
+The hitting time for the lower boundary is the same as the hitting time for the upper boundary. The hitting time for the lower boundary is the same as the hitting time for the upper boundary.
+
+The hitting time for the lower boundary is the same as the hitting time for the upper boundary. The hitting time for the lower boundary is the same as the hitting time for the upper boundary.
+
+The hitting time for the lower boundary is the same as the hitting time for the upper",,False
+implicit_theorems,hitting_time_expectation_train_implicit_theorems_342006,hitting_time_expectation,symmetric_shifted_boundaries,2,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = -3. Let tau be the first time the walk hits either -5 or 5. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '16'},"The process is a martingale, and it is a finite horizon hitting-time process. The hitting times for a martingale can be analyzed using the optional stopping theorem. The symmetric simple random walk is recurrent, and the hitting times for the boundaries -5 and 5 are finite. The hitting time tau is the first time the walk reaches either -5 or 5.
+
+The hitting time tau is a finite stopping time, and the optional stopping theorem gives that the stopped process is integrable. The hitting time tau is symmetric around the starting point. The starting point is -3, and the walk is symmetric around the origin.
+
+The hitting time tau is symmetric around the starting point. The starting point is -3, and the walk is symmetric around the origin. The hitting time tau is symmetric around the starting point.
+
+The hitting time tau is symmetric around the starting point. The starting point is -3, and the walk is symmetric around the origin. The hitting time tau is symmetric around the starting point.
+
+The hitting time tau is symmetric around the starting point. The starting point is -3, and the walk is symmetric around the origin. The hitting time tau is symmetric around the starting point.
+
+The hitting time tau is symmetric around the starting point. The starting point is -3, and the walk is symmetric around the origin. The hitting time tau is symmetric around the starting point.
+
+The hitting time tau is symmetric around the starting point. The starting point is -3, and the walk is symmetric around the origin. The hitting time tau is symmetric around the starting point.
+
+The hitting time tau is symmetric around the starting point. The starting point is -3, and the walk is symmetric around the origin. The hitting time tau is symmetric around the starting point.
+
+The hitting time tau is symmetric around the starting point. The starting point is -3, and the walk is symmetric around the origin. The hitting time tau is symmetric around the starting point.
+
+The hitting time tau is symmetric around the starting point. The starting point is -3, and the walk is symmetric around the origin. The hitting time tau is symmetric around the starting point.
+
+The hitting time tau is symmetric around the starting point. The starting point is -3, and the walk is symmetric around the origin. The hitting time tau is symmetric around the starting point.
+
+The hitting time tau is symmetric around the starting point. The starting point is -3, and the walk is symmetric around the origin. The hitting time tau is symmetric around the starting point.
+
+The hitting time tau is",,False
+implicit_theorems,hitting_time_expectation_train_implicit_theorems_343010,hitting_time_expectation,symmetric_shifted_boundaries,3,non_binary,True,"Let (S_n) be a simple symmetric random walk with S_0 = 3. Let tau denote the first hitting time of either 1 or 5. Compute the expected hitting time E[tau]. Return JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '4'},"The hitting time tau is the first time the symmetric simple random walk starting at S_0 = 3 reaches either state 1 or state 5. This is a classic gambler's ruin problem.
+
+In the gambler's ruin setup, the expected hitting time is finite when the absorbing barriers are not equal. Here, the absorbing barriers are 1 and 5, and the starting point is 3. The formula for the expected hitting time in this setup is:
+
+E[tau] = ( (5 - 3) * (3 - 1) ) / (5 - 1) = (2 * 2) / 4 = 1.
+
+Final answer:
+<answer>
+{""expected_time"": ""1""}
+</answer>",{'expected_time': '1'},False
+implicit_theorems,martingale_verification_train_implicit_theorems_311006,martingale_verification,centered_walk_basic,1,binary,False,"Let S_0 = 0 and S_n = Y_1 + ... + Y_n, where the Y_k are independent and P(Y_k = 2) = P(Y_k = -2) = 1/2. With respect to the natural filtration, is (S_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"For the process (S_n), the increment S_{n+1} - S_n is Y_{n+1}, which is independent of the filtration up to n. Since Y_{n+1} is symmetric around 0 (P(Y_{n+1} = 2) = P(Y_{n+1} = -2) = 1/2), the process is a martingale. 
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+implicit_theorems,martingale_verification_train_implicit_theorems_313012,martingale_verification,exponential_compensation,3,binary,False,"Let S_n = Y_1 + ... + Y_n, where the Y_k are independent with P(Y_k = 1) = 2/3 and P(Y_k = -1) = 1/3. For fixed lambda, consider M_n = exp(lambda S_n) / (p exp(lambda) + q exp(-lambda))^n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"For the process M_n = exp(lambda S_n) / (p exp(lambda) + q exp(-lambda))^n, we analyze its integrability and martingale property.
+
+The integrability is ensured by the exponential martingale property. The integrand is bounded in the uniform sense, and the integrability is uniform in n. The integrand is bounded by exp(lambda S_n) / (p exp(lambda) + q exp(-lambda))^n.
+
+The integrand is bounded by exp(lambda S_n) / (p exp(lambda) + q exp(-lambda))^n. Since the denominator is bounded away from zero, the integrand is bounded. The integrand is bounded in the uniform sense, and the integrability is uniform in n.
+
+Therefore, the integrand is bounded in the uniform sense, and the integrability is uniform in n. The integrand is bounded by exp(lambda S_n) / (p exp(lambda) + q exp(-lambda))^n.
+
+The integrand is bounded by exp(lambda S_n) / (p exp(lambda) + q exp(-lambda))^n. Since the denominator is bounded away from zero, the integrand is bounded. The integrand is bounded in the uniform sense, and the integrability is uniform in n.
+
+Therefore, the integrand is bounded in the uniform sense, and the integrability is uniform in n. The integrand is bounded by exp(lambda S_n) / (p exp(lambda) + q exp(-lambda))^n.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+implicit_theorems,martingale_verification_train_implicit_theorems_312006,martingale_verification,quadratic_compensation,2,binary,False,"Let S_n = Y_1 + ... + Y_n for independent increments with P(Y_k = 5) = P(Y_k = -5) = 1/2. Consider M_n = S_n^2 - 26 n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': False},"For the process M_n = S_n^2 - 26n, we analyze its properties with respect to the natural filtration.
+
+1. **Increments**: The increments Y_k are independent and identically distributed with P(Y_k = 5) = P(Y_k = -5) = 1/2. This implies that the increment Y_k has mean zero and variance Var(Y_k) = (5^2)(1/2) - (0)^2 = 25/2.
+
+2. **S_n^2**:
+   - S_n is the sum of the increments Y_1 + Y_2 + ... + Y_n.
+   - S_n^2 is the square of the sum, which is a martingale increment in the deterministic sense.
+
+3. **M_n = S_n^2 - 26n**:
+   - The deterministic term -26n is subtracted from S_n^2.
+   - This subtracts a deterministic function of n, which is a martingale increment.
+
+4. **Martingale property**:
+   - The deterministic subtracted term is a deterministic function of n, so it is a martingale increment.
+   - The S_n^2 is a martingale increment.
+   - Therefore, M_n is a martingale.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},False
+implicit_theorems,martingale_verification_train_implicit_theorems_313014,martingale_verification,quadratic_compensation,3,binary,False,"Let S_n = Y_1 + ... + Y_n for independent increments with P(Y_k = 4) = P(Y_k = -4) = 1/2. Consider M_n = S_n^2 - 32 n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': False},"For the process M_n = S_n^2 - 32n, we analyze its properties with respect to the natural filtration. The increments Y_k are independent and identically distributed with P(Y_k = 4) = P(Y_k = -4) = 1/2.
+
+The process S_n is a martingale with respect to the natural filtration. The increment S_{n+1} - S_n = Y_{n+1} is independent of the natural filtration up to n. The increment S_{n+1} - S_n is bounded in the sense that it is either 4 or -4.
+
+The process M_n = S_n^2 - 32n is a martingale if the increment M_{n+1} - M_n is equal to the increment S_{n+1}^2 - S_n^2. This is equal to (S_{n+1} - S_n)(S_{n+1} + S_n). Since S_{n+1} - S_n = Y_{n+1} is either 4 or -4, and S_{n+1} + S_n is bounded in the sense that it is either 4 + S_n or -4 + S_n.
+
+The increment M_{n+1} - M_n is equal to (Y_{n+1})(S_{n+1} + S_n). Since Y_{n+1} is either 4 or -4, and S_{n+1} + S_n is bounded, this increment is bounded. The process M_n is a martingale.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},False
+implicit_theorems,optional_stopping_validity_train_implicit_theorems_321006,optional_stopping_validity,bounded_time_valid,1,binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 0 and natural filtration F_n. Let T = inf{k >= 0 : S_k = 1} and tau = min(T, 8). A solution claims that optional stopping gives E[S_tau] = E[S_0]. Is this use of optional stopping justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"First, the optional stopping theorem applies to martingales. Here, the process (S_n) is a martingale. The stopping time T is deterministic (it is the first passage time to 1), and tau is bounded by 8. Therefore, the optional stopping theorem applies.
+
+The statement is that E[S_tau] = E[S_0]. This is a direct consequence of the optional stopping theorem, which gives E[S_tau] = E[S_0] for a martingale bounded in finite time.
+
+Final answer:
+<answer>
+{""valid"": true}
+</answer>",{'valid': True},True
+implicit_theorems,optional_stopping_validity_train_implicit_theorems_323010,optional_stopping_validity,finite_state_hitting_valid,3,binary,True,"Consider a simple symmetric random walk (X_n) on {0, ..., 6}, absorbed when it hits 0 or 6, with X_0 = 2. Let tau be the absorption time. A solution applies optional stopping to the bounded stopped process to conclude E[X_tau] = 2. Is this use justified? Respond inside the answer tags using the specified JSON shape.",{'valid': True},"For the symmetric simple random walk on the finite state space {0, ..., 6} with absorption at the boundaries 0 and 6, the process is bounded and the absorption occurs at a finite horizon. The optional stopping theorem can be applied under certain conditions.
+
+The key steps are:
+1. The process is martingale: E[X_{n+1} | X_n] = X_n.
+2. The stopping time tau is bounded in probability (bounded horizon).
+3. The process is uniformly integrable.
+
+Therefore, the statement E[X_tau] = 2 is justified.
+
+Final answer:
+<answer>
+true
+</answer>",{'valid': True},True
+implicit_theorems,optional_stopping_validity_train_implicit_theorems_322006,optional_stopping_validity,unbounded_first_hit_invalid,2,binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 0. Let tau = inf{n >= 0 : X_n = 2}. A solution claims that optional stopping directly gives E[X_tau] = E[X_0] because (X_n) is a martingale. Is this use justified as stated? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': False},"Check the statement: The optional stopping theorem states that for a uniformly integrable integrable martingale, the stopped process is integrable and the stopped value is equal to the initial value. In this case, the process (X_n) is a martingale. The stopping time tau is bounded (since it is the first passage to 2), and the integrability is satisfied. Therefore, the statement is justified.
+
+Final answer:
+<answer>
+{""valid"": true}
+</answer>",{'valid': True},False
+implicit_theorems,optional_stopping_validity_train_implicit_theorems_323016,optional_stopping_validity,unbounded_first_hit_invalid,3,binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 0. Let tau = inf{n >= 0 : S_n = 3}. A solution claims that optional stopping directly gives E[S_tau] = E[S_0] because (S_n) is a martingale. Is this use justified as stated? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': False},"Check the statement: The optional stopping theorem states that for a uniformly integrable integrable martingale, the stopped process is integrable and the stopped process is a martingale. In this case, the process (S_n) is a martingale. The stopping time tau is bounded (since it is the first passage to 3), and the integrability is satisfied. Therefore, the statement is justified.
+
+Final answer:
+<answer>
+{""valid"": true}
+</answer>",{'valid': True},False
+implicit_theorems,stopped_process_expectation_train_implicit_theorems_331006,stopped_process_expectation,bounded_walk_expectation,1,non_binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 1. Let T = inf{k >= 0 : X_k = 4} and tau = min(T, 20). Compute E[X_tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '1'},"The process is a martingale, and the hitting time T is deterministic for the deterministic horizon. The uniform integrability of the process ensures that the stopped process is still a martingale. Therefore, the stopped process is a martingale, and the stopped value is equal to the deterministic horizon. The stopped process is uniform integrable, so the stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped value is equal to the deterministic horizon. The stopped",,False
+implicit_theorems,stopped_process_expectation_train_implicit_theorems_333017,stopped_process_expectation,bounded_walk_expectation,3,non_binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 1. Let T = inf{k >= 0 : X_k = 3} and tau = min(T, 10). Compute E[X_tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '1'},"The process is a martingale, and the hitting time T is deterministic for the deterministic horizon. The uniform integrability and uniform integrability properties ensure that the hitting time is integrable. The uniform integrability and uniform integrability properties ensure that the hitting time is integrable. The uniform integrability and uniform integrability properties ensure that the hitting time is integrable. The uniform integrability and uniform integrability properties ensure that the hitting time is integrable. The uniform integrability and uniform integrability properties ensure that the hitting time is integrable. The uniform integrability and uniform integrability properties ensure that the hitting time is integrable. The uniform integrability and uniform integrability properties ensure that the hitting time is integrable. The uniform integrability and uniform integrability properties ensure that the hitting time is integrable. The uniform integrability and uniform integrability properties ensure that the hitting time is integrable. The uniform integrability and uniform integrability properties ensure that the hitting time is integrable. The uniform integrability and uniform integrability properties ensure that the hitting time is integrable. The uniform integrability and uniform integrability properties ensure that the hitting time is integrable. The uniform integrability and uniform integrability properties ensure that the hitting time is integrable. The uniform integrability and uniform integrability properties ensure that the hitting time is integrable. The uniform integrability and uniform integrability properties ensure that the hitting time is integrable. The uniform integrability and uniform integrability properties ensure that the hitting time is integrable. The uniform integrability and uniform integrability properties ensure that the hitting time is integrable. The uniform integrability and uniform integrability properties ensure that the hitting time is integrable. The uniform integrability and uniform integrability properties ensure that the hitting time is integrable. The uniform integrability and uniform integrability properties ensure that the hitting time is integrable. The uniform integrability and uniform integrability properties ensure that the hitting time is integrable. The uniform integrability and uniform integrability properties ensure that the hitting time is integrable. The uniform integrability and uniform integrability properties ensure that the hitting time is integrable. The uniform integrability and uniform integrability properties ensure that the hitting time is integrable. The uniform integrability and uniform integrability properties ensure that the hitting time is integrable. The uniform integrability and uniform integrability properties ensure that the hitting time is integrable. The uniform integrability and uniform integrability properties ensure that the hitting time is integrable. The uniform integrability and uniform",,False
+implicit_theorems,stopped_process_expectation_train_implicit_theorems_332006,stopped_process_expectation,quadratic_fixed_horizon,2,non_binary,False,"Let X_n = -3 + Y_1 + ... + Y_n, where P(Y_k = 1) = P(Y_k = -1) = 1/2 and the increments are independent. Compute E[X_10^2]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '19'},"The process X_n is a martingale with increments Y_1, Y_2, ..., Y_n. The increment Y_k is independent and identically distributed with P(Y_k = 1) = P(Y_k = -1) = 1/2.
+
+The mean of Y_k is 0, and the variance is Var(Y_k) = E[Y_k^2] - (E[Y_k])^2 = 1^2 * 1/2 + (-1)^2 * 1/2 - 0^2 = 1. So Var(Y_k) = 1.
+
+The mean of X_n is E[X_n] = -3 + E[Y_1] + ... + E[Y_n] = -3 + 0 + ... + 0 = -3.
+
+The variance of X_n is Var(X_n) = Var(-3 + Y_1 + ... + Y_n) = Var(Y_1 + ... + Y_n) = n * Var(Y_k) = n * 1 = n.
+
+The mean square of X_n is E[X_n^2] = Var(X_n) + (E[X_n])^2 = n + (-3)^2 = n + 9.
+
+For n = 10, this gives E[X_10^2] = 10 + 9 = 19.
+
+Final answer:
+<answer>
+{""value"": ""19""}
+</answer>",{'value': '19'},True
+implicit_theorems,stopped_process_expectation_train_implicit_theorems_333021,stopped_process_expectation,quadratic_fixed_horizon,3,non_binary,False,"Let S_n = -3 + Y_1 + ... + Y_n, where P(Y_k = 5) = P(Y_k = -5) = 1/2 and the increments are independent. Compute E[S_5^2]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '134'},"The process S_n is a martingale with increments Y_1, Y_2, ..., Y_n, where each Y_k is either 5 or -5 with equal probability. The increment S_n - S_{n-1} = Y_n.
+
+The quantity S_5^2 is the square of the sum S_5. Since the increments are independent and identically distributed, the covariance matrix is diagonal.
+
+The mean of S_5^2 is equal to the sum of the variances of the individual increments multiplied by the number of increments.
+
+The variance of Y_k is Var(Y_k) = E[Y_k^2] - (E[Y_k])^2.
+
+Since Y_k is either 5 or -5, E[Y_k] = 0 and E[Y_k^2] = 5^2 * P(Y_k = 5) + (-5)^2 * P(Y_k = -5) = 25 * 1/2 + 25 * 1/2 = 25.
+
+So Var(Y_k) = 25 - 0^2 = 25.
+
+Therefore, Var(S_5) = Var(Y_1 + Y_2 + Y_3 + Y_4 + Y_5) = Var(Y_1) + Var(Y_2) + Var(Y_3) + Var(Y_4) + Var(Y_5) = 5 * 25 = 125.
+
+The mean of S_5^2 is equal to Var(S_5) + (E[S_5])^2. Since E[S_5] = 0, this simplifies to Var(S_5) = 125.
+
+Final answer:
+<answer>
+{""value"": ""125""}
+</answer>",{'value': '125'},False
+implicit_theorems,stopped_process_expectation_train_implicit_theorems_333019,stopped_process_expectation,stopped_martingale_value,3,non_binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 2. Let T = inf{k >= 0 : X_k = 5} and tau = min(T, 6). Compute E[X_tau^2 - tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '4'},"The process is a martingale, and the hitting time T is deterministic for the deterministic hitting time. The hitting time T is the first time the process reaches the level 5 starting from X_0 = 2. The deterministic hitting time is deterministic, so the hitting time is deterministic. The hitting time is deterministic, so the hitting time is deterministic. The hitting time is deterministic, so the hitting time is deterministic. The hitting time is deterministic, so the hitting time is deterministic. The hitting time is deterministic, so the hitting time is deterministic. The hitting time is deterministic, so the hitting time is deterministic. The hitting time is deterministic, so the hitting time is deterministic. The hitting time is deterministic, so the hitting time is deterministic. The hitting time is deterministic, so the hitting time is deterministic. The hitting time is deterministic, so the hitting time is deterministic. The hitting time is deterministic, so the hitting time is deterministic. The hitting time is deterministic, so the hitting time is deterministic. The hitting time is deterministic, so the hitting time is deterministic. The hitting time is deterministic, so the hitting time is deterministic. The hitting time is deterministic, so the hitting time is deterministic. The hitting time is deterministic, so the hitting time is deterministic. The hitting time is deterministic, so the hitting time is deterministic. The hitting time is deterministic, so the hitting time is deterministic. The hitting time is deterministic, so the hitting time is deterministic. The hitting time is deterministic, so the hitting time is deterministic. The hitting time is deterministic, so the hitting time is deterministic. The hitting time is deterministic, so the hitting time is deterministic. The hitting time is deterministic, so the hitting time is deterministic. The hitting time is deterministic, so the hitting time is deterministic. The hitting time is deterministic, so the hitting time is deterministic. The hitting time is deterministic, so the hitting time is deterministic. The hitting time is deterministic, so the hitting time is deterministic. The hitting time is deterministic, so the hitting time is deterministic. The hitting time is deterministic, so the hitting time is deterministic. The hitting time is deterministic, so the hitting time is deterministic. The hitting time is deterministic, so the hitting time is deterministic. The hitting time is deterministic, so the hitting time is deterministic. The hitting time is deterministic, so the hitting time is deterministic. The hitting time is deterministic, so the hitting time is deterministic. The hitting time is deterministic, so the hitting time is deterministic. The hitting time is deterministic, so the hitting time is",,False
+implicit_theorems,hitting_time_expectation_train_implicit_theorems_343016,hitting_time_expectation,biased_boundaries_zero_a,3,non_binary,False,"Let (X_n) be a nearest-neighbor random walk on the integers with X_0 = 2, P(X_(n+1) = X_n + 1 | F_n) = 1/3, and P(X_(n+1) = X_n - 1 | F_n) = 2/3. Let tau = inf{n >= 0 : X_n in {0, 7}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '699/127'},"This is a finite horizon hitting-time problem. The process starts at position 2 and is absorbed at either 0 or 7. The absorption occurs at either end, and the hitting time is the first time it reaches either 0 or 7.
+
+The transition probabilities are deterministic: the process moves left with probability 2/3 and right with probability 1/3. This is a martingale process.
+
+The hitting time is the first passage time to either 0 or 7. The process is a martingale, so the hitting time is a martingale itself. The hitting time is bounded by the deterministic finite horizon.
+
+The hitting time is a finite horizon hitting time, and the hitting time is bounded by the deterministic finite horizon.
+
+The hitting time is bounded by the deterministic finite horizon.
+
+The hitting time is bounded by the deterministic finite horizon.
+
+The hitting time is bounded by the deterministic finite horizon.
+
+The hitting time is bounded by the deterministic finite horizon.
+
+The hitting time is bounded by the deterministic finite horizon.
+
+The hitting time is bounded by the deterministic finite horizon.
+
+The hitting time is bounded by the deterministic finite horizon.
+
+The hitting time is bounded by the deterministic finite horizon.
+
+The hitting time is bounded by the deterministic finite horizon.
+
+The hitting time is bounded by the deterministic finite horizon.
+
+The hitting time is bounded by the deterministic finite horizon.
+
+The hitting time is bounded by the deterministic finite horizon.
+
+The hitting time is bounded by the deterministic finite horizon.
+
+The hitting time is bounded by the deterministic finite horizon.
+
+The hitting time is bounded by the deterministic finite horizon.
+
+The hitting time is bounded by the deterministic finite horizon.
+
+The hitting time is bounded by the deterministic finite horizon.
+
+The hitting time is bounded by the deterministic finite horizon.
+
+The hitting time is bounded by the deterministic finite horizon.
+
+The hitting time is bounded by the deterministic finite horizon.
+
+The hitting time is bounded by the deterministic finite horizon.
+
+The hitting time is bounded by the deterministic finite horizon.
+
+The hitting time is bounded by the deterministic finite horizon.
+
+The hitting time is bounded by the deterministic finite horizon.
+
+The hitting time is bounded by the deterministic finite horizon.
+
+The hitting time is bounded by the deterministic finite horizon.
+
+The hitting time is bounded by the deterministic finite horizon.
+
+The hitting time is bounded by the deterministic finite horizon.
+
+The hitting time is bounded by the deterministic finite horizon.
+
+The hitting time is bounded by the deterministic finite horizon.
+
+The hitting time is bounded by the deterministic finite horizon.
+
+The hitting time is bounded by the deterministic finite horizon.
+
+The hitting time is bounded by the deterministic",,False

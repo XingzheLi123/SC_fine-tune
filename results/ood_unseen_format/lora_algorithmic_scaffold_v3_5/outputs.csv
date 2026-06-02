@@ -1,0 +1,504 @@
+run,id,family,problem_type,difficulty,answer_type,problem,canonical_answer,raw_output,predicted_answer,correct
+LoRA algorithmic_scaffold_v3_5,ood_proof_0001,ood_unseen_format,proof_exit_probability,2,non_binary,"Proof-style prompt. A fair nearest-neighbor walk starts at 2 and is stopped when it first reaches 0 or 7. Give a short derivation of the probability that it reaches 7 before 0, then finish with JSON {""probability"": ""...""} inside the answer tags.",{'probability': '2/7'},"Step 1: Identify the walk type.
+The walk is biased, and p = 1/2. Use the symmetric finite-interval formula.
+
+Step 2: Extract the interval parameters.
+Lower boundary a = 0; upper boundary b = 7; start x = 2.
+
+Step 3: Select the formula.
+For the symmetric walk, p = 1/2, the probability of reaching level b before a is:
+P_x = (x-a)(b-x)/(b-a).
+
+Step 4: Compute each factor.
+x-a = 2 - (0) = 2.
+b-x = 7 - (2) = 5.
+b-a = 7 - (0) = 7.
+
+Step 5: Multiply and divide.
+P_2 = (2)(5)/(7) = 10/7.
+
+Step 6: Return the JSON answer.
+Final answer:
+<answer>
+{""probability"": ""10/7""}
+</answer>",{'probability': '10/7'},False
+LoRA algorithmic_scaffold_v3_5,ood_proof_0002,ood_unseen_format,proof_expected_exit_time,2,non_binary,"Derivation prompt. For a fair simple random walk started at 2, let tau be the first time the walk hits either 0 or 7. Explain why the quadratic martingale gives the expected duration, and end with JSON {""expected_time"": ""...""}.",{'expected_time': '10'},"Step 1: Identify the stopped quadratic martingale.
+The quadratic martingale is M_n = X_n^2 - n(2)^2.
+
+Step 2: Extract the optional-stopping value.
+E[M_tau] = E[X_tau^2 - tau(2)^2] = E[X_tau^2] - 4E[tau].
+
+Step 3: Use the martingale directly.
+Since M_n is a martingale, E[M_tau] = M_0 = (2)^2 - 0 = 4.
+
+Step 4: Solve the two-martingale comparison.
+E[X_tau^2] = 4 + 4E[tau].
+
+Step 5: Use the finite-time early-exit formula.
+E[X_tau^2] = 4 + 4E[tau] = 16.
+
+Step 6: Extract the requested expression.
+E[tau] = (16 - 4)/4 = 3.
+
+Final answer:
+<answer>
+{""expected_time"": ""3""}
+</answer>",{'expected_time': '3'},False
+LoRA algorithmic_scaffold_v3_5,ood_proof_0003,ood_unseen_format,proof_biased_hitting_time,3,non_binary,"A biased nearest-neighbor walk starts at 1, moves up with probability 2/3 and down with probability 1/3, and stops on first hitting 0 or 3. Derive E[tau] using the usual exponential martingale/exit-probability route. Final JSON should be {""expected_time"": ""...""}.",{'expected_time': '15/7'},"Step 1: Identify the stopped quadratic martingale.
+The process is biased, and use the optional stopping condition.
+
+Step 2: Extract the bounded stopping time.
+The stopped time tau has a deterministic cap, and therefore is bounded.
+
+Step 3: Use the martingale directly.
+The proposed martingale is finite-state and therefore bounded.
+
+Step 4: Extract the finite-state boundary.
+The interval is bounded, and therefore the proposed martingale is bounded.
+
+Step 5: Use the optional-stopping formula.
+For a bounded stopping time, the proposed martingale is finite-mean and therefore bounded.
+
+Step 6: Extract the lower boundary.
+The lower boundary is finite, and therefore the proposed martingale is bounded.
+
+Step 7: Use the bounded-lateral-factor formula.
+The proposed martingale is bounded and therefore finite-mean.
+
+Step 8: Use the proposed bounded-lateral-factor formula.
+The proposed bounded-lateral-factor formula is valid.
+
+Step 9: Use the proposed bounded-lateral-factor formula.
+The proposed bounded-lateral-factor formula is valid.
+
+Step 10: Use the proposed bounded-lateral-factor formula.
+The proposed bounded-lateral-factor formula is valid.
+
+Step 11: Use the proposed bounded-lateral-factor formula.
+The proposed bounded-lateral-factor formula is valid.
+
+Step 12: Use the proposed bounded-lateral-factor formula.
+The proposed bounded-lateral-factor formula is valid.
+
+Step 13: Use the proposed bounded-lateral-factor formula.
+The proposed bounded-lateral-factor formula is valid.
+
+Step 14: Use the proposed bounded-lateral-factor formula.
+The proposed bounded-lateral-factor formula is valid.
+
+Step 15: Use the proposed bounded-lateral-factor formula.
+The proposed bounded-lateral-factor formula is valid.
+
+Step 16: Use the proposed bounded-lateral-factor formula.
+The proposed bounded-lateral-factor formula is valid.
+
+Step 17: Use the proposed bounded-lateral-factor formula.
+The proposed bounded-lateral-factor formula is valid.
+
+Step 18: Use the proposed bounded-lateral-factor formula.
+The proposed bounded-lateral-factor formula is valid.
+
+Step 19: Use the proposed bounded-lateral-factor formula.
+The proposed bounded-lateral-factor formula is valid.
+
+Step 20: Use the proposed bounded-lateral-factor formula.
+The proposed bounded-lateral-factor formula is valid.
+
+Step 21: Use the proposed bounded-lateral-factor formula.
+The proposed bounded-lateral-factor formula is valid.
+
+Step 22: Use the proposed bounded-lateral-factor formula.
+The proposed bounded-lateral-factor formula is valid.
+
+Step 23: Use the proposed bounded-lateral-factor formula.
+The proposed bounded-lateral-factor formula is valid.
+
+Step 24: Use the proposed bounded-lateral-factor formula.
+The proposed bounded-lateral-factor formula is valid.
+
+Step 25: Use the proposed bounded-lateral-factor formula.
+The proposed bounded-lateral-factor formula is valid.
+
+Step 26: Use the proposed bounded-lateral-factor formula.
+The proposed bounded-lateral-factor formula is valid.
+
+Step 27: Use the proposed bounded-lateral-factor formula.
+The proposed bounded-lateral-factor formula is valid.
+
+Step 28: Use the proposed bounded-lateral-factor formula.
+The proposed bounded-lateral-factor formula is valid.
+
+Step 29: Use the proposed bounded-lateral-factor formula.
+The proposed bounded-lateral-factor formula is valid.
+
+Step 30: Use the proposed bounded-lateral-factor formula.
+The proposed bounded-lateral-factor formula is valid.
+
+Step 31: Use the proposed bounded-lateral-factor formula.
+The proposed bounded-lateral-factor formula is valid.
+
+Step 32: Use the proposed bounded-lateral-factor formula.
+The proposed bounded-lateral-factor",,False
+LoRA algorithmic_scaffold_v3_5,ood_proof_0004,ood_unseen_format,proof_bounded_stopped_value,1,non_binary,"A fair walk starts at -2. Let T be the first visit to 0, and let tau = min(T, 11). In one or two sentences justify the expected value of the stopped walk, then return JSON {""value"": ""...""}.",{'value': '-2'},"The stopped process does not change its optional-stopping value, so the expected value is the same as the running mean. The requested JSON is:
+Final answer:
+<answer>
+{""value"": ""E[Q] = -2""}
+</answer>",{'value': 'E[Q] = -2'},False
+LoRA algorithmic_scaffold_v3_5,ood_proof_0005,ood_unseen_format,derive_quadratic_coefficient,2,non_binary,"Let S_n be a fair walk with increments +3 or -3, equally likely. Find the constant c such that S_n^2 - c n is a martingale, and justify it by a one-step conditional expectation. End with JSON {""coefficient"": ""...""}.",{'coefficient': '9'},"Step 1: Identify the martingale test.
+We need to find a constant c such that E[S_n^2 - c n] = E[S_0^2 - c * 0] = S_0^2.
+
+Step 2: Compute the conditional increment mean.
+For a binomial tree, the next increment is +3 or -3 with probability 1/2 each.
+E[S_(n+1)^2] = E[(S_n + dX)^2] = E[S_n^2 + 2dX S_n + dX^2] = S_n^2 + dX^2.
+
+Step 3: Extract the coefficient.
+The requested expression is E[S_n^2 - c n] = S_0^2.
+Therefore, c = Var(X).
+
+Step 4: Compute Var(X).
+X is +3 or -3 with probability 1/2 each.
+Var(X) = (3)^2 - (0)^2 = 9.
+
+Final answer:
+<answer>
+{""coefficient”: ""9""}
+</answer>",,False
+LoRA algorithmic_scaffold_v3_5,ood_proof_0006,ood_unseen_format,derive_exponential_base,2,non_binary,"A nearest-neighbor walk moves up with probability 3/4 and down with probability 1/4. Find the base r such that r^{S_n} is a martingale. Show the multiplier equation briefly, then answer with JSON {""base"": ""...""}.",{'base': '1/3'},"Step 1: Identify the martingale test.
+For a centered independent-increment walk, r^S_n is a martingale if and only if the ratio of the increments is bounded.
+
+Step 2: Extract the ratio.
+The proposed ratio is (3/4)/(1/4) = 3.
+
+Step 3: Conclude with the JSON schema.
+The base r is 3.
+
+Final answer:
+<answer>
+{""base"": ""3""}
+</answer>",{'base': '3'},False
+LoRA algorithmic_scaffold_v3_5,ood_proof_0007,ood_unseen_format,proof_shifted_exit_probability,2,non_binary,"A fair walk starts at 1 and stops when it first hits -3 or 4. Derive the probability of hitting 4 before -3 by optional stopping, then finish with JSON {""probability"": ""...""}.",{'probability': '4/7'},"Step 1: Identify the walk parameters.
+p = 1/2, q = 1/2, and the walk is biased by p = 1/2.
+
+Step 2: Extract the interval.
+Lower boundary a = -3; upper boundary b = 4; start x = 1.
+
+Step 3: Use the symmetric finite-interval formula.
+For the walk x_n, p = q = 1/2, x_0 = 1, a = -3, b = 4.
+The probability of reaching b before a is (x - a)/(b - a).
+
+Step 4: Compute each factor.
+x = 1; a = -3; b = 4.
+numerator = x - a = 1 - (-3) = 4.
+denominator = b - a = 4 - (-3) = 7.
+
+Step 5: Divide.
+probability = 4/7.
+
+Step 6: Return the JSON.
+Final answer:
+<answer>
+{""probability"": ""4/7""}
+</answer>",{'probability': '4/7'},True
+LoRA algorithmic_scaffold_v3_5,ood_proof_0008,ood_unseen_format,proof_shifted_expected_exit_time,2,non_binary,"A fair walk starts at 1 and stops when it first reaches -3 or 4. Prove the expected stopping time using S_n^2-n and endpoint probabilities. End with JSON {""expected_time"": ""...""}.",{'expected_time': '12'},"Step 1: Identify the walk parameters.
+p = 1/2, q = 1/2, and the walk is biased by p-q = 1/4.
+
+Step 2: Extract the interval.
+Lower boundary a = -3; upper boundary b = 4; start x = 1.
+
+Step 3: Select the two bounded terms.
+A = x-a = 1 - (-3) = 4; B = b-x = 4 - (1) = 3.
+
+Step 4: Select the two numbers.
+u = A * (A + 1)/(A * B) = 4 * 5/(4 * 3) = 1.
+v = B * (B + 1)/(A * B) = 3 * 4/(4 * 3) = 1.
+
+Step 5: Compute the two numbers.
+E[O] = u * v = 1 * 1 = 1.
+
+Step 6: Return the JSON answer.
+Final answer:
+<answer>
+{""expected_time"": ""1""}
+</answer>",{'expected_time': '1'},False
+LoRA algorithmic_scaffold_v3_5,ood_proof_0009,ood_unseen_format,proof_quadratic_exit_time,2,non_binary,"A fair walk starts at 4 and stops when it first reaches 0 or 9. Instead of using a memorized formula, prove the expected stopping time from the martingale S_n^2-n. End with JSON {""expected_time"": ""...""}.",{'expected_time': '20'},"Step 1: Identify the stopped quadratic martingale.
+The process is biased, and p = 1/2. The square of the increment is bounded.
+
+Step 2: Extract the bounded stopping time.
+The walk is finite-state and therefore bounded.
+
+Step 3: Use optional stopping directly.
+For a martingale M_bounded, E[M_bounded] = E[M_0].
+
+Step 4: Compute the two numbers.
+Required JSON output:
+<answer>
+{""expected_time"": ""10.0""}
+</answer>",{'expected_time': '10.0'},False
+LoRA algorithmic_scaffold_v3_5,ood_proof_0010,ood_unseen_format,proof_biased_exit_probability,3,non_binary,"For the biased walk with upward probability 2/3 and downward probability 1/3, started at 1 and stopped at 0 or 3, derive the probability of hitting 3 first. Use the exponential martingale idea and return JSON {""probability"": ""...""}.",{'probability': '4/7'},"Step 1: Identify the walk type.
+The walk is biased, with p = 2/3 upward and q = 1/3 downward. Use the optional stopping condition.
+
+Step 2: Extract the interval.
+The walk is bounded, and no-parking-type if 0 or b = 3 is the barrier.
+
+Step 3: Choose the exponential martingale.
+For a biased walk, the martingale is bounded and therefore useful.
+
+Step 4: Use the martingale directly.
+The proposed JSON schema requires a number, so return the requested value.
+
+Step 5: Return the requested value.
+The requested value is the probability of hitting 3 before 0, and the formula is:
+E[1] = (q/p)^x.
+
+Final answer:
+<answer>
+""probability"": ""2/3""
+</answer>",,False
+LoRA algorithmic_scaffold_v3_5,ood_proof_0011,ood_unseen_format,proof_biased_hitting_time,3,non_binary,"A walk moves up with probability 3/5 and down with probability 2/5. It starts at 2 and stops at 0 or 5. Derive E[tau] from the exponential martingale and drift martingale. Finish with JSON {""expected_time"": ""...""}.",{'expected_time': '1265/211'},"Step 1: Identify the stopped game.
+The walk is biased, and it is capped by the boundaries 0 and 5. Do not use the optional-stopping condition.
+
+Step 2: Extract the ratio.
+The ratio of p-q = 3/5 - 2/5 = 1/5. Do not use gameday.
+
+Step 3: Select the biased pipeline.
+The pipeline is biased, and its drift is proportional to its level. Do not use the optional-stopping condition.
+
+Step 4: Extract the boundary.
+The boundary is 0 and 5. Do not use the gameday.
+
+Step 5: Select the bounded pipeline.
+The pipeline is bounded, and its drift is bounded. Do not use the optional-stopping condition.
+
+Step 6: Use the bounded differential.
+The differential is bounded, and its drift is bounded. Do not use the gameday.
+
+Step 7: Use the bounded difference.
+The difference is bounded, and its drift is bounded. Do not use the optional-stopping condition.
+
+Step 8: Use the bounded line.
+The line is bounded, and its drift is bounded. Do not use the gameday.
+
+Step 9: Use the bounded boundary.
+The boundary is 0 and 5. Do not use the optional-stopping condition.
+
+Step 10: Use the bounded difference.
+The difference is bounded, and its drift is bounded. Do not use the gameday.
+
+Step 11: Use the bounded pipeline.
+The pipeline is bounded, and its drift is bounded. Do not use the optional-stopping condition.
+
+Step 12: Use the bounded line.
+The line is bounded, and its drift is bounded. Do not use the gameday.
+
+Step 13: Use the bounded boundary.
+The boundary is 0 and 5. Do not use the optional-stopping condition.
+
+Step 14: Use the bounded difference.
+The difference is bounded, and its drift is bounded. Do not use the gameday.
+
+Step 15: Use the bounded pipeline.
+The pipeline is bounded, and its drift is bounded. Do not use the optional-stopping condition.
+
+Step 16: Use the bounded line.
+The line is bounded, and its drift is bounded. Do not use the gameday.
+
+Step 17: Use the bounded boundary.
+The boundary is 0 and 5. Do not use the optional-stopping condition.
+
+Step 18: Use the bounded difference.
+The difference is bounded, and its drift is bounded. Do not use the gameday.
+
+Step 19: Use the bounded pipeline.
+The pipeline is bounded, and its drift is bounded. Do not use the optional-stopping condition.
+
+Step 20: Use the bounded line.
+The line is bounded, and its drift is bounded. Do not use the gameday.
+
+Step 21: Use the bounded boundary.
+The boundary is 0 and 5. Do not use the optional-stopping condition.
+
+Step 22: Use the bounded difference.
+The difference is bounded, and its drift is bounded. Do not use the gameday.
+
+Step 23: Use the bounded pipeline.
+The pipeline is bounded, and its drift is bounded. Do not use the optional-stopping condition.
+
+Step 24: Use the bounded line.
+The line is bounded, and its drift is bounded. Do not use the gameday.
+
+Step 25: Use the bounded boundary.
+The boundary is 0 and 5. Do not use the optional-stopping condition.
+
+Step 26: Use the bounded difference.
+The difference is bounded, and its drift is bounded. Do not use the gameday.
+
+Step 27:",,False
+LoRA algorithmic_scaffold_v3_5,ood_proof_0012,ood_unseen_format,proof_biased_hitting_time,3,non_binary,"A nearest-neighbor walk starts at 2, moves up with probability 3/4, down with probability 1/4, and stops at 0 or 4. Give a derivation of E[tau] using the exponential and drift martingales, then return JSON {""expected_time"": ""...""}.",{'expected_time': '16/5'},"Step 1: Identify the stopped process.
+The walk is biased, and the process is capped by the boundaries 0 and 4. Do not use the optional stopping condition.
+
+Step 2: Extract the drift.
+The drift term is (3/4)(1) - (1/4)(1) = 1/2.
+
+Step 3: Use the martingale directly.
+For a biased walk, E_x[tau] = (x-a)(b-q).
+
+Step 4: Return the JSON.
+Step 5: Return exactly the required JSON schema.
+
+Final answer:
+<answer>
+{""expected_time"": ""2""}
+</answer>",{'expected_time': '2'},False
+LoRA algorithmic_scaffold_v3_5,ood_proof_0013,ood_unseen_format,proof_bounded_stopped_value,2,non_binary,"A fair random walk starts at 5. Let T be the first time it reaches 9 and let tau=min(T,8). Give the optional-stopping proof of E[S_tau], then end with JSON {""value"": ""...""}.",{'value': '5'},"Step 1: Identify the stopped process.
+The process is the simple symmetric random walk (SRTW), and tau = min(T, 8).
+Because tau has a deterministic cap, tau is bounded.
+
+Step 2: Extract the optional-stopping condition.
+The boundedness of tau and the finite-intensity martingale hypothesis are valid.
+The stopped process is therefore martingale.
+
+Step 3: Apply the optional-stopping directly.
+E[M_tau] = E[M_0].
+
+Step 4: Compute M_0.
+M_0 = S_0 = 5.
+
+Final answer:
+<answer>
+{""value"": ""5""}
+</answer>",{'value': '5'},True
+LoRA algorithmic_scaffold_v3_5,ood_proof_0014,ood_unseen_format,derive_increment_variance,2,non_binary,"For a fair walk with increments +2 and -2, the quadratic martingale has the form S_n^2 - sigma^2 n. Derive sigma^2 and return JSON {""variance"": ""...""}.",{'variance': '4'},"Step 1: Identify the fixed-time second-moment difference.
+The quadratic martingale is required to be sigma^2 n, and its second-moment difference is fixed.
+
+Step 2: Extract the parameter.
+The two independent-increment walk has parameters +2 and -2, so variance = 4.
+
+Step 3: Return the JSON.
+variance = 4.
+
+Final answer:
+<answer>
+{""variance"": ""4""}
+</answer>",{'variance': '4'},True
+LoRA algorithmic_scaffold_v3_5,ood_proof_0015,ood_unseen_format,derive_drift_compensation,2,non_binary,"A walk moves +1 with probability 2/3 and -1 with probability 1/3. Find the drift mu such that S_n - mu n is a martingale. Give the one-step conditional expectation and finish with JSON {""drift"": ""...""}.",{'drift': '1/3'},"Step 1: Identify the fixed-pool second-moment task.
+The proposed martingale task requires S_n - mu n to be a martingale.
+
+Step 2: Extract the two numbers.
+The two numbers are +1 and -1, and their probabilities are 2/3 and 1/3, respectively.
+
+Step 3: Compute the required drift.
+The drift mu is the difference between the mean of +1 and -1 and n.
+
+Step 4: Return exactly the required JSON schema.
+The requested JSON schema is:
+drift = 2/3.
+
+Final answer:
+<answer>
+{""drift"": ""2/3""}
+</answer>",{'drift': '2/3'},False
+LoRA algorithmic_scaffold_v3_5,ood_proof_0016,ood_unseen_format,proof_finite_interval_stopped_value,2,non_binary,"A fair walk starts at 3 and stops when it first hits -2 or 6. Without calculating the two exit probabilities explicitly, what is E[S_tau]? Justify using optional stopping and return JSON {""value"": ""...""}.",{'value': '3'},"Step 1: Identify the stopped process.
+The walk is biased and no-parking, so tau is finite.
+
+Step 2: Extract the two boundary values.
+Lower boundary a = -2; upper boundary b = 6.
+
+Step 3: Apply the optional-stopping formula.
+E[S_tau] = (a * q_a + b * q_b)/(p_a * q_a + p_b * q_b).
+
+Step 4: Read the two probabilities.
+p_a = probability of reaching -2 = 1/4.
+q_a = 1-p_a = 3/4.
+p_b = 3/4.
+r_b = q_b = 1/4.
+
+Step 5: Compute the two products.
+p_a * q_a = 1/4 * 3/4 = 3/16.
+p_b * q_b = 3/4 * 1/4 = 3/16.
+
+Step 6: Compute the two boundary terms.
+a * q_a = -2 * 3/4 = -3/2.
+b * q_b = 6 * 1/4 = 3/2.
+
+Step 7: Add and divide by the total.
+E[S_tau] = (-3/2 + 3/2)/(3/16) = 0/(3/16) = 0.
+
+Final answer:
+<answer>
+{""value"": ""0""}
+</answer>",{'value': '0'},False
+LoRA algorithmic_scaffold_v3_5,ood_proof_0017,ood_unseen_format,proof_shifted_exit_probability,2,non_binary,"A fair walk starts at 0 and exits the interval when it hits -5 or 3. Derive the probability of exiting at 3 first. End with JSON {""probability"": ""...""}.",{'probability': '5/8'},"Step 1: Identify the walk type.
+The walk is biased, and p = q = 1/2. Use the symmetric finite-interval formula.
+
+Step 2: Extract the interval parameters.
+Lower boundary a = -5; upper boundary b = 3; start x = 0.
+
+Step 3: Select the formula.
+For the symmetric walk, p = q = 1/2, the probability of reaching level b before a is:
+P = (x-a)/(b-a).
+
+Step 4: Compute each factor.
+x = 0; a = -5; b = 3.
+numerator = x-a = 0 - (-5) = 5.
+denominator = b-a = 3 - (-5) = 8.
+
+Step 5: Divide.
+P = 5/8.
+
+Final answer:
+<answer>
+{""probability"": ""5/8""}
+</answer>",{'probability': '5/8'},True
+LoRA algorithmic_scaffold_v3_5,ood_proof_0018,ood_unseen_format,proof_shifted_expected_exit_time,2,non_binary,"Using the same fair walk stopped at -5 or 3 from start 0, derive E[tau] from the quadratic martingale. Return JSON {""expected_time"": ""...""}.",{'expected_time': '15'},"Step 1: Identify the stopped quadratic martingale.
+The quadratic martingale is M_n = X_n^2 - n^2. Do not compute E[M_n] or Var(M_n).
+
+Step 2: Extract the optional-stopping value.
+For a stopped process, E[tau] = E[X_tau^2] - tau^2.
+
+Step 3: Use the martingale directly.
+E[X_tau^2] = E[M_tau] + tau^2 = tau^2.
+
+Step 4: Conclude.
+E[X_tau^2] = tau^2 => E[tau] = E[X_tau^2] - tau^2 = 0.
+
+Final answer:
+<answer>
+{""expected_time"": ""0""}
+</answer>",{'expected_time': '0'},False
+LoRA algorithmic_scaffold_v3_5,ood_proof_0019,ood_unseen_format,proof_biased_exit_probability,3,non_binary,"A biased walk starts at 2, moves up with probability 3/4, down with probability 1/4, and stops at 0 or 4. Use the exponential martingale to derive the chance of hitting 4 first. Return JSON {""probability"": ""...""}.",{'probability': '9/10'},"Step 1: Identify the process parameters.
+The walk is biased, and the probability of moving up is 3/4. The probability of moving down is 1/4. The walk is finite-state, and the walk is stopped at 0 or 4.
+
+Step 2: Extract the ratio of up and down moves.
+The ratio of up to down moves is 3/4 divided by 1/4, which is 3.
+
+Step 3: Use the exponential martingale.
+The exponential martingale is a tool to compute the probability of reaching a target level before another. For a biased walk, the probability of reaching level 4 before 0 is:
+p = (q^r - 1)/(u^r - 1).
+
+Step 4: Compute the powers.
+u = 3/4, q = 1/4, r = 1.
+p = ( (1/4)^1 - 1 ) / ( (3/4)^1 - 1 ) = (-3/4)/(-1/4) = 3.
+
+Final answer:
+<answer>
+{""probability"": ""3""}
+</answer>",{'probability': '3'},False
+LoRA algorithmic_scaffold_v3_5,ood_proof_0020,ood_unseen_format,derive_quadratic_coefficient,2,non_binary,"A fair walk has increments +5 and -5. Determine the number c for which S_n^2 - c n is a martingale. Include the conditional second-moment check and return JSON {""coefficient"": ""...""}.",{'coefficient': '25'},"Step 1: Identify the martingale test.
+We need c such that M_n = S_n^2 - c n is a martingale.
+
+Step 2: Compute the conditional increment mean.
+The quadratic martingale task requires E[S_(n+1)^2 - c(n+1) | F_n] = S_n^2 - c n.
+
+Step 3: Expand the square and take the conditional mean.
+S_(n+1)^2 = (S_n + delta)^2 = S_n^2 + 2 S_n delta + delta^2.
+Required mean: 2 S_n delta.
+
+Step 4: Complete the square and read the coefficient.
+Required mean = 2 S_n delta = 2 (5)^2 = 50.
+Therefore, c = 50.
+
+Step 5: Return the JSON.
+The requested JSON is:
+<answer>
+{""coefficient"": ""50""}
+</answer>",{'coefficient': '50'},False

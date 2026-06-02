@@ -1,0 +1,5 @@
+run,accuracy,correct,count
+Qwen3 1.7B base,0.7,14,20
+LoRA algorithmic_scaffold_v3_5_lora12,0.6,12,20
+LoRA algorithmic_scaffold_v2,0.55,11,20
+LoRA algorithmic_scaffold_v3_5,0.5,10,20

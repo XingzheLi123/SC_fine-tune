@@ -1,0 +1,101 @@
+kind,run,answer_type,problem_type,accuracy,correct,count
+baseline,GPT OSS 20B API,binary,bounded_time_valid,1.0,5,5
+baseline,Qwen3 8B API,binary,bounded_time_valid,1.0,5,5
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_5,binary,bounded_time_valid,1.0,5,5
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_5_lora12,binary,bounded_time_valid,1.0,5,5
+baseline,Qwen3 235B-A22B API,binary,bounded_time_valid,0.8,4,5
+baseline,Qwen3 32B API,binary,bounded_time_valid,0.8,4,5
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_1_lora8,binary,bounded_time_valid,0.8,4,5
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v2,binary,bounded_time_valid,0.4,2,5
+baseline,Qwen3 1.7B base,binary,bounded_time_valid,0.0,0,5
+baseline,GPT OSS 20B API,binary,centered_walk_basic,1.0,5,5
+baseline,Qwen3 1.7B base,binary,centered_walk_basic,1.0,5,5
+baseline,Qwen3 235B-A22B API,binary,centered_walk_basic,1.0,5,5
+baseline,Qwen3 32B API,binary,centered_walk_basic,1.0,5,5
+baseline,Qwen3 8B API,binary,centered_walk_basic,1.0,5,5
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v2,binary,centered_walk_basic,1.0,5,5
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_1_lora8,binary,centered_walk_basic,1.0,5,5
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_5,binary,centered_walk_basic,1.0,5,5
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_5_lora12,binary,centered_walk_basic,1.0,5,5
+baseline,GPT OSS 20B API,binary,exponential_compensation,1.0,5,5
+baseline,Qwen3 235B-A22B API,binary,exponential_compensation,1.0,5,5
+baseline,Qwen3 8B API,binary,exponential_compensation,1.0,5,5
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_1_lora8,binary,exponential_compensation,1.0,5,5
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_5_lora12,binary,exponential_compensation,1.0,5,5
+baseline,Qwen3 32B API,binary,exponential_compensation,0.8,4,5
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_5,binary,exponential_compensation,0.6,3,5
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v2,binary,exponential_compensation,0.4,2,5
+baseline,Qwen3 1.7B base,binary,exponential_compensation,0.2,1,5
+baseline,GPT OSS 20B API,binary,finite_state_hitting_valid,1.0,2,2
+baseline,Qwen3 235B-A22B API,binary,finite_state_hitting_valid,1.0,2,2
+baseline,Qwen3 32B API,binary,finite_state_hitting_valid,1.0,2,2
+baseline,Qwen3 8B API,binary,finite_state_hitting_valid,1.0,2,2
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_1_lora8,binary,finite_state_hitting_valid,1.0,2,2
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_5,binary,finite_state_hitting_valid,1.0,2,2
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_5_lora12,binary,finite_state_hitting_valid,1.0,2,2
+baseline,Qwen3 1.7B base,binary,finite_state_hitting_valid,0.5,1,2
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v2,binary,finite_state_hitting_valid,0.5,1,2
+baseline,GPT OSS 20B API,binary,quadratic_compensation,1.0,5,5
+baseline,Qwen3 1.7B base,binary,quadratic_compensation,1.0,5,5
+baseline,Qwen3 235B-A22B API,binary,quadratic_compensation,1.0,5,5
+baseline,Qwen3 32B API,binary,quadratic_compensation,1.0,5,5
+baseline,Qwen3 8B API,binary,quadratic_compensation,1.0,5,5
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v2,binary,quadratic_compensation,1.0,5,5
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_5,binary,quadratic_compensation,1.0,5,5
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_1_lora8,binary,quadratic_compensation,0.8,4,5
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_5_lora12,binary,quadratic_compensation,0.8,4,5
+baseline,GPT OSS 20B API,binary,unbounded_first_hit_invalid,1.0,8,8
+baseline,Qwen3 235B-A22B API,binary,unbounded_first_hit_invalid,1.0,8,8
+baseline,Qwen3 32B API,binary,unbounded_first_hit_invalid,1.0,8,8
+baseline,Qwen3 8B API,binary,unbounded_first_hit_invalid,1.0,8,8
+baseline,Qwen3 1.7B base,binary,unbounded_first_hit_invalid,0.625,5,8
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v2,binary,unbounded_first_hit_invalid,0.625,5,8
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_1_lora8,binary,unbounded_first_hit_invalid,0.5,4,8
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_5,binary,unbounded_first_hit_invalid,0.5,4,8
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_5_lora12,binary,unbounded_first_hit_invalid,0.5,4,8
+baseline,Qwen3 235B-A22B API,non_binary,biased_boundaries_zero_a,1.0,5,5
+baseline,Qwen3 8B API,non_binary,biased_boundaries_zero_a,0.8,4,5
+baseline,Qwen3 32B API,non_binary,biased_boundaries_zero_a,0.75,3,4
+baseline,GPT OSS 20B API,non_binary,biased_boundaries_zero_a,0.6,3,5
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_5,non_binary,biased_boundaries_zero_a,0.2,1,5
+baseline,Qwen3 1.7B base,non_binary,biased_boundaries_zero_a,0.0,0,5
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v2,non_binary,biased_boundaries_zero_a,0.0,0,5
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_1_lora8,non_binary,biased_boundaries_zero_a,0.0,0,5
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_5_lora12,non_binary,biased_boundaries_zero_a,0.0,0,5
+baseline,Qwen3 235B-A22B API,non_binary,bounded_walk_expectation,1.0,9,9
+baseline,Qwen3 8B API,non_binary,bounded_walk_expectation,1.0,9,9
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_1_lora8,non_binary,bounded_walk_expectation,1.0,9,9
+baseline,GPT OSS 20B API,non_binary,bounded_walk_expectation,0.8888888888888888,8,9
+baseline,Qwen3 32B API,non_binary,bounded_walk_expectation,0.7777777777777778,7,9
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v2,non_binary,bounded_walk_expectation,0.7777777777777778,7,9
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_5,non_binary,bounded_walk_expectation,0.7777777777777778,7,9
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_5_lora12,non_binary,bounded_walk_expectation,0.7777777777777778,7,9
+baseline,Qwen3 1.7B base,non_binary,bounded_walk_expectation,0.2222222222222222,2,9
+baseline,Qwen3 235B-A22B API,non_binary,quadratic_fixed_horizon,0.8333333333333334,5,6
+baseline,Qwen3 8B API,non_binary,quadratic_fixed_horizon,0.8333333333333334,5,6
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_5,non_binary,quadratic_fixed_horizon,0.8333333333333334,5,6
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_5_lora12,non_binary,quadratic_fixed_horizon,0.8333333333333334,5,6
+baseline,Qwen3 32B API,non_binary,quadratic_fixed_horizon,0.6666666666666666,4,6
+baseline,GPT OSS 20B API,non_binary,quadratic_fixed_horizon,0.5,3,6
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v2,non_binary,quadratic_fixed_horizon,0.5,3,6
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_1_lora8,non_binary,quadratic_fixed_horizon,0.5,3,6
+baseline,Qwen3 1.7B base,non_binary,quadratic_fixed_horizon,0.0,0,6
+baseline,GPT OSS 20B API,non_binary,symmetric_boundaries_zero_a,1.0,5,5
+baseline,Qwen3 235B-A22B API,non_binary,symmetric_boundaries_zero_a,1.0,5,5
+baseline,Qwen3 8B API,non_binary,symmetric_boundaries_zero_a,1.0,5,5
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_5,non_binary,symmetric_boundaries_zero_a,1.0,5,5
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_5_lora12,non_binary,symmetric_boundaries_zero_a,1.0,5,5
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v2,non_binary,symmetric_boundaries_zero_a,0.8,4,5
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_1_lora8,non_binary,symmetric_boundaries_zero_a,0.8,4,5
+baseline,Qwen3 32B API,non_binary,symmetric_boundaries_zero_a,0.4,2,5
+baseline,DeepSeek V4 Flash API,non_binary,symmetric_boundaries_zero_a,0.0,0,2
+baseline,Qwen3 1.7B base,non_binary,symmetric_boundaries_zero_a,0.0,0,5
+baseline,GPT OSS 20B API,non_binary,symmetric_shifted_boundaries,1.0,5,5
+baseline,Qwen3 235B-A22B API,non_binary,symmetric_shifted_boundaries,1.0,5,5
+baseline,Qwen3 32B API,non_binary,symmetric_shifted_boundaries,1.0,5,5
+baseline,Qwen3 8B API,non_binary,symmetric_shifted_boundaries,1.0,5,5
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_1_lora8,non_binary,symmetric_shifted_boundaries,1.0,5,5
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_5,non_binary,symmetric_shifted_boundaries,1.0,5,5
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_5_lora12,non_binary,symmetric_shifted_boundaries,1.0,5,5
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v2,non_binary,symmetric_shifted_boundaries,0.6,3,5
+baseline,Qwen3 1.7B base,non_binary,symmetric_shifted_boundaries,0.0,0,5

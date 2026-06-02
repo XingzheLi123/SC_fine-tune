@@ -19,29 +19,30 @@ Gemma is intentionally excluded for now because the available endpoint produced 
 
 Results save under:
 
-- `results/baselines/{safe_model_name}_dev_closed_book_api/`
+- `results/baselines/{safe_model_name}_test_closed_book_api/`
 
-The folder name still says `dev` for historical continuity, but the active notebook uses `benchmark/data/test`.
+The notebook is currently configured for rigorous fresh reruns:
 
-The full-run cell checkpoints after every completed record by appending to `outputs.jsonl`. On rerun, cached record IDs are skipped model by model. API errors and empty responses are kept in the output table with `api_error` filled in and `correct = False`.
+- `RESET_OUTPUTS_BEFORE_RUN = True`
 
-To retry cached failures, set one of these in the notebook before the full run:
+That means `Run All` clears old cached API outputs before the smoke/full run. Turn this off only when you want to resume from cached rows.
 
-- `RERUN_API_ERRORS = True`
-- `RERUN_EMPTY_OUTPUTS = True`
+The full-run cell checkpoints after every completed record by appending to `outputs.jsonl`. When `RESET_OUTPUTS_BEFORE_RUN = False`, cached terminal rows are skipped model by model. API errors are kept in the output table with `api_error` filled in and `correct = False`.
 
-The notebook is currently configured for normal safe `Run All` usage:
+The notebook is currently configured as a serious run with bounded output-error retries:
 
-- `RERUN_API_ERRORS = True`
-- `RERUN_EMPTY_OUTPUTS = True`
+- no sleep routine
+- API failures are saved and not retried
+- empty responses and unparsable JSON are marked as `output_error` and retried
+- output errors get up to 10 tries before we call it
+- rate limits stop the current model for that run
+
+Current settings:
+
+- `RERUN_API_ERRORS = False`
+- `RERUN_OUTPUT_ERRORS = True`
+- `MAX_OUTPUT_RETRY_PASSES = 10`
 - `FILL_ONLY_EXISTING_EMPTY_OUTPUTS = False`
 - `STOP_MODEL_ON_RATE_LIMIT = True`
 
-That means good cached rows are skipped, cached empty/error rows are retried, and missing rows are run. If a model hits a rate limit, the current row is saved with `api_error`, then the notebook stops that model and moves on.
-
-The full-run cell is also configured for overnight retry passes:
-
-- `MAX_RETRY_PASSES = 100`
-- `SLEEP_BETWEEN_PASSES_SECONDS = 300`
-
-At the end of each pass, if any model/question pairs are still unfinished, it waits five minutes and tries again. Keep `caffeinate -dims` running in a terminal so the laptop does not sleep.
+All metrics use the shared `schema_tolerant_exact_match_v1` grader from `training_eval/eval_utils.py`.

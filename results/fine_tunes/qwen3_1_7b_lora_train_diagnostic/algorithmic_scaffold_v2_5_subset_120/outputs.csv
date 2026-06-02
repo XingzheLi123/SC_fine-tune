@@ -1,0 +1,2280 @@
+adapter,id,family,problem_type,difficulty,answer_type,manual_variation,problem,canonical_answer,raw_output,predicted_answer,correct
+algorithmic_scaffold_v2_5,hitting_time_expectation_train_2220000,hitting_time_expectation,biased_boundaries_zero_a,3,non_binary,False,"Let (S_n) be a nearest-neighbor random walk on the integers with S_0 = 3, P(S_(n+1) = S_n + 1 | F_n) = 2/5, and P(S_(n+1) = S_n - 1 | F_n) = 3/5. Let tau = inf{n >= 0 : S_n in {0, 7}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '20245/2059'},"Step 1: Identify the walk type.
+The walk is a symmetric walk, and the probability of +1 or -1 is 2/5 and 3/5, respectively.
+
+Step 2: Extract the interval parameters.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 3: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 4: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 5: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 6: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 7: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 8: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 9: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 10: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 11: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 12: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 13: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 14: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 15: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 16: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 17: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 18: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 19: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 20: Select the interval.
+The lower boundary is",,False
+algorithmic_scaffold_v2_5,hitting_time_expectation_train_2200000,hitting_time_expectation,symmetric_boundaries_zero_a,1,non_binary,False,"Let (X_n) be a simple symmetric random walk on the integers with X_0 = 3. Let tau = inf{n >= 0 : X_n in {0, 5}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '6'},"Step 1: Identify the walk type.
+The walk is simple symmetric, so p = q = 1/2. Use the symmetric finite-interval formula.
+
+Step 2: Extract the interval parameters.
+Lower boundary a = 0; upper boundary b = 5; start x = 3.
+
+Step 3: Select the formula.
+For the symmetric walk, E_x[tau] = (x-a)(b-x).
+
+Step 4: Compute each factor.
+x-a = 3 - (0) = 3.
+b-x = 5 - (3) = 2.
+
+Step 5: Multiply.
+E_x[tau] = 3 * 2 = 6.
+
+Final answer:
+<answer>
+{""expected_time"": ""6""}
+</answer>",{'expected_time': '6'},True
+algorithmic_scaffold_v2_5,hitting_time_expectation_train_2210000,hitting_time_expectation,symmetric_shifted_boundaries,2,non_binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 6. Let tau be the first time the walk hits either 2 or 10. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '16'},"Step 1: Identify the walk type.
+The walk is simple symmetric, so p = q = 1/2. Use the symmetric finite-interval formula.
+
+Step 2: Extract the interval parameters.
+Lower boundary a = 2; upper boundary b = 10; start x = 6.
+
+Step 3: Select the formula.
+For the symmetric walk, E_x[tau] = (x-a)(b-x).
+
+Step 4: Compute each factor.
+x-a = 6 - (2) = 4.
+b-x = 10 - 6 = 4.
+
+Step 5: Multiply.
+E_x[tau] = 4 * 4 = 16.
+
+Final answer:
+<answer>
+{""expected_time"": ""16""}
+</answer>",{'expected_time': '16'},True
+algorithmic_scaffold_v2_5,martingale_verification_train_2600000,martingale_verification,centered_walk_basic,1,binary,False,"Let S_0 = 0 and S_n = Y_1 + ... + Y_n, where the Y_k are independent and P(Y_k = 2) = P(Y_k = -2) = 1/2. With respect to the natural filtration, is (S_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Step 1: Identify the martingale test.
+Check whether E[S_(n+1) | F_n] = S_n.
+
+Step 2: Compute the conditional increment mean.
+S_(n+1) - S_n = Y_(n+1).
+E[S_(n+1) | F_n] = E[Y_(n+1)] = 0.
+
+Step 3: Conclude.
+E[S_(n+1) | F_n] = 0 = S_n.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+algorithmic_scaffold_v2_5,martingale_verification_train_2620002,martingale_verification,exponential_compensation,3,binary,False,"Let S_n = Y_1 + ... + Y_n, where the Y_k are independent with P(Y_k = 1) = 2/3 and P(Y_k = -1) = 1/3. For fixed theta, consider M_n = exp(theta S_n) / (exp(theta))^n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': False},"Step 1: Identify the martingale test.
+For a process (X_n), the test in this problem is the martingale test, in the finite-interval sense.
+
+Step 2: Compute the required test.
+For a centered walk, X_n is a martingale exactly when E[X_n] = 0.
+
+Step 3: Check the test.
+E[M_n] = E[exp(theta S_n)] / E[exp(theta)]^n.
+
+Step 4: Compute each factor.
+E[exp(theta Y)] = 2/3 exp(theta) + 1/3 exp(-theta).
+E[exp(theta)] = exp(theta).
+
+Step 5: Conclude.
+E[M_n] = [2/3 exp(theta) + 1/3 exp(-theta)]^n / [exp(theta)]^n.
+Simplify each factor.
+E[M_n] = [2/3 + 1/3 exp(-2theta)]^n.
+
+Step 6: Conclude.
+is_martingale = true.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},False
+algorithmic_scaffold_v2_5,martingale_verification_train_2610001,martingale_verification,quadratic_compensation,3,binary,False,"Let X_n = Y_1 + ... + Y_n for independent increments with P(Y_k = 5) = P(Y_k = -5) = 1/2. Consider M_n = X_n^2 - 25 n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Step 1: Identify the required compensation.
+For a centered walk, X_n^2 - c n is a martingale exactly when c = Var(Y_1).
+
+Step 2: Extract the variance.
+Var(Y_1) = E(Y_1^2) - (E(Y_1))^2 = 5^2 (1/2) - (5)(1/2) = 25/2 - 5/2 = 20/2 = 10.
+
+Step 3: Compare with the proposed c.
+Proposed c = 25.
+
+Step 4: Conclude.
+is_martingale = false.
+
+Final answer:
+<answer>
+{""is_martingale"": false}
+</answer>",{'is_martingale': False},False
+algorithmic_scaffold_v2_5,optional_stopping_validity_train_2800000,optional_stopping_validity,bounded_time_valid,1,binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 0 and natural filtration F_n. Let T = inf{k >= 0 : S_k = 1} and tau = min(T, 5). A solution claims that optional stopping gives E[S_tau] = E[S_0]. Is this use of optional stopping justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"Step 1: Identify the optional-stopping issue.
+Before using E[M_tau] = E[M_0], check the stopping-time hypotheses.
+
+Step 2: Check the condition in this problem.
+tau = min(T, 5).
+The optional-stopping issue does not apply in this problem.
+
+Step 3: Conclude.
+valid = true.
+
+Final answer:
+<answer>
+{""valid"": true}
+</answer>",{'valid': True},True
+algorithmic_scaffold_v2_5,optional_stopping_validity_train_2820000,optional_stopping_validity,finite_state_hitting_valid,3,binary,False,"Let (X_n) be a simple symmetric random walk on {0, ..., 10}, absorbed when it hits 0 or 10, with X_0 = 7. Let tau be the absorption time. A solution applies optional stopping to the bounded stopped process to conclude E[X_tau] = 7. Is this use justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"Step 1: Identify the optional-stopping issue.
+Before using E[M_tau] = E[M_0], check the stopping-time hypotheses.
+
+Step 2: Check the condition in this problem.
+tau is an unbounded first-hitting time, and no extra integrability condition is given.
+
+Step 3: Conclude.
+valid = false.
+
+Final answer:
+<answer>
+{""valid"": false}
+</answer>",{'valid': False},False
+algorithmic_scaffold_v2_5,optional_stopping_validity_train_2810000,optional_stopping_validity,unbounded_first_hit_invalid,2,binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 0. Let tau = inf{n >= 0 : S_n = 4}. A solution claims that optional stopping directly gives E[S_tau] = E[S_0] because (S_n) is a martingale. Is this use justified as stated? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': False},"Step 1: Identify the optional-stopping issue.
+Before using E[M_tau] = E[M_0], check the stopping-time hypotheses.
+
+Step 2: Check the condition in this problem.
+tau is an unbounded first-hitting time, and no extra integrability condition is given.
+
+Step 3: Conclude.
+valid = false.
+
+Final answer:
+<answer>
+{""valid"": false}
+</answer>",{'valid': False},True
+algorithmic_scaffold_v2_5,stopped_process_expectation_train_2400000,stopped_process_expectation,bounded_walk_expectation,1,non_binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 1. Let T = inf{k >= 0 : X_k = 3} and tau = min(T, 5). Compute E[X_tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '1'},"Step 1: Identify the stopped process.
+The process is the simple symmetric random walk (X_n), and tau = min(T, 5).
+Because tau has a deterministic cap, tau is bounded.
+
+Step 2: Extract the starting value.
+X_0 = 1. The target level 3 does not change the optional-stopping value.
+
+Step 3: Apply optional stopping directly.
+E[X_tau] = E[X_0] = 1.
+
+Final answer:
+<answer>
+{""value"": ""1""}
+</answer>",{'value': '1'},True
+algorithmic_scaffold_v2_5,stopped_process_expectation_train_2410000,stopped_process_expectation,quadratic_fixed_horizon,2,non_binary,False,"Let X_n = 2 + Y_1 + ... + Y_n, where P(Y_k = 5) = P(Y_k = -5) = 1/2 and the increments are independent. Compute E[X_7^2]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '179'},"Step 1: Identify the fixed-time second-moment task.
+We need E[X_7^2] for a centered independent-increment walk.
+
+Step 2: Extract the parameters.
+X_0 = 2; n = 7; increments are +5 or -5 with probability 1/2 each.
+The variance of one increment is sigma^2 = (5)^2 = 25.
+
+Step 3: Select the formula.
+E[X_n^2] = X_0^2 + n sigma^2.
+
+Step 4: Do the arithmetic in small pieces.
+X_0^2 = (2)^2 = 4.
+n sigma^2 = 7 * 25 = 175.
+
+Step 5: Add.
+E[X_7^2] = 4 + 175 = 179.
+
+Final answer:
+<answer>
+{""value"": ""179""}
+</answer>",{'value': '179'},True
+algorithmic_scaffold_v2_5,stopped_process_expectation_train_2420001,stopped_process_expectation,stopped_martingale_value,3,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = -2. Let T = inf{k >= 0 : S_k = 1} and tau = min(T, 6). Compute E[S_tau^2 - tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '4'},"Step 1: Identify the stopped quadratic martingale task.
+The requested expression is E[S_tau^2 - tau]. Do not compute E[S_tau^2] and E[tau] separately.
+
+Step 2: Extract the bounded stopping time.
+The process is the simple symmetric random walk, and tau is capped by a deterministic horizon.
+
+Step 3: Use the martingale directly.
+For a martingale, E[M_tau] = E[M_0]. Use the optional stopping directly.
+
+Step 4: Compute the bounded stopping time.
+Since tau is capped by a deterministic horizon, E[tau] is bounded.
+
+Step 5: Conclude.
+E[S_tau^2 - tau] = E[M_tau] - E[tau] = E[M_0] - E[tau].
+
+Final answer:
+<answer>
+{""value"": ""E[M_0] - E[tau]}.
+</answer>",{'value': 'E[M_0] - E[tau]'},False
+algorithmic_scaffold_v2_5,hitting_time_expectation_train_2220001,hitting_time_expectation,biased_boundaries_zero_a,3,non_binary,False,"Let (X_n) be a nearest-neighbor random walk on the integers with X_0 = 2, P(X_(n+1) = X_n + 1 | F_n) = 2/3, and P(X_(n+1) = X_n - 1 | F_n) = 1/3. Let tau = inf{n >= 0 : X_n in {0, 6}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '54/7'},"Step 1: Identify the walk type.
+The walk is a nearest-neighbor walk on the integers, and the probability of the walk making a +1 or -1 change is 2/3 and 1/3, respectively.
+
+Step 2: Extract the interval parameters.
+The lower boundary is 0, and the upper boundary is b = 6.
+
+Step 3: Select the interval parameters.
+The lower boundary is 0, and the upper boundary is b = 6.
+
+Step 4: Select the interval type.
+The interval type is a fixed interval.
+
+Step 5: Select the interval length.
+The interval type is a fixed interval, so its length is b - a = 6.
+
+Step 6: Select the interval start.
+The lower boundary is a = 0.
+
+Step 7: Select the interval end.
+The upper boundary is b = 6.
+
+Step 8: Select the interval type.
+The interval type is a fixed interval.
+
+Step 9: Select the interval start.
+The lower boundary is a = 0.
+
+Step 10: Select the interval end.
+The upper boundary is b = 6.
+
+Step 11: Select the interval type.
+The interval type is a fixed interval.
+
+Step 12: Select the interval start.
+The lower boundary is a = 0.
+
+Step 13: Select the interval end.
+The upper boundary is b = 6.
+
+Step 14: Select the interval type.
+The interval type is a fixed interval.
+
+Step 15: Select the interval start.
+The lower boundary is a = 0.
+
+Step 16: Select the interval end.
+The upper boundary is b = 6.
+
+Step 17: Select the interval type.
+The interval type is a fixed interval.
+
+Step 18: Select the interval start.
+The lower boundary is a = 0.
+
+Step 19: Select the interval end.
+The upper boundary is b = 6.
+
+Step 20: Select the interval type.
+The interval type is a fixed interval.
+
+Step 21: Select the interval start.
+The lower boundary is a = 0.
+
+Step 22: Select the interval end.
+The upper boundary is b = 6.
+
+Step 23: Select the interval type.
+The interval type is a fixed interval.
+
+Step 24: Select the interval start.
+The lower boundary is a = 0.
+
+Step 25: Select the interval end.
+The upper boundary is b =",,False
+algorithmic_scaffold_v2_5,hitting_time_expectation_train_2200001,hitting_time_expectation,symmetric_boundaries_zero_a,1,non_binary,False,"Let (X_n) be a simple symmetric random walk on the integers with X_0 = 2. Let tau = inf{n >= 0 : X_n in {0, 5}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '6'},"Step 1: Identify the walk type.
+The walk is simple symmetric, so p = q = 1/2. Use the symmetric finite-interval formula.
+
+Step 2: Extract the interval parameters.
+Lower boundary a = 0; upper boundary b = 5; start x = 2.
+
+Step 3: Select the formula.
+For the symmetric walk, E_x[tau] = (x-a)(b-x).
+
+Step 4: Compute each factor.
+x-a = 2 - 0 = 2.
+b-x = 5 - 2 = 3.
+
+Step 5: Multiply.
+E_x[tau] = 2 * 3 = 6.
+
+Final answer:
+<answer>
+{""expected_time"": ""6""}
+</answer>",{'expected_time': '6'},True
+algorithmic_scaffold_v2_5,hitting_time_expectation_train_2210001,hitting_time_expectation,symmetric_shifted_boundaries,2,non_binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 4. Let tau be the first time the walk hits either 2 or 6. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '4'},"Step 1: Identify the walk type.
+The walk is simple symmetric, so p = q = 1/2. Use the symmetric finite-interval formula.
+
+Step 2: Extract the interval parameters.
+Lower boundary a = 2; upper boundary b = 6; start x = 4.
+
+Step 3: Select the formula.
+For the symmetric walk, E_x[tau] = (x-a)(b-x).
+
+Step 4: Compute each factor.
+x-a = 4 - 2 = 2.
+b-x = 6 - 4 = 2.
+
+Step 5: Multiply.
+E_x[tau] = 2 * 2 = 4.
+
+Final answer:
+<answer>
+{""expected_time"": ""4""}
+</answer>",{'expected_time': '4'},True
+algorithmic_scaffold_v2_5,martingale_verification_train_2600001,martingale_verification,centered_walk_basic,1,binary,False,"Let S_0 = 0 and S_n = Y_1 + ... + Y_n, where the Y_k are independent and P(Y_k = 2) = P(Y_k = -2) = 1/2. With respect to the natural filtration, is (S_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Step 1: Identify the martingale test.
+Check whether E[S_(n+1) | F_n] = S_n.
+
+Step 2: Compute the conditional increment mean.
+S_(n+1) - S_n = Y_(n+1).
+E[S_(n+1) | F_n] = E[Y_(n+1)] = 0.
+
+Step 3: Conclude.
+E[S_(n+1) | F_n] = 0 = S_n.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+algorithmic_scaffold_v2_5,martingale_verification_train_2620003,martingale_verification,exponential_compensation,3,binary,False,"Let X_n = Y_1 + ... + Y_n, where the Y_k are independent with P(Y_k = 1) = 2/3 and P(Y_k = -1) = 1/3. For fixed lambda, consider M_n = exp(lambda X_n) / (p exp(lambda) + q exp(-lambda))^n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Step 1: Identify the required exponential compensation.
+The denominator in the expression is (p exp(lambda) + q exp(-lambda))^n, and the proposed test is in the exponential compensation.
+
+Step 2: Compute the required test.
+For a test in the exponential compensation, check the test in the proposed test.
+
+Step 3: Conclude.
+is_martingale = true.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+algorithmic_scaffold_v2_5,martingale_verification_train_2610004,martingale_verification,quadratic_compensation,3,binary,False,"Let X_n = Y_1 + ... + Y_n for independent increments with P(Y_k = 5) = P(Y_k = -5) = 1/2. Consider M_n = X_n^2 - 24 n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': False},"Step 1: Identify the required compensation.
+For a centered walk, X_n^2 - c n is a martingale exactly when c = Var(Y_1).
+
+Step 2: Extract the variance.
+Var(Y_1) = E(Y_1^2) - (E(Y_1))^2 = 5^2 - (0)^2 = 25.
+
+Step 3: Compare with the proposed c.
+Proposed c = 24.
+
+Step 4: Conclude.
+is_martingale = false.
+
+Final answer:
+<answer>
+{""is_martingale"": false}
+</answer>",{'is_martingale': False},True
+algorithmic_scaffold_v2_5,optional_stopping_validity_train_2800001,optional_stopping_validity,bounded_time_valid,1,binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 0 and natural filtration F_n. Let T = inf{k >= 0 : X_k = 2} and tau = min(T, 8). A solution claims that optional stopping gives E[X_tau] = E[X_0]. Is this use of optional stopping justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"Step 1: Identify the optional-stopping issue.
+Before using E[M_tau] = E[M_0], check the stopping-time hypotheses.
+
+Step 2: Check the condition in this problem.
+tau = min(T, 8).
+X_0 = 0.
+T = inf{k : X_k = 2}.
+The optional-stopping issue does not apply in this problem.
+
+Step 3: Conclude.
+valid = true.
+
+Final answer:
+<answer>
+{""valid"": true}
+</answer>",{'valid': True},True
+algorithmic_scaffold_v2_5,optional_stopping_validity_train_2820003,optional_stopping_validity,finite_state_hitting_valid,3,binary,False,"Let (X_n) be a simple symmetric random walk on {0, ..., 10}, absorbed when it hits 0 or 10, with X_0 = 6. Let tau be the absorption time. A solution applies optional stopping to the bounded stopped process to conclude E[X_tau] = 6. Is this use justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"Step 1: Identify the optional-stopping issue.
+Before using E[M_tau] = E[M_0], check the stopping-time hypotheses.
+
+Step 2: Check the condition in this problem.
+tau is an unbounded first-hitting time, and no extra integrability condition is given.
+
+Step 3: Conclude.
+valid = false.
+
+Final answer:
+<answer>
+{""valid"": false}
+</answer>",{'valid': False},False
+algorithmic_scaffold_v2_5,optional_stopping_validity_train_2810001,optional_stopping_validity,unbounded_first_hit_invalid,2,binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 0. Let tau = inf{n >= 0 : X_n = 1}. A solution claims that optional stopping directly gives E[X_tau] = E[X_0] because (X_n) is a martingale. Is this use justified as stated? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': False},"Step 1: Identify the optional-stopping issue.
+Before using E[M_tau] = E[M_0], check the stopping-time hypotheses.
+
+Step 2: Check the condition in this problem.
+tau is an unbounded first-hitting time, and no extra integrability condition is given.
+
+Step 3: Conclude.
+valid = false.
+
+Final answer:
+<answer>
+{""valid"": false}
+</answer>",{'valid': False},True
+algorithmic_scaffold_v2_5,stopped_process_expectation_train_2400001,stopped_process_expectation,bounded_walk_expectation,1,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = -1. Let T = inf{k >= 0 : S_k = 2} and tau = min(T, 20). Compute E[S_tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '-1'},"Step 1: Identify the stopped process.
+The process is the simple symmetric random walk (S_n), and tau = min(T, 20).
+Because tau has a deterministic cap, tau is bounded.
+
+Step 2: Extract the starting value.
+S_0 = -1. The target level 2 does not change the optional-stopping value.
+
+Step 3: Apply optional stopping directly.
+E[S_tau] = E[S_0] = -1.
+
+Final answer:
+<answer>
+{""value"": ""-1""}
+</answer>",{'value': '-1'},True
+algorithmic_scaffold_v2_5,stopped_process_expectation_train_2410001,stopped_process_expectation,quadratic_fixed_horizon,2,non_binary,False,"Let S_n = 0 + Y_1 + ... + Y_n, where P(Y_k = 3) = P(Y_k = -3) = 1/2 and the increments are independent. Compute E[S_5^2]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '45'},"Step 1: Identify the fixed-time second-moment task.
+We need E[S_5^2] for a centered independent-increment walk.
+
+Step 2: Extract the parameters.
+S_0 = 0; n = 5; increments are +3 or -3 with probability 1/2 each.
+The variance of one increment is sigma^2 = (3)^2 = 9.
+
+Step 3: Select the formula.
+E[S_n^2] = S_0^2 + n sigma^2.
+
+Step 4: Do the arithmetic in small pieces.
+S_0^2 = 0^2 = 0.
+n sigma^2 = 5 * 9 = 45.
+
+Step 5: Conclude.
+E[S_5^2] = 0 + 45 = 45.
+
+Final answer:
+<answer>
+{""value"": ""45""}
+</answer>",{'value': '45'},True
+algorithmic_scaffold_v2_5,stopped_process_expectation_train_2420003,stopped_process_expectation,stopped_martingale_value,3,non_binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 2. Let T = inf{k >= 0 : X_k = 4} and tau = min(T, 12). Compute E[X_tau^2 - tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '4'},"Step 1: Identify the stopped quadratic martingale task.
+The requested expression is E[X_tau^2 - tau]. Do not compute E[X_tau^2] and E[tau] separately.
+
+Step 2: Extract the bounded stopping time.
+X_0 = 2; target level 4; tau = min(T, 12).
+Since tau is capped by 12, optional stopping applies.
+
+Step 3: Use the martingale directly.
+For a simple symmetric random walk, M_n = X_n^2 - n is a martingale.
+Therefore E[M_tau] = E[X_tau^2] - E[tau] = E[X_tau^2] - tau.
+
+Step 4: Conclude.
+E[X_tau^2] - tau = M_tau.
+
+Final answer:
+<answer>
+{""value"": ""M_tau""}
+</answer>",{'value': 'M_tau'},False
+algorithmic_scaffold_v2_5,hitting_time_expectation_train_2220003,hitting_time_expectation,biased_boundaries_zero_a,3,non_binary,False,"Let (X_n) be a nearest-neighbor random walk on the integers with X_0 = 3, P(X_(n+1) = X_n + 1 | F_n) = 2/5, and P(X_(n+1) = X_n - 1 | F_n) = 3/5. Let tau = inf{n >= 0 : X_n in {0, 5}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '1265/211'},"Step 1: Identify the walk type.
+The walk is a symmetric walk, and the probability of +1 or -1 is 2/5 and 3/5, respectively.
+
+Step 2: Extract the interval parameters.
+The lower boundary is 0, and the upper boundary is b = 5.
+
+Step 3: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 5.
+
+Step 4: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 5.
+
+Step 5: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 5.
+
+Step 6: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 5.
+
+Step 7: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 5.
+
+Step 8: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 5.
+
+Step 9: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 5.
+
+Step 10: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 5.
+
+Step 11: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 5.
+
+Step 12: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 5.
+
+Step 13: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 5.
+
+Step 14: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 5.
+
+Step 15: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 5.
+
+Step 16: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 5.
+
+Step 17: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 5.
+
+Step 18: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 5.
+
+Step 19: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 5.
+
+Step 20: Select the interval.
+The lower boundary is",,False
+algorithmic_scaffold_v2_5,hitting_time_expectation_train_2200002,hitting_time_expectation,symmetric_boundaries_zero_a,1,non_binary,False,"Let (S_n) be a simple symmetric random walk on the integers with S_0 = 2. Let tau = inf{n >= 0 : S_n in {0, 6}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '8'},"Step 1: Identify the walk type.
+The walk is simple symmetric, so p = q = 1/2. Use the symmetric finite-interval formula.
+
+Step 2: Extract the interval parameters.
+Lower boundary a = 0; upper boundary b = 6; start x = 2.
+
+Step 3: Select the formula.
+For the symmetric walk, E_x[tau] = (x-a)(b-x).
+
+Step 4: Compute each factor.
+x-a = 2 - 0 = 2.
+b-x = 6 - 2 = 4.
+
+Step 5: Multiply.
+E_x[tau] = 2 * 4 = 8.
+
+Final answer:
+<answer>
+{""expected_time"": ""8""}
+</answer>",{'expected_time': '8'},True
+algorithmic_scaffold_v2_5,hitting_time_expectation_train_2210002,hitting_time_expectation,symmetric_shifted_boundaries,2,non_binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 1. Let tau be the first time the walk hits either -3 or 3. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '8'},"Step 1: Identify the walk type.
+The walk is simple symmetric, so p = q = 1/2. Use the symmetric finite-interval formula.
+
+Step 2: Extract the interval parameters.
+Lower boundary a = -3; upper boundary b = 3; start x = 1.
+
+Step 3: Select the formula.
+For the symmetric walk, E_x[tau] = (x-a)(b-x).
+
+Step 4: Compute each factor.
+x-a = 1 - (-3) = 4.
+b-x = 3 - (1) = 2.
+
+Step 5: Multiply.
+E_x[tau] = 4 * 2 = 8.
+
+Final answer:
+<answer>
+{""expected_time"": ""8""}
+</answer>",{'expected_time': '8'},True
+algorithmic_scaffold_v2_5,martingale_verification_train_2600002,martingale_verification,centered_walk_basic,1,binary,False,"Let X_0 = 0 and X_n = Y_1 + ... + Y_n, where the Y_k are independent and P(Y_k = 2) = P(Y_k = -2) = 1/2. With respect to the natural filtration, is (X_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Step 1: Identify the martingale test.
+Check whether E[X_{n+1} | F_n] = X_n.
+
+Step 2: Compute the conditional increment mean.
+X_{n+1} = X_n + Y_{n+1}.
+E[X_{n+1} | F_n] = E[X_n + Y_{n+1} | F_n] = X_n + E[Y_{n+1}] = X_n + 0 = X_n.
+
+Step 3: Conclude.
+is_martingale = true.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+algorithmic_scaffold_v2_5,martingale_verification_train_2620005,martingale_verification,exponential_compensation,3,binary,False,"Let S_n = Y_1 + ... + Y_n, where the Y_k are independent with P(Y_k = 1) = 1/3 and P(Y_k = -1) = 2/3. For fixed theta, consider M_n = exp(theta S_n) / (exp(theta))^n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': False},"Step 1: Identify the required exponential compensation.
+The denominator is (exp(theta))^n, so the overall expression is M_n = exp(theta S_n) / (exp(theta))^n = exp(theta (S_n - n)). Do not compute this.
+
+Step 2: Compute the required one-step test.
+E[M_n | F_{n-1}] = E[exp(theta (S_n - n)) | F_{n-1}] = E[exp(theta (S_n - n))] = E[exp(theta (S_n))].
+
+Step 3: Extract the required factor.
+S_n = S_{n-1} + Y_n, so the one-step test becomes E[exp(theta S_n)] = E[exp(theta (S_{n-1} + Y_n))] = E[exp(theta S_{n-1})]E[exp(theta Y_n)].
+
+Step 4: Compute the one-step test.
+E[exp(theta S_n)] = E[exp(theta S_{n-1})]E[exp(theta Y_n)] = M_{n-1}E[exp(theta Y_n)].
+
+Step 5: Conclude.
+E[exp(theta S_n)] = M_{n}E[exp(theta Y_n)].
+
+Step 6: Check the martingale test.
+M_nE[exp(theta Y_n)] = M_nE[exp(theta Y_n)].
+
+Step 7: Conclude.
+is_martingale = true.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},False
+algorithmic_scaffold_v2_5,martingale_verification_train_2610005,martingale_verification,quadratic_compensation,3,binary,False,"Let S_n = Y_1 + ... + Y_n for independent increments with the increments have mean 0 and variance 16. Consider M_n = S_n^2 - 16 n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Step 1: Identify the required compensation.
+The required compensation is a process X_n such that M_n = (S_n)^2 - 16n is a martingale.
+For a centered walk, X_n is a martingale exactly when the required compensation is a martingale.
+is_martingale = true.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+algorithmic_scaffold_v2_5,optional_stopping_validity_train_2800002,optional_stopping_validity,bounded_time_valid,1,binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 0 and natural filtration F_n. Let T = inf{k >= 0 : S_k = 2} and tau = min(T, 10). A solution claims that optional stopping gives E[S_tau] = E[S_0]. Is this use of optional stopping justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"Step 1: Identify the optional-stopping issue.
+Before using E[M_tau] = E[M_0], check the stopping-time hypotheses.
+
+Step 2: Check the condition in this problem.
+tau = min(T, 10).
+T = inf{k : S_k = 2}.
+valid = is tau bounded by a finite state.
+
+Step 3: Conclude.
+valid = true.
+
+Final answer:
+<answer>
+{""valid"": true}
+</answer>",{'valid': True},True
+algorithmic_scaffold_v2_5,optional_stopping_validity_train_2820004,optional_stopping_validity,finite_state_hitting_valid,3,binary,False,"Let (X_n) be a simple symmetric random walk on {0, ..., 6}, absorbed when it hits 0 or 6, with X_0 = 5. Let tau be the absorption time. A solution applies optional stopping to the bounded stopped process to conclude E[X_tau] = 5. Is this use justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"Step 1: Identify the optional-stopping issue.
+Before using E[M_tau] = E[M_0], check the stopping-time hypotheses.
+
+Step 2: Check the condition in this problem.
+tau is an unbounded first-hitting time, and no extra integrability condition is given.
+
+Step 3: Conclude.
+valid = false.
+
+Final answer:
+<answer>
+{""valid"": false}
+</answer>",{'valid': False},False
+algorithmic_scaffold_v2_5,optional_stopping_validity_train_2810002,optional_stopping_validity,unbounded_first_hit_invalid,2,binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 0. Let tau = inf{n >= 0 : S_n = 1}. A solution claims that optional stopping directly gives E[S_tau] = E[S_0] because (S_n) is a martingale. Is this use justified as stated? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': False},"Step 1: Identify the optional-stopping issue.
+Before using E[M_tau] = E[M_0], check the stopping-time hypotheses.
+
+Step 2: Check the condition in this problem.
+tau is an unbounded first-hitting time, and no extra integrability condition is given.
+
+Step 3: Conclude.
+valid = false.
+
+Final answer:
+<answer>
+{""valid"": false}
+</answer>",{'valid': False},True
+algorithmic_scaffold_v2_5,stopped_process_expectation_train_2400002,stopped_process_expectation,bounded_walk_expectation,1,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 3. Let T = inf{k >= 0 : S_k = 5} and tau = min(T, 5). Compute E[S_tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '3'},"Step 1: Identify the stopped process.
+The process is the simple symmetric random walk (S_n), and tau = min(T, 5).
+Because tau has a deterministic cap, tau is bounded.
+
+Step 2: Extract the starting value.
+S_0 = 3. The target level 5 does not change the optional-stopping value.
+
+Step 3: Apply optional stopping directly.
+E[S_tau] = E[S_0] = 3.
+
+Final answer:
+<answer>
+{""value"": ""3""}
+</answer>",{'value': '3'},True
+algorithmic_scaffold_v2_5,stopped_process_expectation_train_2410002,stopped_process_expectation,quadratic_fixed_horizon,2,non_binary,False,"Let S_n = -3 + Y_1 + ... + Y_n, where P(Y_k = 5) = P(Y_k = -5) = 1/2 and the increments are independent. Compute E[S_2^2]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '59'},"Step 1: Identify the fixed-time second-moment task.
+We need E[S_2^2] for a centered independent-increment walk.
+
+Step 2: Extract the parameters.
+S_0 = -3; n = 2; increments are +5 or -5 with probability 1/2 each.
+The variance of one increment is sigma^2 = (5)^2 = 25.
+
+Step 3: Select the formula.
+E[S_2^2] = S_0^2 + n sigma^2.
+
+Step 4: Do the arithmetic in small pieces.
+S_0^2 = (-3)^2 = 9.
+n sigma^2 = 2 * 25 = 50.
+Total = 9 + 50 = 59.
+
+Final answer:
+<answer>
+{""value"": ""59""}
+</answer>",{'value': '59'},True
+algorithmic_scaffold_v2_5,stopped_process_expectation_train_2420005,stopped_process_expectation,stopped_martingale_value,3,non_binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 1. Let T = inf{k >= 0 : X_k = 5} and tau = min(T, 4). Compute E[X_tau^2 - tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '1'},"Step 1: Identify the stopped quadratic martingale task.
+The requested expression is E[X_tau^2 - tau]. Do not compute E[X_tau^2] and E[tau] separately.
+
+Step 2: Extract the bounded stopping time.
+X_0 = 1; target level = 5; tau = min(T, 4).
+Since tau is capped by 4, optional stopping applies.
+
+Step 3: Use the martingale directly.
+For a simple symmetric random walk, M_n = X_n^2 - n is a martingale.
+Therefore E[M_tau] = E[X_tau^2] - E[tau] = E[X_tau^2] - tau.
+
+Step 4: Conclude.
+E[X_tau^2] - tau = M_tau.
+
+Final answer:
+<answer>
+{""value"": ""M_tau""}
+</answer>",{'value': 'M_tau'},False
+algorithmic_scaffold_v2_5,hitting_time_expectation_train_2220005,hitting_time_expectation,biased_boundaries_zero_a,3,non_binary,False,"Let (S_n) be a nearest-neighbor random walk on the integers with S_0 = 1, P(S_(n+1) = S_n + 1 | F_n) = 2/5, and P(S_(n+1) = S_n - 1 | F_n) = 3/5. Let tau = inf{n >= 0 : S_n in {0, 5}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '655/211'},"Step 1: Identify the walk type.
+Here p = 2/5 and q = 3/5. Since p != q, this is a biased walk.
+Do not use the symmetric formula E_x[tau] = (x-a)(b-x).
+
+Step 2: Extract the interval parameters.
+The lower boundary is 0, the upper boundary is b = 5, and the start is x = 1.
+
+Step 3: Select the formula.
+For this walk, the formula E_x[tau] = (x-a)(b-x).
+
+Step 4: Compute each factor.
+x-a = 1 - 0 = 1.
+b-x = 5 - 1 = 4.
+
+Step 5: Multiply.
+E_x[tau] = 1 * 4 = 4.
+
+Final answer:
+<answer>
+{""expected_time"": ""4""}
+</answer>",{'expected_time': '4'},False
+algorithmic_scaffold_v2_5,hitting_time_expectation_train_2200003,hitting_time_expectation,symmetric_boundaries_zero_a,1,non_binary,False,"Let (S_n) be a simple symmetric random walk on the integers with S_0 = 4. Let tau = inf{n >= 0 : S_n in {0, 6}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '8'},"Step 1: Identify the walk type.
+The walk is simple symmetric, so p = q = 1/2. Use the symmetric finite-interval formula.
+
+Step 2: Extract the interval parameters.
+Lower boundary a = 0; upper boundary b = 6; start x = 4.
+
+Step 3: Select the formula.
+For the symmetric walk, E_x[tau] = (x-a)(b-x).
+
+Step 4: Compute each factor.
+x-a = 4 - 0 = 4.
+b-x = 6 - 4 = 2.
+
+Step 5: Multiply.
+E_x[tau] = 4 * 2 = 8.
+
+Final answer:
+<answer>
+{""expected_time"": ""8""}
+</answer>",{'expected_time': '8'},True
+algorithmic_scaffold_v2_5,hitting_time_expectation_train_2210003,hitting_time_expectation,symmetric_shifted_boundaries,2,non_binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 5. Let tau be the first time the walk hits either 1 or 7. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '8'},"Step 1: Identify the walk type.
+The walk is simple symmetric, so p = q = 1/2. Use the symmetric finite-interval formula.
+
+Step 2: Extract the interval parameters.
+Lower boundary a = 1; upper boundary b = 7; start x = 5.
+
+Step 3: Select the formula.
+For the symmetric walk, E_x[tau] = (x-a)(b-x).
+
+Step 4: Compute each factor.
+x-a = 5 - (1) = 4.
+b-x = 7 - (5) = 2.
+
+Step 5: Multiply.
+E_x[tau] = 4 * 2 = 8.
+
+Final answer:
+<answer>
+{""expected_time"": ""8""}
+</answer>",{'expected_time': '8'},True
+algorithmic_scaffold_v2_5,martingale_verification_train_2600003,martingale_verification,centered_walk_basic,1,binary,False,"Let S_0 = 0 and S_n = Y_1 + ... + Y_n, where the Y_k are independent and P(Y_k = 1) = P(Y_k = -1) = 1/2. With respect to the natural filtration, is (S_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Step 1: Identify the martingale test.
+Check whether E[S_(n+1) | F_n] = S_n.
+
+Step 2: Compute the conditional increment mean.
+E[S_(n+1) | F_n] = E[Y_(n+1) + S_n | F_n] = E[Y_(n+1)] + E[S_n | F_n] = (1/2)(1) + (1/2)(0) = 1/2.
+
+Step 3: Compare with the stopped value.
+S_(n+1) is not equal to the conditional increment mean.
+
+Final answer:
+<answer>
+{""is_martingale"": false}
+</answer>",{'is_martingale': False},False
+algorithmic_scaffold_v2_5,martingale_verification_train_2620007,martingale_verification,exponential_compensation,3,binary,False,"Let S_n = Y_1 + ... + Y_n, where the Y_k are independent with P(Y_k = 1) = 3/5 and P(Y_k = -1) = 2/5. For fixed theta, consider M_n = exp(theta S_n) / (p exp(theta) + q exp(-theta))^n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Step 1: Identify the required exponential compensation.
+The denominator is p exp(theta) + q exp(-theta).
+Do not compute the denominator.
+
+Step 2: Check the required martingale test.
+For a centered walk, check the compensator.
+
+Step 3: Check the required martingale test.
+Check the required martingale test.
+
+Step 4: Conclude.
+is_martingale = true.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+algorithmic_scaffold_v2_5,martingale_verification_train_2610007,martingale_verification,quadratic_compensation,3,binary,False,"Let X_n = Y_1 + ... + Y_n for independent increments with the increments have mean 0 and standard deviation 3. Consider M_n = X_n^2 - 9 n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Step 1: Identify the required compensation.
+The required compensation is 9n. Use this to adjust the centered walk.
+
+Step 2: Check the martingale test.
+For a centered walk, X_n^2 - c n is a martingale exactly when c = Var(Y_1).
+
+Step 3: Conclude.
+is_martingale = true.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+algorithmic_scaffold_v2_5,optional_stopping_validity_train_2800003,optional_stopping_validity,bounded_time_valid,1,binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 0 and natural filtration F_n. Let T = inf{k >= 0 : S_k = 2} and tau = min(T, 20). A solution claims that optional stopping gives E[S_tau] = E[S_0]. Is this use of optional stopping justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"Step 1: Identify the optional-stopping issue.
+Before using E[M_tau] = E[M_0], check the stopping-time hypotheses.
+
+Step 2: Check the condition in this problem.
+tau = min(T, 20).
+T = inf{k : S_k = 2}.
+valid = is tau bounded by a finite state.
+
+Step 3: Conclude.
+valid = true.
+
+Final answer:
+<answer>
+{""valid"": true}
+</answer>",{'valid': True},True
+algorithmic_scaffold_v2_5,optional_stopping_validity_train_2820006,optional_stopping_validity,finite_state_hitting_valid,3,binary,False,"Let (X_n) be a simple symmetric random walk on {0, ..., 8}, absorbed when it hits 0 or 8, with X_0 = 5. Let tau be the absorption time. A solution applies optional stopping to the bounded stopped process to conclude E[X_tau] = 5. Is this use justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"Step 1: Identify the optional-stopping issue.
+Before using E[M_tau] = E[M_0], check the stopping-time hypotheses.
+
+Step 2: Check the condition in this problem.
+tau is an unbounded first-hitting time, and no extra integrability condition is given.
+
+Step 3: Conclude.
+valid = false.
+
+Final answer:
+<answer>
+{""valid"": false}
+</answer>",{'valid': False},False
+algorithmic_scaffold_v2_5,optional_stopping_validity_train_2810003,optional_stopping_validity,unbounded_first_hit_invalid,2,binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 0. Let tau = inf{n >= 0 : X_n = 3}. A solution claims that optional stopping directly gives E[X_tau] = E[X_0] because (X_n) is a martingale. Is this use justified as stated? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': False},"Step 1: Identify the optional-stopping issue.
+Before using E[M_tau] = E[M_0], check the stopping-time hypotheses.
+
+Step 2: Check the condition in this problem.
+tau is an unbounded first-hitting time, and no extra integrability condition is given.
+
+Step 3: Conclude.
+valid = false.
+
+Final answer:
+<answer>
+{""valid"": false}
+</answer>",{'valid': False},True
+algorithmic_scaffold_v2_5,stopped_process_expectation_train_2400003,stopped_process_expectation,bounded_walk_expectation,1,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 3. Let T = inf{k >= 0 : S_k = 5} and tau = min(T, 5). Compute E[S_tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '3'},"Step 1: Identify the stopped process.
+The process is the simple symmetric random walk (S_n), and tau = min(T, 5).
+Because tau has a deterministic cap, tau is bounded.
+
+Step 2: Extract the starting value.
+S_0 = 3. The target level 5 does not change the optional-stopping value.
+
+Step 3: Apply optional stopping directly.
+E[S_tau] = E[S_0] = 3.
+
+Final answer:
+<answer>
+{""value"": ""3""}
+</answer>",{'value': '3'},True
+algorithmic_scaffold_v2_5,stopped_process_expectation_train_2410003,stopped_process_expectation,quadratic_fixed_horizon,2,non_binary,False,"Let S_n = 0 + Y_1 + ... + Y_n, where P(Y_k = 1) = P(Y_k = -1) = 1/2 and the increments are independent. Compute E[S_5^2]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '5'},"Step 1: Identify the fixed-time second-moment task.
+The task is to compute E[S_5^2], the expected value of the square of the stopped/terminal process.
+
+Step 2: Extract the parameters.
+S_0 = 0; n = 5; increments are +1 or -1 with probability 1/2 each; independent.
+
+Step 3: Select the formula.
+E[S_n^2] = S_0^2 + nE[Y_1^2] + nE[Y_1^2] + ... + nE[Y_1^2] = 0^2 + nE[Y_1^2] + ... (with n factors).
+
+Step 4: Compute each factor.
+E[Y_1^2] = Var(Y_1) + (E[Y_1])^2 = 1^2 + (0)^2 = 1.
+
+Step 5: Do the arithmetic in small pieces.
+E[S_5^2] = 0^2 + 5E[Y_1^2] + ... = 0^2 + 5E[Y_1^2] + ... = 0^2 + 5E[Y_1^2] + ... = 0^2 + 5E[Y_1^2] + ... = 0^2 + 5E[Y_1^2] + ... = 0^2 + 5E[Y_1^2] + ... = 0^2 + 5E[Y_1^2] + ... = 0^2 + 5E[Y_1^2] + ... = 0^2 + 5E[Y_1^2] + ... = 0^2 + 5E[Y_1^2] + ... = 0^2 + 5E[Y_1^2] + ... = 0^2 + 5E[Y_1^2] + ... = 0^2 + 5E[Y_1^2] + ... = 0^2 + 5E[Y_1^2] + ... = 0^2 + 5E[Y_1^2] + ... = 0^2 + 5E[Y_1^2] + ... = 0^2 + 5E[Y_1^2] + ... = 0^2 + 5E[Y_1^2] +",{'value': '0'},False
+algorithmic_scaffold_v2_5,stopped_process_expectation_train_2420007,stopped_process_expectation,stopped_martingale_value,3,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 1. Let T = inf{k >= 0 : S_k = 3} and tau = min(T, 4). Compute E[S_tau^2 - tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '1'},"Step 1: Identify the stopped quadratic martingale task.
+The requested expression is E[S_tau^2 - tau]. Do not compute E[S_tau^2] and E[tau] separately.
+
+Step 2: Extract the bounded stopping time.
+The process is the simple symmetric random walk, and tau = min(T, 4).
+
+Step 3: Compute the required expression.
+E[S_tau^2 - tau] = E[S_tau^2] - E[tau].
+
+Step 4: Select the bounded stopping time.
+S_0 = 1; target level = 3; tau = min(T, 4).
+
+Step 5: Select the optional-stopping directly.
+E[S_tau^2 - tau] = E[S_tau^2] - E[tau].
+
+Step 6: Conclude.
+S_0 = 1; target level = 3; tau = min(T, 4).
+
+Final answer:
+<answer>
+{""value"": ""E[S_tau^2] - E[tau]""}
+</answer>",{'value': 'E[S_tau^2] - E[tau]'},False
+algorithmic_scaffold_v2_5,hitting_time_expectation_train_2220006,hitting_time_expectation,biased_boundaries_zero_a,3,non_binary,False,"Let (X_n) be a nearest-neighbor random walk on the integers with X_0 = 1, P(X_(n+1) = X_n + 1 | F_n) = 2/5, and P(X_(n+1) = X_n - 1 | F_n) = 3/5. Let tau = inf{n >= 0 : X_n in {0, 4}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '33/13'},"Step 1: Identify the walk type.
+The walk is a nearest-neighbor walk on the integers, and the probability of the walk making a +1 or -1 change is 2/5 and 3/5, respectively.
+
+Step 2: Extract the interval parameters.
+The lower boundary is 0, and the upper boundary is b = 4.
+
+Step 3: Select the interval parameters.
+The lower boundary is 0, and the upper boundary is b = 4.
+
+Step 4: Select the interval parameters.
+The lower boundary is 0, and the upper boundary is b = 4.
+
+Step 5: Select the interval parameters.
+The lower boundary is 0, and the upper boundary is b = 4.
+
+Step 6: Select the interval parameters.
+The lower boundary is 0, and the upper boundary is b = 4.
+
+Step 7: Select the interval parameters.
+The lower boundary is 0, and the upper boundary is b = 4.
+
+Step 8: Select the interval parameters.
+The lower boundary is 0, and the upper boundary is b = 4.
+
+Step 9: Select the interval parameters.
+The lower boundary is 0, and the upper boundary is b = 4.
+
+Step 10: Select the interval parameters.
+The lower boundary is 0, and the upper boundary is b = 4.
+
+Step 11: Select the interval parameters.
+The lower boundary is 0, and the upper boundary is b = 4.
+
+Step 12: Select the interval parameters.
+The lower boundary is 0, and the upper boundary is b = 4.
+
+Step 13: Select the interval parameters.
+The lower boundary is 0, and the upper boundary is b = 4.
+
+Step 14: Select the interval parameters.
+The lower boundary is 0, and the upper boundary is b = 4.
+
+Step 15: Select the interval parameters.
+The lower boundary is 0, and the upper boundary is b = 4.
+
+Step 16: Select the interval parameters.
+The lower boundary is 0, and the upper boundary is b = 4.
+
+Step 17: Select the interval parameters.
+The lower boundary is 0, and the upper boundary is b = 4.
+
+Step 18: Select the interval parameters.
+The lower boundary is 0, and the upper boundary is b = 4.
+
+Step 19: Select the interval parameters.
+The lower boundary",,False
+algorithmic_scaffold_v2_5,hitting_time_expectation_train_2200004,hitting_time_expectation,symmetric_boundaries_zero_a,1,non_binary,False,"Let (X_n) be a simple symmetric random walk on the integers with X_0 = 3. Let tau = inf{n >= 0 : X_n in {0, 5}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '6'},"Step 1: Identify the walk type.
+The walk is simple symmetric, so p = q = 1/2. Use the symmetric finite-interval formula.
+
+Step 2: Extract the interval parameters.
+Lower boundary a = 0; upper boundary b = 5; start x = 3.
+
+Step 3: Select the formula.
+For the symmetric walk, E_x[tau] = (x-a)(b-x).
+
+Step 4: Compute each factor.
+x-a = 3 - (0) = 3.
+b-x = 5 - (3) = 2.
+
+Step 5: Multiply.
+E_x[tau] = 3 * 2 = 6.
+
+Final answer:
+<answer>
+{""expected_time"": ""6""}
+</answer>",{'expected_time': '6'},True
+algorithmic_scaffold_v2_5,hitting_time_expectation_train_2210004,hitting_time_expectation,symmetric_shifted_boundaries,2,non_binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = -4. Let tau be the first time the walk hits either -5 or 0. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '4'},"Step 1: Identify the walk type.
+The walk is simple symmetric, so p = q = 1/2. Use the symmetric finite-interval formula.
+
+Step 2: Extract the interval parameters.
+Lower boundary a = -5; upper boundary b = 0; start x = -4.
+
+Step 3: Select the formula.
+For the symmetric walk, E_x[tau] = (x-a)(b-x).
+
+Step 4: Compute each factor.
+x-a = -4 - (-5) = 1.
+b-x = 0 - (-4) = 4.
+
+Step 5: Multiply.
+E_x[tau] = 1 * 4 = 4.
+
+Final answer:
+<answer>
+{""expected_time"": ""4""}
+</answer>",{'expected_time': '4'},True
+algorithmic_scaffold_v2_5,martingale_verification_train_2600004,martingale_verification,centered_walk_basic,1,binary,False,"Let X_0 = 0 and X_n = Y_1 + ... + Y_n, where the Y_k are independent and P(Y_k = 1) = P(Y_k = -1) = 1/2. With respect to the natural filtration, is (X_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Step 1: Identify the martingale test.
+Check whether E[X_{n+1} | F_n] = X_n.
+
+Step 2: Compute the conditional increment mean.
+X_{n+1} = X_n + Y_{n+1}.
+E[X_{n+1} | F_n] = E[X_n + Y_{n+1} | F_n] = X_n + E[Y_{n+1}] = X_n + 0 = X_n.
+
+Step 3: Conclude.
+E[X_{n+1} | F_n] = X_n, so is_martingale = true.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+algorithmic_scaffold_v2_5,martingale_verification_train_2620008,martingale_verification,exponential_compensation,3,binary,False,"Let X_n = Y_1 + ... + Y_n, where the Y_k are independent with P(Y_k = 1) = 2/5 and P(Y_k = -1) = 3/5. For fixed theta, consider M_n = exp(theta X_n) / (p exp(theta) + q exp(-theta))^n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Step 1: Identify the required exponential compensation.
+The denominator is (p exp(theta) + q exp(-theta))^n.
+
+Step 2: Compute the required factor.
+E[exp(theta Y_1)] = 2/5 exp(theta) + 3/5.
+
+Step 3: Check the martingale test.
+For M_n = exp(theta X_n) / (p exp(theta) + q exp(-theta))^n,
+E[M_n | F_{n-1}] = E[exp(theta X_n) / (p exp(theta) + q exp(-theta))^n | F_{n-1}].
+Simplify X_n = X_{n-1} + Y_n.
+E[M_n | F_{n-1}] = E[exp(theta X_{n-1} + theta Y_n) / (p exp(theta) + q exp(-theta))^n | F_{n-1}].
+E[M_n | F_{n-1}] = E[exp(theta X_{n-1}) exp(theta Y_n) / (p exp(theta) + q exp(-theta))^n | F_{n-1}].
+E[M_n | F_{n-1}] = E[exp(theta X_{n-1}) / (p exp(theta) + q exp(-theta))^n] exp(theta Y_n).
+E[M_n | F_{n-1}] = M_{n-1} E[exp(theta Y_n)].
+E[exp(theta Y_n)] = 2/5 exp(theta) + 3/5.
+
+Step 4: Conclude.
+E[M_n | F_{n-1}] = M_{n-1} (2/5 exp(theta) + 3/5).
+For this to equal M_n, the denominator would need to equal 1. Since p = 2/5 and q = 3/5, p exp(theta) + q exp(-theta) does not equal 1.
+
+Final answer:
+<answer>
+{""is_martingale"": false}
+</answer>",{'is_martingale': False},False
+algorithmic_scaffold_v2_5,martingale_verification_train_2610009,martingale_verification,quadratic_compensation,3,binary,False,"Let X_n = Y_1 + ... + Y_n for independent increments with the increments have mean 0 and standard deviation 1. Consider M_n = X_n^2 - 2 n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': False},"Step 1: Identify the required compensation.
+The required compensation is a centered walk, so X_n^2 - 2n is a martingale exactly when the centered walk is a martingale.
+Step 2: Check the martingale directly.
+For a centered walk, X_n^2 - 2n is a martingale.
+Step 3: Conclude.
+is_martingale = true.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},False
+algorithmic_scaffold_v2_5,optional_stopping_validity_train_2800004,optional_stopping_validity,bounded_time_valid,1,binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 0 and natural filtration F_n. Let T = inf{k >= 0 : X_k = 3} and tau = min(T, 8). A solution claims that optional stopping gives E[X_tau] = E[X_0]. Is this use of optional stopping justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"Step 1: Identify the optional-stopping issue.
+Before using E[M_tau] = E[M_0], check the stopping-time hypotheses.
+
+Step 2: Check the condition in this problem.
+tau = min(T, 8).
+X_0 = 0.
+T = inf{k : X_k = 3}.
+The optional-stopping issue does not apply in this problem.
+
+Step 3: Conclude.
+valid = true.
+
+Final answer:
+<answer>
+{""valid"": true}
+</answer>",{'valid': True},True
+algorithmic_scaffold_v2_5,optional_stopping_validity_train_2820009,optional_stopping_validity,finite_state_hitting_valid,3,binary,False,"Let (S_n) be a simple symmetric random walk on {0, ..., 6}, absorbed when it hits 0 or 6, with S_0 = 2. Let tau be the absorption time. A solution applies optional stopping to the bounded stopped process to conclude E[S_tau] = 2. Is this use justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"Step 1: Identify the optional-stopping issue.
+Before using E[M_tau] = E[M_0], check the stopping-time hypotheses.
+
+Step 2: Check the condition in this problem.
+tau is an unbounded first-hitting time, and no extra integrability condition is given.
+
+Step 3: Conclude.
+valid = false.
+
+Final answer:
+<answer>
+{""valid"": false}
+</answer>",{'valid': False},False
+algorithmic_scaffold_v2_5,optional_stopping_validity_train_2810004,optional_stopping_validity,unbounded_first_hit_invalid,2,binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 0. Let tau = inf{n >= 0 : S_n = 3}. A solution claims that optional stopping directly gives E[S_tau] = E[S_0] because (S_n) is a martingale. Is this use justified as stated? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': False},"Step 1: Identify the optional-stopping issue.
+Before using E[M_tau] = E[M_0], check the stopping-time hypotheses.
+
+Step 2: Check the condition in this problem.
+tau is an unbounded first-hitting time, and no extra integrability condition is given.
+
+Step 3: Conclude.
+valid = false.
+
+Final answer:
+<answer>
+{""valid"": false}
+</answer>",{'valid': False},True
+algorithmic_scaffold_v2_5,stopped_process_expectation_train_2400004,stopped_process_expectation,bounded_walk_expectation,1,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = -3. Let T = inf{k >= 0 : S_k = 0} and tau = min(T, 8). Compute E[S_tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '-3'},"Step 1: Identify the stopped process.
+The process is the simple symmetric random walk (S_n), and tau = min(T, 8).
+Because tau has a deterministic cap, tau is bounded.
+
+Step 2: Extract the starting value.
+S_0 = -3. The target level 0 does not change the optional-stopping value.
+
+Step 3: Apply optional stopping directly.
+E[S_tau] = E[S_0] = -3.
+
+Final answer:
+<answer>
+{""value"": ""-3""}
+</answer>",{'value': '-3'},True
+algorithmic_scaffold_v2_5,stopped_process_expectation_train_2410004,stopped_process_expectation,quadratic_fixed_horizon,2,non_binary,False,"Let S_n = -3 + Y_1 + ... + Y_n, where P(Y_k = 1) = P(Y_k = -1) = 1/2 and the increments are independent. Compute E[S_3^2]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '12'},"Step 1: Identify the fixed-time second-moment task.
+We need E[S_3^2] for a centered independent-increment walk.
+
+Step 2: Extract the parameters.
+S_0 = -3; n = 3; increments are +1 or -1 with probability 1/2 each.
+The variance of one increment is sigma^2 = (1)^2 = 1.
+
+Step 3: Select the formula.
+E[S_n^2] = S_0^2 + n sigma^2.
+
+Step 4: Do the arithmetic in small pieces.
+S_0^2 = (-3)^2 = 9.
+n sigma^2 = 3 * 1 = 3.
+Total = 9 + 3 = 12.
+
+Final answer:
+<answer>
+{""value"": ""12""}
+</answer>",{'value': '12'},True
+algorithmic_scaffold_v2_5,stopped_process_expectation_train_2420010,stopped_process_expectation,stopped_martingale_value,3,non_binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 2. Let T = inf{k >= 0 : X_k = 5} and tau = min(T, 6). Compute E[X_tau^2 - tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '4'},"Step 1: Identify the stopped quadratic martingale task.
+The requested expression is E[X_tau^2 - tau]. Do not compute E[X_tau^2] and E[tau] separately.
+
+Step 2: Extract the bounded stopping time.
+X_0 = 2; target level 5; tau = min(T, 6).
+Since tau is capped by 6, optional stopping applies.
+
+Step 3: Use the martingale directly.
+For a simple symmetric random walk, M_n = X_n^2 - n is a martingale.
+Therefore E[M_tau] = E[X_tau^2] - E[tau] = E[X_tau^2] - tau.
+
+Step 4: Conclude.
+E[X_tau^2] - tau = M_tau.
+
+Final answer:
+<answer>
+{""value"": ""M_tau""}
+</answer>",{'value': 'M_tau'},False
+algorithmic_scaffold_v2_5,hitting_time_expectation_train_2220010,hitting_time_expectation,biased_boundaries_zero_a,3,non_binary,False,"Let (S_n) be a nearest-neighbor random walk on the integers with S_0 = 6, P(S_(n+1) = S_n + 1 | F_n) = 2/3, and P(S_(n+1) = S_n - 1 | F_n) = 1/3. Let tau = inf{n >= 0 : S_n in {0, 7}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '360/127'},"Step 1: Identify the walk type.
+The walk is a symmetric walk, and the interval is {0,...,7}.
+
+Step 2: Extract the interval parameters.
+Lower boundary a = 0; upper boundary b = 7; start x = 6.
+
+Step 3: Select the formula.
+For the symmetric walk, E_x[tau] = (x-a)(b-x).
+
+Step 4: Compute each factor.
+x-a = 6 - 0 = 6.
+b-x = 7 - 6 = 1.
+
+Step 5: Multiply.
+E_x[tau] = 6 * 1 = 6.
+
+Final answer:
+<answer>
+{""expected_time"": ""6""}
+</answer>",{'expected_time': '6'},False
+algorithmic_scaffold_v2_5,hitting_time_expectation_train_2200005,hitting_time_expectation,symmetric_boundaries_zero_a,1,non_binary,False,"Let (X_n) be a simple symmetric random walk on the integers with X_0 = 3. Let tau = inf{n >= 0 : X_n in {0, 5}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '6'},"Step 1: Identify the walk type.
+The walk is simple symmetric, so p = q = 1/2. Use the symmetric finite-interval formula.
+
+Step 2: Extract the interval parameters.
+Lower boundary a = 0; upper boundary b = 5; start x = 3.
+
+Step 3: Select the formula.
+For the symmetric walk, E_x[tau] = (x-a)(b-x).
+
+Step 4: Compute each factor.
+x-a = 3 - (0) = 3.
+b-x = 5 - (3) = 2.
+
+Step 5: Multiply.
+E_x[tau] = 3 * 2 = 6.
+
+Final answer:
+<answer>
+{""expected_time"": ""6""}
+</answer>",{'expected_time': '6'},True
+algorithmic_scaffold_v2_5,hitting_time_expectation_train_2210005,hitting_time_expectation,symmetric_shifted_boundaries,2,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = -4. Let tau be the first time the walk hits either -5 or -1. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '3'},"Step 1: Identify the walk type.
+The walk is simple symmetric, so p = q = 1/2. Use the symmetric finite-interval formula.
+
+Step 2: Extract the interval parameters.
+Lower boundary a = -5; upper boundary b = -1; start x = -4.
+
+Step 3: Select the formula.
+For the symmetric walk, E_x[tau] = (x-a)(b-x).
+
+Step 4: Compute each factor.
+x-a = -4 - (-5) = 1.
+b-x = -1 - (-4) = 3.
+
+Step 5: Multiply.
+E_x[tau] = 1 * 3 = 3.
+
+Final answer:
+<answer>
+{""expected_time"": ""3""}
+</answer>",{'expected_time': '3'},True
+algorithmic_scaffold_v2_5,martingale_verification_train_2600005,martingale_verification,centered_walk_basic,1,binary,False,"Let S_0 = 0 and S_n = Y_1 + ... + Y_n, where the Y_k are independent and P(Y_k = 1) = P(Y_k = -1) = 1/2. With respect to the natural filtration, is (S_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Step 1: Identify the martingale test.
+Check whether E[S_(n+1) | F_n] = S_n.
+
+Step 2: Compute the conditional increment mean.
+E[S_(n+1) | F_n] = E[Y_(n+1) + S_n | F_n] = E[Y_(n+1)] + E[S_n | F_n] = (1/2)(1) + (1/2)(0) = 1/2.
+
+Step 3: Compare with the stopped value.
+S_(n+1) is not equal to the conditional increment mean.
+
+Final answer:
+<answer>
+{""is_martingale"": false}
+</answer>",{'is_martingale': False},False
+algorithmic_scaffold_v2_5,martingale_verification_train_2620009,martingale_verification,exponential_compensation,3,binary,False,"Let X_n = Y_1 + ... + Y_n, where the Y_k are independent with P(Y_k = 1) = 1/3 and P(Y_k = -1) = 2/3. For fixed lambda, consider M_n = exp(lambda X_n) / (exp(lambda))^n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': False},"Step 1: Identify the required exponential compensation.
+The denominator is (exp(lambda))^{n} = exp(lambda n).
+
+Step 2: Compute the one-step test.
+E[M_{n+1} | F_n] = E[exp(lambda X_{n+1}) / exp(lambda)^{n+1} | F_n]
+Simplify the expression inside the conditional mean.
+E[exp(lambda X_n + lambda Y_{n+1}) / exp(lambda)^{n+1} | F_n]
+Distribute the lambda in the numerator.
+E[exp(lambda X_n) exp(lambda Y_{n+1}) / exp(lambda)^{n+1} | F_n]
+Simplify the denominator.
+E[exp(lambda X_n) / exp(lambda)^n | F_n] = M_n.
+
+Step 3: Conclude.
+is_martingale = true.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},False
+algorithmic_scaffold_v2_5,martingale_verification_train_2610011,martingale_verification,quadratic_compensation,3,binary,False,"Let X_n = Y_1 + ... + Y_n for independent increments with P(Y_k = 2) = P(Y_k = -2) = 1/2. Consider M_n = X_n^2 - 5 n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': False},"Step 1: Identify the required compensation.
+For a centered walk, X_n^2 - c n is a martingale exactly when c = Var(Y_1).
+
+Step 2: Extract the variance.
+Var(Y_1) = E(Y_1^2) - (E(Y_1))^2 = (2^2)(1/2) - (0)^2 = 4.
+
+Step 3: Compare with the proposed test.
+Proposed test is c = 5.
+
+Step 4: Conclude.
+is_martingale = false.
+
+Final answer:
+<answer>
+{""is_martingale"": false}
+</answer>",{'is_martingale': False},True
+algorithmic_scaffold_v2_5,optional_stopping_validity_train_2800005,optional_stopping_validity,bounded_time_valid,1,binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 0 and natural filtration F_n. Let T = inf{k >= 0 : S_k = 1} and tau = min(T, 20). A solution claims that optional stopping gives E[S_tau] = E[S_0]. Is this use of optional stopping justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"Step 1: Identify the optional-stopping issue.
+Before using E[M_tau] = E[M_0], check the stopping-time hypotheses.
+
+Step 2: Check the condition in this problem.
+tau = min(T, 20).
+S_0 = 0, target level = 1, and tau has a deterministic cap.
+
+Step 3: Conclude.
+valid = false.
+
+Final answer:
+<answer>
+{""valid"": false}
+</answer>",{'valid': False},False
+algorithmic_scaffold_v2_5,optional_stopping_validity_train_2820010,optional_stopping_validity,finite_state_hitting_valid,3,binary,False,"Let (S_n) be a simple symmetric random walk on {0, ..., 10}, absorbed when it hits 0 or 10, with S_0 = 8. Let tau be the absorption time. A solution applies optional stopping to the bounded stopped process to conclude E[S_tau] = 8. Is this use justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"Step 1: Identify the optional-stopping issue.
+Before using E[M_tau] = E[M_0], check the stopping-time hypotheses.
+
+Step 2: Check the condition in this problem.
+tau is an unbounded first-hitting time, and no extra integrability condition is given.
+
+Step 3: Conclude.
+valid = false.
+
+Final answer:
+<answer>
+{""valid"": false}
+</answer>",{'valid': False},False
+algorithmic_scaffold_v2_5,optional_stopping_validity_train_2810005,optional_stopping_validity,unbounded_first_hit_invalid,2,binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 0. Let tau = inf{n >= 0 : X_n = 4}. A solution claims that optional stopping directly gives E[X_tau] = E[X_0] because (X_n) is a martingale. Is this use justified as stated? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': False},"Step 1: Identify the optional-stopping issue.
+Before using E[M_tau] = E[M_0], check the stopping-time hypotheses.
+
+Step 2: Check the condition in this problem.
+tau is an unbounded first-hitting time, and no extra integrability condition is given.
+
+Step 3: Conclude.
+valid = false.
+
+Final answer:
+<answer>
+{""valid"": false}
+</answer>",{'valid': False},True
+algorithmic_scaffold_v2_5,stopped_process_expectation_train_2400005,stopped_process_expectation,bounded_walk_expectation,1,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 1. Let T = inf{k >= 0 : S_k = 5} and tau = min(T, 20). Compute E[S_tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '1'},"Step 1: Identify the stopped process.
+The process is the simple symmetric random walk (S_n), and tau = min(T, 20).
+Because tau has a deterministic cap, tau is bounded.
+
+Step 2: Extract the starting value.
+S_0 = 1. The target level 5 does not change the optional-stopping value.
+
+Step 3: Apply optional stopping directly.
+E[S_tau] = E[S_0] = 1.
+
+Final answer:
+<answer>
+{""value"": ""1""}
+</answer>",{'value': '1'},True
+algorithmic_scaffold_v2_5,stopped_process_expectation_train_2410005,stopped_process_expectation,quadratic_fixed_horizon,2,non_binary,False,"Let X_n = 2 + Y_1 + ... + Y_n, where P(Y_k = 5) = P(Y_k = -5) = 1/2 and the increments are independent. Compute E[X_5^2]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '129'},"Step 1: Identify the fixed-time second-moment task.
+We need E[X_5^2] for a centered independent-increment walk.
+
+Step 2: Extract the parameters.
+X_0 = 2; n = 5; increments are +5 or -5 with probability 1/2 each.
+The variance of one increment is sigma^2 = (5)^2 = 25.
+
+Step 3: Select the formula.
+E[X_n^2] = X_0^2 + n sigma^2.
+
+Step 4: Do the arithmetic in small pieces.
+X_0^2 = (2)^2 = 4.
+n sigma^2 = 5 * 25 = 125.
+Total = 4 + 125 = 129.
+
+Final answer:
+<answer>
+{""value"": ""129""}
+</answer>",{'value': '129'},True
+algorithmic_scaffold_v2_5,stopped_process_expectation_train_2420012,stopped_process_expectation,stopped_martingale_value,3,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 0. Let T = inf{k >= 0 : S_k = 4} and tau = min(T, 4). Compute E[S_tau^2 - tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '0'},"Step 1: Identify the stopped quadratic martingale task.
+The requested expression is E[S_tau^2 - tau]. Do not compute E[S_tau^2] and E[tau] separately.
+
+Step 2: Extract the bounded stopping time.
+The process is the simple symmetric random walk, and tau = min(T, 4).
+
+Step 3: Compute the required expression.
+E[S_tau^2 - tau] = E[S_tau^2] - E[tau].
+
+Step 4: Select the bounded stopping time.
+S_0 = 0; target level = 4; tau = min(T, 4).
+
+Step 5: Conclude.
+E[S_tau^2 - tau] = E[S_tau^2] - E[tau].
+
+Final answer:
+<answer>
+{""value"": ""E[S_tau^2] - E[tau]""}
+</answer>",{'value': 'E[S_tau^2] - E[tau]'},False
+algorithmic_scaffold_v2_5,hitting_time_expectation_train_2220014,hitting_time_expectation,biased_boundaries_zero_a,3,non_binary,False,"Let (S_n) be a nearest-neighbor random walk on the integers with S_0 = 6, P(S_(n+1) = S_n + 1 | F_n) = 2/5, and P(S_(n+1) = S_n - 1 | F_n) = 3/5. Let tau = inf{n >= 0 : S_n in {0, 7}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '15220/2059'},"Step 1: Identify the walk type.
+The walk is a symmetric walk, and the probability of +1 or -1 is 2/5 and 3/5, respectively.
+
+Step 2: Extract the interval parameters.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 3: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 4: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 5: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 6: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 7: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 8: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 9: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 10: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 11: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 12: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 13: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 14: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 15: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 16: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 17: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 18: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 19: Select the interval.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 20: Select the interval.
+The lower boundary is",,False
+algorithmic_scaffold_v2_5,hitting_time_expectation_train_2200006,hitting_time_expectation,symmetric_boundaries_zero_a,1,non_binary,False,"Let (X_n) be a simple symmetric random walk on the integers with X_0 = 2. Let tau = inf{n >= 0 : X_n in {0, 5}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '6'},"Step 1: Identify the walk type.
+The walk is simple symmetric, so p = q = 1/2. Use the symmetric finite-interval formula.
+
+Step 2: Extract the interval parameters.
+Lower boundary a = 0; upper boundary b = 5; start x = 2.
+
+Step 3: Select the formula.
+For the symmetric walk, E_x[tau] = (x-a)(b-x).
+
+Step 4: Compute each factor.
+x-a = 2 - 0 = 2.
+b-x = 5 - 2 = 3.
+
+Step 5: Multiply.
+E_x[tau] = 2 * 3 = 6.
+
+Final answer:
+<answer>
+{""expected_time"": ""6""}
+</answer>",{'expected_time': '6'},True
+algorithmic_scaffold_v2_5,hitting_time_expectation_train_2210006,hitting_time_expectation,symmetric_shifted_boundaries,2,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 9. Let tau be the first time the walk hits either 1 or 11. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '16'},"Step 1: Identify the walk type.
+The walk is simple symmetric, so p = q = 1/2. Use the symmetric finite-interval formula.
+
+Step 2: Extract the interval parameters.
+Lower boundary a = 1; upper boundary b = 11; start x = 9.
+
+Step 3: Select the formula.
+For the symmetric walk, E_x[tau] = (x-a)(b-x).
+
+Step 4: Compute each factor.
+x-a = 9 - 1 = 8.
+b-x = 11 - 9 = 2.
+
+Step 5: Multiply.
+E_x[tau] = 8 * 2 = 16.
+
+Final answer:
+<answer>
+{""expected_time"": ""16""}
+</answer>",{'expected_time': '16'},True
+algorithmic_scaffold_v2_5,martingale_verification_train_2600006,martingale_verification,centered_walk_basic,1,binary,False,"Let S_0 = 0 and S_n = Y_1 + ... + Y_n, where the Y_k are independent and P(Y_k = 3) = P(Y_k = -3) = 1/2. With respect to the natural filtration, is (S_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Step 1: Identify the martingale test.
+Check whether E[S_(n+1) | F_n] = S_n.
+
+Step 2: Compute the conditional increment mean.
+S_(n+1) - S_n = Y_(n+1).
+E[S_(n+1) | F_n] = E[Y_(n+1)] = 0.
+
+Step 3: Conclude.
+E[S_(n+1) | F_n] = 0 = S_n.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+algorithmic_scaffold_v2_5,martingale_verification_train_2620012,martingale_verification,exponential_compensation,3,binary,False,"Let S_n = Y_1 + ... + Y_n, where the Y_k are independent with P(Y_k = 1) = 3/5 and P(Y_k = -1) = 2/5. For fixed theta, consider M_n = exp(theta S_n) / (p exp(theta) + q exp(-theta))^n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Step 1: Identify the required exponential compensation.
+The denominator is p exp(theta) + q exp(-theta).
+Do not compute the denominator.
+
+Step 2: Check the required martingale test.
+For a centered walk, check the compensator.
+
+Step 3: Check the required martingale test.
+Check the required martingale test.
+
+Step 4: Conclude.
+is_martingale = true.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+algorithmic_scaffold_v2_5,martingale_verification_train_2610012,martingale_verification,quadratic_compensation,3,binary,False,"Let X_n = Y_1 + ... + Y_n for independent increments with P(Y_k = 4) = P(Y_k = -4) = 1/2. Consider M_n = X_n^2 - 16 n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Step 1: Identify the required compensation.
+For a centered walk, X_n^2 - c n is a martingale exactly when c = Var(Y_1).
+
+Step 2: Extract the variance.
+Var(Y_1) = E(Y_1^2) - (E(Y_1))^2 = 0.
+
+Step 3: Conclude.
+is_martingale = true.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+algorithmic_scaffold_v2_5,optional_stopping_validity_train_2800006,optional_stopping_validity,bounded_time_valid,1,binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 0 and natural filtration F_n. Let T = inf{k >= 0 : S_k = 1} and tau = min(T, 3). A solution claims that optional stopping gives E[S_tau] = E[S_0]. Is this use of optional stopping justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"Step 1: Identify the optional-stopping issue.
+Before using E[M_tau] = E[M_0], check the stopping-time hypotheses.
+
+Step 2: Check the condition in this problem.
+tau = min(T, 3).
+Since tau is capped by a deterministic horizon, tau is bounded.
+
+Step 3: Check the condition in this problem.
+S_0 = 0, so no drift.
+
+Step 4: Conclude.
+valid = true.
+
+Final answer:
+<answer>
+{""valid"": true}
+</answer>",{'valid': True},True
+algorithmic_scaffold_v2_5,optional_stopping_validity_train_2820012,optional_stopping_validity,finite_state_hitting_valid,3,binary,False,"Let (X_n) be a simple symmetric random walk on {0, ..., 5}, absorbed when it hits 0 or 5, with X_0 = 2. Let tau be the absorption time. A solution applies optional stopping to the bounded stopped process to conclude E[X_tau] = 2. Is this use justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"Step 1: Identify the optional-stopping issue.
+Before using E[M_tau] = E[M_0], check the stopping-time hypotheses.
+
+Step 2: Check the condition in this problem.
+tau is an unbounded first-hitting time, and no extra integrability condition is given.
+
+Step 3: Conclude.
+valid = false.
+
+Final answer:
+<answer>
+{""valid"": false}
+</answer>",{'valid': False},False
+algorithmic_scaffold_v2_5,optional_stopping_validity_train_2810006,optional_stopping_validity,unbounded_first_hit_invalid,2,binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 0. Let tau = inf{n >= 0 : X_n = 2}. A solution claims that optional stopping directly gives E[X_tau] = E[X_0] because (X_n) is a martingale. Is this use justified as stated? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': False},"Step 1: Identify the optional-stopping issue.
+Before using E[M_tau] = E[M_0], check the stopping-time hypotheses.
+
+Step 2: Check the condition in this problem.
+tau is an unbounded first-hitting time, and no extra integrability condition is given.
+
+Step 3: Conclude.
+valid = false.
+
+Final answer:
+<answer>
+{""valid"": false}
+</answer>",{'valid': False},True
+algorithmic_scaffold_v2_5,stopped_process_expectation_train_2400006,stopped_process_expectation,bounded_walk_expectation,1,non_binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 0. Let T = inf{k >= 0 : X_k = 3} and tau = min(T, 20). Compute E[X_tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '0'},"Step 1: Identify the stopped process.
+The process is the simple symmetric random walk (X_n), and tau = min(T, 20).
+Because tau has a deterministic cap, tau is bounded.
+
+Step 2: Extract the starting value.
+X_0 = 0. The target level 3 does not change the optional-stopping value.
+
+Step 3: Apply optional stopping directly.
+E[X_tau] = E[X_0] = 0.
+
+Final answer:
+<answer>
+{""value"": ""0""}
+</answer>",{'value': '0'},True
+algorithmic_scaffold_v2_5,stopped_process_expectation_train_2410006,stopped_process_expectation,quadratic_fixed_horizon,2,non_binary,False,"Let X_n = 3 + Y_1 + ... + Y_n, where P(Y_k = 5) = P(Y_k = -5) = 1/2 and the increments are independent. Compute E[X_3^2]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '84'},"Step 1: Identify the fixed-time second-moment task.
+The task is to compute E[X_3^2], and X_0 = 3; X_1 = 3 + Y_1; X_2 = 3 + Y_1 + Y_2; X_3 = 3 + Y_1 + Y_2 + Y_3.
+
+Step 2: Extract the parameters.
+P(Y_k = 5) = 1/2; and similarly for -5.
+
+Step 3: Select the fixed-time second-moment.
+E[X_3^2] = E[(X_0 + X_1 + X_2 + X_3)^2].
+
+Step 4: Select the parameters.
+X_0 = 3; n = 3; increments are +5 or -5 with probability 1/2 each.
+
+Step 5: Select the parameters.
+X_0 = 3; n = 3; increments are +5 or -5 with probability 1/2 each.
+
+Step 6: Select the parameters.
+X_0 = 3; n = 3; increments are +5 or -5 with probability 1/2 each.
+
+Step 7: Select the parameters.
+X_0 = 3; n = 3; increments are +5 or -5 with probability 1/2 each.
+
+Step 8: Select the parameters.
+X_0 = 3; n = 3; increments are +5 or -5 with probability 1/2 each.
+
+Step 9: Select the parameters.
+X_0 = 3; n = 3; increments are +5 or -5 with probability 1/2 each.
+
+Step 10: Select the parameters.
+X_0 = 3; n = 3; increments are +5 or -5 with probability 1/2 each.
+
+Step 11: Select the parameters.
+X_0 = 3; n = 3; increments are +5 or -5 with probability 1/2 each.
+
+Step 12: Select the parameters.
+X_0 = 3; n = 3; increments are +5 or -5 with probability 1/2 each.
+
+Step 13: Select the parameters.
+X_0 = 3; n = 3; increments are +5 or -5 with probability 1/2 each.
+
+Step 14: Select the parameters.
+X_0 =",,False
+algorithmic_scaffold_v2_5,stopped_process_expectation_train_2420014,stopped_process_expectation,stopped_martingale_value,3,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = -2. Let T = inf{k >= 0 : S_k = 2} and tau = min(T, 6). Compute E[S_tau^2 - tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '4'},"Step 1: Identify the stopped quadratic martingale task.
+The requested expression is E[S_tau^2 - tau]. Do not compute E[S_tau^2] and E[tau] separately.
+
+Step 2: Extract the bounded stopping time.
+The process is the simple symmetric random walk, and tau = min(T, 6).
+
+Step 3: Compute the required expression.
+E[S_tau^2 - tau] = E[S_tau^2] - E[tau].
+
+Step 4: Select the bounded stopping time.
+S_0 = -2; target level = +2; tau = min(T, 6).
+
+Step 5: Select the optional-stopping directly.
+E[S_tau^2 - tau] = E[S_tau^2] - E[tau].
+
+Step 6: Conclude.
+S_0 = -2; target level = +2; tau = min(T, 6).
+
+Final answer:
+<answer>
+{""value"": ""E[S_tau^2] - E[tau]""}
+</answer>",{'value': 'E[S_tau^2] - E[tau]'},False
+algorithmic_scaffold_v2_5,hitting_time_expectation_train_2220018,hitting_time_expectation,biased_boundaries_zero_a,3,non_binary,False,"Let (S_n) be a nearest-neighbor random walk on the integers with S_0 = 3, P(S_(n+1) = S_n + 1 | F_n) = 3/5, and P(S_(n+1) = S_n - 1 | F_n) = 2/5. Let tau = inf{n >= 0 : S_n in {0, 4}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '33/13'},"Step 1: Identify the walk type.
+The walk is a nearest-neighbor walk on the integers, so the probability of the walk either increasing or decreasing by 1 is 3/5 and 2/5, respectively.
+
+Step 2: Extract the start and target positions.
+S_0 = 3; target positions are {0, 4}.
+
+Step 3: Apply the symmetric finite-interval formula.
+For a walk on {0,...,N} with r = 3/5 and q = 2/5, and the lower boundary 0, and the target level b = 0 or b = 4.
+
+For the lower boundary 0, and target level b = 0, the formula does not apply.
+
+For the lower boundary 0, and target level b = 4, the formula gives E_x[tau] = (x - b)(1/r).
+
+Step 4: Compute each factor.
+x = 3; b = 4; r = 3/5.
+x - b = 3 - 4 = -1.
+r = 3/5.
+Multiply each factor: -1 * 3/5 = -3/5.
+
+Step 5: Convert the factor.
+The expected terminal position is -3/5.
+
+Step 6: Use the symmetric formula.
+For a lower boundary 0, target level b = 4, and r = 3/5, and q = 2/5, and the symmetric formula gives E_x[tau] = -3/5.
+
+Final answer:
+<answer>
+{""expected_time"": ""-3/5""}
+</answer>",{'expected_time': '-3/5'},False
+algorithmic_scaffold_v2_5,hitting_time_expectation_train_2200007,hitting_time_expectation,symmetric_boundaries_zero_a,1,non_binary,False,"Let (S_n) be a simple symmetric random walk on the integers with S_0 = 2. Let tau = inf{n >= 0 : S_n in {0, 5}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '6'},"Step 1: Identify the walk type.
+The walk is simple symmetric, so p = q = 1/2. Use the symmetric finite-interval formula.
+
+Step 2: Extract the interval parameters.
+Lower boundary a = 0; upper boundary b = 5; start x = 2.
+
+Step 3: Select the formula.
+For the symmetric walk, E_x[tau] = (x-a)(b-x).
+
+Step 4: Compute each factor.
+x-a = 2 - 0 = 2.
+b-x = 5 - 2 = 3.
+
+Step 5: Multiply.
+E_x[tau] = 2 * 3 = 6.
+
+Final answer:
+<answer>
+{""expected_time"": ""6""}
+</answer>",{'expected_time': '6'},True
+algorithmic_scaffold_v2_5,hitting_time_expectation_train_2210007,hitting_time_expectation,symmetric_shifted_boundaries,2,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = -1. Let tau be the first time the walk hits either -3 or 2. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '6'},"Step 1: Identify the walk type.
+The walk is simple symmetric, so p = q = 1/2. Use the symmetric finite-interval formula.
+
+Step 2: Extract the interval parameters.
+Lower boundary a = -3; upper boundary b = 2; start x = -1.
+
+Step 3: Select the formula.
+For the symmetric walk, E_x[tau] = (x-a)(b-x).
+
+Step 4: Compute each factor.
+x-a = -1 - (-3) = 2.
+b-x = 2 - (-1) = 3.
+
+Step 5: Multiply.
+E_x[tau] = 2 * 3 = 6.
+
+Final answer:
+<answer>
+{""expected_time"": ""6""}
+</answer>",{'expected_time': '6'},True
+algorithmic_scaffold_v2_5,martingale_verification_train_2600007,martingale_verification,centered_walk_basic,1,binary,False,"Let S_0 = 0 and S_n = Y_1 + ... + Y_n, where the Y_k are independent and P(Y_k = 1) = P(Y_k = -1) = 1/2. With respect to the natural filtration, is (S_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Step 1: Identify the martingale test.
+Check whether E[S_(n+1) | F_n] = S_n.
+
+Step 2: Compute the conditional increment mean.
+E[S_(n+1) | F_n] = E[Y_(n+1) + S_n | F_n] = E[Y_(n+1)] + E[S_n | F_n] = (1/2)(1) + (1/2)(0) = 1/2.
+
+Step 3: Compare with the stopped value.
+S_(n+1) is not equal to the conditional increment mean.
+
+Final answer:
+<answer>
+{""is_martingale"": false}
+</answer>",{'is_martingale': False},False
+algorithmic_scaffold_v2_5,martingale_verification_train_2620014,martingale_verification,exponential_compensation,3,binary,False,"Let X_n = Y_1 + ... + Y_n, where the Y_k are independent with P(Y_k = 1) = 3/5 and P(Y_k = -1) = 2/5. For fixed theta, consider M_n = exp(theta X_n) / (exp(theta))^n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': False},"Step 1: Identify the martingale test.
+For a process (M_n) to be a martingale, the required test is E[M_{n+1} | F_n] = M_n.
+
+Step 2: Compute the conditional increment.
+M_n = exp(theta X_n) / (exp(theta))^n = exp(theta X_n - n theta).
+
+E[M_{n+1} | F_n] = E[exp(theta X_{n+1}) / (exp(theta))^{n+1}] = E[exp(theta (X_n + Y_{n+1})) / (exp(theta))^{n+1}] = E[exp(theta X_n + theta Y_{n+1}) / (exp(theta))^{n+1}] = E[exp(theta X_n) / (exp(theta))^{n} * exp(theta Y_{n+1}) / exp(theta)] = M_n E[exp(theta Y_{n+1})].
+
+Step 3: Compute the factor.
+E[exp(theta Y)] = E[exp(theta (1))]) = exp(theta).
+
+Step 4: Conclude.
+E[M_{n+1} | F_n] = M_n exp(theta).
+
+For this to equal M_n, the factor exp(theta) would need to equal 1. Since this is not the case, no.
+
+Final answer:
+<answer>
+{""is_martingale"": false}
+</answer>",{'is_martingale': False},True
+algorithmic_scaffold_v2_5,martingale_verification_train_2610013,martingale_verification,quadratic_compensation,3,binary,False,"Let S_n = Y_1 + ... + Y_n for independent increments with the increments have mean 0 and standard deviation 1. Consider M_n = S_n^2 - 1 n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Step 1: Identify the required compensation.
+The required compensation is a second-moment martingale, and the required compensation is a centered walk.
+
+Step 2: Check the martingale directly.
+For a centered walk, X_n^2 - c n is a martingale exactly when c = Var(X_n).
+
+Step 3: Conclude.
+is_martingale = true.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+algorithmic_scaffold_v2_5,optional_stopping_validity_train_2800007,optional_stopping_validity,bounded_time_valid,1,binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 0 and natural filtration F_n. Let T = inf{k >= 0 : S_k = 3} and tau = min(T, 3). A solution claims that optional stopping gives E[S_tau] = E[S_0]. Is this use of optional stopping justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"Step 1: Identify the optional-stopping issue.
+Before using E[M_tau] = E[M_0], check the stopping-time hypotheses.
+
+Step 2: Check the condition in this problem.
+tau = min(T, 3).
+T = inf{k : S_k = 3}.
+valid = is tau bounded by a finite state.
+
+Step 3: Conclude.
+valid = true.
+
+Final answer:
+<answer>
+{""valid"": true}
+</answer>",{'valid': True},True
+algorithmic_scaffold_v2_5,optional_stopping_validity_train_2820015,optional_stopping_validity,finite_state_hitting_valid,3,binary,False,"Let (X_n) be a simple symmetric random walk on {0, ..., 5}, absorbed when it hits 0 or 5, with X_0 = 2. Let tau be the absorption time. A solution applies optional stopping to the bounded stopped process to conclude E[X_tau] = 2. Is this use justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"Step 1: Identify the optional-stopping issue.
+Before using E[M_tau] = E[M_0], check the stopping-time hypotheses.
+
+Step 2: Check the condition in this problem.
+tau is an unbounded first-hitting time, and no extra integrability condition is given.
+
+Step 3: Conclude.
+valid = false.
+
+Final answer:
+<answer>
+{""valid"": false}
+</answer>",{'valid': False},False
+algorithmic_scaffold_v2_5,optional_stopping_validity_train_2810007,optional_stopping_validity,unbounded_first_hit_invalid,2,binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 0. Let tau = inf{n >= 0 : S_n = 2}. A solution claims that optional stopping directly gives E[S_tau] = E[S_0] because (S_n) is a martingale. Is this use justified as stated? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': False},"Step 1: Identify the optional-stopping issue.
+Before using E[M_tau] = E[M_0], check the stopping-time hypotheses.
+
+Step 2: Check the condition in this problem.
+tau is an unbounded first-hitting time, and no extra integrability condition is given.
+
+Step 3: Conclude.
+valid = false.
+
+Final answer:
+<answer>
+{""valid"": false}
+</answer>",{'valid': False},True
+algorithmic_scaffold_v2_5,stopped_process_expectation_train_2400007,stopped_process_expectation,bounded_walk_expectation,1,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 2. Let T = inf{k >= 0 : S_k = 5} and tau = min(T, 5). Compute E[S_tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '2'},"Step 1: Identify the stopped process.
+The process is the simple symmetric random walk (S_n), and tau = min(T, 5).
+Because tau has a deterministic cap, tau is bounded.
+
+Step 2: Extract the starting value.
+S_0 = 2. The target level 5 does not change the optional-stopping value.
+
+Step 3: Apply optional stopping directly.
+E[S_tau] = E[S_0] = 2.
+
+Final answer:
+<answer>
+{""value"": ""2""}
+</answer>",{'value': '2'},True
+algorithmic_scaffold_v2_5,stopped_process_expectation_train_2410007,stopped_process_expectation,quadratic_fixed_horizon,2,non_binary,False,"Let S_n = 1 + Y_1 + ... + Y_n, where P(Y_k = 3) = P(Y_k = -3) = 1/2 and the increments are independent. Compute E[S_3^2]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '28'},"Step 1: Identify the fixed-time second-moment task.
+We need E[S_3^2] for a centered independent-increment walk.
+
+Step 2: Extract the parameters.
+S_0 = 1; n = 3; increments are +3 or -3 with probability 1/2 each.
+The variance of one increment is sigma^2 = (3)^2 = 9.
+
+Step 3: Select the formula.
+E[S_n^2] = S_0^2 + n sigma^2.
+
+Step 4: Do the arithmetic in small pieces.
+S_0^2 = 1^2 = 1.
+n sigma^2 = 3 * 9 = 27.
+Total = 1 + 27 = 28.
+
+Final answer:
+<answer>
+{""value"": ""28""}
+</answer>",{'value': '28'},True
+algorithmic_scaffold_v2_5,stopped_process_expectation_train_2420019,stopped_process_expectation,stopped_martingale_value,3,non_binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = -1. Let T = inf{k >= 0 : X_k = 3} and tau = min(T, 8). Compute E[X_tau^2 - tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '1'},"Step 1: Identify the stopped quadratic martingale task.
+The requested expression is E[X_tau^2 - tau]. Do not compute E[X_tau^2] and E[tau] separately.
+
+Step 2: Extract the bounded stopping time.
+X_0 = -1; target level = 3; tau = min(T, 8).
+Since tau is capped by 8, optional stopping applies.
+
+Step 3: Use the martingale directly.
+For a simple symmetric random walk, M_n = X_n^2 - n is a martingale.
+Therefore E[M_tau] = E[X_tau^2] - E[tau] = E[X_tau^2] - tau.
+
+Step 4: Conclude.
+E[X_tau^2] - tau = M_tau.
+
+Final answer:
+<answer>
+{""value"": ""M_tau""}
+</answer>",{'value': 'M_tau'},False
+algorithmic_scaffold_v2_5,hitting_time_expectation_train_2220019,hitting_time_expectation,biased_boundaries_zero_a,3,non_binary,False,"Let (S_n) be a nearest-neighbor random walk on the integers with S_0 = 3, P(S_(n+1) = S_n + 1 | F_n) = 2/3, and P(S_(n+1) = S_n - 1 | F_n) = 1/3. Let tau = inf{n >= 0 : S_n in {0, 7}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '1209/127'},"Step 1: Identify the walk type.
+The walk is a symmetric walk, and the interval is {0,...,7}.
+
+Step 2: Extract the interval parameters.
+Lower boundary a = 0; upper boundary b = 7; start x = 3.
+
+Step 3: Select the formula.
+For the symmetric walk, E_x[tau] = (x-a)(b-x).
+
+Step 4: Compute each factor.
+x-a = 3 - 0 = 3.
+b-x = 7 - 3 = 4.
+
+Step 5: Multiply.
+E_x[tau] = 3 * 4 = 12.
+
+Final answer:
+<answer>
+{""expected_time"": ""12""}
+</answer>",{'expected_time': '12'},False
+algorithmic_scaffold_v2_5,hitting_time_expectation_train_2200008,hitting_time_expectation,symmetric_boundaries_zero_a,1,non_binary,False,"Let (X_n) be a simple symmetric random walk on the integers with X_0 = 2. Let tau = inf{n >= 0 : X_n in {0, 6}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '8'},"Step 1: Identify the walk type.
+The walk is simple symmetric, so p = q = 1/2. Use the symmetric finite-interval formula.
+
+Step 2: Extract the interval parameters.
+Lower boundary a = 0; upper boundary b = 6; start x = 2.
+
+Step 3: Select the formula.
+For the symmetric walk, E_x[tau] = (x-a)(b-x).
+
+Step 4: Compute each factor.
+x-a = 2 - 0 = 2.
+b-x = 6 - 2 = 4.
+
+Step 5: Multiply.
+E_x[tau] = 2 * 4 = 8.
+
+Final answer:
+<answer>
+{""expected_time"": ""8""}
+</answer>",{'expected_time': '8'},True
+algorithmic_scaffold_v2_5,hitting_time_expectation_train_2210008,hitting_time_expectation,symmetric_shifted_boundaries,2,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 6. Let tau be the first time the walk hits either 1 or 9. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '15'},"Step 1: Identify the walk type.
+The walk is simple symmetric, so p = q = 1/2. Use the symmetric finite-interval formula.
+
+Step 2: Extract the interval parameters.
+Lower boundary a = 1; upper boundary b = 9; start x = 6.
+
+Step 3: Select the formula.
+For the symmetric walk, E_x[tau] = (x-a)(b-x).
+
+Step 4: Compute each factor.
+x-a = 6 - (1) = 5.
+b-x = (9) - (6) = 3.
+
+Step 5: Multiply.
+E_x[tau] = 5 * 3 = 15.
+
+Final answer:
+<answer>
+{""expected_time"": ""15""}
+</answer>",{'expected_time': '15'},True
+algorithmic_scaffold_v2_5,martingale_verification_train_2600008,martingale_verification,centered_walk_basic,1,binary,False,"Let X_0 = 0 and X_n = Y_1 + ... + Y_n, where the Y_k are independent and P(Y_k = 1) = P(Y_k = -1) = 1/2. With respect to the natural filtration, is (X_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Step 1: Identify the martingale test.
+Check whether E[X_{n+1} | F_n] = X_n.
+
+Step 2: Compute the conditional increment mean.
+X_{n+1} = X_n + Y_{n+1}.
+E[X_{n+1} | F_n] = E[X_n + Y_{n+1} | F_n] = X_n + E[Y_{n+1}] = X_n + 0 = X_n.
+
+Step 3: Conclude.
+E[X_{n+1} | F_n] = X_n, so is_martingale = true.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+algorithmic_scaffold_v2_5,martingale_verification_train_2620015,martingale_verification,exponential_compensation,3,binary,False,"Let S_n = Y_1 + ... + Y_n, where the Y_k are independent with P(Y_k = 1) = 2/5 and P(Y_k = -1) = 3/5. For fixed theta, consider M_n = exp(theta S_n) / (p exp(theta) + q exp(-theta))^n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Step 1: Identify the required exponential compensation.
+The denominator is p exp(theta) + q exp(-theta).
+Do not compute the denominator.
+
+Step 2: Check the required martingale test.
+For a centered walk, check the compensator.
+
+Step 3: Check the required martingale test.
+Check the required martingale test.
+
+Step 4: Conclude.
+is_martingale = true.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+algorithmic_scaffold_v2_5,martingale_verification_train_2610017,martingale_verification,quadratic_compensation,3,binary,False,"Let X_n = Y_1 + ... + Y_n for independent increments with P(Y_k = 3) = P(Y_k = -3) = 1/2. Consider M_n = X_n^2 - 9 n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Step 1: Identify the required compensation.
+For a centered walk, X_n^2 - c n is a martingale exactly when c = Var(Y_1).
+
+Step 2: Extract the variance.
+Var(Y_1) = E(Y_1^2) - (E(Y_1))^2 = 3^2 (1/2) - (3)(1/2) = 9/2 - 3/2 = 6/2 = 3.
+
+Step 3: Conclude.
+is_martingale = true.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+algorithmic_scaffold_v2_5,optional_stopping_validity_train_2800008,optional_stopping_validity,bounded_time_valid,1,binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 0 and natural filtration F_n. Let T = inf{k >= 0 : S_k = 1} and tau = min(T, 3). A solution claims that optional stopping gives E[S_tau] = E[S_0]. Is this use of optional stopping justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"Step 1: Identify the optional-stopping issue.
+Before using E[M_tau] = E[M_0], check the stopping-time hypotheses.
+
+Step 2: Check the condition in this problem.
+tau = min(T, 3).
+Since tau is capped by a deterministic horizon, tau is bounded.
+
+Step 3: Check the condition in this problem.
+S_0 = 0, so no drift.
+
+Step 4: Conclude.
+valid = true.
+
+Final answer:
+<answer>
+{""valid"": true}
+</answer>",{'valid': True},True
+algorithmic_scaffold_v2_5,optional_stopping_validity_train_2820016,optional_stopping_validity,finite_state_hitting_valid,3,binary,False,"Let (X_n) be a simple symmetric random walk on {0, ..., 4}, absorbed when it hits 0 or 4, with X_0 = 3. Let tau be the absorption time. A solution applies optional stopping to the bounded stopped process to conclude E[X_tau] = 3. Is this use justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"Step 1: Identify the optional-stopping issue.
+Before using E[M_tau] = E[M_0], check the stopping-time hypotheses.
+
+Step 2: Check the condition in this problem.
+tau is the absorption time, so tau is bounded.
+
+Step 3: Conclude.
+valid = true.
+
+Final answer:
+<answer>
+{""valid"": true}
+</answer>",{'valid': True},True
+algorithmic_scaffold_v2_5,optional_stopping_validity_train_2810008,optional_stopping_validity,unbounded_first_hit_invalid,2,binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 0. Let tau = inf{n >= 0 : S_n = 1}. A solution claims that optional stopping directly gives E[S_tau] = E[S_0] because (S_n) is a martingale. Is this use justified as stated? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': False},"Step 1: Identify the optional-stopping issue.
+Before using E[M_tau] = E[M_0], check the stopping-time hypotheses.
+
+Step 2: Check the condition in this problem.
+tau is an unbounded first-hitting time, and no extra integrability condition is given.
+
+Step 3: Conclude.
+valid = false.
+
+Final answer:
+<answer>
+{""valid"": false}
+</answer>",{'valid': False},True
+algorithmic_scaffold_v2_5,stopped_process_expectation_train_2400008,stopped_process_expectation,bounded_walk_expectation,1,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = -2. Let T = inf{k >= 0 : S_k = 1} and tau = min(T, 3). Compute E[S_tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '-2'},"Step 1: Identify the stopped process.
+The process is the simple symmetric random walk (S_n), and tau = min(T, 3).
+Because tau has a deterministic cap, tau is bounded.
+
+Step 2: Extract the starting value.
+S_0 = -2. The target level 1 does not change the optional-stopping value.
+
+Step 3: Apply optional stopping directly.
+E[S_tau] = E[S_0] = -2.
+
+Final answer:
+<answer>
+{""value"": ""-2""}
+</answer>",{'value': '-2'},True
+algorithmic_scaffold_v2_5,stopped_process_expectation_train_2410008,stopped_process_expectation,quadratic_fixed_horizon,2,non_binary,False,"Let X_n = -3 + Y_1 + ... + Y_n, where P(Y_k = 3) = P(Y_k = -3) = 1/2 and the increments are independent. Compute E[X_10^2]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '99'},"Step 1: Identify the fixed-time second-moment task.
+The task is to compute E[X_10^2], and X_10 = -3 + Y_1 + ... + Y_10. Do not compute E[X_10^2] in a step-by-step manner.
+
+Step 2: Extract the parameters.
+X_10^2 = (-3)^2 + 2(-3)(S_10) + (S_10)^2, where S_10 = Y_1 + ... + Y_10.
+
+Step 3: Select the parameters.
+E[X_10^2] = E[9] + 2E[-3S_10] + E[S_10^2].
+
+Step 4: Select the parameters.
+E[9] = 9; E[-3S_10] = -3E[S_10]; E[S_10^2] = Var(S_10) + (E[S_10])^2.
+
+Step 5: Select the parameters.
+E[S_10] = 0; Var(S_10) = 10σ^2; σ^2 = Var(Y_1).
+
+Step 6: Select the parameters.
+σ^2 = Var(Y_1) = E[Y_1^2] - (E[Y_1])^2 = 3^2 - 0 = 9.
+
+Step 7: Select the parameters.
+Var(S_10) = 10σ^2 = 10 * 9 = 90; E[S_10^2] = 90 + 0^2 = 90.
+
+Step 8: Select the parameters.
+E[X_10^2] = 9 + 2(-3)(0) + 90 = 990.
+
+Final answer:
+<answer>
+{""value"": ""990""}
+</answer>",{'value': '990'},False
+algorithmic_scaffold_v2_5,stopped_process_expectation_train_2420021,stopped_process_expectation,stopped_martingale_value,3,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = -1. Let T = inf{k >= 0 : S_k = 1} and tau = min(T, 8). Compute E[S_tau^2 - tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '1'},"Step 1: Identify the stopped quadratic martingale task.
+The requested expression is E[S_tau^2 - tau]. Do not compute E[S_tau^2] and E[tau] separately.
+
+Step 2: Extract the bounded stopping time.
+The process is the simple symmetric random walk, and tau = min(T, 8).
+
+Step 3: Use the martingale directly.
+For a martingale, E[M_tau] = E[M_0].
+
+Step 4: Compute the bounded stopping time.
+For a simple symmetric random walk, E[tau] = 8.
+
+Step 5: Conclude.
+E[S_tau^2 - tau] = E[S_tau^2] - E[tau].
+
+Final answer:
+<answer>
+{""value"": ""0""}
+</answer>",{'value': '0'},False
+algorithmic_scaffold_v2_5,hitting_time_expectation_train_2220020,hitting_time_expectation,biased_boundaries_zero_a,3,non_binary,False,"Let (S_n) be a nearest-neighbor random walk on the integers with S_0 = 6, P(S_(n+1) = S_n + 1 | F_n) = 3/5, and P(S_(n+1) = S_n - 1 | F_n) = 2/5. Let tau = inf{n >= 0 : S_n in {0, 7}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '8055/2059'},"Step 1: Identify the walk type.
+The walk is a symmetric walk, and the probability of +1 or -1 is 3/5 and 2/5, respectively.
+
+Step 2: Extract the interval parameters.
+The lower boundary is 0, and the upper boundary is b = 7.
+
+Step 3: Select the formula.
+For the symmetric walk, E_x[tau] = (x-b)(1-p-q).
+
+Step 4: Compute each factor.
+x = 6; b = 7; p = 3/5; q = 2/5.
+x-b = -1; 1-p-q = 1 - 3/5 - 2/5 = 1 - 1 = 0.
+
+Step 5: Multiply.
+E_x[tau] = (-1)(0) = 0.
+
+Final answer:
+<answer>
+{""expected_time"": ""0""}
+</answer>",{'expected_time': '0'},False
+algorithmic_scaffold_v2_5,hitting_time_expectation_train_2200009,hitting_time_expectation,symmetric_boundaries_zero_a,1,non_binary,False,"Let (S_n) be a simple symmetric random walk on the integers with S_0 = 2. Let tau = inf{n >= 0 : S_n in {0, 5}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '6'},"Step 1: Identify the walk type.
+The walk is simple symmetric, so p = q = 1/2. Use the symmetric finite-interval formula.
+
+Step 2: Extract the interval parameters.
+Lower boundary a = 0; upper boundary b = 5; start x = 2.
+
+Step 3: Select the formula.
+For the symmetric walk, E_x[tau] = (x-a)(b-x).
+
+Step 4: Compute each factor.
+x-a = 2 - 0 = 2.
+b-x = 5 - 2 = 3.
+
+Step 5: Multiply.
+E_x[tau] = 2 * 3 = 6.
+
+Final answer:
+<answer>
+{""expected_time"": ""6""}
+</answer>",{'expected_time': '6'},True
+algorithmic_scaffold_v2_5,hitting_time_expectation_train_2210009,hitting_time_expectation,symmetric_shifted_boundaries,2,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 5. Let tau be the first time the walk hits either 1 or 9. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '16'},"Step 1: Identify the walk type.
+The walk is simple symmetric, so p = q = 1/2. Use the symmetric finite-interval formula.
+
+Step 2: Extract the interval parameters.
+Lower boundary a = 1; upper boundary b = 9; start x = 5.
+
+Step 3: Select the formula.
+For the symmetric walk, E_x[tau] = (x-a)(b-x).
+
+Step 4: Compute each factor.
+x-a = 5 - (1) = 4.
+b-x = (9) - (5) = 4.
+
+Step 5: Multiply.
+E_x[tau] = 4 * 4 = 16.
+
+Final answer:
+<answer>
+{""expected_time"": ""16""}
+</answer>",{'expected_time': '16'},True
+algorithmic_scaffold_v2_5,martingale_verification_train_2600009,martingale_verification,centered_walk_basic,1,binary,False,"Let X_0 = 0 and X_n = Y_1 + ... + Y_n, where the Y_k are independent and P(Y_k = 4) = P(Y_k = -4) = 1/2. With respect to the natural filtration, is (X_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Step 1: Identify the martingale test.
+Check whether E[X_{n+1} | F_n] = X_n.
+
+Step 2: Compute the conditional increment mean.
+X_{n+1} = X_n + Y_{n+1}.
+E[X_{n+1} | F_n] = E[X_n + Y_{n+1} | F_n] = X_n + E[Y_{n+1}] = X_n + 0 = X_n.
+
+Step 3: Conclude.
+E[X_{n+1} | F_n] = X_n, so is_martingale = true.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+algorithmic_scaffold_v2_5,martingale_verification_train_2620016,martingale_verification,exponential_compensation,3,binary,False,"Let S_n = Y_1 + ... + Y_n, where the Y_k are independent with P(Y_k = 1) = 2/5 and P(Y_k = -1) = 3/5. For fixed theta, consider M_n = exp(theta S_n) / (p exp(theta) + q exp(-theta))^n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Step 1: Identify the required exponential compensation.
+The denominator is p exp(theta) + q exp(-theta).
+Do not compute the denominator.
+
+Step 2: Check the required martingale test.
+For a centered walk, check the compensator.
+
+Step 3: Check the required martingale test.
+Check the required martingale test.
+
+Step 4: Conclude.
+is_martingale = true.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+algorithmic_scaffold_v2_5,martingale_verification_train_2610020,martingale_verification,quadratic_compensation,3,binary,False,"Let S_n = Y_1 + ... + Y_n for independent increments with the increments have mean 0 and standard deviation 10. Consider M_n = S_n^2 - 100 n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Step 1: Identify the required compensation.
+For a centered walk, X_n^2 - c n is a martingale exactly when c = Var(X_n).
+
+Step 2: Extract the variance.
+The variance of each increment is 10^2 = 100.
+
+Step 3: Compare with the martingale test.
+is_martingale = (X_n^2 - c n) is a martingale exactly when c = 100.
+
+Step 4: Conclude.
+is_martingale = true.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+algorithmic_scaffold_v2_5,optional_stopping_validity_train_2800009,optional_stopping_validity,bounded_time_valid,1,binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 0 and natural filtration F_n. Let T = inf{k >= 0 : S_k = 3} and tau = min(T, 3). A solution claims that optional stopping gives E[S_tau] = E[S_0]. Is this use of optional stopping justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"Step 1: Identify the optional-stopping issue.
+Before using E[M_tau] = E[M_0], check the stopping-time hypotheses.
+
+Step 2: Check the condition in this problem.
+tau = min(T, 3).
+T = inf{k : S_k = 3}.
+valid = is tau bounded by a finite state.
+
+Step 3: Conclude.
+valid = true.
+
+Final answer:
+<answer>
+{""valid"": true}
+</answer>",{'valid': True},True
+algorithmic_scaffold_v2_5,optional_stopping_validity_train_2820017,optional_stopping_validity,finite_state_hitting_valid,3,binary,False,"Let (S_n) be a simple symmetric random walk on {0, ..., 10}, absorbed when it hits 0 or 10, with S_0 = 3. Let tau be the absorption time. A solution applies optional stopping to the bounded stopped process to conclude E[S_tau] = 3. Is this use justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"Step 1: Identify the optional-stopping issue.
+Before using E[M_tau] = E[M_0], check the stopping-time hypotheses.
+
+Step 2: Check the condition in this problem.
+tau is an unbounded first-hitting time, and no extra integrability condition is given.
+
+Step 3: Conclude.
+valid = false.
+
+Final answer:
+<answer>
+{""valid"": false}
+</answer>",{'valid': False},False
+algorithmic_scaffold_v2_5,optional_stopping_validity_train_2810009,optional_stopping_validity,unbounded_first_hit_invalid,2,binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 0. Let tau = inf{n >= 0 : S_n = 4}. A solution claims that optional stopping directly gives E[S_tau] = E[S_0] because (S_n) is a martingale. Is this use justified as stated? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': False},"Step 1: Identify the optional-stopping issue.
+Before using E[M_tau] = E[M_0], check the stopping-time hypotheses.
+
+Step 2: Check the condition in this problem.
+tau is an unbounded first-hitting time, and no extra integrability condition is given.
+
+Step 3: Conclude.
+valid = false.
+
+Final answer:
+<answer>
+{""valid"": false}
+</answer>",{'valid': False},True
+algorithmic_scaffold_v2_5,stopped_process_expectation_train_2400009,stopped_process_expectation,bounded_walk_expectation,1,non_binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = -2. Let T = inf{k >= 0 : X_k = 1} and tau = min(T, 20). Compute E[X_tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '-2'},"Step 1: Identify the stopped process.
+The process is the simple symmetric random walk (X_n), and tau = min(T, 20).
+Because tau has a deterministic cap, tau is bounded.
+
+Step 2: Extract the starting value.
+X_0 = -2. The target level 1 does not change the optional-stopping value.
+
+Step 3: Apply optional stopping directly.
+E[X_tau] = E[X_0] = -2.
+
+Final answer:
+<answer>
+{""value"": ""-2""}
+</answer>",{'value': '-2'},True
+algorithmic_scaffold_v2_5,stopped_process_expectation_train_2410009,stopped_process_expectation,quadratic_fixed_horizon,2,non_binary,False,"Let X_n = -1 + Y_1 + ... + Y_n, where P(Y_k = 2) = P(Y_k = -2) = 1/2 and the increments are independent. Compute E[X_10^2]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '41'},"Step 1: Identify the fixed-time second-moment task.
+We need E[X_10^2] for a centered independent-increment walk.
+
+Step 2: Extract the parameters.
+X_n = -1 + Y_1 + ... + Y_n; n = 10; increments are +2 or -2 with probability 1/2 each.
+The variance of one increment is sigma^2 = (2)^2 = 4.
+
+Step 3: Select the formula.
+E[X_n^2] = (X_0)^2 + n sigma^2.
+
+Step 4: Compute.
+X_0 = -1; n = 10; sigma^2 = 4.
+E[X_10^2] = (-1)^2 + 10 * 4 = 1 + 40 = 41.
+
+Final answer:
+<answer>
+{""value"": ""41""}
+</answer>",{'value': '41'},True
+algorithmic_scaffold_v2_5,stopped_process_expectation_train_2420023,stopped_process_expectation,stopped_martingale_value,3,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 2. Let T = inf{k >= 0 : S_k = 5} and tau = min(T, 12). Compute E[S_tau^2 - tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '4'},"Step 1: Identify the stopped quadratic martingale task.
+The requested expression is E[S_tau^2 - tau]. Do not compute E[S_tau^2] and E[tau] separately.
+
+Step 2: Extract the bounded stopping time.
+The process is the simple symmetric random walk, and tau = min(T, 12).
+
+Step 3: Compute the required expression.
+E[S_tau^2 - tau] = E[S_tau^2] - E[tau].
+
+Step 4: Select the bounded stopping time.
+S_0 = 2; target level = 5; tau = min(T, 12).
+
+Step 5: Select the optional-stopping directly.
+E[S_tau^2 - tau] = E[S_tau^2] - E[tau].
+
+Step 6: Select the optional-stopping.
+S_0 = 2; target level = 5; tau = min(T, 12).
+
+Step 7: Select the optional-stopping.
+E[S_tau^2 - tau] = E[S_tau^2] - E[tau].
+
+Step 8: Select the optional-stopping.
+S_0 = 2; target level = 5; tau = min(T, 12).
+
+Step 9: Select the optional-stopping.
+E[S_tau^2 - tau] = E[S_tau^2] - E[tau].
+
+Step 10: Select the optional-stopping.
+S_0 = 2; target level = 5; tau = min(T, 12).
+
+Step 11: Select the optional-stopping.
+E[S_tau^2 - tau] = E[S_tau^2] - E[tau].
+
+Step 12: Select the optional-stopping.
+S_0 = 2; target level = 5; tau = min(T, 12).
+
+Step 13: Select the optional-stopping.
+E[S_tau^2 - tau] = E[S_tau^2] - E[tau].
+
+Step 14: Select the optional-stopping.
+S_0 = 2; target level = 5; tau = min(T, 12).
+
+Step 15: Select the optional-stopping.
+E[S_tau^2 - tau] = E[S_tau^2] - E[tau].
+
+Step 16: Select the optional-stopping.
+S_0 = 2; target level = 5; tau = min(T, 12).
+
+Step",,False

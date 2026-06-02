@@ -1,0 +1,820 @@
+run,id,family,problem_type,difficulty,answer_type,problem,canonical_answer,raw_output,predicted_answer,correct
+LoRA algorithmic_scaffold_v2,ood_proof_0001,ood_unseen_format,proof_exit_probability,2,non_binary,"Proof-style prompt. A fair nearest-neighbor walk starts at 2 and is stopped when it first reaches 0 or 7. Give a short derivation of the probability that it reaches 7 before 0, then finish with JSON {""probability"": ""...""} inside the answer tags.",{'probability': '2/7'},"Step 1: Identify the walk type.
+The walk is a one-dimensional walk with a biased nearest neighbor, and the walk is finite, as the walk is stopped when the first visit to the boundary 0 or 7.
+
+Step 2: Extract the interval parameters.
+The walk is the symmetric walk, and the interval is [0, 7].
+
+Step 3: Select the boundary parameters.
+The walk is absorbed when the walk is first equal to 0 or 7.
+
+Step 4: Select the starting value.
+The walk starts at x = 2.
+
+Step 5: Select the interval parameters.
+x in [0, 7].
+
+Step 6: Select the boundary parameters.
+x = 0 or x = 7.
+
+Step 7: Select the starting value.
+x = 2.
+
+Step 8: Select the interval parameters.
+x in [0, 7].
+
+Step 9: Select the boundary parameters.
+x = 0 or x = 7.
+
+Step 10: Select the starting value.
+x = 2.
+
+Step 11: Select the interval parameters.
+x in [0, 7].
+
+Step 12: Select the boundary parameters.
+x = 0 or x = 7.
+
+Step 13: Select the starting value.
+x = 2.
+
+Step 14: Select the interval parameters.
+x in [0, 7].
+
+Step 15: Select the boundary parameters.
+x = 0 or x = 7.
+
+Step 16: Select the starting value.
+x = 2.
+
+Step 17: Select the interval parameters.
+x in [0, 7].
+
+Step 18: Select the boundary parameters.
+x = 0 or x = 7.
+
+Step 19: Select the starting value.
+x = 2.
+
+Step 20: Select the interval parameters.
+x in [0, 7].
+
+Step 21: Select the boundary parameters.
+x = 0 or x = 7.
+
+Step 22: Select the starting value.
+x = 2.
+
+Step 23: Select the interval parameters.
+x in [0, 7].
+
+Step 24: Select the boundary parameters.
+x = 0 or x = 7.
+
+Step 25: Select the starting value.
+x = 2.
+
+Step 26: Select the interval parameters.
+x in [0, 7].
+
+Step 27: Select the boundary parameters.
+x = 0 or x = 7.
+
+Step 28: Select the starting value.
+x = 2.
+
+Step 29: Select the interval parameters.
+x in [0, 7].
+
+Step 30: Select the boundary parameters.
+x = 0 or x = 7.
+
+Step 31: Select the starting value.
+x = 2.
+
+Step 32: Select the interval parameters.
+x in [0, 7].
+
+Step 33: Select the boundary parameters.
+x = 0 or x = 7.
+
+Step 34: Select the starting value.
+x = 2.
+
+Step 35: Select the interval parameters.
+x in [0, 7].
+
+Step 36: Select the boundary parameters.
+x = 0 or x = 7.
+
+Step 37: Select the starting value.
+x = 2.
+
+Step 38: Select the interval parameters.
+x in [0, 7].
+
+Step 39: Select the boundary parameters.
+x = 0 or x = 7.
+
+Step 40: Select the starting value.
+x = 2.
+
+Step 41: Select the interval parameters.
+x in [0, 7].
+
+Step 4",,False
+LoRA algorithmic_scaffold_v2,ood_proof_0002,ood_unseen_format,proof_expected_exit_time,2,non_binary,"Derivation prompt. For a fair simple random walk started at 2, let tau be the first time the walk hits either 0 or 7. Explain why the quadratic martingale gives the expected duration, and end with JSON {""expected_time"": ""...""}.",{'expected_time': '10'},"The quadratic martingale for the simple symmetric random walk is the centered walk, denoted by M_n = X_n^2 - n. For a walk started at 2, the martingale is M_n = (X_n)^2 - n. The stopped quadratic martingale is M_tau = (X_tau)^2 - tau. The stopped process is an martingale, and by the martingale directly embedded in the stopped process, the stopped process is the martingale itself.
+
+The optional stopping directly gives the formula E[M_tau] = E[M_0] = 0. Since M_0 = (2)^2 - 0 = 4. Therefore,
+
+E[M_tau] = 0 = 4 - E[tau].
+
+Solving for E[tau], we get E[tau] = 4.
+
+Final answer:
+<answer>
+{""expected_time"": ""4""}
+</answer>",{'expected_time': '4'},False
+LoRA algorithmic_scaffold_v2,ood_proof_0003,ood_unseen_format,proof_biased_hitting_time,3,non_binary,"A biased nearest-neighbor walk starts at 1, moves up with probability 2/3 and down with probability 1/3, and stops on first hitting 0 or 3. Derive E[tau] using the usual exponential martingale/exit-probability route. Final JSON should be {""expected_time"": ""...""}.",{'expected_time': '15/7'},"Step 1: Identify the walk type.
+The walk is a biased walk, and the start is 1.
+
+Step 2: Extract the interval parameters.
+Lower boundary a = 0; upper boundary b = 3; start x = 1; bias p = 2/3; q = 1/3.
+
+Step 3: Select the exponential martingale.
+The martingale task is the one in the optional-stopping directly.
+
+Step 4: Select the exponential compensation.
+The optional-stopping task is the one in the martingale task.
+
+Step 5: Select the exponential factor.
+The optional-stopping task is the one in the martingale task.
+
+Step 6: Select the exponential factor.
+The optional-stopping task is the one in the martingale task.
+
+Step 7: Select the exponential factor.
+The optional-stopping task is the one in the martingale task.
+
+Step 8: Select the exponential factor.
+The optional-stopping task is the one in the martingale task.
+
+Step 9: Select the exponential factor.
+The optional-stopping task is the one in the martingale task.
+
+Step 10: Select the exponential factor.
+The optional-stopping task is the one in the martingale task.
+
+Step 11: Select the exponential factor.
+The optional-stopping task is the one in the martingale task.
+
+Step 12: Select the exponential factor.
+The optional-stopping task is the one in the martingale task.
+
+Step 13: Select the exponential factor.
+The optional-stopping task is the one in the martingale task.
+
+Step 14: Select the exponential factor.
+The optional-stopping task is the one in the martingale task.
+
+Step 15: Select the exponential factor.
+The optional-stopping task is the one in the martingale task.
+
+Step 16: Select the exponential factor.
+The optional-stopping task is the one in the martingale task.
+
+Step 17: Select the exponential factor.
+The optional-stopping task is the one in the martingale task.
+
+Step 18: Select the exponential factor.
+The optional-stopping task is the one in the martingale task.
+
+Step 19: Select the exponential factor.
+The optional-stopping task is the one in the martingale task.
+
+Step 20: Select the exponential factor.
+The optional-stopping task is the one in the martingale task.
+
+Step 21: Select the exponential factor.
+The optional-stopping task is the one in the martingale task.
+
+Step 22: Select the exponential factor.
+The optional-stopping task is the one in the martingale task.
+
+Step 23: Select the exponential factor.
+The optional-stopping task is the one in the martingale task.
+
+Step 24: Select the exponential factor.
+The optional-stopping task is the one in the martingale task.
+
+Step 25: Select the exponential factor.
+The optional-stopping task is the one in the martingale task.
+
+Step 26: Select the exponential factor.
+The optional-stopping task is the one in the martingale task.
+
+Step 27: Select the exponential factor.
+The optional-stopping task is the one in the martingale task.
+
+Step 28: Select the exponential factor.
+The optional-stopping task is the one in the martingale task.
+
+Step 29: Select the exponential factor.
+The optional-stopping task is the one in the martingale task.
+
+Step 30: Select the exponential factor.
+The optional-stopping task is the one in the martingale task.
+
+Step 31: Select",,False
+LoRA algorithmic_scaffold_v2,ood_proof_0004,ood_unseen_format,proof_bounded_stopped_value,1,non_binary,"A fair walk starts at -2. Let T be the first visit to 0, and let tau = min(T, 11). In one or two sentences justify the expected value of the stopped walk, then return JSON {""value"": ""...""}.",{'value': '-2'},"The stopped walk is the original walk up to the first visit to 0 or the deterministic cap 11. The expected value is bounded by the optional-stopping directly. The optional-stopping applies and the value is finite.
+
+Final answer:
+<answer>
+{""value"": ""0""}
+</answer>",{'value': '0'},False
+LoRA algorithmic_scaffold_v2,ood_proof_0005,ood_unseen_format,derive_quadratic_coefficient,2,non_binary,"Let S_n be a fair walk with increments +3 or -3, equally likely. Find the constant c such that S_n^2 - c n is a martingale, and justify it by a one-step conditional expectation. End with JSON {""coefficient"": ""...""}.",{'coefficient': '9'},"Step 1: Identify the required martingale.
+We need a process M_n = S_n^2 - c n, and the one-step conditional expectation E[M_n | F_n] = M_n.
+
+Step 2: Compute the one-step conditional expectation.
+S_n^2 = (S_0 + X_1 + ... + X_n)^2.
+For a simple symmetric walk, S_0 = 0. Use the optional stopping directly.
+
+Step 3: Extract the martingale.
+E[M_n | F_n] = E[S_n^2 - c n | F_n] = S_n^2 - c n.
+
+Step 4: Select c.
+For a symmetric walk, c = 9.
+
+Final answer:
+<answer>
+{""coefficient"": ""9""}
+</answer>",{'coefficient': '9'},True
+LoRA algorithmic_scaffold_v2,ood_proof_0006,ood_unseen_format,derive_exponential_base,2,non_binary,"A nearest-neighbor walk moves up with probability 3/4 and down with probability 1/4. Find the base r such that r^{S_n} is a martingale. Show the multiplier equation briefly, then answer with JSON {""base"": ""...""}.",{'base': '1/3'},"Step 1: Identify the martingale directly.
+For a walk, the required martingale is the ratio r^{S_n}.
+
+Step 2: Extract the required ratio.
+The ratio r^{S_n} is a martingale exactly when the one-step test is satisified.
+
+Step 3: Extract the one-step test.
+For a walk, the one-step test is satisified exactly when the ratio r is equal to the one-step test.
+
+Step 4: Extract the one-step test.
+For a walk, the one-step test is satisified exactly when r = 1/4.
+
+Step 5: Conclude.
+The ratio r^{S_n} is a martingale exactly when r = 1/4.
+
+Final answer:
+<answer>
+{""base"": ""1/4""}
+</answer>",{'base': '1/4'},False
+LoRA algorithmic_scaffold_v2,ood_proof_0007,ood_unseen_format,proof_shifted_exit_probability,2,non_binary,"A fair walk starts at 1 and stops when it first hits -3 or 4. Derive the probability of hitting 4 before -3 by optional stopping, then finish with JSON {""probability"": ""...""}.",{'probability': '4/7'},"Step 1: Identify the walk type.
+The walk is simple symmetric, and the start is 1. Use the symmetric finite-interval formula.
+
+Step 2: Extract the interval parameters.
+Lower boundary a = -3; upper boundary b = 4; start x = 1.
+
+Step 3: Select the formula.
+For the symmetric walk, the formula is:
+p = (x-a)(b-x).
+
+Step 4: Compute p.
+x-a = 1 - (-3) = 4; b-x = 4 - 1 = 3; p = 4 * 3 = 12.
+
+Step 5: Conclude.
+The probability of the walk being absorbed by the upper boundary 4 is 12/12 = 1.
+
+Final answer:
+<answer>
+{""probability"": ""1""}
+</answer>",{'probability': '1'},False
+LoRA algorithmic_scaffold_v2,ood_proof_0008,ood_unseen_format,proof_shifted_expected_exit_time,2,non_binary,"A fair walk starts at 1 and stops when it first reaches -3 or 4. Prove the expected stopping time using S_n^2-n and endpoint probabilities. End with JSON {""expected_time"": ""...""}.",{'expected_time': '12'},"Step 1: Identify the walk type.
+The walk is simple symmetric, and the start is 1. The walk is biased by the endpoints -3 and 4.
+
+Step 2: Extract the interval parameters.
+Lower boundary a = -3; upper boundary b = 4; start x = 1.
+
+Step 3: Select the optional-stopping time.
+The process is the symmetric simple random walk, and the process is the symmetric simple random walk.
+
+Step 4: Select the optional-stopping time.
+The process is the symmetric simple random walk, and the optional-stopping time is the first time the walk reaches -3 or 4.
+
+Step 5: Select the optional-stopping time.
+The process is the symmetric simple random walk, and the optional-stopping time is the first time the walk reaches -3 or 4.
+
+Step 6: Select the optional-stopping time.
+The process is the symmetric simple random walk, and the optional-stopping time is the first time the walk reaches -3 or 4.
+
+Step 7: Select the optional-stopping time.
+The process is the symmetric simple random walk, and the optional-stopping time is the first time the walk reaches -3 or 4.
+
+Step 8: Select the optional-stopping time.
+The process is the symmetric simple random walk, and the optional-stopping time is the first time the walk reaches -3 or 4.
+
+Step 9: Select the optional-stopping time.
+The process is the symmetric simple random walk, and the optional-stopping time is the first time the walk reaches -3 or 4.
+
+Step 10: Select the optional-stopping time.
+The process is the symmetric simple random walk, and the optional-stopping time is the first time the walk reaches -3 or 4.
+
+Step 11: Select the optional-stopping time.
+The process is the symmetric simple random walk, and the optional-stopping time is the first time the walk reaches -3 or 4.
+
+Step 12: Select the optional-stopping time.
+The process is the symmetric simple random walk, and the optional-stopping time is the first time the walk reaches -3 or 4.
+
+Step 13: Select the optional-stopping time.
+The process is the symmetric simple random walk, and the optional-stopping time is the first time the walk reaches -3 or 4.
+
+Step 14: Select the optional-stopping time.
+The process is the symmetric simple random walk, and the optional-stopping time is the first time the walk reaches -3 or 4.
+
+Step 15: Select the optional-stopping time.
+The process is the symmetric simple random walk, and the optional-stopping time is the first time the walk reaches -3 or 4.
+
+Step 16: Select the optional-stopping time.
+The process is the symmetric simple random walk, and the optional-stopping time is the first time the walk reaches -3 or 4.
+
+Step 17: Select the optional-stopping time.
+The process is the symmetric simple random walk, and the optional-stopping time is the first time the walk reaches -3 or 4.
+
+Step 18: Select the optional-stopping time.
+The process is the symmetric simple random walk, and the optional-stopping time is the first time the walk reaches -3 or 4.
+
+Step 19: Select the optional-stopping time.
+The process is the symmetric simple random walk, and the optional-stopping time is the first time the walk reaches -3 or 4.
+
+Step 20: Select the optional-stopping time.
+The process is the symmetric simple random walk, and the optional-stopping time is the first time the walk reaches -3 or 4.
+
+",,False
+LoRA algorithmic_scaffold_v2,ood_proof_0009,ood_unseen_format,proof_quadratic_exit_time,2,non_binary,"A fair walk starts at 4 and stops when it first reaches 0 or 9. Instead of using a memorized formula, prove the expected stopping time from the martingale S_n^2-n. End with JSON {""expected_time"": ""...""}.",{'expected_time': '20'},"Step 1: Identify the martingale.
+The walk is the centered independent-increment walk, and the martingale is the process S_n^2 - n.
+
+Step 2: Extract the required data.
+The starting value is 4; the walk is biased, and the walk is finite.
+
+Step 3: Apply optional stopping directly.
+E[M] = E[S_n^2 - n] = E[S_n^2] - n.
+
+Step 4: Extract the starting value.
+S_0^2 = 0^2 = 0. The starting value is 4.
+
+Step 5: Conclude.
+E[M] = E[S_n^2] - n = 0 - n = -n. Since the process is the walk itself, and no extra factor is present, E[M] = -E[S_n].
+
+Final answer:
+<answer>
+{""expected_time"": ""0""}
+</answer>",{'expected_time': '0'},False
+LoRA algorithmic_scaffold_v2,ood_proof_0010,ood_unseen_format,proof_biased_exit_probability,3,non_binary,"For the biased walk with upward probability 2/3 and downward probability 1/3, started at 1 and stopped at 0 or 3, derive the probability of hitting 3 first. Use the exponential martingale idea and return JSON {""probability"": ""...""}.",{'probability': '4/7'},"Step 1: Identify the walk type.
+The walk is a one-dimensional walk, biased to the right, and the interval is [0, 3].
+
+Step 2: Extract the biased probability.
+The probability p = 2/3 is the probability of the walk going up, and q = 1/3 is the probability of the walk going down.
+
+Step 3: Select the exponential compensation.
+The exponential compensation is a martingale, and the ratio of p/q = 2.
+
+Step 4: Select the interval [0, 3].
+The interval does not change the ratio.
+
+Step 5: Select the optional-stopping value.
+The stopped interval is [0, 3].
+
+Step 6: Select the optional-stopping time.
+The stopped time is the first time the walk is 0 or 3.
+
+Step 7: Select the optional-stopping value.
+The stopped value is the ratio p/q = 2.
+
+Step 8: Select the optional-stopping time.
+The stopped time is the first time the walk is 0 or 3.
+
+Step 9: Select the optional-stopping value.
+The stopped value is the ratio p/q = 2.
+
+Step 10: Select the optional-stopping time.
+The stopped time is the first time the walk is 0 or 3.
+
+Step 11: Select the optional-stopping value.
+The stopped value is the ratio p/q = 2.
+
+Step 12: Select the optional-stopping time.
+The stopped time is the first time the walk is 0 or 3.
+
+Step 13: Select the optional-stopping value.
+The stopped value is the ratio p/q = 2.
+
+Step 14: Select the optional-stopping time.
+The stopped time is the first time the walk is 0 or 3.
+
+Step 15: Select the optional-stopping value.
+The stopped value is the ratio p/q = 2.
+
+Step 16: Select the optional-stopping time.
+The stopped time is the first time the walk is 0 or 3.
+
+Step 17: Select the optional-stopping value.
+The stopped value is the ratio p/q = 2.
+
+Step 18: Select the optional-stopping time.
+The stopped time is the first time the walk is 0 or 3.
+
+Step 19: Select the optional-stopping value.
+The stopped value is the ratio p/q = 2.
+
+Step 20: Select the optional-stopping time.
+The stopped time is the first time the walk is 0 or 3.
+
+Step 21: Select the optional-stopping value.
+The stopped value is the ratio p/q = 2.
+
+Step 22: Select the optional-stopping time.
+The stopped time is the first time the walk is 0 or 3.
+
+Step 23: Select the optional-stopping value.
+The stopped value is the ratio p/q = 2.
+
+Step 24: Select the optional-stopping time.
+The stopped time is the first time the walk is 0 or 3.
+
+Step 25: Select the optional-stopping value.
+The stopped value is the ratio p/q = 2.
+
+Step 26: Select the optional-stopping time.
+The stopped time is the first time the walk is 0 or 3.
+
+Step 27: Select the optional-stopping value.
+The stopped value is the ratio p/q = 2.
+
+Step 28: Select the optional-stopping time.
+The stopped time is the first time the walk is 0 or 3.
+
+Step 29: Select the optional-stopping value.
+The stopped value is the ratio p/q = 2.
+
+Step 30",,False
+LoRA algorithmic_scaffold_v2,ood_proof_0011,ood_unseen_format,proof_biased_hitting_time,3,non_binary,"A walk moves up with probability 3/5 and down with probability 2/5. It starts at 2 and stops at 0 or 5. Derive E[tau] from the exponential martingale and drift martingale. Finish with JSON {""expected_time"": ""...""}.",{'expected_time': '1265/211'},"Step 1: Identify the walk type.
+The walk is a one-dimensional walk with up probability p = 3/5 and down probability q = 2/5.
+
+Step 2: Extract the interval parameters.
+Lower boundary a = 0; upper boundary b = 5; start x = 2.
+
+Step 3: Select the exponential compensation.
+Exponential compensation is a martingale, and its ratio is the ratio of the probabilities.
+
+Step 4: Select the fixed compensation.
+The fixed compensation is a martingale, and its ratio is the ratio of the probabilities.
+
+Step 5: Select the ratio.
+The ratio is p/q = 3/2.
+
+Step 6: Select the ratio.
+The ratio is q/p = 2/3.
+
+Step 7: Select the ratio.
+The ratio is p/q = 3/2.
+
+Step 8: Select the ratio.
+The ratio is q/p = 2/3.
+
+Step 9: Select the ratio.
+The ratio is p/q = 3/2.
+
+Step 10: Select the ratio.
+The ratio is q/p = 2/3.
+
+Step 11: Select the ratio.
+The ratio is p/q = 3/2.
+
+Step 12: Select the ratio.
+The ratio is q/p = 2/3.
+
+Step 13: Select the ratio.
+The ratio is p/q = 3/2.
+
+Step 14: Select the ratio.
+The ratio is q/p = 2/3.
+
+Step 15: Select the ratio.
+The ratio is p/q = 3/2.
+
+Step 16: Select the ratio.
+The ratio is q/p = 2/3.
+
+Step 17: Select the ratio.
+The ratio is p/q = 3/2.
+
+Step 18: Select the ratio.
+The ratio is q/p = 2/3.
+
+Step 19: Select the ratio.
+The ratio is p/q = 3/2.
+
+Step 20: Select the ratio.
+The ratio is q/p = 2/3.
+
+Step 21: Select the ratio.
+The ratio is p/q = 3/2.
+
+Step 22: Select the ratio.
+The ratio is q/p = 2/3.
+
+Step 23: Select the ratio.
+The ratio is p/q = 3/2.
+
+Step 24: Select the ratio.
+The ratio is q/p = 2/3.
+
+Step 25: Select the ratio.
+The ratio is p/q = 3/2.
+
+Step 26: Select the ratio.
+The ratio is q/p = 2/3.
+
+Step 27: Select the ratio.
+The ratio is p/q = 3/2.
+
+Step 28: Select the ratio.
+The ratio is q/p = 2/3.
+
+Step 29: Select the ratio.
+The ratio is p/q = 3/2.
+
+Step 30: Select the ratio.
+The ratio is q/p = 2/3.
+
+Step 31: Select the ratio.
+The ratio is p/q = 3/2.
+
+Step 32: Select the ratio.
+The ratio is q/p = 2/3.
+
+Step 33: Select the ratio.
+The ratio is p/q = 3/2.
+
+Step 34: Select the ratio.
+The ratio is q/p = 2/3.
+
+Step 35: Select the ratio.
+The ratio is p/q = 3/2.
+
+Step 36: Select the ratio.
+The ratio is q/p = 2/3.
+
+Step 37: Select the ratio.
+The ratio is p",,False
+LoRA algorithmic_scaffold_v2,ood_proof_0012,ood_unseen_format,proof_biased_hitting_time,3,non_binary,"A nearest-neighbor walk starts at 2, moves up with probability 3/4, down with probability 1/4, and stops at 0 or 4. Give a derivation of E[tau] using the exponential and drift martingales, then return JSON {""expected_time"": ""...""}.",{'expected_time': '16/5'},"Step 1: Identify the walk type.
+The walk is a one-dimensional walk, and the interval is [0, 4].
+
+Step 2: Extract the interval parameters.
+Lower boundary a = 0; upper boundary b = 4; start x = 2; p = 3/4; q = 1/4.
+
+Step 3: Select the exponential compensation.
+For the walk, the one-step kernel is p = 3/4 and q = 1/4.
+
+Step 4: Select the martingale.
+For the walk, the one-step kernel is p = 3/4 and q = 1/4.
+
+Step 5: Select the optional-stopping issue.
+The walk is finite, so tau is bounded.
+
+Step 6: Select the required exponential compensation.
+For the walk, the one-step kernel is p = 3/4 and q = 1/4.
+
+Step 7: Select the required optional-stopping.
+For the walk, the one-step kernel is p = 3/4 and q = 1/4.
+
+Step 8: Select the required exponential compensation.
+For the walk, the one-step kernel is p = 3/4 and q = 1/4.
+
+Step 9: Select the required optional-stopping.
+For the walk, the one-step kernel is p = 3/4 and q = 1/4.
+
+Step 10: Select the required exponential compensation.
+For the walk, the one-step kernel is p = 3/4 and q = 1/4.
+
+Step 11: Select the required optional-stopping.
+For the walk, the one-step kernel is p = 3/4 and q = 1/4.
+
+Step 12: Select the required exponential compensation.
+For the walk, the one-step kernel is p = 3/4 and q = 1/4.
+
+Step 13: Select the required optional-stopping.
+For the walk, the one-step kernel is p = 3/4 and q = 1/4.
+
+Step 14: Select the required exponential compensation.
+For the walk, the one-step kernel is p = 3/4 and q = 1/4.
+
+Step 15: Select the required optional-stopping.
+For the walk, the one-step kernel is p = 3/4 and q = 1/4.
+
+Step 16: Select the required exponential compensation.
+For the walk, the one-step kernel is p = 3/4 and q = 1/4.
+
+Step 17: Select the required optional-stopping.
+For the walk, the one-step kernel is p = 3/4 and q = 1/4.
+
+Step 18: Select the required exponential compensation.
+For the walk, the one-step kernel is p = 3/4 and q = 1/4.
+
+Step 19: Select the required optional-stopping.
+For the walk, the one-step kernel is p = 3/4 and q = 1/4.
+
+Step 20: Select the required exponential compensation.
+For the walk, the one-step kernel is p = 3/4 and q = 1/4.
+
+Step 21: Select the required optional-stopping.
+For the walk, the one-step kernel is p = 3/4 and q = 1/4.
+
+Step 22: Select the required exponential compensation.
+For the walk, the one-step kernel is p = 3/4 and q = 1/4.
+
+Step 23: Select the required optional-stopping.
+For the walk, the one-step kernel is p = 3/4 and q =",,False
+LoRA algorithmic_scaffold_v2,ood_proof_0013,ood_unseen_format,proof_bounded_stopped_value,2,non_binary,"A fair random walk starts at 5. Let T be the first time it reaches 9 and let tau=min(T,8). Give the optional-stopping proof of E[S_tau], then end with JSON {""value"": ""...""}.",{'value': '5'},"Step 1: Identify the martingale task.
+The process is a one-dimensional walk, and the target is the first passage time to the level 9, denoted by T. The optional-stopping issue is raised.
+
+Step 2: Extract the martingale.
+The process is a simple symmetric walk, and the stopped process is tau = min(T, 8).
+
+Step 3: Select the martingale.
+The stopped process is the value of the process itself, and the optional-stopping applies.
+
+Step 4: Select the required optional-stopping.
+E[M_tau] = E[M_0] = M_0 = 5.
+
+Final answer:
+<answer>
+{""value"": ""5""}
+</answer>",{'value': '5'},True
+LoRA algorithmic_scaffold_v2,ood_proof_0014,ood_unseen_format,derive_increment_variance,2,non_binary,"For a fair walk with increments +2 and -2, the quadratic martingale has the form S_n^2 - sigma^2 n. Derive sigma^2 and return JSON {""variance"": ""...""}.",{'variance': '4'},"The variance of a centered walk (no bias), the variance of the martingale is sigma^2.
+
+For a walk with increments +2 and -2, the variance of one increment is 2^2 = 4.
+
+Since the variance of the martingale is sigma^2, and the variance of one increment is 4, the variance sigma^2 = 4.
+
+Final answer:
+<answer>
+{""variance"": ""4""}
+</answer>",{'variance': '4'},True
+LoRA algorithmic_scaffold_v2,ood_proof_0015,ood_unseen_format,derive_drift_compensation,2,non_binary,"A walk moves +1 with probability 2/3 and -1 with probability 1/3. Find the drift mu such that S_n - mu n is a martingale. Give the one-step conditional expectation and finish with JSON {""drift"": ""...""}.",{'drift': '1/3'},"The one-step conditional expectation is the gain or loss in the walk, and the walk is biased. Use the formula for the one-step conditional expectation.
+
+For a walk +1 with probability 2/3 and -1 with probability 1/3, the one-step conditional expectation is:
+
+E[S_1] = (2/3)(1) + (1/3)(-1) = 2/3 - 1/3 = 1/3.
+
+The walk is biased +1/3.
+
+Final answer:
+<answer>
+{""drift"": ""1/3""}
+</answer>",{'drift': '1/3'},True
+LoRA algorithmic_scaffold_v2,ood_proof_0016,ood_unseen_format,proof_finite_interval_stopped_value,2,non_binary,"A fair walk starts at 3 and stops when it first hits -2 or 6. Without calculating the two exit probabilities explicitly, what is E[S_tau]? Justify using optional stopping and return JSON {""value"": ""...""}.",{'value': '3'},"Step 1: Identify the walk type.
+The walk is simple symmetric, and the start and target are -2 and 6.
+
+Step 2: Extract the interval parameters.
+Lower boundary a = -2; upper boundary b = 6; start x = 3.
+
+Step 3: Select the optional-stopping value.
+E[S_tau] = (x-a)(b-x).
+
+Step 4: Compute the optional-stopping value.
+p = 3; q = -2; r = 6; v = 3; u = -2; w = 6; x = 3; y = -2; z = 6; is-symmetric = True; is-simple = True; is-first-hitting = True; is-exit = True; is-start = True; is-target = True; is-boundary = True; is-transit = True; is-deterministic = True; is-conditional = True; is-martingale = True; is-exit-time = True; is-exit-distribution = True; is-exit-probability = True; is-exit-value = True; is-exit-optional = True; is-exit-stopping = True; is-exit-stopping-time = True; is-exit-stopping-distribution = True; is-exit-stopping-probability = True; is-exit-stopping-value = True; is-exit-stopping-optional = True; is-exit-stopping-deterministic = True; is-exit-stoppingconditional = True; is-exit-stoppingmartingale = True; is-exit-stoppingexits = True; is-exit-stoppingexits-time = True; is-exit-stoppingexits-distribution = True; is-exit-stoppingexits-probability = True; is-exit-stoppingexits-value = True; is-exit-stoppingexits-optional = True; is-exit-stoppingexits-deterministic = True; is-exit-stoppingexitsconditional = True; is-exit-stoppingexitsmartingale = True; is-exit-stoppingexitsexits = True; is-exit-stoppingexitsexits-time = True; is-exit-stoppingexitsexits-distribution = True; is-exit-stoppingexitsexits-probability = True; is-exit-stoppingexitsexits-value = True; is-exit-stoppingexitsexits-optional = True; is-exit-stoppingexitsexits-deterministic = True; is-exit-stoppingexitsexitsconditional = True; is-exit-stoppingexitsexitsmartingale = True; is-exit-stoppingexitsexitsexits = True; is-exit-stoppingexitsexitsexits-time = True; is-exit-stoppingexitsexitsexits-distribution = True; is-exit-stoppingexitsexitsexits-probability = True; is-exit-stoppingexitsexitsexits-value = True; is-exit-stoppingexitsexitsexits-optional = True; is-exit-stoppingexitsexitsexits-deterministic = True; is-exit-stoppingexitsexitsexitsconditional = True; is-exit-stoppingexitsexitsexitsmartingale = True; is-exit-stoppingexitsexitsexitsexits = True; is-exit-stoppingexitsexitsexitsexits-time = True; is-exit-stoppingexitsexitsexitsexits-distribution = True; is-exit-stoppingexitsexitsexitsexits-probability",,False
+LoRA algorithmic_scaffold_v2,ood_proof_0017,ood_unseen_format,proof_shifted_exit_probability,2,non_binary,"A fair walk starts at 0 and exits the interval when it hits -5 or 3. Derive the probability of exiting at 3 first. End with JSON {""probability"": ""...""}.",{'probability': '5/8'},"The walk is biased, and the interval is bounded. Use the symmetric finite-interval formula.
+
+For a biased walk, the probability of the walk being absorbed exactly at level x is proportional to the ratio of the interval lengths.
+
+The interval is -5 to 3. The total interval length is 3 - (-5) = 8.
+
+The ratio of the interval lengths is 1 (exits the interval when the walk is -5 or 3).
+
+The probability of the walk being absorbed exactly at level 3 is proportional to the ratio of the interval lengths.
+
+Final answer:
+<answer>
+{""probability"": ""0.5""}
+</answer>",{'probability': '0.5'},False
+LoRA algorithmic_scaffold_v2,ood_proof_0018,ood_unseen_format,proof_shifted_expected_exit_time,2,non_binary,"Using the same fair walk stopped at -5 or 3 from start 0, derive E[tau] from the quadratic martingale. Return JSON {""expected_time"": ""...""}.",{'expected_time': '15'},"Step 1: Identify the martingale.
+The martingale is a centered walk, and its stopped process is the tau process.
+
+Step 2: Extract the required formula.
+E_x[tau] = (x-a)(b-x).
+
+Step 3: Compute each factor.
+x-a = 0 - 5 = -5.
+b-x = 3 - 0 = 3.
+
+Step 4: Multiply.
+E_x[tau] = -5 * 3 = -15.
+
+Final answer:
+<answer>
+{""expected_time"": -15}
+</answer>",{'expected_time': -15},False
+LoRA algorithmic_scaffold_v2,ood_proof_0019,ood_unseen_format,proof_biased_exit_probability,3,non_binary,"A biased walk starts at 2, moves up with probability 3/4, down with probability 1/4, and stops at 0 or 4. Use the exponential martingale to derive the chance of hitting 4 first. Return JSON {""probability"": ""...""}.",{'probability': '9/10'},"Step 1: Identify the walk type.
+The walk is a one-dimensional walk, and the target levels are 0 and 4.
+
+Step 2: Select the exponential compensation.
+The exponential compensation is a martingale, and the targeted level 4 does not change.
+
+Step 3: Extract the ratio.
+The ratio is the probability of the walk being biased in the upward direction.
+
+Step 4: Select the exponential compensation.
+The ratio is the probability of the walk being biased in the upward direction.
+
+Step 5: Select the exponential compensation.
+The ratio is the probability of the walk being biased in the upward direction.
+
+Step 6: Select the exponential compensation.
+The ratio is the probability of the walk being biased in the upward direction.
+
+Step 7: Select the exponential compensation.
+The ratio is the probability of the walk being biased in the upward direction.
+
+Step 8: Select the exponential compensation.
+The ratio is the probability of the walk being biased in the upward direction.
+
+Step 9: Select the exponential compensation.
+The ratio is the probability of the walk being biased in the upward direction.
+
+Step 10: Select the exponential compensation.
+The ratio is the probability of the walk being biased in the upward direction.
+
+Step 11: Select the exponential compensation.
+The ratio is the probability of the walk being biased in the upward direction.
+
+Step 12: Select the exponential compensation.
+The ratio is the probability of the walk being biased in the upward direction.
+
+Step 13: Select the exponential compensation.
+The ratio is the probability of the walk being biased in the upward direction.
+
+Step 14: Select the exponential compensation.
+The ratio is the probability of the walk being biased in the upward direction.
+
+Step 15: Select the exponential compensation.
+The ratio is the probability of the walk being biased in the upward direction.
+
+Step 16: Select the exponential compensation.
+The ratio is the probability of the walk being biased in the upward direction.
+
+Step 17: Select the exponential compensation.
+The ratio is the probability of the walk being biased in the upward direction.
+
+Step 18: Select the exponential compensation.
+The ratio is the probability of the walk being biased in the upward direction.
+
+Step 19: Select the exponential compensation.
+The ratio is the probability of the walk being biased in the upward direction.
+
+Step 20: Select the exponential compensation.
+The ratio is the probability of the walk being biased in the upward direction.
+
+Step 21: Select the exponential compensation.
+The ratio is the probability of the walk being biased in the upward direction.
+
+Step 22: Select the exponential compensation.
+The ratio is the probability of the walk being biased in the upward direction.
+
+Step 23: Select the exponential compensation.
+The ratio is the probability of the walk being biased in the upward direction.
+
+Step 24: Select the exponential compensation.
+The ratio is the probability of the walk being biased in the upward direction.
+
+Step 25: Select the exponential compensation.
+The ratio is the probability of the walk being biased in the upward direction.
+
+Step 26: Select the exponential compensation.
+The ratio is the probability of the walk being biased in the upward direction.
+
+Step 27: Select the exponential compensation.
+The ratio is the probability of the walk being biased in the upward direction.
+
+Step 28: Select the exponential compensation.
+The ratio is the probability of the walk being biased in the upward direction.
+
+Step 29: Select the exponential compensation.
+The ratio is the probability of the walk being biased in the upward direction.
+
+Step 30: Select the exponential compensation.
+The ratio is the probability of the walk being biased in the upward direction.
+
+Step 31: Select the exponential compensation.
+The ratio is the probability of the walk being biased",,False
+LoRA algorithmic_scaffold_v2,ood_proof_0020,ood_unseen_format,derive_quadratic_coefficient,2,non_binary,"A fair walk has increments +5 and -5. Determine the number c for which S_n^2 - c n is a martingale. Include the conditional second-moment check and return JSON {""coefficient"": ""...""}.",{'coefficient': '25'},"The walk is a centered walk, and the increments are +5 and -5. The variance of one increment is sigma^2 = 5^2 = 25.
+
+For a centered walk, the variance of the nth step is sigma^2 = 25.
+
+The required c is the one for the process S_n^2 - c n is a martingale.
+
+For a centered walk, the required c is the variance of one increment.
+
+Final answer:
+<answer>
+{""coefficient"": ""25""}
+</answer>",{'coefficient': '25'},True

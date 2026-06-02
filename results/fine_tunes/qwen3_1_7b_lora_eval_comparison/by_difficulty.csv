@@ -1,0 +1,56 @@
+kind,run,answer_type,difficulty,accuracy,correct,count
+baseline,GPT OSS 20B API,binary,1,1.0,10,10
+baseline,Qwen3 8B API,binary,1,1.0,10,10
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_5,binary,1,1.0,10,10
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_5_lora12,binary,1,1.0,10,10
+baseline,Qwen3 235B-A22B API,binary,1,0.9,9,10
+baseline,Qwen3 32B API,binary,1,0.9,9,10
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_1_lora8,binary,1,0.9,9,10
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v2,binary,1,0.7,7,10
+baseline,Qwen3 1.7B base,binary,1,0.5,5,10
+baseline,GPT OSS 20B API,binary,2,1.0,10,10
+baseline,Qwen3 235B-A22B API,binary,2,1.0,10,10
+baseline,Qwen3 32B API,binary,2,1.0,10,10
+baseline,Qwen3 8B API,binary,2,1.0,10,10
+baseline,Qwen3 1.7B base,binary,2,0.8,8,10
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v2,binary,2,0.8,8,10
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_5,binary,2,0.8,8,10
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_1_lora8,binary,2,0.7,7,10
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_5_lora12,binary,2,0.7,7,10
+baseline,GPT OSS 20B API,binary,3,1.0,10,10
+baseline,Qwen3 235B-A22B API,binary,3,1.0,10,10
+baseline,Qwen3 8B API,binary,3,1.0,10,10
+baseline,Qwen3 32B API,binary,3,0.9,9,10
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_1_lora8,binary,3,0.8,8,10
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_5_lora12,binary,3,0.8,8,10
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_5,binary,3,0.6,6,10
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v2,binary,3,0.5,5,10
+baseline,Qwen3 1.7B base,binary,3,0.4,4,10
+baseline,Qwen3 235B-A22B API,non_binary,1,1.0,10,10
+baseline,Qwen3 8B API,non_binary,1,1.0,10,10
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_5_lora12,non_binary,1,1.0,10,10
+baseline,GPT OSS 20B API,non_binary,1,0.9,9,10
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_1_lora8,non_binary,1,0.9,9,10
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_5,non_binary,1,0.9,9,10
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v2,non_binary,1,0.8,8,10
+baseline,Qwen3 32B API,non_binary,1,0.6,6,10
+baseline,Qwen3 1.7B base,non_binary,1,0.1,1,10
+baseline,DeepSeek V4 Flash API,non_binary,1,0.0,0,2
+baseline,Qwen3 235B-A22B API,non_binary,2,0.9,9,10
+baseline,Qwen3 32B API,non_binary,2,0.9,9,10
+baseline,Qwen3 8B API,non_binary,2,0.9,9,10
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_5,non_binary,2,0.9,9,10
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_5_lora12,non_binary,2,0.9,9,10
+baseline,GPT OSS 20B API,non_binary,2,0.7,7,10
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_1_lora8,non_binary,2,0.7,7,10
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v2,non_binary,2,0.5,5,10
+baseline,Qwen3 1.7B base,non_binary,2,0.0,0,10
+baseline,Qwen3 235B-A22B API,non_binary,3,1.0,10,10
+baseline,Qwen3 8B API,non_binary,3,0.9,9,10
+baseline,GPT OSS 20B API,non_binary,3,0.8,8,10
+baseline,Qwen3 32B API,non_binary,3,0.6666666666666666,6,9
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_1_lora8,non_binary,3,0.5,5,10
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_5,non_binary,3,0.5,5,10
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v2,non_binary,3,0.4,4,10
+fine_tuned,Qwen3 1.7B LoRA algorithmic_scaffold_v3_5_lora12,non_binary,3,0.3,3,10
+baseline,Qwen3 1.7B base,non_binary,3,0.1,1,10

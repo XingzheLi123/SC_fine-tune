@@ -1,0 +1,25 @@
+{
+  "accuracy": 0.9666666666666667,
+  "by_answer_type": {
+    "binary": {
+      "accuracy": 0.9666666666666667,
+      "num_correct": 29,
+      "num_records": 30
+    },
+    "non_binary": {
+      "accuracy": 0.9666666666666667,
+      "num_correct": 29,
+      "num_records": 30
+    }
+  },
+  "checkpointed_after_each_record": true,
+  "dataset": "benchmark/data/test/*.jsonl",
+  "grading_policy": "schema_tolerant_exact_match_v1",
+  "model": "qwen/qwen3-235b-a22b",
+  "num_api_errors": 0,
+  "num_correct": 58,
+  "num_empty_outputs": 0,
+  "num_output_errors": 0,
+  "num_records": 60,
+  "provider": "openrouter"
+}

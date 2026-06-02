@@ -1,0 +1,23 @@
+{
+  "accuracy": 0.36666666666666664,
+  "adapter": "formula_direct",
+  "by_answer_type": {
+    "binary": {
+      "accuracy": 0.5357142857142857,
+      "num_correct": 30,
+      "num_records": 56
+    },
+    "non_binary": {
+      "accuracy": 0.21875,
+      "num_correct": 14,
+      "num_records": 64
+    }
+  },
+  "dataset": "benchmark/data/train or benchmark/data/train_implicit_theorems",
+  "grading_policy": "schema_tolerant_exact_match_v1",
+  "model": "Qwen/Qwen3-1.7B-MLX-bf16",
+  "num_correct": 44,
+  "num_records": 120,
+  "split_role": "train_generation_diagnostic",
+  "train_diagnostic_limit": 120
+}

@@ -1,0 +1,20 @@
+{
+  "accuracy": 0.0,
+  "by_answer_type": {
+    "non_binary": {
+      "accuracy": 0.0,
+      "num_correct": 0,
+      "num_records": 2
+    }
+  },
+  "checkpointed_after_each_record": true,
+  "dataset": "benchmark/data/test/*.jsonl",
+  "grading_policy": "schema_tolerant_exact_match_v1",
+  "model": "deepseek/deepseek-v4-flash:free",
+  "num_api_errors": 2,
+  "num_correct": 0,
+  "num_empty_outputs": 2,
+  "num_output_errors": 0,
+  "num_records": 2,
+  "provider": "openrouter"
+}

@@ -1,0 +1,313 @@
+run,id,family,problem_type,difficulty,answer_type,problem,canonical_answer,raw_output,predicted_answer,correct
+LoRA algorithmic_scaffold_v2,ood_control_0001,ood_math_control,euclidean_gcd,1,non_binary,"Number theory proof-style prompt. Use the Euclidean algorithm to justify gcd(252,105), then finish with JSON {""gcd"": ""...""} inside the answer tags.",{'gcd': '21'},"Step 1: Apply the Euclidean algorithm.
+gcd(252, 105)
+252 = 2 * 105 + 42
+105 = 2 * 42 + 21
+42 = 2 * 21 + 0.
+
+Step 2: The gcd is the last non-zero remainder.
+gcd = 21.
+
+Final answer:
+<answer>
+{""gcd"": ""21""}
+</answer>",{'gcd': '21'},True
+LoRA algorithmic_scaffold_v2,ood_control_0002,ood_math_control,modular_power,1,non_binary,"Give a short modular arithmetic derivation of the remainder of 3^100 on division by 10. End with JSON {""remainder"": ""...""}.",{'remainder': '1'},"Step 1: Use Euler's theorem.
+Euler's theorem tells us that for co-prime integers a and n, a^φ(n) ≡ 1 mod n.
+For n = 10 and a = 3, φ(10) = 4.
+So 3^4 ≡ 1 mod 10.
+
+Step 2: Extract the power.
+3^100 = (3^4)^25.
+So 3^100 ≡ 1^25 = 1 mod 10.
+
+Final answer:
+<answer>
+{""remainder"": ""1""}
+</answer>",{'remainder': '1'},True
+LoRA algorithmic_scaffold_v2,ood_control_0003,ood_math_control,modular_inverse,1,non_binary,"Find the multiplicative inverse of 8 modulo 11 and justify it in one line. Return JSON {""inverse"": ""...""}.",{'inverse': '7'},"Step 1: Identify the congruence 8x ≡ 1 (mod 11).
+Step 2: Find x such that 8x - 11k = 1 for some integer k.
+Step 3: Use the extended Euclidean algorithm or check small x in the range [0, 10].
+
+The multiplicative inverse of 8 modulo 11 is 7.
+
+Final answer:
+<answer>
+{""inverse"": ""7""}
+</answer>",{'inverse': '7'},True
+LoRA algorithmic_scaffold_v2,ood_control_0004,ood_math_control,linear_congruence,1,non_binary,"Solve the congruence 5x ≡ 6 mod 7. Give a short derivation and answer with JSON {""solution"": ""...""}, using the least nonnegative solution.",{'solution': '4'},"Step 1: Identify the congruence type.
+We need to solve the congruence 5x ≡ 6 (mod 7).
+
+Step 2: Multiply both sides by the modular inverse of 5 modulo 7.
+The inverse of 5 modulo 7 is 3 because 5 * 3 = 15 ≡ 1 (mod 7).
+
+Step 3: Multiply both sides by 3.
+3 * 5x ≡ 3 * 6 (mod 7)
+15x ≡ 18 (mod 7)
+
+Step 4: Simplify.
+15x ≡ 18 (mod 7)
+15x ≡ 18 - 14 = 4 (mod 7)
+
+Step 5: Extract the least nonnegative solution.
+x = 4.
+
+Final answer:
+<answer>
+{""solution"": ""4""}
+</answer>",{'solution': '4'},True
+LoRA algorithmic_scaffold_v2,ood_control_0005,ood_math_control,totient,2,non_binary,"Compute Euler's totient phi(35), explaining the prime-factor step. Finish with JSON {""phi"": ""...""}.",{'phi': '24'},"Euler's totient function, phi(n), counts the number of integers up to n that are relatively prime to n. For a prime power p^k, the totient function is given by the formula:
+
+phi(p^k) = p^k - p^{k-1} = p^{k-1}(p - 1).
+
+The prime factorization of 35 is 5^1 * 7^1.
+
+Using the formula for the totient function for a product of distinct primes powers, we compute:
+
+phi(35) = phi(5^1) * phi(7^1) = (5^1 - 5^0) * (7^1 - 7^0) = (5 - 1) * (7 - 1) = 4 * 6 = 24.
+
+Final answer:
+<answer>
+{""phi"": ""24""}
+</answer>",{'phi': '24'},True
+LoRA algorithmic_scaffold_v2,ood_control_0006,ood_math_control,cyclic_group_element_order,2,non_binary,"In the additive group Z/10Z, determine the order of the element 3. Justify it and return JSON {""order"": ""...""}.",{'order': '10'},"Step 1: Identify the group.
+The group is the additive group of integers modulo 10, denoted by Z/10Z.
+
+Step 2: Identify the element.
+The element in question is 3 in the group Z/10Z.
+
+Step 3: Compute the order.
+The order of an element a in a group is the smallest positive integer n such that na = 0 in the group.
+
+For the additive group Z/10Z, the order of an element a is the smallest positive integer n for which na = 0 mod 10.
+
+Check powers of 3 in Z/10Z:
+3^1 = 3 mod 10
+3^2 = 9 mod 10
+3^3 = 27 mod 10 = 7 mod 10
+3^4 = 21 mod 10 = 1 mod 10
+3^5 = 3 mod 10 = 3 mod 10.
+
+We see the powers of 3 cycle through 3, 9, 7, 1. The powers repeat after 4, so the order of 3 in Z/10Z is 4.
+
+Final answer:
+<answer>
+{""order"": ""4""}
+</answer>",{'order': '4'},False
+LoRA algorithmic_scaffold_v2,ood_control_0007,ood_math_control,permutation_order,1,non_binary,"Find the order of the permutation (1 2)(3 4). Explain using cycle lengths and return JSON {""order"": ""...""}.",{'order': '2'},"Step 1: Identify the permutation.
+The permutation is the product of two disjoint transpositions: (1 2)(3 4).
+
+Step 2: Identify the cycles.
+The permutation consists of two 2-cycles:
+1. (1 2)
+2. (3 4)
+
+Step 3: Use the formula for the order of a permutation.
+For a permutation in disjoint cycles, the order is the least common multiple (LCM) of the lengths of the cycles.
+
+Step 4: Compute the order.
+Each 2-cycle has a length of 2.
+The order is the LCM of 2 and 2 = 2.
+
+Final answer:
+<answer>
+{""order"": ""2""}
+</answer>",{'order': '2'},True
+LoRA algorithmic_scaffold_v2,ood_control_0008,ood_math_control,permutation_order,2,non_binary,"Find the order of the permutation (1 2 3)(4 5). Give the cycle-length argument and finish with JSON {""order"": ""...""}.",{'order': '6'},"Step 1: Identify the given permutation.
+The permutation is the product of two disjoint transpositions: (1 2 3)(4 5).
+
+Step 2: Identify the cycles.
+The permutation consists of the 3-cycle (1 2 3) and the transposition (4 5).
+
+Step 3: Use the cycle-length argument.
+For a single 3-cycle, the order is the least common multiple (LCM) of its cycle lengths. Since the 3-cycle has a length of 3, its order is 3.
+For a transposition, the order is 2.
+
+Step 4: Compute the total order.
+The total order of the permutation is the LCM of the orders of its disjoint cycles.
+The LCM of 3 and 2 is 6.
+
+Final answer:
+<answer>
+{""order"": ""6""}
+</answer>",{'order': '6'},True
+LoRA algorithmic_scaffold_v2,ood_control_0009,ood_math_control,generated_subgroup_size,2,non_binary,"In the additive group Z/12Z, what is the size of the subgroup generated by 3? Justify briefly and return JSON {""size"": ""...""}.",{'size': '4'},"Step 1: Identify the group and the generator.
+The group is the additive group of integers modulo 12, denoted by Z/12Z.
+The generator is 3.
+
+Step 2: Compute the subgroup generated by 3.
+The subgroup generated by 3 in Z/12Z is the set of all multiples of 3 in the group.
+
+Step 3: Extract the distinct elements.
+The distinct elements are {0, 3, 6, 9}.
+
+Step 4: Count the size.
+The size of the subgroup is 4.
+
+Final answer:
+<answer>
+{""size"": ""4""}
+</answer>",{'size': '4'},True
+LoRA algorithmic_scaffold_v2,ood_control_0010,ood_math_control,subgroup_index,2,non_binary,"A finite group G has order 24 and H is a subgroup of order 8. Use Lagrange's theorem to find the number of left cosets of H in G. End with JSON {""cosets"": ""...""}.",{'cosets': '3'},"By Lagrange's theorem, the order of a subgroup divides the order of the group. Since the order of the group is 24 and the order of the subgroup is 8, the number of left cosets of $ H $ in $ G $ is equal to the order of the group divided by the order of the subgroup.
+
+Final answer:
+<answer>
+{""cosets"": ""3""}
+</answer>",{'cosets': '3'},True
+LoRA algorithmic_scaffold_v2,ood_control_0011,ood_math_control,combination_count,1,non_binary,"Derive the number of 3-element subsets of a 6-element set, then return JSON {""count"": ""...""}.",{'count': '20'},"The number of 3-element subsets of a 6-element set is given by the binomial coefficient C(6, 3).
+
+Step-by-step:
+1. Use the formula for combinations: C(n, k) = n! / (k!(n - k)!).
+2. Compute the factorial values:
+   - 6! = 720.
+   - 3! = 6.
+   - 0! = 1.
+3. Compute the binomial coefficient:
+   - C(6, 3) = 6! / (3!(6 - 3)!) = (720) / (6 * 6) = 720 / 36 = 20.
+
+Final answer:
+<answer>
+{""count"": ""20""}
+</answer>",{'count': '20'},True
+LoRA algorithmic_scaffold_v2,ood_control_0012,ood_math_control,stars_and_bars,2,non_binary,"Using stars and bars, count the nonnegative integer solutions to x+y+z=3. Finish with JSON {""count"": ""...""}.",{'count': '10'},"Step 1: Identify the problem type.
+The problem is a classic integer partition problem. We need the number of nonnegative integer solutions to the equation x + y + z = 3.
+
+Step 2: Apply the stars and bars formula.
+For the number of nonnegative integer solutions to x + y + z = n, the formula is C(n + k - 1, k - 1), where k is the number of variables.
+
+Step 3: Compute the parameters.
+n = 3; k = 3.
+C(3 + 3 - 1, 3 - 1) = C(5, 2).
+
+Step 4: Select the binomial coefficient.
+C(5, 2) = 10.
+
+Final answer:
+<answer>
+{""count"": ""10""}
+</answer>",{'count': '10'},True
+LoRA algorithmic_scaffold_v2,ood_control_0013,ood_math_control,bijection_count,1,non_binary,"How many bijections are there from a 4-element set to itself? Give the factorial argument and return JSON {""count"": ""...""}.",{'count': '24'},"Step 1: Identify the problem type.
+The problem is a combinatorial one, and the goal is to count the number of bijections (one-to-one and onto functions) from a 4-element set to itself.
+
+Step 2: Use the factorial argument.
+For a 4-element set, a bijection is a permutation of the 4 elements. The number of permutations of a 4-element set is 4 factorial.
+
+Step 3: Compute the factorial.
+The factorial of 4 is 4! = 4 × 3 × 2 × 1 = 24.
+
+Step 4: Conclude.
+The total number of bijections is 24.
+
+Final answer:
+<answer>
+{""count"": ""24""}
+</answer>",{'count': '24'},True
+LoRA algorithmic_scaffold_v2,ood_control_0014,ood_math_control,inclusion_exclusion,2,non_binary,"A finite set has subsets A and B with |A|=10, |B|=12, and |A∩B|=6. Use inclusion-exclusion to compute |A∪B|. Return JSON {""count"": ""...""}.",{'count': '16'},"Step 1: Identify the given parameters.
+The size of the finite set is not given.
+The size of subset A is |A| = 10.
+The size of subset B is |B| = 12.
+The size of their intersection is |A ∩ B| = 6.
+
+Step 2: Apply the inclusion-exclusion principle.
+The formula for the size of the union of two sets is:
+|A ∪ B| = |A| + |B| - |A ∩ B|.
+
+Step 3: Compute the size of the union.
+|A ∪ B| = 10 + 12 - 6 = 16.
+
+Final answer:
+<answer>
+{""count"": ""16""}
+</answer>",{'count': '16'},True
+LoRA algorithmic_scaffold_v2,ood_control_0015,ood_math_control,binomial_coefficient,2,non_binary,"Use the binomial theorem to find the coefficient of x^3 y^2 in (x+y)^5. End with JSON {""coefficient"": ""...""}.",{'coefficient': '10'},"Step 1: Identify the binomial coefficients.
+For a binomial raised to a power, the general term is C(n, k) x^k y^(n-k).
+
+Step 2: Extract the coefficient for x^3 y^2.
+Compare powers of x and y. Since the power of x is 3 and the power of y is 2, and n = 5, check the binomial coefficient.
+
+Step 3: Select the binomial coefficient.
+C(5; 3).
+
+Final answer:
+<answer>
+{""coefficient"": ""10""}
+</answer>",{'coefficient': '10'},True
+LoRA algorithmic_scaffold_v2,ood_control_0016,ood_math_control,tower_law_degree,2,non_binary,"Suppose F⊂K⊂L, [K:F]=3, and [L:K]=4. Use the tower law to compute [L:F]. Return JSON {""degree"": ""...""}.",{'degree': '12'},"Step 1: Identify the given inclusions.
+F ⊂ K ⊂ L.
+
+Step 2: Extract the degree relations.
+[K:F] = 3 and [L:K] = 4.
+
+Step 3: Apply the tower law.
+[L:F] = [L:K] * [K:F] = 4 * 3 = 12.
+
+Final answer:
+<answer>
+""degree"": ""12""
+</answer>",,False
+LoRA algorithmic_scaffold_v2,ood_control_0017,ood_math_control,rank_nullity,2,non_binary,"A linear map T: V→W has dim(V)=5 and rank(T)=3. Use rank-nullity to find nullity(T). Return JSON {""dimension"": ""...""}.",{'dimension': '2'},"Step 1: Identify the given data.
+The rank of the linear map T is 3.
+The dimension of the domain V is 5.
+The rank-nullity theorem says rank(T) + nullity(T) = dim(V).
+
+Step 2: Apply the rank-nullity theorem.
+3 + nullity(T) = 5.
+nullity(T) = 5 - 3 = 2.
+
+Final answer:
+<answer>
+{""dimension"": ""2""}
+</answer>",{'dimension': '2'},True
+LoRA algorithmic_scaffold_v2,ood_control_0018,ood_math_control,matrix_trace,1,non_binary,"For the matrix [[2,1],[0,5]], compute the trace and return JSON {""trace"": ""...""}.",{'trace': '7'},"Step 1: Identify the trace of a matrix.
+The trace of a matrix is the sum of its diagonal elements.
+
+Step 2: Extract the diagonal elements.
+For the matrix [[2,1],[0,5]], the diagonal elements are 2 and 5.
+
+Step 3: Compute the trace.
+Trace = 2 + 5 = 7.
+
+Final answer:
+<answer>
+{""trace"": ""7""}
+</answer>",{'trace': '7'},True
+LoRA algorithmic_scaffold_v2,ood_control_0019,ood_math_control,matrix_determinant,1,non_binary,"Compute the determinant of [[4,3],[2,4]] and justify using the 2x2 determinant formula. Return JSON {""determinant"": ""...""}.",{'determinant': '10'},"Step 1: Identify the matrix.
+The matrix is:
+$$
+A = \begin{bmatrix} 4 & 3 \\ 2 & 4 \end{bmatrix}
+$$
+
+Step 2: Use the 2x2 determinant formula.
+For a matrix:
+$$
+A = \begin{bmatrix} a & b \\ c & d \end{bmatrix}
+$$
+the determinant is:
+$$
+\text{det}(A) = ad - bc
+$$
+
+Step 3: Compute the determinant.
+For the given matrix:
+$$
+\text{det}(A) = (4)(4) - (3)(2) = 16 - 6 = 10
+$$
+
+Final answer:
+<answer>
+10
+</answer>",,False
+LoRA algorithmic_scaffold_v2,ood_control_0020,ood_math_control,finite_field_roots,2,non_binary,"Over the field F_5, how many roots does x^2-1 have? Give the factorization argument and answer with JSON {""roots"": ""...""}.",{'roots': '2'},"Step 1: Identify the polynomial x^2 - 1 in the field F_5.
+Step 2: Factor the polynomial.
+x^2 - 1 = (x - 1)(x + 1).
+
+Step 3: Check the roots.
+x^2 - 1 = 0 in F_5.
+x^2 = 1.
+x^2 = 1 has the solutions x = 1 and x = -1 = 4 in F_5.
+So the polynomial has two distinct roots in F_5.
+
+Final answer:
+<answer>
+{""roots"": ""1 and 4""}
+</answer>",{'roots': '1 and 4'},False

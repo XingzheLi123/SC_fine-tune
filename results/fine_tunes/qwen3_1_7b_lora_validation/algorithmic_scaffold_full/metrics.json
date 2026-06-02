@@ -1,0 +1,23 @@
+{
+  "accuracy": 0.75,
+  "adapter": "algorithmic_scaffold",
+  "by_answer_type": {
+    "binary": {
+      "accuracy": 0.7416666666666667,
+      "num_correct": 89,
+      "num_records": 120
+    },
+    "non_binary": {
+      "accuracy": 0.7583333333333333,
+      "num_correct": 91,
+      "num_records": 120
+    }
+  },
+  "dataset": "benchmark/data/val or benchmark/data/val_implicit_theorems",
+  "grading_policy": "schema_tolerant_exact_match_v1",
+  "model": "Qwen/Qwen3-1.7B-MLX-bf16",
+  "num_correct": 180,
+  "num_records": 240,
+  "split_role": "validation_for_hyperparameter_selection",
+  "validation_limit": null
+}

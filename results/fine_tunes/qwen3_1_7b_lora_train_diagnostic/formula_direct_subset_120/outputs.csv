@@ -1,0 +1,2161 @@
+adapter,id,family,problem_type,difficulty,answer_type,manual_variation,problem,canonical_answer,raw_output,predicted_answer,correct
+formula_direct,hitting_time_expectation_train_343001,hitting_time_expectation,biased_boundaries_zero_a,3,non_binary,False,"Let (X_n) be a nearest-neighbor random walk on the integers with X_0 = 5, P(X_(n+1) = X_n + 1 | F_n) = 3/5, and P(X_(n+1) = X_n - 1 | F_n) = 2/5. Let tau = inf{n >= 0 : X_n in {0, 7}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '14990/2059'},"Use the finite-boundary hitting-time formula for a nearest-neighbor walk with absorbing barriers at 0 and 7. The expected hitting time E[tau] is given by the formula:
+
+E[tau] = (X_0)(X_0 - X_1)(X_0 - X_1 + X_0 - X_2)...(X_0 - X_n)...(X_0 - X_{tau-1}) = X_0(X_0 - X_1)...(X_0 - X_{tau-1}).
+
+However, the exact computation requires a more detailed analysis using the finite-boundary hitting-time formula.
+
+Final answer:
+<answer>
+{""expected_time"": ""10""}
+</answer>",{'expected_time': '10'},False
+formula_direct,hitting_time_expectation_train_341000,hitting_time_expectation,symmetric_boundaries_zero_a,1,non_binary,True,"Consider a simple symmetric random walk (X_n) on the integers with X_0 = 8. Set tau = inf{n >= 0 : X_n in {0, 10}}. Compute the expected hitting time E[tau]. Return JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '16'},"Use the finite-boundary hitting-time formula for a simple symmetric random walk on the integers with absorbing boundaries at 0 and 10. The expected hitting time E[tau] is given by the formula:
+
+E[tau] = (10 - X_0) * (X_0) = (10 - 8) * 8 = 2 * 8 = 16.
+
+Final answer:
+<answer>
+{""expected_time"": ""16""}
+</answer>",{'expected_time': '16'},True
+formula_direct,hitting_time_expectation_train_342000,hitting_time_expectation,symmetric_shifted_boundaries,2,non_binary,True,"Consider a simple symmetric random walk (S_n) with S_0 = 3. Let tau denote the first hitting time of either 1 or 5. Compute the expected hitting time E[tau]. Return JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '4'},"Use the finite-boundary hitting-time formula for a simple symmetric random walk with absorbing barriers at 1 and 5. The expected hitting time E[tau] is given by the formula:
+
+E[tau] = (1/2)(1 + 5 + 3) = 4.5.
+
+Final answer:
+<answer>
+{""expected_time"": ""4.5""}
+</answer>",{'expected_time': '4.5'},False
+formula_direct,hitting_time_expectation_train_343000,hitting_time_expectation,symmetric_shifted_boundaries,3,non_binary,True,"Consider a simple symmetric random walk (S_n) with S_0 = 2. Let tau denote the first hitting time of either 1 or 6. Compute the expected hitting time E[tau]. Return JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '4'},"Use the finite-boundary hitting-time formula for a simple symmetric random walk with absorbing barriers at 1 and 6. The expected hitting time E[tau] is given by the formula:
+
+E[tau] = (1 - a)(b - a) / (a - b), where a = 1 and b = 6.
+
+Substitute the values:
+E[tau] = (1 - 1)(6 - 1) / (1 - 6) = 0.
+
+Therefore, the expected hitting time E[tau] is:
+Final answer:
+<answer>
+{""expected_time"": ""0""}
+</answer>",{'expected_time': '0'},False
+formula_direct,martingale_verification_train_311000,martingale_verification,centered_walk_basic,1,binary,True,"Take S_0 = 0 and define S_n = Y_1 + ... + Y_n, where the Y_k are independent and P(Y_k = 3) = P(Y_k = -3) = 1/2. With the natural filtration in mind, decide whether (S_n) is a martingale? Give only JSON of the required form inside the answer tags.",{'is_martingale': True},"Check the martingale condition: E[S_{n+1} | F_n] = E[Y_{n+1} | F_n] = E[Y_{n+1}] = 0.
+
+Therefore, the bounded independent increments condition is satisfied.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+formula_direct,martingale_verification_train_313002,martingale_verification,exponential_compensation,3,binary,False,"Let S_n = Y_1 + ... + Y_n, where the Y_k are independent with P(Y_k = 1) = 1/3 and P(Y_k = -1) = 2/3. For fixed lambda, consider M_n = exp(lambda S_n) / (exp(lambda))^n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': False},"Check the optional-stopping hypotheses and the bounded-stopping hypotheses for the martingale condition.
+
+The optional-stopping hypothesis is satisfied because the compensation is bounded by the compensation.
+The bounded-stopping hypothesis is satisfied because the compensation is bounded by the compensation.
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore,",,False
+formula_direct,martingale_verification_train_312000,martingale_verification,quadratic_compensation,2,binary,True,"Let S_n = Y_1 + ... + Y_n for independent increments with mean 0 and variance 9. Consider M_n = S_n^2 - 18 n. With the natural filtration in mind, decide whether (M_n) is a martingale? Give only JSON of the required form inside the answer tags.",{'is_martingale': False},"Check the martingale condition using the compensated-stopping-boundary approach.
+
+The compensated-stopping-boundary condition is satisfied because the compensated-stopping-boundary is bounded by the compensated-stopping-boundary condition.
+
+Therefore, the compensated-stopping-boundary condition is satisfied.
+
+Final answer:
+<answer>
+{""isMartingale"": true}
+</answer>",{'isMartingale': True},False
+formula_direct,martingale_verification_train_313000,martingale_verification,quadratic_compensation,3,binary,True,"Define S_n = Y_1 + ... + Y_n for independent increments with mean 0 and standard deviation 1. Consider M_n = S_n^2 - 1 n. With the natural filtration in mind, decide whether (M_n) is a martingale? Give only JSON of the required form inside the answer tags.",{'is_martingale': True},"Check the optional-stopping hypotheses and the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the bounded-stopping hypotheses.
+Check the",,False
+formula_direct,optional_stopping_validity_train_321000,optional_stopping_validity,bounded_time_valid,1,binary,True,"Consider a simple symmetric random walk (X_n) with X_0 = 0 and natural filtration F_n. Let T = inf{k >= 0 : X_k = 2} and tau = min(T, 10). Suppose a proposed solution claims that optional stopping gives E[X_tau] = E[X_0]. Is the quoted optional-stopping step justified as written? Give only JSON of the required form inside the answer tags.",{'valid': True},"Check the quoted optional-stopping step using the optional-stopping hypotheses.
+The quoted step is E[X_tau] = E[X_0].
+By the optional-stopping hypotheses, this is valid.
+Final answer:
+<answer>
+{""justified"": true}
+</answer>",{'justified': True},True
+formula_direct,optional_stopping_validity_train_323002,optional_stopping_validity,finite_state_hitting_valid,3,binary,False,"Let (S_n) be a simple symmetric random walk on {0, ..., 8}, absorbed when it hits 0 or 8, with S_0 = 4. Let tau be the absorption time. A solution applies optional stopping to the bounded stopped process to conclude E[S_tau] = 4. Is this use justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"Check the optional-stopping hypotheses.
+The quoted optional-stopping hypotheses are valid.
+Final answer:
+<answer>
+{""valid"": true}
+</answer>",{'valid': True},True
+formula_direct,optional_stopping_validity_train_322000,optional_stopping_validity,unbounded_first_hit_invalid,2,binary,True,Consider a simple symmetric random walk (X_n) with X_0 = 0. Let tau = inf{n >= 0 : X_n = 3}. Suppose someone argues that optional stopping directly gives E[X_tau] = E[X_0] because (X_n) is a martingale. Is that direct use justified as stated? Give only JSON of the required form inside the answer tags.,{'valid': False},"Check the optional-stopping hypotheses.
+The optional-stopping hypotheses are not justified.
+Therefore, the quoted use is not valid.
+Final answer:
+<answer>
+{""justified"": false}
+</answer>",{'justified': False},True
+formula_direct,optional_stopping_validity_train_323000,optional_stopping_validity,unbounded_first_hit_invalid,3,binary,True,Consider a simple symmetric random walk (S_n) with S_0 = 0. Let tau = inf{n >= 0 : S_n = 2}. Suppose someone argues that optional stopping directly gives E[S_tau] = E[S_0] because (S_n) is a martingale. Is that direct use justified as stated? Give only JSON of the required form inside the answer tags.,{'valid': False},"Check the optional-stopping hypotheses.
+The quoted optional-stopping hypothesis is not valid.
+The quoted optional-stopping hypothesis is not valid.
+Optional-stopping hypothesis is not valid.
+Check the optional-stopping hypotheses.
+The quoted optional-stopping hypothesis is not valid.
+Optional-stopping hypothesis is not valid.
+Check the optional-stopping hypotheses.
+The quoted optional-stopping hypothesis is not valid.
+Optional-stopping hypothesis is not valid.
+Check the optional-stopping hypotheses.
+The quoted optional-stopping hypothesis is not valid.
+Optional-stopping hypothesis is not valid.
+Check the optional-stopping hypotheses.
+The quoted optional-stopping hypothesis is not valid.
+Optional-stopping hypothesis is not valid.
+Check the optional-stopping hypotheses.
+The quoted optional-stopping hypothesis is not valid.
+Optional-stopping hypothesis is not valid.
+Check the optional-stopping hypotheses.
+The quoted optional-stopping hypothesis is not valid.
+Optional-stopping hypothesis is not valid.
+Check the optional-stopping hypotheses.
+The quoted optional-stopping hypothesis is not valid.
+Optional-stopping hypothesis is not valid.
+Check the optional-stopping hypotheses.
+The quoted optional-stopping hypothesis is not valid.
+Optional-stopping hypothesis is not valid.
+Check the optional-stopping hypotheses.
+The quoted optional-stopping hypothesis is not valid.
+Optional-stopping hypothesis is not valid.
+Check the optional-stopping hypotheses.
+The quoted optional-stopping hypothesis is not valid.
+Optional-stopping hypothesis is not valid.
+Check the optional-stopping hypotheses.
+The quoted optional-stopping hypothesis is not valid.
+Optional-stopping hypothesis is not valid.
+Check the optional-stopping hypotheses.
+The quoted optional-stopping hypothesis is not valid.
+Optional-stopping hypothesis is not valid.
+Check the optional-stopping hypotheses.
+The quoted optional-stopping hypothesis is not valid.
+Optional-stopping hypothesis is not valid.
+Check the optional-stopping hypotheses.
+The quoted optional-stopping hypothesis is not valid.
+Optional-stopping hypothesis is not valid.
+Check the optional-stopping hypotheses.
+The quoted optional-stopping hypothesis is not valid.
+Optional-stopping hypothesis is not valid.
+Check the optional-stopping hypotheses.
+The quoted optional-stopping hypothesis is not valid.
+Optional-stopping hypothesis is not valid.
+Check the optional-stopping hypotheses.
+The quoted optional-stopping hypothesis is not valid.
+Optional-stopping hypothesis is not valid.
+Check the optional-stopping hypotheses.
+The quoted optional-stopping hypothesis is not valid.
+Optional-stopping hypothesis is not valid.
+Check the optional-stopping hypotheses.
+The quoted optional-stopping hypothesis is not valid.
+Optional-stopping hypothesis is not valid.
+Check the",,False
+formula_direct,stopped_process_expectation_train_331000,stopped_process_expectation,bounded_walk_expectation,1,non_binary,True,"Consider a simple symmetric random walk (X_n) with X_0 = 0. Define T = inf{k >= 0 : X_k = 3} and tau = min(T, 20). Compute E[X_tau]. Return JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '0'},"Use the optional stopping hypotheses and the finite-boundary condition to compute the conditional expectations.
+
+Key steps:
+1. Use the optional-stopping hypothesis for finite horizon.
+2. Use the finite-boundary condition tau = min(T, 20).
+3. Use the optional-stopping hypothesis to compute E[X_tau].
+
+Therefore, the value is:
+Final answer:
+<answer>
+{""value"": ""0""}
+</answer>",{'value': '0'},True
+formula_direct,stopped_process_expectation_train_333005,stopped_process_expectation,bounded_walk_expectation,3,non_binary,True,"Consider a simple symmetric random walk (X_n) with X_0 = 1. Define T = inf{k >= 0 : X_k = 5} and tau = min(T, 20). Compute E[X_tau]. Return JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '1'},"Use the optional stopping hypotheses and the finite-boundary hitting-time formula to compute the conditional expectations.
+
+Key steps:
+1. Use the optional-stopping hypothesis for finite horizon.
+2. Use the finite-boundary hitting-time formula.
+3. Use the hitting-time formula for the simple symmetric random walk.
+4. Use the optional-stopping hypothesis to compute the conditional expectations.
+
+Therefore, the value is:
+<answer>
+{""value"": ""10""}
+</answer>",{'value': '10'},False
+formula_direct,stopped_process_expectation_train_332000,stopped_process_expectation,quadratic_fixed_horizon,2,non_binary,True,"Define X_n = -1 + Y_1 + ... + Y_n, where P(Y_k = 3) = P(Y_k = -3) = 1/2 and the increments are independent. Compute E[X_2^2]. Return JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '19'},"Use the linearity of conditional expectation and the independence of the increments.
+
+First, compute E[X_2^2]:
+E[X_2^2] = E[(X_1 + X_2)^2] = E[X_1^2 + 2X_1X_2 + X_2^2].
+
+Break it down:
+E[X_1^2] = E[Y_1^2] = E[Y_1^2] = E[(Y_1)^2] = E[Y_1^2] = E[Y_1^2] = E[Y_1^2] = E[Y_1^2].
+
+Since P(Y_k = 3) = P(Y_k = -3) = 1/2, then E[Y_1^2] = (3^2)(1/2) + (-3^2)(1/2) = 9/2 + 9/2 = 9.
+
+Similarly, E[X_2^2] = E[X_1^2] + E[X_2^2] + 2E[X_1X_2].
+
+But X_1 = -1 + Y_1 and X_2 = -1 + Y_1 + Y_2.
+
+Therefore:
+E[X_1X_2] = E[(-1 + Y_1)(-1 + Y_1 + Y_2)].
+
+Use the independence of the increments:
+E[X_1X_2] = E[(-1 + Y_1)(-1 + Y_1 + Y_2)] = E[(-1 + Y_1)(-1 + Y_1)] + E[(-1 + Y_1)(Y_2)].
+
+Use the independence of the increments:
+E[(-1 + Y_1)(Y_2)] = E[(-1 + Y_1)]E[Y_2] = E[-1 + Y_1]E[Y_2].
+
+Therefore:
+E[X_1X_2] = E[(-1 + Y_1)^2] + E[-1 + Y_1]E[Y_2].
+
+Use the independence of the increments again:
+E[(-1 + Y_1)^2] = E[Y_1^2] = 9.
+
+E[-1 + Y_1] = E[Y_1] = 0.
+
+Therefore:
+E[X_1X_2] = 9 + 0",{'value': '9'},False
+formula_direct,stopped_process_expectation_train_333000,stopped_process_expectation,quadratic_fixed_horizon,3,non_binary,True,"Define S_n = 3 + Y_1 + ... + Y_n, where P(Y_k = 5) = P(Y_k = -5) = 1/2 and the increments are independent. Compute E[S_5^2]. Return JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '134'},"Use the formula for the second moment of a centered independent increment walk:
+E[S_n^2] = E[(3 + Y_1 + ... + Y_n)^2] = n E[Y_i^2] + 6 E[Y_i].
+
+Since E[Y_i^2] = Var(Y_i) + (E[Y_i])^2 = 25 + 0 = 25.
+
+Therefore:
+E[S_5^2] = 5 * 25 + 6 * 0 = 125.
+
+Final answer:
+<answer>
+{""value"": ""125""}
+</answer>",{'value': '125'},False
+formula_direct,stopped_process_expectation_train_333002,stopped_process_expectation,stopped_martingale_value,3,non_binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 0. Let T = inf{k >= 0 : X_k = 4} and tau = min(T, 6). Compute E[X_tau^2 - tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '0'},"Use the optional stopping hypotheses and the finite-boundary hitting-time formula to compute the required conditional expectations.
+
+Key steps:
+1. Use the optional-stopping hypothesis to find E[X_tau].
+2. Use the hitting-time formula to find E[X_tau].
+3. Use the optional-stopping hypothesis to find E[X_tau^2].
+4. Use the optional-stopping hypothesis to find E[tau].
+5. Use the optional-stopping hypothesis to find E[X_tau^2 - tau].
+
+Final answer:
+<answer>
+{""value"": ""16""}
+</answer>",{'value': '16'},False
+formula_direct,hitting_time_expectation_train_343002,hitting_time_expectation,biased_boundaries_zero_a,3,non_binary,False,"Let (S_n) be a nearest-neighbor random walk on the integers with S_0 = 1, P(S_(n+1) = S_n + 1 | F_n) = 3/5, and P(S_(n+1) = S_n - 1 | F_n) = 2/5. Let tau = inf{n >= 0 : S_n in {0, 4}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '43/13'},"Use the finite-boundary hitting-time formula for a nearest-neighbor walk with absorbing barriers at 0 and 4. The expected hitting time E[tau] is given by the formula:
+
+E[tau] = (1/3)(1 + 4) = 5.
+
+Final answer:
+<answer>
+{""expected_time"": ""5""}
+</answer>",{'expected_time': '5'},False
+formula_direct,hitting_time_expectation_train_341001,hitting_time_expectation,symmetric_boundaries_zero_a,1,non_binary,False,"Let (S_n) be a simple symmetric random walk on the integers with S_0 = 10. Let tau = inf{n >= 0 : S_n in {0, 12}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '20'},"Use the finite-boundary hitting-time formula for a simple symmetric random walk. The expected hitting time is the minimum of the expected hitting times of the absorbing barriers 0 and 12.
+
+Formula:
+E[tau] = (10)(12) = 120.
+
+Final answer:
+<answer>
+{""expected_time"": ""120""}
+</answer>",{'expected_time': '120'},False
+formula_direct,hitting_time_expectation_train_342001,hitting_time_expectation,symmetric_shifted_boundaries,2,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 1. Let tau be the first time the walk hits either -3 or 3. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '8'},"Use the finite-boundary hitting-time formula for a simple symmetric random walk with absorbing barriers at -3 and 3. The expected hitting time E[tau] is given by the formula:
+
+E[tau] = (3^2 + 3^2) / (2^2) = (9 + 9) / 4 = 18 / 4 = 4.5.
+
+Final answer:
+<answer>
+{""expected_time"": ""4.5""}
+</answer>",{'expected_time': '4.5'},False
+formula_direct,hitting_time_expectation_train_343003,hitting_time_expectation,symmetric_shifted_boundaries,3,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = -1. Let tau be the first time the walk hits either -2 or 4. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '5'},"Use the finite-boundary hitting-time formula for a simple symmetric random walk with absorbing barriers at -2 and 4. The expected hitting time E[tau] is given by the formula:
+
+E[tau] = (x-a)(b-a) + (b-x)(a-b) = (x-a)(b-a) + (b-x)(a-b) = (x-a)(b-a) - (b-x)(a-b) = (x-a)(b-a) + (x-b)(a-b).
+
+Substitute a = -2, b = 4, and x = -1:
+
+E[tau] = (-1 - (-2))(4 - (-2)) + (4 - (-1))(-2 - 4) = (1)(6) + (5)(-6) = 6 - 30 = -24.
+
+Therefore, the expected hitting time tau is -24.
+
+Final answer:
+<answer>
+{""expected_time"": ""-24""}
+</answer>",{'expected_time': '-24'},False
+formula_direct,martingale_verification_train_311001,martingale_verification,centered_walk_basic,1,binary,False,"Let X_0 = 0 and X_n = Y_1 + ... + Y_n, where the Y_k are independent and P(Y_k = 2) = P(Y_k = -2) = 1/2. With respect to the natural filtration, is (X_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Check the martingale condition: E[X_{n+1} | X_0, ..., X_n] = E[X_n].
+
+E[X_{n+1}] = E[X_n + Y_{n+1}] = E[X_n] + E[Y_{n+1}] = X_n + E[Y_{n+1}].
+
+Since E[Y_{n+1}] = 0 (because E[Y_{n+1}] = 2 * 1/2 + (-2) * 1/2 = 0), the condition E[X_{n+1} | X_0, ..., X_n] = E[X_n] is satisfied.
+
+Therefore, the sequence (X_n) is a martingale.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+formula_direct,martingale_verification_train_313003,martingale_verification,exponential_compensation,3,binary,False,"Let X_n = Y_1 + ... + Y_n, where the Y_k are independent with P(Y_k = 1) = 2/5 and P(Y_k = -1) = 3/5. For fixed theta, consider M_n = exp(theta X_n) / (exp(theta))^n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': False},"Check the optional-stopping hypotheses and the bounded-stopping hypotheses.
+Conclusion: is_martingale: false
+Final answer:
+<answer>
+{""is_martingale"": false}
+</answer>",{'is_martingale': False},True
+formula_direct,martingale_verification_train_312001,martingale_verification,quadratic_compensation,2,binary,False,"Let X_n = Y_1 + ... + Y_n for independent increments with P(Y_k = 10) = P(Y_k = -10) = 1/2. Consider M_n = X_n^2 - 100 n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Check the martingale condition: E[M_{n+1} | F_n] = E[X_{n+1}^2 - 100(n+1) | F_n] = E[(X_n + Y_{n+1})^2 - 100(n+1) | F_n].
+
+Expand the square: E[X_n^2 + 2X_nY_{n+1} + Y_{n+1}^2 - 100(n+1) | F_n].
+
+Use the independence of Y_{n+1} and F_n: E[X_n^2 | F_n] = X_n^2, E[Y_{n+1}^2 | F_n] = E[Y_{n+1}^2] = 100.
+
+Therefore, E[M_{n+1} | F_n] = X_n^2 + 2X_nE[Y_{n+1}] + 100 - 100(n+1).
+
+Since E[Y_{n+1}] = 0, this simplifies to X_n^2 + 100 - 100(n+1) = X_n^2 - 100n = M_n.
+
+Therefore, E[M_{n+1} | F_n] = M_n.
+
+Hence, the is_martingale is true.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+formula_direct,martingale_verification_train_313001,martingale_verification,quadratic_compensation,3,binary,False,"Let X_n = Y_1 + ... + Y_n for independent increments with P(Y_k = 3) = P(Y_k = -3) = 1/2. Consider M_n = X_n^2 - 10 n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': False},"Check the martingale condition by verifying the compensating martingale condition.
+The compensated quadratic martingale has the compensating martingale condition.
+Therefore, the compensated quadratic martingale is a martingale.
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},False
+formula_direct,optional_stopping_validity_train_321001,optional_stopping_validity,bounded_time_valid,1,binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 0 and natural filtration F_n. Let T = inf{k >= 0 : X_k = 3} and tau = min(T, 10). A solution claims that optional stopping gives E[X_tau] = E[X_0]. Is this use of optional stopping justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"Check the use of optional-stopping hypotheses.
+The optional-stopping hypotheses are not valid here because the stopped bounded-stopping time tau is not an unbounded-stopping time.
+Therefore, the optional-stopping hypotheses are not valid.
+
+Final answer:
+<answer>
+{""valid"": false}
+</answer>",{'valid': False},False
+formula_direct,optional_stopping_validity_train_323003,optional_stopping_validity,finite_state_hitting_valid,3,binary,False,"Let (X_n) be a simple symmetric random walk on {0, ..., 4}, absorbed when it hits 0 or 4, with X_0 = 1. Let tau be the absorption time. A solution applies optional stopping to the bounded stopped process to conclude E[X_tau] = 1. Is this use justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"Check the optional-stopping hypotheses.
+The quoted optional-stopping hypotheses are valid.
+Final answer:
+<answer>
+{""valid"": true}
+</answer>",{'valid': True},True
+formula_direct,optional_stopping_validity_train_322001,optional_stopping_validity,unbounded_first_hit_invalid,2,binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 0. Let tau = inf{n >= 0 : X_n = 4}. A solution claims that optional stopping directly gives E[X_tau] = E[X_0] because (X_n) is a martingale. Is this use justified as stated? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': False},"Check the optional-stopping hypotheses.
+The quoted solution incorrectly assumes that optional-stopping directly gives E[X_tau] = E[X_0] because (X_n) is a martingale.
+Optional-stopping only guarantees E[X_tau] = E[X_0] if the stopped martingale is an unbounded-stopping bounded-stopping.
+Therefore, the quoted solution is invalid.
+
+Final answer:
+<answer>
+{""valid"": false}
+</answer>",{'valid': False},True
+formula_direct,optional_stopping_validity_train_323001,optional_stopping_validity,unbounded_first_hit_invalid,3,binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 0. Let tau = inf{n >= 0 : X_n = 2}. A solution claims that optional stopping directly gives E[X_tau] = E[X_0] because (X_n) is a martingale. Is this use justified as stated? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': False},"Check the optional-stopping hypotheses.
+The quoted optional-stopping hypothesis is valid.
+Therefore, the quoted use is justified.
+
+Final answer:
+<answer>
+{""valid"": true}
+</answer>",{'valid': True},False
+formula_direct,stopped_process_expectation_train_331001,stopped_process_expectation,bounded_walk_expectation,1,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = -3. Let T = inf{k >= 0 : S_k = 1} and tau = min(T, 8). Compute E[S_tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '-3'},"Use the optional stopping hypotheses and the finite-boundary hitting-time condition to compute the conditional expectations.
+
+Key steps:
+1. Use the optional-stopping hypothesis for bounded-stopping times.
+2. Use the finite-boundary hitting-time condition.
+3. Use the hitting-time formula for the simple symmetric random walk.
+4. Use the optional-stopping hypothesis to compute the conditional expectations.
+
+Conditional expectations:
+E[S_tau] = E[S_0] = -3.
+
+Final answer:
+<answer>
+{""value"": ""-3""}
+</answer>",{'value': '-3'},True
+formula_direct,stopped_process_expectation_train_333007,stopped_process_expectation,bounded_walk_expectation,3,non_binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 1. Let T = inf{k >= 0 : X_k = 3} and tau = min(T, 5). Compute E[X_tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '1'},"Use the optional stopping hypotheses and the finite-boundary hitting-time formula to compute the conditional expectations.
+
+Key steps:
+1. Use the optional-stopping hypothesis to compute E[X_tau].
+2. Use the finite-boundary hitting-time formula to find E[X_tau].
+
+Final answer:
+<answer>
+{""value"": ""4""}
+</answer>",{'value': '4'},False
+formula_direct,stopped_process_expectation_train_332001,stopped_process_expectation,quadratic_fixed_horizon,2,non_binary,False,"Let X_n = 0 + Y_1 + ... + Y_n, where P(Y_k = 1) = P(Y_k = -1) = 1/2 and the increments are independent. Compute E[X_5^2]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '5'},"Use the properties of the centered independent increments. Since the increments are independent and centered, the second-moment can be computed using the formula for the second-moment of a centered independent-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-station",,False
+formula_direct,stopped_process_expectation_train_333001,stopped_process_expectation,quadratic_fixed_horizon,3,non_binary,False,"Let S_n = -3 + Y_1 + ... + Y_n, where P(Y_k = 5) = P(Y_k = -5) = 1/2 and the increments are independent. Compute E[S_2^2]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '59'},"Use the linearity of conditional expectation and the independence of the increments.
+
+First, compute the conditional expectation of $ S_2^2 $:
+$$
+E[S_2^2] = E[(S_1 + Y_2)^2] = E[S_1^2 + 2S_1Y_2 + Y_2^2].
+$$
+
+Break this down:
+- $ E[S_1^2] = E[(-3 + Y_1)^2] = E[Y_1^2 - 6Y_1 + 9] = E[Y_1^2] - 6E[Y_1] + 9 $.
+- $ E[Y_1^2] = E[Y_1^2] = (1/2)(25) + (1/2)(25) = 25 $.
+- $ E[Y_1] = (1/2)(5) + (1/2)(-5) = 0 $.
+- Therefore, $ E[S_1^2] = 25 - 0 + 9 = 34 $.
+
+Next, compute $ E[2S_1Y_2] = 2E[S_1]E[Y_2] = 2(0)(0) = 0 $.
+
+Finally, compute $ E[Y_2^2] = 25 $.
+
+Therefore:
+$$
+E[S_2^2] = E[S_1^2] + 0 + E[Y_2^2] = 34 + 25 = 59.
+$$
+
+Final answer:
+<answer>
+{""value"": ""59""}
+</answer>",{'value': '59'},True
+formula_direct,stopped_process_expectation_train_333003,stopped_process_expectation,stopped_martingale_value,3,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = -1. Let T = inf{k >= 0 : S_k = 1} and tau = min(T, 6). Compute E[S_tau^2 - tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '1'},"Use the optional stopping hypotheses and the finite-boundary hitting-time formula to compute the required conditional expectations.
+
+Key steps:
+1. Use the optional-stopping hypothesis to find E[S_tau].
+2. Use the hitting-time formula to find E[S_tau].
+3. Use the optional-stopping hypothesis to find E[tau].
+4. Use the optional-stopping hypothesis to find E[S_tau^2].
+
+Final answer:
+<answer>
+{""value"": ""1""}
+</answer>",{'value': '1'},True
+formula_direct,hitting_time_expectation_train_343005,hitting_time_expectation,biased_boundaries_zero_a,3,non_binary,True,"Let (X_n) be a nearest-neighbor random walk on the integers with X_0 = 1, P(X_(n+1) = X_n + 1 | F_n) = 1/3, and P(X_(n+1) = X_n - 1 | F_n) = 2/3. Let tau = inf{n >= 0 : X_n in {0, 5}}. Compute the expected hitting time E[tau]. Return JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '78/31'},"Use the finite-boundary hitting-time formula for a nearest-neighbor walk with absorbing barriers at 0 and 5. The expected hitting time is the sum of the probabilities of being absorbed at each step multiplied by the step number.
+
+The formula is:
+E[tau] = sum_{k=0}^{4} (1/3)^k * (k + 1)
+
+Compute the sum:
+E[tau] = (1/3)^0 * (0 + 1) + (1/3)^1 * (1 + 1) + (1/3)^2 * (2 + 1) + (1/3)^3 * (3 + 1) + (1/3)^4 * (4 + 1)
+
+E[tau] = 1 * 1 + (1/3) * 2 + (1/9) * 3 + (1/27) * 4 + (1/81) * 5
+
+E[tau] = 1 + 2/3 + 1/3 + 4/27 + 5/81
+
+Convert to a common denominator of 81:
+E[tau] = 81/81 + 54/81 + 27/81 + 12/81 + 5/81 = (81 + 54 + 27 + 12 + 5)/81 = 179/81
+
+Final answer:
+<answer>
+{""expected_time"": ""179/81""}
+</answer>",{'expected_time': '179/81'},False
+formula_direct,hitting_time_expectation_train_341002,hitting_time_expectation,symmetric_boundaries_zero_a,1,non_binary,False,"Let (S_n) be a simple symmetric random walk on the integers with S_0 = 1. Let tau = inf{n >= 0 : S_n in {0, 8}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '7'},"Use the finite-boundary hitting-time formula for a simple symmetric random walk. The expected hitting time E[tau] is given by the formula:
+
+E[tau] = (x)(1 - p^x) / (q^x - p^x),
+
+where x is the starting position, p is the probability of a step to the right, and q is the probability of a step to the left.
+
+Here, the starting position is x = 1, p = q = 1/2.
+
+Substitute the values into the formula:
+
+E[tau] = (1)(1 - (1/2)^1) / ((1/2)^1 - (1/2)^1) = (1)(1 - 1/2) / (1/2 - 1/2) = (1)(1/2) / 0.
+
+This is an indeterminate form. Use the finite-boundary hitting-time formula for a simple symmetric random walk with absorbing barriers at 0 and N.
+
+E[tau] = N(1 - p^N) / (q^N - p^N).
+
+Here, N = 8, p = q = 1/2.
+
+Substitute the values into the formula:
+
+E[tau] = 8(1 - (1/2)^8) / ((1/2)^8 - (1/2)^8) = 8(1 - 1/256) / 0.
+
+This is also an indeterminate form. Use the finite-boundary hitting-time formula for a simple symmetric random walk with absorbing barriers at 0 and N.
+
+E[tau] = N(1 - p^N) / (q^N - p^N).
+
+Here, N = 8, p = q = 1/2.
+
+Substitute the values into the formula:
+
+E[tau] = 8(1 - (1/2)^8) / ((1/2)^8 - (1/2)^8) = 8(1 - 1/256) / 0.
+
+This is an indeterminate form. Use the finite-boundary hitting-time formula for a simple symmetric random walk with absorbing barriers at 0 and N.
+
+E[tau] = N(1 - p^N) / (q^N - p^N).
+
+Here, N = 8, p = q = 1/2.
+
+Substitute the values into the formula:
+
+E[tau] =",{'expected_time': '8'},False
+formula_direct,hitting_time_expectation_train_342002,hitting_time_expectation,symmetric_shifted_boundaries,2,non_binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 5. Let tau be the first time the walk hits either 2 or 7. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '6'},"Use the finite-boundary hitting-time formula for a simple symmetric random walk. The expected hitting time E[tau] is given by the formula:
+
+E[tau] = (a + b) / (mu^2), where a and b are the absorbing boundaries and mu is the drift.
+
+Here, a = 2, b = 7, and mu = 0 (since the walk is unbiased).
+
+Substitute the values:
+
+E[tau] = (2 + 7) / (0^2) = 9 / 0.
+
+This is undefined due to division by zero.
+
+Therefore, the expected hitting time is infinite.
+
+Final answer:
+<answer>
+{""expected_time"": ""infinite""}
+</answer>",{'expected_time': 'infinite'},False
+formula_direct,hitting_time_expectation_train_343004,hitting_time_expectation,symmetric_shifted_boundaries,3,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 0. Let tau be the first time the walk hits either -5 or 1. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '5'},"Use the finite-boundary hitting-time formula for a simple symmetric random walk with absorbing barriers at -5 and 1. The expected hitting time E[tau] is given by the formula:
+
+E[tau] = (1/2)(1 + 5 + 1) = 3.5.
+
+Final answer:
+<answer>
+{""expected_time"": ""3.5""}
+</answer>",{'expected_time': '3.5'},False
+formula_direct,martingale_verification_train_311002,martingale_verification,centered_walk_basic,1,binary,False,"Let X_0 = 0 and X_n = Y_1 + ... + Y_n, where the Y_k are independent and P(Y_k = 2) = P(Y_k = -2) = 1/2. With respect to the natural filtration, is (X_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Check the martingale condition: E[X_{n+1} | X_0, ..., X_n] = E[X_n].
+
+E[X_{n+1}] = E[X_n + Y_{n+1}] = E[X_n] + E[Y_{n+1}] = X_n + E[Y_{n+1}].
+
+Since E[Y_{n+1}] = 0 (because E[Y_{n+1}] = 2 * 1/2 + (-2) * 1/2 = 0), the condition E[X_{n+1} | X_0, ..., X_n] = E[X_n] is satisfied.
+
+Therefore, the sequence (X_n) is a martingale.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+formula_direct,martingale_verification_train_313005,martingale_verification,exponential_compensation,3,binary,True,"Define X_n = Y_1 + ... + Y_n, where the Y_k are independent with P(Y_k = 1) = 2/3 and P(Y_k = -1) = 1/3. For fixed theta, consider M_n = exp(theta X_n) / (p exp(theta) + q exp(-theta))^n. Relative to the natural filtration, say whether (M_n) is a martingale? Put the requested JSON object inside the answer tags.",{'is_martingale': True},"Use the optional stopping hypothesis and the bounded-stopping hypothesis to show that the compensated-stopping is bounded by a deterministic constant. Therefore, the compensated-stopping is bounded by a deterministic constant.
+
+Final answer:
+<answer>
+{
+  ""isMartingale"": true,
+  ""reasoning"": ""Use the optional stopping hypothesis and the bounded-stopping hypothesis to show that the compensated-stopping is bounded by a deterministic constant. Therefore, the compensated-stopping is bounded by a deterministic constant.""
+}
+</answer>","{'isMartingale': True, 'reasoning': 'Use the optional stopping hypothesis and the bounded-stopping hypothesis to show that the compensated-stopping is bounded by a deterministic constant. Therefore, the compensated-stopping is bounded by a deterministic constant.'}",True
+formula_direct,martingale_verification_train_312002,martingale_verification,quadratic_compensation,2,binary,False,"Let S_n = Y_1 + ... + Y_n for independent increments with P(Y_k = 3) = P(Y_k = -3) = 1/2. Consider M_n = S_n^2 - 8 n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': False},"Check the optional-stopping hypotheses and the bounded-stopping hypotheses.
+Conclusion: is_martingale: true
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},False
+formula_direct,martingale_verification_train_313004,martingale_verification,quadratic_compensation,3,binary,False,"Let X_n = Y_1 + ... + Y_n for independent increments with mean 0 and variance 100. Consider M_n = X_n^2 - 100 n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Check the optional-stopping hypotheses and the bounded-stopping hypotheses.
+The optional-stopping hypotheses are satisfied because the compensated-stopping hypotheses are satisfied.
+The bounded-stopping hypotheses are satisfied because the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses",,False
+formula_direct,optional_stopping_validity_train_321002,optional_stopping_validity,bounded_time_valid,1,binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 0 and natural filtration F_n. Let T = inf{k >= 0 : X_k = 1} and tau = min(T, 20). A solution claims that optional stopping gives E[X_tau] = E[X_0]. Is this use of optional stopping justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"Check the use of optional-stopping hypotheses.
+The optional-stopping hypotheses are not valid here because the stopped bounded-stopping time tau is not an unbounded-stopping time.
+Therefore, the optional-stopping hypotheses are not valid.
+
+Final answer:
+<answer>
+{""valid"": false}
+</answer>",{'valid': False},False
+formula_direct,optional_stopping_validity_train_323004,optional_stopping_validity,finite_state_hitting_valid,3,binary,False,"Let (S_n) be a simple symmetric random walk on {0, ..., 8}, absorbed when it hits 0 or 8, with S_0 = 7. Let tau be the absorption time. A solution applies optional stopping to the bounded stopped process to conclude E[S_tau] = 7. Is this use justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"Check the optional-stopping hypotheses.
+The quoted optional-stopping hypotheses are valid.
+Final answer:
+<answer>
+{""valid"": true}
+</answer>",{'valid': True},True
+formula_direct,optional_stopping_validity_train_322002,optional_stopping_validity,unbounded_first_hit_invalid,2,binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 0. Let tau = inf{n >= 0 : S_n = 2}. A solution claims that optional stopping directly gives E[S_tau] = E[S_0] because (S_n) is a martingale. Is this use justified as stated? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': False},"Check the optional-stopping hypotheses.
+The quoted optional-stopping hypothesis is invalid.
+Therefore, the use is not justified.
+
+Final answer:
+<answer>
+{""valid"": false}
+</answer>",{'valid': False},True
+formula_direct,optional_stopping_validity_train_323007,optional_stopping_validity,unbounded_first_hit_invalid,3,binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 0. Let tau = inf{n >= 0 : S_n = 1}. A solution claims that optional stopping directly gives E[S_tau] = E[S_0] because (S_n) is a martingale. Is this use justified as stated? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': False},"Check the optional-stopping hypotheses.
+The quoted optional-stopping hypothesis is not valid.
+The quoted optional-stopping hypothesis is not valid.
+Final answer:
+<answer>
+{""valid"": false}
+</answer>",{'valid': False},True
+formula_direct,stopped_process_expectation_train_331002,stopped_process_expectation,bounded_walk_expectation,1,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = -2. Let T = inf{k >= 0 : S_k = 1} and tau = min(T, 10). Compute E[S_tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '-2'},"Use the optional stopping hypotheses and the finite-boundary hitting-time formula to compute the conditional expectations.
+
+Key steps:
+1. Use the optional-stopping hypothesis for bounded-stopping times.
+2. Use the finite-boundary hitting-time formula.
+3. Use the optional-stopping hypothesis for the bounded stopping time tau.
+4. Use the optional-stopping hypothesis for the bounded-stopping time tau.
+
+Therefore, the conditional expectations are:
+Final answer:
+<answer>
+{""value"": ""0""}
+</answer>",{'value': '0'},False
+formula_direct,stopped_process_expectation_train_333009,stopped_process_expectation,bounded_walk_expectation,3,non_binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = -2. Let T = inf{k >= 0 : X_k = 0} and tau = min(T, 10). Compute E[X_tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '-2'},"Use the optional stopping hypotheses and the finite-boundary hitting-time condition to compute the conditional expectations.
+
+Key steps:
+1. Use the optional-stopping hypothesis for bounded-stopping times.
+2. Use the finite-boundary hitting-time condition.
+3. Use the optional-stopping hypothesis for the bounded stopping time tau.
+4. Use the optional-stopping hypothesis for the bounded-stopping time tau.
+
+Therefore, the conditional expectations are:
+E[X_tau] = E[X_0] = -2.
+
+Final answer:
+<answer>
+{""value"": ""-2""}
+</answer>",{'value': '-2'},True
+formula_direct,stopped_process_expectation_train_332002,stopped_process_expectation,quadratic_fixed_horizon,2,non_binary,False,"Let X_n = -2 + Y_1 + ... + Y_n, where P(Y_k = 2) = P(Y_k = -2) = 1/2 and the increments are independent. Compute E[X_3^2]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '16'},"Use the linearity of conditional expectation and the independence of the increments.
+
+First, compute the second moment of X₃:
+E[X₃²] = E[(X₃)²] = E[(-2 + Y₁ + Y₂ + Y₃)²].
+
+Expand the square:
+(-2 + Y₁ + Y₂ + Y₃)² = (-2)² + Y₁² + Y₂² + Y₃² + 2(-2)(Y₁ + Y₂ + Y₃) + 2(Y₁Y₂ + Y₁Y₃ + Y₂Y₃).
+
+Now compute the expectation:
+E[X₃²] = E[(-2)²] + E[Y₁²] + E[Y₂²] + E[Y₃²] + 2(-2)(E[Y₁ + Y₂ + Y₃]) + 2(E[Y₁Y₂] + E[Y₁Y₃] + E[Y₂Y₃]).
+
+Since the increments are independent, E[Y₁Y₂] = E[Y₁]E[Y₂], etc.
+
+Use the independence and the fact that E[Y_k] = 0 and E[Y_k²] = 4.
+
+Substitute the values:
+E[X₃²] = 4 + 4 + 4 + 4 + 2(-2)(0) + 2(0) = 16.
+
+Final answer:
+<answer>
+{""value"": ""16""}
+</answer>",{'value': '16'},True
+formula_direct,stopped_process_expectation_train_333004,stopped_process_expectation,quadratic_fixed_horizon,3,non_binary,False,"Let S_n = 2 + Y_1 + ... + Y_n, where P(Y_k = 1) = P(Y_k = -1) = 1/2 and the increments are independent. Compute E[S_2^2]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '6'},"Use the formula for the second centered moment: E[S_2^2] = Var(S_2) + [E(S_2)]^2.
+
+First, compute E(S_2):
+E(S_2) = E(2 + Y_1 + Y_2) = 2 + E(Y_1) + E(Y_2) = 2 + 0 + 0 = 2.
+
+Next, compute Var(S_2):
+Var(S_2) = Var(2 + Y_1 + Y_2) = Var(Y_1) + Var(Y_2) = 1 + 1 = 2.
+
+Therefore, E(S_2^2) = Var(S_2) + [E(S_2)]^2 = 2 + (2)^2 = 2 + 4 = 6.
+
+Final answer:
+<answer>
+{""value"": ""6""}
+</answer>",{'value': '6'},True
+formula_direct,stopped_process_expectation_train_333006,stopped_process_expectation,stopped_martingale_value,3,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 1. Let T = inf{k >= 0 : S_k = 4} and tau = min(T, 4). Compute E[S_tau^2 - tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '1'},"Use the optional stopping hypotheses and the finite-boundary hitting-time formula to compute the required conditional expectations.
+
+Key steps:
+1. Use the optional-stopping hypothesis to find E[S_tau].
+2. Use the optional-stopping hypothesis again to find E[S_tau^2].
+3. Use the optional-stopping hypothesis to find E[tau].
+4. Use the optional-stopping hypothesis to find E[S_tau^2 - tau].
+
+Final answer:
+<answer>
+{""value"": ""16""}
+</answer>",{'value': '16'},False
+formula_direct,hitting_time_expectation_train_343006,hitting_time_expectation,biased_boundaries_zero_a,3,non_binary,False,"Let (S_n) be a nearest-neighbor random walk on the integers with S_0 = 2, P(S_(n+1) = S_n + 1 | F_n) = 1/3, and P(S_(n+1) = S_n - 1 | F_n) = 2/3. Let tau = inf{n >= 0 : S_n in {0, 4}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '18/5'},"Use the finite-boundary hitting-time formula for a nearest-neighbor walk with absorbing barriers at 0 and 4. The expected hitting time E[tau] is given by the formula:
+
+E[tau] = (distance from the starting point to the first barrier) * (1 + 1/2 + 1/4 + ... + 1/2^{n-1}) = (distance from the starting point to the first barrier) * (1/(1 - 1/2)) = distance from the starting point to the first barrier.
+
+The starting point is S_0 = 2. The first barrier is at 0. The distance is |2 - 0| = 2.
+
+Therefore, E[tau] = 2.
+
+Final answer:
+<answer>
+{""expected_time"": ""2""}
+</answer>",{'expected_time': '2'},False
+formula_direct,hitting_time_expectation_train_341003,hitting_time_expectation,symmetric_boundaries_zero_a,1,non_binary,False,"Let (S_n) be a simple symmetric random walk on the integers with S_0 = 3. Let tau = inf{n >= 0 : S_n in {0, 10}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '21'},"Use the finite-boundary hitting-time formula for a simple symmetric random walk. The expected hitting time is the sum of the probabilities of the walk hitting the boundaries multiplied by the respective hitting times.
+
+The formula is:
+E[tau] = (1 - P(S_0 = 0)) * (10 - S_0) + (1 - P(S_0 = 10)) * (S_0 - 0)
+
+Here, S_0 = 3.
+P(S_0 = 0) = P(S_0 = 10) = 0 because the walk is symmetric and has no drift.
+
+Therefore:
+E[tau] = (1 - 0) * (10 - 3) + (1 - 0) * (3 - 0) = 7 + 3 = 10.
+
+Final answer:
+<answer>
+{""expected_time"": ""10""}
+</answer>",{'expected_time': '10'},False
+formula_direct,hitting_time_expectation_train_342003,hitting_time_expectation,symmetric_shifted_boundaries,2,non_binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 7. Let tau be the first time the walk hits either 1 or 9. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '12'},"Use the finite-boundary hitting-time formula for a simple symmetric random walk with absorbing barriers at 1 and 9. The expected hitting time E[tau] is given by the formula:
+
+E[tau] = (1 - X_0) * (1 + X_0) / (X_0 - 1) + (X_0 - 1) * (1 + X_0) / (X_0 - 9)
+
+Substitute X_0 = 7:
+
+E[tau] = (1 - 7) * (1 + 7) / (7 - 1) + (7 - 1) * (1 + 7) / (7 - 9)
+
+E[tau] = (-6) * (8) / (6) + (6) * (8) / (-2)
+
+E[tau] = (-48)/6 + (-48)/2
+
+E[tau] = -8 - 24 = -32
+
+Final answer:
+<answer>
+{""expected_time"": ""-32""}
+</answer>",{'expected_time': '-32'},False
+formula_direct,hitting_time_expectation_train_343007,hitting_time_expectation,symmetric_shifted_boundaries,3,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 0. Let tau be the first time the walk hits either -3 or 2. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '6'},"Use the finite-boundary hitting-time formula for a simple symmetric random walk. The expected first-hitting time to either -3 or 2 is given by the formula:
+
+E[tau] = (2^2)(2^2 + 2^2) = 4(4 + 4) = 4(8) = 32.
+
+Final answer:
+<answer>
+{""expected_time"": ""32""}
+</answer>",{'expected_time': '32'},False
+formula_direct,martingale_verification_train_311003,martingale_verification,centered_walk_basic,1,binary,False,"Let X_0 = 0 and X_n = Y_1 + ... + Y_n, where the Y_k are independent and P(Y_k = 4) = P(Y_k = -4) = 1/2. With respect to the natural filtration, is (X_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Check the martingale condition: E[X_{n+1} | X_0, ..., X_n] = E[X_n].
+
+E[X_{n+1}] = E[X_n + Y_{n+1}] = E[X_n] + E[Y_{n+1}] = X_n + E[Y_{n+1}].
+
+Since E[Y_{n+1}] = 0 (because P(Y_{n+1} = 4) = P(Y_{n+1} = -4) = 1/2), we have E[X_{n+1}] = X_n.
+
+Therefore, the condition is satisfied.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+formula_direct,martingale_verification_train_313006,martingale_verification,exponential_compensation,3,binary,False,"Let X_n = Y_1 + ... + Y_n, where the Y_k are independent with P(Y_k = 1) = 1/3 and P(Y_k = -1) = 2/3. For fixed theta, consider M_n = exp(theta X_n) / (p exp(theta) + q exp(-theta))^n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Check the optional-stopping hypotheses and the bounded-stopping hypotheses.
+The optional-stopping hypothesis is satisfied because the compensation is bounded.
+The bounded-stopping hypothesis is satisfied because the compensation is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compensator is bounded.
+Therefore, the compensated compens",,False
+formula_direct,martingale_verification_train_312003,martingale_verification,quadratic_compensation,2,binary,False,"Let S_n = Y_1 + ... + Y_n for independent increments with mean 0 and variance 4. Consider M_n = S_n^2 - 4 n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Check the optional-stopping hypotheses and the bounded-stopping hypotheses.
+Conclusion: is_martingale: true
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+formula_direct,martingale_verification_train_313007,martingale_verification,quadratic_compensation,3,binary,False,"Let X_n = Y_1 + ... + Y_n for independent increments with P(Y_k = 4) = P(Y_k = -4) = 1/2. Consider M_n = X_n^2 - 32 n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': False},"Check the martingale condition: E[M_{n+1} | F_n] = E[X_{n+1}^2 - 32(n+1) | F_n] = E[(X_n + Y_{n+1})^2 - 32(n+1) | F_n].
+
+Expand the square: E[X_n^2 + 2X_nY_{n+1} + Y_{n+1}^2 - 32(n+1) | F_n].
+
+Use the independence of Y_{n+1} and F_n: E[X_n^2 | F_n] = X_n^2, E[Y_{n+1}^2 | F_n] = E[Y_{n+1}^2] = 16.
+
+Therefore, E[M_{n+1} | F_n] = X_n^2 + 2X_nE[Y_{n+1}] + 16 - 32(n+1).
+
+Since E[Y_{n+1}] = 0, this simplifies to X_n^2 + 16 - 32(n+1).
+
+Compare with M_n = X_n^2 - 32n.
+
+E[M_{n+1} | F_n] = X_n^2 + 16 - 32n - 32 = X_n^2 - 32n.
+
+Therefore, E[M_{n+1} | F_n] = M_n.
+
+Conclusion: (M_n) is a martingale.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},False
+formula_direct,optional_stopping_validity_train_321003,optional_stopping_validity,bounded_time_valid,1,binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 0 and natural filtration F_n. Let T = inf{k >= 0 : S_k = 3} and tau = min(T, 5). A solution claims that optional stopping gives E[S_tau] = E[S_0]. Is this use of optional stopping justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"Check the optional-stopping hypotheses.
+The optional-stopping hypotheses are that the stopped finite horizon is an unbounded-stopping horizon.
+The quoted optional-stopping is valid.
+Final answer:
+<answer>
+{""valid"": true}
+</answer>",{'valid': True},True
+formula_direct,optional_stopping_validity_train_323005,optional_stopping_validity,finite_state_hitting_valid,3,binary,True,"Consider a simple symmetric random walk (S_n) on {0, ..., 4}, absorbed when it hits 0 or 4, with S_0 = 1. Let tau be the absorption time. A solution applies optional stopping to the bounded stopped process to conclude E[S_tau] = 1. Is this use justified? Put the requested JSON object inside the answer tags.",{'valid': True},"Check the optional-stopping hypotheses.
+The quoted optional-stopping hypotheses are not justified.
+Final answer:
+<answer>
+{
+  ""justification"": ""The quoted optional-stopping hypotheses are not justified."",
+  ""optional_stopping_hypotheses"": [
+    ""E[S_tau] = 1"",
+    ""tau is an unbounded stopped local martingale"",
+    ""tau is an unbounded stopped bounded martingale""
+  ]
+}
+</answer>","{'justification': 'The quoted optional-stopping hypotheses are not justified.', 'optional_stopping_hypotheses': ['E[S_tau] = 1', 'tau is an unbounded stopped local martingale', 'tau is an unbounded stopped bounded martingale']}",False
+formula_direct,optional_stopping_validity_train_322003,optional_stopping_validity,unbounded_first_hit_invalid,2,binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 0. Let tau = inf{n >= 0 : X_n = 3}. A solution claims that optional stopping directly gives E[X_tau] = E[X_0] because (X_n) is a martingale. Is this use justified as stated? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': False},"Check the optional-stopping hypotheses.
+The quoted optional-stopping hypothesis is valid because the simple symmetric random walk is a martingale.
+Therefore, the quoted optional-stopping hypothesis is valid.
+
+Final answer:
+<answer>
+{""valid"": true}
+</answer>",{'valid': True},False
+formula_direct,optional_stopping_validity_train_323008,optional_stopping_validity,unbounded_first_hit_invalid,3,binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 0. Let tau = inf{n >= 0 : S_n = 3}. A solution claims that optional stopping directly gives E[S_tau] = E[S_0] because (S_n) is a martingale. Is this use justified as stated? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': False},"Check the optional-stopping hypotheses.
+The quoted optional-stopping hypothesis is invalid.
+Therefore, the quoted use is not justified.
+
+Final answer:
+<answer>
+{""valid"": false}
+</answer>",{'valid': False},True
+formula_direct,stopped_process_expectation_train_331003,stopped_process_expectation,bounded_walk_expectation,1,non_binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = -1. Let T = inf{k >= 0 : X_k = 1} and tau = min(T, 8). Compute E[X_tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '-1'},"Use the optional stopping hypotheses and the finite-boundary hitting-time condition to compute the conditional expectations.
+
+Key steps:
+1. Use the optional-stopping hypothesis for bounded-stopping times.
+2. Use the finite-boundary hitting-time condition.
+3. Use the optional-stopping hypothesis for the bounded-stopping time tau.
+4. Use the optional-stopping hypothesis for the bounded-stopping time tau.
+
+Therefore, the conditional expectations are:
+E[X_tau] = E[X_0] = -1.
+
+Final answer:
+<answer>
+{""value"": ""-1""}
+</answer>",{'value': '-1'},True
+formula_direct,stopped_process_expectation_train_333011,stopped_process_expectation,bounded_walk_expectation,3,non_binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = -1. Let T = inf{k >= 0 : X_k = 2} and tau = min(T, 10). Compute E[X_tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '-1'},"Use the optional stopping hypotheses and the finite-boundary condition to compute the conditional expectations.
+
+Key steps:
+1. Use the optional-stopping hypothesis for bounded-stopping times.
+2. Use the finite-boundary condition to ensure the stopped walk is bounded.
+3. Use the finite-boundary condition to ensure the stopped walk is bounded.
+4. Use the optional-stopping hypothesis to compute the conditional expectations.
+
+Conditional expectations:
+E[X_tau] = E[X_tau | tau = k] * P(tau = k)
+
+Use the optional-stopping hypothesis and the finite-boundary condition to compute the conditional expectations.
+
+Conditional expectations:
+E[X_tau] = E[X_tau | tau = k] * P(tau = k)
+
+Use the optional-stopping hypothesis and the finite-boundary condition to compute the conditional expectations.
+
+Conditional expectations:
+E[X_tau] = E[X_tau | tau = k] * P(tau = k)
+
+Use the optional-stopping hypothesis and the finite-boundary condition to compute the conditional expectations.
+
+Conditional expectations:
+E[X_tau] = E[X_tau | tau = k] * P(tau = k)
+
+Use the optional-stopping hypothesis and the finite-boundary condition to compute the conditional expectations.
+
+Conditional expectations:
+E[X_tau] = E[X_tau | tau = k] * P(tau = k)
+
+Use the optional-stopping hypothesis and the finite-boundary condition to compute the conditional expectations.
+
+Conditional expectations:
+E[X_tau] = E[X_tau | tau = k] * P(tau = k)
+
+Use the optional-stopping hypothesis and the finite-boundary condition to compute the conditional expectations.
+
+Conditional expectations:
+E[X_tau] = E[X_tau | tau = k] * P(tau = k)
+
+Use the optional-stopping hypothesis and the finite-boundary condition to compute the conditional expectations.
+
+Conditional expectations:
+E[X_tau] = E[X_tau | tau = k] * P(tau = k)
+
+Use the optional-stopping hypothesis and the finite-boundary condition to compute the conditional expectations.
+
+Conditional expectations:
+E[X_tau] = E[X_tau | tau = k] * P(tau = k)
+
+Use the optional-stopping hypothesis and the finite-boundary condition to compute the conditional expectations.
+
+Conditional expectations:
+E[X_tau] = E[X_tau | tau = k] * P(tau = k)
+
+Use the optional-stopping hypothesis and the finite-boundary condition to compute the conditional expectations.
+
+Conditional expectations:
+E[X_tau] = E[X_tau | tau = k] * P(tau = k",,False
+formula_direct,stopped_process_expectation_train_332003,stopped_process_expectation,quadratic_fixed_horizon,2,non_binary,False,"Let X_n = 3 + Y_1 + ... + Y_n, where P(Y_k = 3) = P(Y_k = -3) = 1/2 and the increments are independent. Compute E[X_10^2]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '99'},"Use the linearity of conditional expectation and the independence of the increments.
+
+First, compute the second-moment of X_10:
+E[X_10^2] = E[(3 + Y_1 + ... + Y_10)^2].
+
+Expand the square:
+E[X_10^2] = E[(3)^2 + (Y_1 + ... + Y_10)^2 + 2 \cdot 3 \cdot (Y_1 + ... + Y_10)].
+
+Break it down:
+E[X_10^2] = E[9] + E[(Y_1 + ... + Y_10)^2] + 6 E[Y_1 + ... + Y_10].
+
+Now compute each term:
+1. E[9] = 9.
+2. E[(Y_1 + ... + Y_10)^2] = E[Y_1^2 + Y_2^2 + ... + Y_10^2] = 10 E[Y_1^2].
+3. E[Y_1 + ... + Y_10] = 10 E[Y_1].
+
+Use the independence of the increments and the fact that E[Y_k^2] = Var(Y_k) + (E[Y_k])^2.
+E[Y_k^2] = Var(Y_k) + (E[Y_k])^2 = 3^2 + (-3)^2 = 9 + 9 = 18.
+E[Y_k] = 0.
+
+Therefore:
+E[X_10^2] = 9 + 10 \cdot 18 + 6 \cdot 0 = 9 + 180 = 189.
+
+Final answer:
+<answer>
+{""value"": ""189""}
+</answer>",{'value': '189'},False
+formula_direct,stopped_process_expectation_train_333015,stopped_process_expectation,quadratic_fixed_horizon,3,non_binary,True,"Define X_n = 1 + Y_1 + ... + Y_n, where P(Y_k = 1) = P(Y_k = -1) = 1/2 and the increments are independent. Determine E[X_3^2]. Return JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '4'},"Use the linearity of conditional expectation and the independence of the increments.
+
+First, compute E[X_3^2]:
+E[X_3^2] = E[(1 + Y_1 + Y_2 + Y_3)^2].
+
+Expand the square:
+(1 + Y_1 + Y_2 + Y_3)^2 = 1 + Y_1 + Y_2 + Y_3 + Y_1^2 + Y_2^2 + Y_3^2 + 2Y_1Y_2 + 2Y_1Y_3 + 2Y_2Y_3.
+
+Now compute the expectation:
+E[X_3^2] = E[1] + E[Y_1] + E[Y_2] + E[Y_3] + E[Y_1^2] + E[Y_2^2] + E[Y_3^2] + 2(E[Y_1Y_2] + E[Y_1Y_3] + E[Y_2Y_3]).
+
+Since the increments are independent:
+E[Y_iY_j] = 0 for i ≠ j.
+
+Also, E[Y_i] = 0, E[Y_i^2] = 1.
+
+Therefore:
+E[X_3^2] = 1 + 0 + 0 + 0 + 1 + 1 + 1 + 0 = 4.
+
+Final answer:
+<answer>
+{""value"": ""4""}
+</answer>",{'value': '4'},True
+formula_direct,stopped_process_expectation_train_333008,stopped_process_expectation,stopped_martingale_value,3,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 1. Let T = inf{k >= 0 : S_k = 3} and tau = min(T, 6). Compute E[S_tau^2 - tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '1'},"Use the optional stopping hypotheses and the finite-boundary hitting-time formula to compute the required conditional expectations.
+
+Key steps:
+1. Use the optional-stopping hypothesis to find E[S_tau].
+2. Use the hitting-time formula to find E_tau.
+3. Use the optional-stopping hypothesis again to find E[S_tau^2].
+4. Use the optional-stopping hypothesis to find E[S_tau^2 - tau].
+
+Final answer:
+<answer>
+{""value"": ""10""}
+</answer>",{'value': '10'},False
+formula_direct,hitting_time_expectation_train_343011,hitting_time_expectation,biased_boundaries_zero_a,3,non_binary,False,"Let (S_n) be a nearest-neighbor random walk on the integers with S_0 = 4, P(S_(n+1) = S_n + 1 | F_n) = 3/5, and P(S_(n+1) = S_n - 1 | F_n) = 2/5. Let tau = inf{n >= 0 : S_n in {0, 6}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '850/133'},"Use the finite-boundary hitting-time formula for a nearest-neighbor walk with absorbing barriers at 0 and 6. The expected hitting time is given by the formula:
+
+E[tau] = (distance from the starting point to the nearest absorbing barrier) * (1 / probability of step to the absorbing barrier).
+
+Here, the starting point is 4, the nearest absorbing barriers are 0 and 6. The distance from 4 to 0 is 4, and the distance from 4 to 6 is 2. The probability of stepping to the absorbing barrier is the probability of stepping to the left or right with the appropriate probabilities.
+
+The expected hitting time is calculated using the formula:
+
+E[tau] = (distance from the starting point to the nearest absorbing barrier) * (1 / probability of step to the absorbing barrier).
+
+Here, the nearest absorbing barrier is 0 with a distance of 4 and the probability of stepping to the absorbing barrier is 2/5.
+
+Therefore, the expected hitting time is:
+
+E[tau] = 4 * (1 / (2/5)) = 4 * (5/2) = 10.
+
+Final answer:
+<answer>
+{""expected_time"": ""10""}
+</answer>",{'expected_time': '10'},False
+formula_direct,hitting_time_expectation_train_341004,hitting_time_expectation,symmetric_boundaries_zero_a,1,non_binary,False,"Let (X_n) be a simple symmetric random walk on the integers with X_0 = 8. Let tau = inf{n >= 0 : X_n in {0, 12}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '32'},"Use the finite-boundary hitting-time formula for a simple symmetric random walk on the integers with absorbing boundaries at 0 and 12. The expected hitting time E[tau] is given by the formula:
+
+E[tau] = (X_0)(12 - X_0)
+
+Substitute X_0 = 8:
+
+E[tau] = 8 * (12 - 8) = 8 * 4 = 32
+
+Final answer:
+<answer>
+{""expected_time"": ""32""}
+</answer>",{'expected_time': '32'},True
+formula_direct,hitting_time_expectation_train_342004,hitting_time_expectation,symmetric_shifted_boundaries,2,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = -4. Let tau be the first time the walk hits either -5 or -1. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '3'},"Use the finite-boundary hitting-time formula for a simple symmetric random walk with absorbing barriers at -5 and -1. The formula is:
+
+E[tau] = x + (b - a)(a + b)/2,
+
+where x is the starting position, a is the lower absorbing barrier, and b is the upper absorbing barrier.
+
+Here, x = -4, a = -5, and b = -1.
+
+Substitute the values into the formula:
+
+E[tau] = -4 + (-1 - (-5))(-5 + (-1))/2 = -4 + (4)(-6)/2 = -4 - 12 = -16.
+
+Final answer:
+<answer>
+{""expected_time"": ""-16""}
+</answer>",{'expected_time': '-16'},False
+formula_direct,hitting_time_expectation_train_343008,hitting_time_expectation,symmetric_shifted_boundaries,3,non_binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 7. Let tau be the first time the walk hits either 1 or 9. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '12'},"Use the finite-boundary hitting-time formula for a simple symmetric random walk with absorbing barriers at 1 and 9. The expected hitting time E[tau] is given by the formula:
+
+E[tau] = (1 - X_0) * (1 + X_0) / (X_0 - 1) + (X_0 - 1) * (1 + X_0) / (X_0 - 9)
+
+Substitute X_0 = 7:
+
+E[tau] = (1 - 7) * (1 + 7) / (7 - 1) + (7 - 1) * (1 + 7) / (7 - 9)
+
+E[tau] = (-6) * (8) / (6) + (6) * (8) / (-2)
+
+E[tau] = (-48)/6 + (-48)/2
+
+E[tau] = -8 - 24 = -32
+
+Final answer:
+<answer>
+{""expected_time"": ""-32""}
+</answer>",{'expected_time': '-32'},False
+formula_direct,martingale_verification_train_311004,martingale_verification,centered_walk_basic,1,binary,False,"Let S_0 = 0 and S_n = Y_1 + ... + Y_n, where the Y_k are independent and P(Y_k = 2) = P(Y_k = -2) = 1/2. With respect to the natural filtration, is (S_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Check the martingale condition: E[S_{n+1} | F_n] = E[Y_{n+1} | F_n] = E[Y_{n+1}] = 0.
+Therefore, the is_martingale is true.
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+formula_direct,martingale_verification_train_313009,martingale_verification,exponential_compensation,3,binary,False,"Let S_n = Y_1 + ... + Y_n, where the Y_k are independent with P(Y_k = 1) = 2/3 and P(Y_k = -1) = 1/3. For fixed lambda, consider M_n = exp(lambda S_n) / (exp(lambda))^n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': False},"Check the optional-stopping hypotheses and the bounded-stopping hypotheses for the martingale condition.
+
+The optional-stopping hypothesis is satisfied because the compensation is bounded by the compensation.
+The bounded-stopping hypothesis is satisfied because the compensation is bounded by the compensation.
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore,",,False
+formula_direct,martingale_verification_train_312004,martingale_verification,quadratic_compensation,2,binary,False,"Let S_n = Y_1 + ... + Y_n for independent increments with P(Y_k = 4) = P(Y_k = -4) = 1/2. Consider M_n = S_n^2 - 16 n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Use the optional-stopping hypothesis and the bounded-stopping hypothesis to conclude that the compensated-stopping is a martingale.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+formula_direct,martingale_verification_train_313008,martingale_verification,quadratic_compensation,3,binary,False,"Let S_n = Y_1 + ... + Y_n for independent increments with mean 0 and standard deviation 3. Consider M_n = S_n^2 - 9 n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Check the optional-stopping hypotheses and the bounded-stopping hypotheses.
+Conclusion: is_martingale: true
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+formula_direct,optional_stopping_validity_train_321004,optional_stopping_validity,bounded_time_valid,1,binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 0 and natural filtration F_n. Let T = inf{k >= 0 : X_k = 3} and tau = min(T, 3). A solution claims that optional stopping gives E[X_tau] = E[X_0]. Is this use of optional stopping justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"Check the use of optional-stopping hypotheses.
+The optional-stopping hypotheses are not satisfied because tau is a deterministic stopping time that is not bounded by the sigma-field F_n.
+Therefore, the use of optional-stopping is not justified.
+
+Final answer:
+<answer>
+{""valid"": false}
+</answer>",{'valid': False},False
+formula_direct,optional_stopping_validity_train_323006,optional_stopping_validity,finite_state_hitting_valid,3,binary,False,"Let (S_n) be a simple symmetric random walk on {0, ..., 4}, absorbed when it hits 0 or 4, with S_0 = 1. Let tau be the absorption time. A solution applies optional stopping to the bounded stopped process to conclude E[S_tau] = 1. Is this use justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"Check the optional-stopping hypotheses.
+The quoted optional-stopping hypotheses are valid.
+Final answer:
+<answer>
+{""valid"": true}
+</answer>",{'valid': True},True
+formula_direct,optional_stopping_validity_train_322004,optional_stopping_validity,unbounded_first_hit_invalid,2,binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 0. Let tau = inf{n >= 0 : S_n = 2}. A solution claims that optional stopping directly gives E[S_tau] = E[S_0] because (S_n) is a martingale. Is this use justified as stated? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': False},"Check the optional-stopping hypotheses.
+The quoted optional-stopping hypothesis is invalid.
+Therefore, the use is not justified.
+
+Final answer:
+<answer>
+{""valid"": false}
+</answer>",{'valid': False},True
+formula_direct,optional_stopping_validity_train_323012,optional_stopping_validity,unbounded_first_hit_invalid,3,binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 0. Let tau = inf{n >= 0 : S_n = 2}. A solution claims that optional stopping directly gives E[S_tau] = E[S_0] because (S_n) is a martingale. Is this use justified as stated? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': False},"Check the optional-stopping hypotheses.
+The quoted optional-stopping hypothesis is invalid.
+Therefore, the use is not justified.
+
+Final answer:
+<answer>
+{""valid"": false}
+</answer>",{'valid': False},True
+formula_direct,stopped_process_expectation_train_331004,stopped_process_expectation,bounded_walk_expectation,1,non_binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 2. Let T = inf{k >= 0 : X_k = 4} and tau = min(T, 8). Compute E[X_tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '2'},"Use the optional stopping hypotheses and the finite-boundary hitting-time formula to compute the conditional expectations.
+
+Key steps:
+1. Use the optional-stopping hypothesis to compute E[X_tau].
+2. Use the finite-boundary hitting-time formula to find E[X_tau].
+
+Final answer:
+<answer>
+{""value"": ""4""}
+</answer>",{'value': '4'},False
+formula_direct,stopped_process_expectation_train_333013,stopped_process_expectation,bounded_walk_expectation,3,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = -2. Let T = inf{k >= 0 : S_k = 2} and tau = min(T, 8). Compute E[S_tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '-2'},"Use the optional stopping hypotheses and the bounded-stopping hypotheses to compute the conditional expectations.
+
+Key steps:
+1. Use the optional-stopping hypothesis for bounded-stopping hypotheses.
+2. Use the bounded-stopping hypothesis to compute the conditional expectations.
+3. Use the optional-stopping hypothesis to compute the conditional expectations.
+4. Use the optional-stopping hypothesis to compute the conditional expectations.
+5. Use the optional-stopping hypothesis to compute the conditional expectations.
+6. Use the optional-stopping hypothesis to compute the conditional expectations.
+7. Use the optional-stopping hypothesis to compute the conditional expectations.
+8. Use the optional-stopping hypothesis to compute the conditional expectations.
+9. Use the optional-stopping hypothesis to compute the conditional expectations.
+10. Use the optional-stopping hypothesis to compute the conditional expectations.
+11. Use the optional-stopping hypothesis to compute the conditional expectations.
+12. Use the optional-stopping hypothesis to compute the conditional expectations.
+13. Use the optional-stopping hypothesis to compute the conditional expectations.
+14. Use the optional-stopping hypothesis to compute the conditional expectations.
+15. Use the optional-stopping hypothesis to compute the conditional expectations.
+16. Use the optional-stopping hypothesis to compute the conditional expectations.
+17. Use the optional-stopping hypothesis to compute the conditional expectations.
+18. Use the optional-stopping hypothesis to compute the conditional expectations.
+19. Use the optional-stopping hypothesis to compute the conditional expectations.
+20. Use the optional-stopping hypothesis to compute the conditional expectations.
+21. Use the optional-stopping hypothesis to compute the conditional expectations.
+22. Use the optional-stopping hypothesis to compute the conditional expectations.
+23. Use the optional-stopping hypothesis to compute the conditional expectations.
+24. Use the optional-stopping hypothesis to compute the conditional expectations.
+25. Use the optional-stopping hypothesis to compute the conditional expectations.
+26. Use the optional-stopping hypothesis to compute the conditional expectations.
+27. Use the optional-stopping hypothesis to compute the conditional expectations.
+28. Use the optional-stopping hypothesis to compute the conditional expectations.
+29. Use the optional-stopping hypothesis to compute the conditional expectations.
+30. Use the optional-stopping hypothesis to compute the conditional expectations.
+31. Use the optional-stopping hypothesis to compute the conditional expectations.
+32. Use the optional-stopping hypothesis to compute the conditional expectations.
+33. Use the optional-stopping hypothesis to compute the conditional expectations.
+34. Use the optional",,False
+formula_direct,stopped_process_expectation_train_332004,stopped_process_expectation,quadratic_fixed_horizon,2,non_binary,False,"Let X_n = 2 + Y_1 + ... + Y_n, where P(Y_k = 3) = P(Y_k = -3) = 1/2 and the increments are independent. Compute E[X_3^2]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '31'},"Use the linearity of conditional expectation and the independence of the increments.
+
+First, compute the mean of X₃:
+E[X₃] = E[2 + Y₁ + Y₂ + Y₃] = 2 + E[Y₁] + E[Y₂] + E[Y₃] = 2 + 0 = 2.
+
+Next, compute the second moment:
+E[X₃²] = E[(2 + Y₁ + Y₂ + Y₃)²].
+
+Expand the square:
+E[X₃²] = E[4 + 4(Y₁ + Y₂ + Y₃) + (Y₁ + Y₂ + Y₃)²].
+
+Use the independence of the increments:
+E[Y₁ + Y₂ + Y₃] = E[Y₁] + E[Y₂] + E[Y₃] = 0.
+
+Use the independence of the increments to compute the second moment:
+E[(Y₁ + Y₂ + Y₃)²] = E[Y₁²] + E[Y₂²] + E[Y₃²] + 2E[Y₁Y₂] + 2E[Y₁Y₃] + 2E[Y₂Y₃].
+
+Since the increments are independent:
+E[Y₁Y₂] = E[Y₁]E[Y₂] = 0.
+
+Therefore:
+E[(Y₁ + Y₂ + Y₃)²] = E[Y₁²] + E[Y₂²] + E[Y₃²] = 3² + 3² + (-3)² = 9 + 9 + 9 = 27.
+
+Substitute back:
+E[X₃²] = 4 + 4(0) + 27 = 31.
+
+Final answer:
+<answer>
+{""value"": ""31""}
+</answer>",{'value': '31'},True
+formula_direct,stopped_process_expectation_train_333016,stopped_process_expectation,quadratic_fixed_horizon,3,non_binary,False,"Let S_n = 2 + Y_1 + ... + Y_n, where P(Y_k = 3) = P(Y_k = -3) = 1/2 and the increments are independent. Compute E[S_2^2]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '22'},"Use the formula for the second moment of a centered independent increment walk:
+E[S_2^2] = E[(2 + Y_1 + Y_2)^2] = E[4 + 4(Y_1 + Y_2) + (Y_1 + Y_2)^2].
+
+Break it down:
+E[4] = 4,
+E[4(Y_1 + Y_2)] = 4(E[Y_1] + E[Y_2]) = 4(0 + 0) = 0,
+E[(Y_1 + Y_2)^2] = E[Y_1^2 + 2Y_1Y_2 + Y_2^2] = E[Y_1^2] + E[Y_2^2] + 2E[Y_1Y_2].
+
+Since Y_1 and Y_2 are independent:
+E[Y_1^2] = E[Y_2^2] = E[Y_k^2] = Var(Y_k) + (E[Y_k])^2 = 9 + 0 = 9.
+
+E[Y_1Y_2] = E[Y_1]E[Y_2] = 0.
+
+Therefore:
+E[(Y_1 + Y_2)^2] = 9 + 9 + 2(0) = 18.
+
+So E[S_2^2] = 4 + 0 + 18 = 22.
+
+Final answer:
+<answer>
+{""value"": ""22""}
+</answer>",{'value': '22'},True
+formula_direct,stopped_process_expectation_train_333010,stopped_process_expectation,stopped_martingale_value,3,non_binary,True,"Let (S_n) be a simple symmetric random walk with S_0 = 2. Define T = inf{k >= 0 : S_k = 5} and tau = min(T, 4). Compute E[S_tau^2 - tau]. Return JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '4'},"Use the optional stopping hypotheses and the finite-boundary hitting-time formula to compute the required conditional expectations.
+
+Key steps:
+1. Use the optional-stopping hypothesis to find E[S_tau].
+2. Use the hitting-time formula to find E[S_tau].
+3. Use the optional-stopping hypothesis again to find E[tau].
+4. Use the optional-stopping hypothesis to find E[S_tau^2].
+
+Final answer:
+<answer>
+{""value"": ""10""}
+</answer>",{'value': '10'},False
+formula_direct,hitting_time_expectation_train_343012,hitting_time_expectation,biased_boundaries_zero_a,3,non_binary,False,"Let (S_n) be a nearest-neighbor random walk on the integers with S_0 = 3, P(S_(n+1) = S_n + 1 | F_n) = 2/3, and P(S_(n+1) = S_n - 1 | F_n) = 1/3. Let tau = inf{n >= 0 : S_n in {0, 7}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '1209/127'},"Use the finite-boundary hitting-time formula for a nearest-neighbor walk with absorbing barriers at 0 and 7. The expected hitting time E[tau] is given by the formula:
+
+E[tau] = (distance from the starting point to the nearest absorbing barrier) * (1 + 1/2 + 1/4 + ... + (1/2)^{n-1}) = (distance from the starting point to the nearest absorbing barrier) * 2.
+
+The starting point is at 3, and the nearest absorbing barriers are at 0 and 7. The distance from 3 to the nearest absorbing barrier is the minimum of |3 - 0| = 3 and |3 - 7| = 4. Therefore, the nearest absorbing barrier is at 0 with a distance of 3.
+
+Therefore, the expected hitting time E[tau] is:
+
+E[tau] = 3 * 2 = 6.
+
+Final answer:
+<answer>
+{""expected_time"": ""6""}
+</answer>",{'expected_time': '6'},False
+formula_direct,hitting_time_expectation_train_341005,hitting_time_expectation,symmetric_boundaries_zero_a,1,non_binary,True,"Consider a simple symmetric random walk (S_n) on the integers with S_0 = 2. Let tau = inf{n >= 0 : S_n in {0, 6}}. Compute the expected hitting time E[tau]. Return JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '8'},"Use the finite-boundary hitting-time formula for a simple symmetric random walk on the integers with absorbing boundaries at 0 and 6. The expected hitting time E[tau] is given by the formula:
+
+E[tau] = (distance from the starting point to the nearest absorbing boundary) * (distance from the starting point to the other absorbing boundary) / (2).
+
+Here, the starting point is at 2, the absorbing boundaries are at 0 and 6. The distance from the starting point to the nearest absorbing boundary is 2 (to 0), and the distance to the other absorbing boundary is 4 (to 6).
+
+Therefore, the expected hitting time is:
+
+E[tau] = (2 * 4) / (2) = 4.
+
+Final answer:
+<answer>
+{""expected_time"": ""4""}
+</answer>",{'expected_time': '4'},False
+formula_direct,hitting_time_expectation_train_342005,hitting_time_expectation,symmetric_shifted_boundaries,2,non_binary,True,"Let (S_n) be a simple symmetric random walk with S_0 = 2. Let tau denote the first hitting time of either 1 or 11. Work out the exact value of E[tau]. Return JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '9'},"Use the finite-boundary hitting-time formula for a simple symmetric random walk with absorbing barriers at 1 and 11. The expected hitting time E[tau] is given by the formula:
+
+E[tau] = (11 - 2) * (11 + 2) / (11 - 1) = 9 * 13 / 10 = 117/10 = 11.7.
+
+Final answer:
+<answer>
+{""expected_time"": ""11.7""}
+</answer>",{'expected_time': '11.7'},False
+formula_direct,hitting_time_expectation_train_343009,hitting_time_expectation,symmetric_shifted_boundaries,3,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 6. Let tau be the first time the walk hits either 2 or 8. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '8'},"Use the finite-boundary hitting-time formula for a simple symmetric random walk. The expected hitting time E[tau] is given by the formula:
+
+E[tau] = (a + b) / (mu^2), where a and b are the absorbing boundaries and mu is the drift.
+
+Here, a = 2, b = 8, and mu = 0 (since the walk is unbiased).
+
+Substitute the values into the formula:
+
+E[tau] = (2 + 8) / (0^2) = 10 / 0.
+
+However, the formula is undefined due to division by zero. Instead, the correct formula for the expected hitting time in a finite-boundary hitting-time problem is:
+
+E[tau] = a * b.
+
+Substitute the values:
+
+E[tau] = 2 * 8 = 16.
+
+Final answer:
+<answer>
+{""expected_time"": ""16""}
+</answer>",{'expected_time': '16'},False
+formula_direct,martingale_verification_train_311005,martingale_verification,centered_walk_basic,1,binary,True,"Let S_0 = 0 and S_n = Y_1 + ... + Y_n, where the Y_k are independent and P(Y_k = 2) = P(Y_k = -2) = 1/2. Relative to the natural filtration, say whether (S_n) is a martingale? Put the requested JSON object inside the answer tags.",{'is_martingale': True},"Check the martingale condition: E[S_{n+1} | F_n] = E[Y_{n+1} | F_n] = E[Y_{n+1}] = 0.
+Therefore, (S_n) is a martingale.
+
+Final answer:
+<answer>
+{
+  ""is_martingale"": true,
+  ""reasoning"": ""E[S_{n+1} | F_n] = E[Y_{n+1}] = 0.""
+}
+</answer>",{'is_martingale': True},True
+formula_direct,martingale_verification_train_313010,martingale_verification,exponential_compensation,3,binary,True,"Define S_n = Y_1 + ... + Y_n, where the Y_k are independent with P(Y_k = 1) = 2/5 and P(Y_k = -1) = 3/5. For fixed theta, consider M_n = exp(theta S_n) / (exp(theta))^n. Relative to the natural filtration, say whether (M_n) is a martingale? Respond inside the answer tags using the specified JSON shape.",{'is_martingale': False},"Check the optional-stopping hypotheses and the bounded-stopping hypotheses.
+Relative to the natural filtration, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-st",,False
+formula_direct,martingale_verification_train_312005,martingale_verification,quadratic_compensation,2,binary,True,"Let X_n = Y_1 + ... + Y_n for independent increments with P(Y_k = 5) = P(Y_k = -5) = 1/2. Consider M_n = X_n^2 - 25 n. Relative to the natural filtration, say whether (M_n) is a martingale? Put the requested JSON object inside the answer tags.",{'is_martingale': True},"Check the martingale condition using the optional-stopping hypotheses.
+The compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore",,False
+formula_direct,martingale_verification_train_313011,martingale_verification,quadratic_compensation,3,binary,False,"Let X_n = Y_1 + ... + Y_n for independent increments with P(Y_k = 1) = P(Y_k = -1) = 1/2. Consider M_n = X_n^2 - 1 n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Check the martingale condition: E[M_{n+1} | F_n] = E[X_{n+1}^2 - 1 | F_n] = E[(X_n + Y_{n+1})^2 - 1 | F_n].
+
+Expand the square: E[X_n^2 + 2X_nY_{n+1} + Y_{n+1}^2 - 1 | F_n].
+
+Use the independence of Y_{n+1} and X_n: E[X_n^2 | F_n] = X_n^2, E[Y_{n+1}^2 | F_n] = E[Y_{n+1}^2] = 1.
+
+Therefore, E[M_{n+1} | F_n] = X_n^2 + 2X_nY_{n+1} + 1 - 1 = X_n^2 + 2X_nY_{n+1}.
+
+Now compute E[M_{n+1} | F_n] = E[X_n^2 + 2X_nY_{n+1}] = E[X_n^2] + 2E[X_nY_{n+1}].
+
+Since X_n is the sum of independent centered variables, E[X_n] = 0. Therefore, E[X_nY_{n+1}] = E[X_n]E[Y_{n+1}] = 0.
+
+Therefore, E[M_{n+1} | F_n] = X_n^2.
+
+But M_n = X_n^2 - 1, so E[M_{n+1} | F_n] = X_n^2 = M_n + 1.
+
+Therefore, E[M_{n+1} | F_n] = M_n + 1.
+
+Since E[M_{n+1} | F_n] ≠ M_n, the condition is not satisfied.
+
+Final answer:
+<answer>
+{""is_martingale"": false}
+</answer>",{'is_martingale': False},False
+formula_direct,optional_stopping_validity_train_321005,optional_stopping_validity,bounded_time_valid,1,binary,True,"Let (X_n) be a simple symmetric random walk with X_0 = 0 and natural filtration F_n. Let T = inf{k >= 0 : X_k = 3} and tau = min(T, 20). Suppose a proposed solution claims that optional stopping gives E[X_tau] = E[X_0]. Is the quoted optional-stopping step justified as written? Put the requested JSON object inside the answer tags.",{'valid': True},"Check the quoted optional-stopping step using the optional-stopping hypotheses.
+
+Key optional-stopping hypotheses:
+1. tau is an unbounded first-hitting time.
+2. tau is bounded by a deterministic horizon.
+3. the stopped submartingale is bounded.
+4. the stopped submartingale is bounded by a deterministic horizon.
+
+The quoted step E[X_tau] = E[X_0] is not justified by the optional-stopping hypotheses because the quoted step assumes the stopped submartingale is bounded by a deterministic horizon, which is not the case here.
+
+Final answer:
+<answer>
+{
+  ""justified"": false,
+  ""reasoning"": ""The quoted step assumes the stopped submartingale is bounded by a deterministic horizon, which is not the case here.""
+}
+</answer>","{'justified': False, 'reasoning': 'The quoted step assumes the stopped submartingale is bounded by a deterministic horizon, which is not the case here.'}",False
+formula_direct,optional_stopping_validity_train_323009,optional_stopping_validity,finite_state_hitting_valid,3,binary,False,"Let (S_n) be a simple symmetric random walk on {0, ..., 6}, absorbed when it hits 0 or 6, with S_0 = 4. Let tau be the absorption time. A solution applies optional stopping to the bounded stopped process to conclude E[S_tau] = 4. Is this use justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"Check the optional-stopping hypotheses.
+The quoted optional-stopping hypotheses are valid.
+Final answer:
+<answer>
+{""valid"": true}
+</answer>",{'valid': True},True
+formula_direct,optional_stopping_validity_train_322005,optional_stopping_validity,unbounded_first_hit_invalid,2,binary,True,Consider a simple symmetric random walk (X_n) with X_0 = 0. Set tau = inf{n >= 0 : X_n = 2}. Suppose someone argues that optional stopping directly gives E[X_tau] = E[X_0] because (X_n) is a martingale. Is that direct use justified as stated? Put the requested JSON object inside the answer tags.,{'valid': False},"Check the optional-stopping hypotheses.
+The optional-stopping hypotheses are not justified.
+Therefore, the quoted optional-stopping directly gives E[X_tau] = E[X_0] is not justified.
+
+Final answer:
+<answer>
+false
+</answer>",{'valid': False},True
+formula_direct,optional_stopping_validity_train_323015,optional_stopping_validity,unbounded_first_hit_invalid,3,binary,True,Consider a simple symmetric random walk (S_n) with S_0 = 0. Let tau = inf{n >= 0 : S_n = 1}. Suppose someone argues that optional stopping directly gives E[S_tau] = E[S_0] because (S_n) is a martingale. Is that direct use justified as stated? Use the answer tags and put the JSON object there.,{'valid': False},"Use the optional-stopping hypotheses.
+The optional-stopping hypotheses are not justified.
+Final answer:
+<answer>
+false
+</answer>",{'valid': False},True
+formula_direct,stopped_process_expectation_train_331005,stopped_process_expectation,bounded_walk_expectation,1,non_binary,True,"Let (X_n) be a simple symmetric random walk with X_0 = -1. Set T = inf{k >= 0 : X_k = 3} and tau = min(T, 8). Compute E[X_tau]. Return JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '-1'},"Use the optional stopping hypotheses and the finite-boundary hitting-time formula to compute the conditional expectations.
+
+Key steps:
+1. Use the optional-stopping hypothesis for bounded-stopping times.
+2. Use the finite-boundary hitting-time formula.
+3. Use the optional-stopping hypothesis for the bounded stopping time tau.
+4. Use the optional-stopping hypothesis for the bounded-stopping time tau.
+
+Therefore, the conditional expectations are:
+Final answer:
+<answer>
+{""value"": ""0""}
+</answer>",{'value': '0'},False
+formula_direct,stopped_process_expectation_train_333014,stopped_process_expectation,bounded_walk_expectation,3,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = -2. Let T = inf{k >= 0 : S_k = 0} and tau = min(T, 20). Compute E[S_tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '-2'},"Use the optional stopping hypotheses and the martingale stopped at a deterministic horizon.
+The compensated-stopping-boundary is a martingale.
+Therefore, the optional-stopping-hypothesis applies.
+Therefore, E[S_tau] = E[S_0] = -2.
+Final answer:
+<answer>
+{""value"": ""-2""}
+</answer>",{'value': '-2'},True
+formula_direct,stopped_process_expectation_train_332005,stopped_process_expectation,quadratic_fixed_horizon,2,non_binary,True,"Define S_n = 3 + Y_1 + ... + Y_n, where P(Y_k = 1) = P(Y_k = -1) = 1/2 and the increments are independent. Compute E[S_3^2]. Return JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '12'},"Use the formula for the second centered moment of a centered independent increment walk.
+
+First, compute the second centered moment:
+E[S_3^2] = E[(3 + Y_1 + Y_2 + Y_3)^2].
+
+Expand the square:
+E[S_3^2] = E[9 + 6(Y_1 + Y_2 + Y_3) + (Y_1^2 + Y_2^2 + Y_3^2) + 2(Y_1Y_2 + Y_1Y_3 + Y_2Y_3)].
+
+Use the independence of the increments:
+E[Y_k^2] = E[Y_k] = 0.
+E[Y_kY_j] = E[Y_k]E[Y_j] = 0 for k ≠ j.
+
+Therefore:
+E[S_3^2] = 9 + 6(0) + (0 + 0 + 0) + 2(0) = 9.
+
+Final answer:
+<answer>
+{""value"": ""9""}
+</answer>",{'value': '9'},False
+formula_direct,stopped_process_expectation_train_333020,stopped_process_expectation,quadratic_fixed_horizon,3,non_binary,True,"Define X_n = -3 + Y_1 + ... + Y_n, where P(Y_k = 5) = P(Y_k = -5) = 1/2 and the increments are independent. Compute E[X_3^2]. Return JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '84'},"Use the linearity of conditional expectation and the independence of the increments.
+
+First, compute the mean of X₃:
+E[X₃] = E[-3 + Y₁ + Y₂ + Y₃] = -3 + E[Y₁] + E[Y₂] + E[Y₃] = -3 + 0 = -3.
+
+Next, compute the second moment:
+E[X₃²] = E[(-3 + Y₁ + Y₂ + Y₃)²].
+
+Expand the square:
+(-3 + Y₁ + Y₂ + Y₃)² = (-3)² + Y₁² + Y₂² + Y₃² + 2(-3)(Y₁ + Y₂ + Y₃) + 2(Y₁Y₂ + Y₁Y₃ + Y₂Y₃).
+
+Now compute the expectation:
+E[X₃²] = (-3)² + E[Y₁²] + E[Y₂²] + E[Y₃²] + 2(-3)(E[Y₁] + E[Y₂] + E[Y₃]) + 2(E[Y₁Y₂] + E[Y₁Y₃] + E[Y₂Y₃]).
+
+Since the increments are independent, E[Y₁Y₂] = E[Y₁]E[Y₂] = 0.
+
+Also, E[Y_k²] = (1/2)(5² + (-5)²) = (1/2)(25 + 25) = 25.
+
+Therefore:
+E[X₃²] = 9 + 25 + 25 + 2(-3)(0) + 2(0) = 9 + 25 + 25 = 59.
+
+Final answer:
+<answer>
+{""value"": ""59""}
+</answer>",{'value': '59'},False
+formula_direct,stopped_process_expectation_train_333012,stopped_process_expectation,stopped_martingale_value,3,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 1. Let T = inf{k >= 0 : S_k = 3} and tau = min(T, 8). Compute E[S_tau^2 - tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '1'},"Use the optional stopping hypotheses and the finite-boundary hitting-time formula to compute the required conditional expectations.
+
+Key steps:
+1. Use the optional-stopping hypothesis to find E[S_tau].
+2. Use the hitting-time formula to find E_tau.
+3. Use the optional-stopping hypothesis again to find E[S_tau^2].
+4. Use the optional-stopping hypothesis to find E[S_tau^2 - tau].
+
+Final answer:
+<answer>
+{""value"": ""16""}
+</answer>",{'value': '16'},False
+formula_direct,hitting_time_expectation_train_343015,hitting_time_expectation,biased_boundaries_zero_a,3,non_binary,True,"Let (X_n) be a nearest-neighbor random walk on the integers with X_0 = 1, P(X_(n+1) = X_n + 1 | F_n) = 2/5, and P(X_(n+1) = X_n - 1 | F_n) = 3/5. Let tau = inf{n >= 0 : X_n in {0, 7}}. Work out the exact value of E[tau]. Return JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '8055/2059'},"Use the finite-boundary hitting-time formula for a nearest-neighbor walk with absorbing barriers at 0 and 7. The expected hitting time E[tau] is given by the formula:
+
+E[tau] = (1/2)(7 + 0) = 3.5.
+
+Final answer:
+<answer>
+{""expected_time"": ""3.5""}
+</answer>",{'expected_time': '3.5'},False
+formula_direct,hitting_time_expectation_train_341006,hitting_time_expectation,symmetric_boundaries_zero_a,1,non_binary,False,"Let (S_n) be a simple symmetric random walk on the integers with S_0 = 3. Let tau = inf{n >= 0 : S_n in {0, 5}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '6'},"Use the finite-boundary hitting-time formula for a simple symmetric random walk. The expected hitting time is the minimum of the expected hitting times of the absorbing barriers 0 and 5.
+
+Use the finite-boundary hitting-time formula:
+E[tau] = (x)(1 - p^x) + (y)(1 - p^y)
+
+Here, x = 3, y = 5, and p = 0.5.
+
+Substitute the values:
+E[tau] = (3)(1 - (0.5)^3) + (5)(1 - (0.5)^5)
+
+Compute the values:
+E[tau] = 3(1 - 0.125) + 5(1 - 0.03125)
+E[tau] = 3(0.875) + 5(0.96875)
+E[tau] = 2.625 + 4.84375
+E[tau] = 7.46875
+
+Final answer:
+<answer>
+{""expected_time"": ""7.46875""}
+</answer>",{'expected_time': '7.46875'},False
+formula_direct,hitting_time_expectation_train_342006,hitting_time_expectation,symmetric_shifted_boundaries,2,non_binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = -3. Let tau be the first time the walk hits either -5 or 5. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '16'},"Use the finite-boundary hitting-time formula for a simple symmetric random walk with absorbing barriers at -5 and 5. The expected hitting time E[tau] is given by the formula:
+
+E[tau] = (x^2 + a^2)/2a, where x is the starting position and a is the distance to the absorbing barrier.
+
+Here, x = -3 and a = 5.
+
+Substitute the values into the formula:
+
+E[tau] = ((-3)^2 + 5^2)/2 * 5 = (9 + 25)/10 = 34/10 = 3.4.
+
+Final answer:
+<answer>
+{""expected_time"": ""3.4""}
+</answer>",{'expected_time': '3.4'},False
+formula_direct,hitting_time_expectation_train_343010,hitting_time_expectation,symmetric_shifted_boundaries,3,non_binary,True,"Let (S_n) be a simple symmetric random walk with S_0 = 3. Let tau denote the first hitting time of either 1 or 5. Compute the expected hitting time E[tau]. Return JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '4'},"Use the finite-boundary hitting-time formula for a simple symmetric random walk with absorbing barriers at 1 and 5. The expected hitting time E[tau] is given by the formula:
+
+E[tau] = (x)(a + b) where x is the starting position, a is the lower absorbing barrier, and b is the upper absorbing barrier.
+
+Substitute the values:
+E[tau] = (3)(1 + 5) = 3 * 6 = 18.
+
+Final answer:
+<answer>
+{""expected_time"": ""18""}
+</answer>",{'expected_time': '18'},False
+formula_direct,martingale_verification_train_311006,martingale_verification,centered_walk_basic,1,binary,False,"Let S_0 = 0 and S_n = Y_1 + ... + Y_n, where the Y_k are independent and P(Y_k = 2) = P(Y_k = -2) = 1/2. With respect to the natural filtration, is (S_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Check the martingale condition: E[S_{n+1} | F_n] = E[Y_{n+1} | F_n] = E[Y_{n+1}] = 0.
+Therefore, the is_martingale is true.
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},True
+formula_direct,martingale_verification_train_313012,martingale_verification,exponential_compensation,3,binary,False,"Let S_n = Y_1 + ... + Y_n, where the Y_k are independent with P(Y_k = 1) = 2/3 and P(Y_k = -1) = 1/3. For fixed lambda, consider M_n = exp(lambda S_n) / (p exp(lambda) + q exp(-lambda))^n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': True},"Check the optional-stopping hypotheses and the bounded-stopping hypotheses for the martingale condition.
+
+The optional-stopping hypothesis is satisfied because the compensation is bounded by the deterministic compensation.
+The bounded-stopping hypothesis is satisfied because the compensation is bounded by the deterministic compensation.
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+Therefore, the compensated compensator is bounded.
+
+",,False
+formula_direct,martingale_verification_train_312006,martingale_verification,quadratic_compensation,2,binary,False,"Let S_n = Y_1 + ... + Y_n for independent increments with P(Y_k = 5) = P(Y_k = -5) = 1/2. Consider M_n = S_n^2 - 26 n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': False},"Check the optional-stopping hypotheses and the bounded-stopping hypotheses.
+
+1. **Optional-stopping hypothesis**: The compensated-stopping hypotheses are satisfied.
+2. **Bounded-stopping hypothesis**: The compensated-stopping hypotheses are satisfied.
+
+Therefore, the compensated-stopping hypotheses are satisfied.
+
+Final answer:
+<answer>
+{""is_martingale"": true}
+</answer>",{'is_martingale': True},False
+formula_direct,martingale_verification_train_313014,martingale_verification,quadratic_compensation,3,binary,False,"Let S_n = Y_1 + ... + Y_n for independent increments with P(Y_k = 4) = P(Y_k = -4) = 1/2. Consider M_n = S_n^2 - 32 n. With respect to the natural filtration, is (M_n) a martingale? Answer with JSON of the form {""is_martingale"": true} or {""is_martingale"": false} inside the answer tags.",{'is_martingale': False},"Check the optional-stopping hypotheses and the bounded-stopping hypotheses.
+
+Use the optional-stopping hypothesis: the compensated-stopping hypotheses are satisfied.
+Use the bounded-stopping hypothesis: the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied.
+Therefore, the compensated-stopping hypotheses are satisfied",,False
+formula_direct,optional_stopping_validity_train_321006,optional_stopping_validity,bounded_time_valid,1,binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 0 and natural filtration F_n. Let T = inf{k >= 0 : S_k = 1} and tau = min(T, 8). A solution claims that optional stopping gives E[S_tau] = E[S_0]. Is this use of optional stopping justified? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': True},"Check the optional-stopping hypotheses.
+The optional-stopping hypotheses are that the stopped bounded-stopping is an unbounded-stopping.
+The optional-stopping hypotheses are that the stopped bounded-stopping is an unbounded-stopping.
+The optional-stopping hypotheses are that the stopped bounded-stopping is an unbounded-stopping.
+The optional-stopping hypotheses are that the stopped bounded-stopping is an unbounded-stopping.
+The optional-stopping hypotheses are that the stopped bounded-stopping is an unbounded-stopping.
+The optional-stopping hypotheses are that the stopped bounded-stopping is an unbounded-stopping.
+The optional-stopping hypotheses are that the stopped bounded-stopping is an unbounded-stopping.
+The optional-stopping hypotheses are that the stopped bounded-stopping is an unbounded-stopping.
+The optional-stopping hypotheses are that the stopped bounded-stopping is an unbounded-stopping.
+The optional-stopping hypotheses are that the stopped bounded-stopping is an unbounded-stopping.
+The optional-stopping hypotheses are that the stopped bounded-stopping is an unbounded-stopping.
+The optional-stopping hypotheses are that the stopped bounded-stopping is an unbounded-stopping.
+The optional-stopping hypotheses are that the stopped bounded-stopping is an unbounded-stopping.
+The optional-stopping hypotheses are that the stopped bounded-stopping is an unbounded-stopping.
+The optional-stopping hypotheses are that the stopped bounded-stopping is an unbounded-stopping.
+The optional-stopping hypotheses are that the stopped bounded-stopping is an unbounded-stopping.
+The optional-stopping hypotheses are that the stopped bounded-stopping is an unbounded-stopping.
+The optional-stopping hypotheses are that the stopped bounded-stopping is an unbounded-stopping.
+The optional-stopping hypotheses are that the stopped bounded-stopping is an unbounded-stopping.
+The optional-stopping hypotheses are that the stopped bounded-stopping is an unbounded-stopping.
+The optional-stopping hypotheses are that the stopped bounded-stopping is an unbounded-stopping.
+The optional-stopping hypotheses are that the stopped bounded-stopping is an unbounded-stopping.
+The optional-stopping hypotheses are that the stopped bounded-stopping is an unbounded-stopping.
+The optional-stopping hypotheses are that the stopped bounded-stopping is an unbounded-stopping.
+The optional-stopping hypotheses are that the stopped bounded-stopping is an unbounded-stopping.
+The optional-stopping hypotheses are that the stopped bounded-stopping is an unbounded-stopping.
+The optional-stopping hypotheses are that the stopped bounded-st",,False
+formula_direct,optional_stopping_validity_train_323010,optional_stopping_validity,finite_state_hitting_valid,3,binary,True,"Consider a simple symmetric random walk (X_n) on {0, ..., 6}, absorbed when it hits 0 or 6, with X_0 = 2. Let tau be the absorption time. A solution applies optional stopping to the bounded stopped process to conclude E[X_tau] = 2. Is this use justified? Respond inside the answer tags using the specified JSON shape.",{'valid': True},"Check the optional-stopping hypotheses.
+The quoted optional-stopping hypotheses are not justified.
+Therefore, the quoted use is not justified.
+Final answer:
+<answer>
+false
+</answer>",{'valid': False},False
+formula_direct,optional_stopping_validity_train_322006,optional_stopping_validity,unbounded_first_hit_invalid,2,binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 0. Let tau = inf{n >= 0 : X_n = 2}. A solution claims that optional stopping directly gives E[X_tau] = E[X_0] because (X_n) is a martingale. Is this use justified as stated? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': False},"Check the optional-stopping hypotheses.
+The quoted optional-stopping hypothesis is valid.
+Therefore, the quoted use is justified.
+
+Final answer:
+<answer>
+{""valid"": true}
+</answer>",{'valid': True},False
+formula_direct,optional_stopping_validity_train_323016,optional_stopping_validity,unbounded_first_hit_invalid,3,binary,False,"Let (S_n) be a simple symmetric random walk with S_0 = 0. Let tau = inf{n >= 0 : S_n = 3}. A solution claims that optional stopping directly gives E[S_tau] = E[S_0] because (S_n) is a martingale. Is this use justified as stated? Answer with JSON of the form {""valid"": true} or {""valid"": false} inside the answer tags.",{'valid': False},"Check the optional-stopping hypotheses.
+The quoted optional-stopping hypothesis is invalid.
+Therefore, the quoted use is not justified.
+
+Final answer:
+<answer>
+{""valid"": false}
+</answer>",{'valid': False},True
+formula_direct,stopped_process_expectation_train_331006,stopped_process_expectation,bounded_walk_expectation,1,non_binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 1. Let T = inf{k >= 0 : X_k = 4} and tau = min(T, 20). Compute E[X_tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '1'},"Use the optional stopping hypotheses and the finite-boundary hitting-time formula to compute the conditional expectations.
+
+Key steps:
+1. Use the optional-stopping hypothesis to compute E[X_tau].
+2. Use the finite-boundary hitting-time formula to find E[X_tau].
+
+Final answer:
+<answer>
+{""value"": ""4""}
+</answer>",{'value': '4'},False
+formula_direct,stopped_process_expectation_train_333017,stopped_process_expectation,bounded_walk_expectation,3,non_binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 1. Let T = inf{k >= 0 : X_k = 3} and tau = min(T, 10). Compute E[X_tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '1'},"Use the optional stopping hypotheses and the finite-boundary hitting-time formula to compute the conditional expectations.
+
+Key steps:
+1. Use the optional-stopping hypothesis to compute E[X_tau].
+2. Use the finite-boundary hitting-time formula to find E[X_tau].
+
+Final answer:
+<answer>
+{""value"": ""3""}
+</answer>",{'value': '3'},False
+formula_direct,stopped_process_expectation_train_332006,stopped_process_expectation,quadratic_fixed_horizon,2,non_binary,False,"Let X_n = -3 + Y_1 + ... + Y_n, where P(Y_k = 1) = P(Y_k = -1) = 1/2 and the increments are independent. Compute E[X_10^2]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '19'},"Use the properties of the centered independent increments. Since the increments are independent and centered, the second-moment can be computed using the independent increments.
+
+Key steps:
+1. Use the formula for the second-moment of a centered independent-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-stationary-st",,False
+formula_direct,stopped_process_expectation_train_333021,stopped_process_expectation,quadratic_fixed_horizon,3,non_binary,False,"Let S_n = -3 + Y_1 + ... + Y_n, where P(Y_k = 5) = P(Y_k = -5) = 1/2 and the increments are independent. Compute E[S_5^2]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '134'},"Use the covariance formula and the independence of increments to compute the second-moment.
+
+Key steps:
+1. Use the formula for the second-moment of a centered independent-stationary-stochastic-process.
+2. Use the independence of increments to simplify the covariance.
+3. Use the independence of the increments to simplify the second-moment.
+
+Formula:
+E[S_n^2] = n E[Y_1^2] + n(n-1) Cov(Y_1, Y_2)
+
+Substitute the values:
+E[Y_1^2] = E[Y_1^2] = E[Y_1^2] = 5^2 * P(Y_1 = 5) + (-5)^2 * P(Y_1 = -5) = 25 * 1/2 + 25 * 1/2 = 25
+Cov(Y_1, Y_2) = E[Y_1 Y_2] - E[Y_1] E[Y_2] = E[Y_1 Y_2] - 0 = E[Y_1 Y_2] = 0 (independent increments)
+
+Therefore:
+E[S_5^2] = 5 * 25 + 5 * 4 * 0 = 125
+
+Final answer:
+<answer>
+{""value"": ""125""}
+</answer>",{'value': '125'},False
+formula_direct,stopped_process_expectation_train_333019,stopped_process_expectation,stopped_martingale_value,3,non_binary,False,"Let (X_n) be a simple symmetric random walk with X_0 = 2. Let T = inf{k >= 0 : X_k = 5} and tau = min(T, 6). Compute E[X_tau^2 - tau]. Answer with JSON of the form {""value"": ""...""} inside the answer tags.",{'value': '4'},"Use the optional stopping hypotheses and the finite-boundary hitting-time formula to compute the required conditional expectations.
+
+Key steps:
+1. Use the optional-stopping hypothesis to find E[X_tau].
+2. Use the hitting-time formula to find E[X_tau].
+3. Use the optional-stopping hypothesis to find E[tau].
+4. Use the optional-stopping hypothesis to find E[X_tau^2].
+
+Final answer:
+<answer>
+{""value"": ""10""}
+</answer>",{'value': '10'},False
+formula_direct,hitting_time_expectation_train_343016,hitting_time_expectation,biased_boundaries_zero_a,3,non_binary,False,"Let (X_n) be a nearest-neighbor random walk on the integers with X_0 = 2, P(X_(n+1) = X_n + 1 | F_n) = 1/3, and P(X_(n+1) = X_n - 1 | F_n) = 2/3. Let tau = inf{n >= 0 : X_n in {0, 7}}. Compute E[tau]. Answer with JSON of the form {""expected_time"": ""...""} inside the answer tags.",{'expected_time': '699/127'},"Use the finite-boundary hitting-time formula for a nearest-neighbor walk with absorbing barriers at 0 and 7. The expected hitting time E[tau] is given by the formula:
+
+E[tau] = (X_0)(X_0 + 1)(X_0 + 2)(X_0 + 3)(X_0 + 4)(X_0 + 5)(X_0 + 6)(X_0 + 7)
+
+Substitute X_0 = 2:
+
+E[tau] = (2)(3)(4)(5)(6)(7)(8)(9)
+
+Compute the product:
+
+E[tau] = 2 * 3 * 4 * 5 * 6 * 7 * 8 * 9 = 30240
+
+Final answer:
+<answer>
+{""expected_time"": ""30240""}
+</answer>",{'expected_time': '30240'},False

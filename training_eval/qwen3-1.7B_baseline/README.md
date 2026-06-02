@@ -12,8 +12,10 @@ Dataset:
 
 Results save to:
 
-- `results/baselines/qwen3_1_7b_dev_closed_book/`
+- `results/baselines/qwen3_1_7b_test_closed_book/`
 
 The notebook is set up for local VS Code usage with the project root pinned to this local checkout.
+
+Running all cells reruns the full frozen test split and overwrites the result files with the current shared grading policy.
 
 This baseline is the pre-fine-tuning comparison point for experiments in `training_eval/fine_tune_qwen1_7B/`.

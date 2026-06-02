@@ -1,0 +1,21 @@
+{
+  "accuracy": 0.6166666666666667,
+  "adapter": "algorithmic_scaffold_v2",
+  "by_answer_type": {
+    "binary": {
+      "accuracy": 0.6666666666666666,
+      "num_correct": 20,
+      "num_records": 30
+    },
+    "non_binary": {
+      "accuracy": 0.5666666666666667,
+      "num_correct": 17,
+      "num_records": 30
+    }
+  },
+  "dataset": "benchmark/data/test/*_preview.jsonl",
+  "grading_policy": "schema_tolerant_exact_match_v2",
+  "model": "Qwen/Qwen3-1.7B-MLX-bf16",
+  "num_correct": 37,
+  "num_records": 60
+}

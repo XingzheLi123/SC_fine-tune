@@ -1,0 +1,410 @@
+run,id,family,problem_type,difficulty,answer_type,problem,canonical_answer,raw_output,predicted_answer,correct
+LoRA algorithmic_scaffold_v2,ood_control_nt_0001,ood_math_control,crt_three_moduli,3,non_binary,"Number theory proof-style control. Use the Chinese remainder theorem to find the least nonnegative integer x satisfying x ≡ 2 mod 9, x ≡ 3 mod 10, and x ≡ 4 mod 11. Show enough derivation to identify the residue class, then finish with JSON {""least_residue"": ""...""}.",{'least_residue': '983'},"Step 1: Identify the congruences.
+x ≡ 2 mod 9  
+x ≡ 3 mod 10  
+x ≡ 4 mod 11
+
+Step 2: Use the Chinese Remainder Theorem.
+We need the least nonnegative integer x satisfying the above congruences.
+
+Step 3: Extract the congruences.
+x = 9k + 2 for some integer k.
+
+Step 4: Use the second congruence.
+x = 10m + 3 for some integer m.
+
+Step 5: Use the first congruence.
+x = 9k + 2 = 10m + 3.
+
+Solve for the least common solution.
+x = 90n + 22.
+
+Step 6: Check the congruence with the third congruence.
+x = 90n + 22.
+
+Check x = 90n + 22.
+Check x = 11p + 4.
+
+Solve for the least common solution.
+x = 990n + 26.
+
+Step 7: Select the smallest nonnegative x.
+x = 26.
+
+Step 8: Extract the least nonnegative integer.
+Final answer:
+<answer>
+{""least_residue"": ""26""}
+</answer>",{'least_residue': '26'},False
+LoRA algorithmic_scaffold_v2,ood_control_nt_0002,ood_math_control,multiplicative_order,3,non_binary,"Find the multiplicative order of 2 modulo 29. Give a divisor-check argument rather than just guessing powers, then return JSON {""order"": ""...""}.",{'order': '28'},"Step 1: Identify the problem.
+We need to compute the multiplicative order of 2 modulo 29.
+
+Step 2: Use the small step test.
+Check powers of 2 modulo 29 until the result is 1.
+
+Step 3: Conclude.
+The multiplicative order of 2 modulo 29 is 24.
+
+Final answer:
+<answer>
+{""order"": ""24""}
+</answer>",{'order': '24'},False
+LoRA algorithmic_scaffold_v2,ood_control_nt_0003,ood_math_control,totient_composite,3,non_binary,"Factor 840 and compute Euler's totient phi(840). Give the multiplicative formula step and finish with JSON {""phi"": ""...""}.",{'phi': '192'},"Step 1: Prime factorization of 840.
+The prime factorization of 840 is 2^3 * 3^1 * 5^1 * 7^1.
+
+Step 2: Use the multiplicative formula for Euler's totient function.
+phi(n) = n * product of (1 - 1/p) for each distinct prime factor p of n.
+
+Step 3: Compute the totient.
+phi(840) = 840 * (1 - 1/2) * (1 - 1/3) * (1 - 1/5) * (1 - 1/7).
+
+Step 4: Do the arithmetic.
+phi = 840 * (1/2) * (2/3) * (4/5) * (6/7).
+
+phi = 840 * (1/2) = 420; 420 * (2/3) = 280; 280 * (4/5) = 224; 224 * (6/7) = 192.
+
+Final answer:
+<answer>
+{""phi"": ""192""}
+</answer>",{'phi': '192'},True
+LoRA algorithmic_scaffold_v2,ood_control_nt_0004,ood_math_control,carmichael_lambda,4,non_binary,"Compute the Carmichael function lambda(840). Use the prime-power decomposition and lcm rule, then return JSON {""lambda"": ""...""}.",{'lambda': '12'},"Step 1: Factor 840 into its prime power factors.
+840 = 2^3 * 3^1 * 5^1 * 7^1.
+
+Step 2: Use the Carmichael function formula.
+lambda(n) = lcm(lambda(2^3), lambda(3^1), lambda(5^1), lambda(7^1)).
+
+Step 3: Compute lambda for each prime power.
+lambda(2^3) = 2^3 - 2^2 = 8 - 4 = 4.
+lambda(3^1) = 3 - 1 = 2.
+lambda(5^1) = 5 - 1 = 4.
+lambda(7^1) = 7 - 1 = 6.
+
+Step 4: Compute the least common multiple.
+lcm(4, 2, 4, 6) = 12.
+
+Final answer:
+<answer>
+{""lambda"": ""12""}
+</answer>",{'lambda': '12'},True
+LoRA algorithmic_scaffold_v2,ood_control_nt_0005,ood_math_control,extended_euclidean_inverse,3,non_binary,"Use the extended Euclidean algorithm to find the inverse of 37 modulo 101. Return the least nonnegative inverse as JSON {""inverse"": ""...""}.",{'inverse': '71'},"Step 1: Compute the GCD of 37 and 101.
+The extended Euclidean algorithm gives the coefficients x and y such that 37x + 101y = gcd(37, 101).
+
+Step 2: Use the extended Euclidean algorithm.
+The algorithm yields the coefficients x = -1 and y = 1.
+
+Step 3: Multiply the coefficients by -1.
+x = -1 and y = 1.
+
+Step 4: Compute the inverse.
+The inverse of 37 modulo 101 is -1 mod 101 = 100.
+
+Final answer:
+<answer>
+{""inverse"": ""100""}
+</answer>",{'inverse': '100'},False
+LoRA algorithmic_scaffold_v2,ood_control_nt_0006,ood_math_control,modular_power_prime,3,non_binary,"Compute the remainder of 7^222 modulo 13. Explain the exponent reduction and finish with JSON {""remainder"": ""...""}.",{'remainder': '12'},"Step 1: Identify the small powers of 7 modulo 13.
+7^1 = 7 mod 13 = 7.
+7^2 = 49 mod 13 = 10.
+7^3 = 7^2 * 7 = 10 * 7 = 70 mod 13 = 5.
+7^4 = 5 * 7 = 35 mod 13 = 9.
+7^5 = 9 * 7 = 63 mod 13 = 5.
+We observe a pattern.
+
+Step 2: Identify the cycle.
+powers of 7 modulo 13 are:
+Power 0: 1.
+Power 1: 7.
+Power 2: 10.
+Power 3: 5.
+Power 4: 9.
+Power 5: 5.
+Power 6: 35 mod 13 = 9.
+Power 7: 9 * 7 = 63 mod 13 = 5.
+Power 8: 5 * 7 = 35 mod 13 = 9.
+Power 9: 9 * 7 = 63 mod 13 = 5.
+Power 10: 5 * 7 = 35 mod 13 = 9.
+Power 11: 9 * 7 = 63 mod 13 = 5.
+Power 12: 5 * 7 = 35 mod 13 = 9.
+Power 13: 9 * 7 = 63 mod 13 = 5.
+We see a cycle of powers 5 and 9.
+
+Step 3: Extract the exponent.
+Exponent = 222.
+222 = 5 * 44 + 2.
+So 222 mod 4 = 2.
+Therefore 7^222 = 7^(5*44 + 2) = (7^5)^44 * 7^2.
+Since 7^5 = 5 mod 13.
+Therefore 7^222 = 5^44 * 10 mod 13.
+Now compute 5^44 mod 13.
+Observe powers of 5 modulo 13:
+Power 0: 1.
+Power 1: 5.
+Power 2: 25 mod 13 = 12.
+Power 3: 12 * 5 = 60 mod 13 = 8.
+Power 4: 8 * 5 = 40 mod 13 = 1.
+Power 5: 1 * 5 = 5.
+Power 6: 5 * 5 = 25 mod 13 = 12.
+Power 7: 12 * 5 = 60 mod 13 = 8.
+Power 8: 8 * 5 = 40 mod 13 = 1.
+Power 9: 1 * 5 = 5.
+Power 10: 5 * 5 = 25 mod 13 = 12.
+Power 11: 12 * 5 = 60 mod 13 = 8.
+Power 12: 8 * 5 = 40 mod 13 = 1.
+Power 13: 1 * 5 = 5.
+We see a cycle of powers 5 and 12.
+
+Power 44 = 44 mod 4 = 0",,False
+LoRA algorithmic_scaffold_v2,ood_control_nt_0007,ood_math_control,factorial_p_adic_valuation,3,non_binary,"Use Legendre's formula to compute the exponent of 3 in the prime factorization of 100!. Return JSON {""valuation"": ""...""}.",{'valuation': '48'},"Legendre's formula allows us to compute the exponent of a prime $ p $ in the factorization of $ n! $ by summing the integer quotients of $ n/p^k $ for each power of the prime. For the exponent of 3 in the prime factorization of $ 100! $, we compute:
+
+$$
+v_3(100!) = \left\lfloor \frac{100}{3} \right\rfloor + \left\lfloor \frac{100}{9} \right\rfloor + \left\lfloor \frac{100}{27} \right\rfloor + \left\lfloor \frac{100}{81} \right\rfloor = 33 + 11 + 3 + 1 = 48.
+$$
+
+Final answer:
+<answer>
+{""valuation"": ""48""}
+</answer>",{'valuation': '48'},True
+LoRA algorithmic_scaffold_v2,ood_control_nt_0008,ood_math_control,factorial_base_trailing_zeros,4,non_binary,"How many trailing zeros does 200! have when written in base 12? Use prime valuations of 200! and finish with JSON {""zeros"": ""...""}.",{'zeros': '97'},"Step 1: Identify the prime factorization powers in 200! using the floor division.
+For a factorial n!, the power of a prime p in n! is given by the formula:
+power = floor(n/p) + floor(n/p^2) + floor(n/p^3) + ... until p^k > n.
+
+Step 2: Extract the powers of 2 and 3 in 200!.
+For p = 2:
+power_2 = floor(200/2) + floor(200/4) + floor(200/8) + floor(200/16) + floor(200/32) + floor(200/64) + floor(200/128)
+= 100 + 50 + 25 + 12 + 6 + 3 + 1 = 197.
+
+For p = 3:
+power_3 = floor(200/3) + floor(200/9) + floor(200/27) + floor(200/81) + floor(200/243)
+= 66 + 22 + 7 + 2 + 0 = 97.
+
+Step 3: Use the powers of 2 and 3 in the factorization.
+The power of 12 in 200! is the power of 2 in the factorization minus the power of 3 in the factorization.
+So the power of 12 in 200! is 197 - 97 = 100.
+
+Final answer:
+<answer>
+{""zeros"": ""100""}
+</answer>",{'zeros': '100'},False
+LoRA algorithmic_scaffold_v2,ood_control_nt_0009,ood_math_control,quadratic_congruence_solution_count,4,non_binary,"Count the number of incongruent solutions modulo 45 to x^2 ≡ 1. Use CRT reasoning and return JSON {""count"": ""...""}.",{'count': '4'},"Step 1: Identify the incongruent solutions modulo 45.
+x^2 ≡ 1 mod 45.
+
+Step 2: Factor 45.
+45 = 9 * 5 = 3^2 * 5.
+
+Step 3: Solve x^2 ≡ 1 mod 9 and x^2 ≡ 1 mod 5.
+For x^2 ≡ 1 mod 9:
+x^2 ≡ 1 mod 9 has solutions x = 1 and x = -1 = 8 mod 9.
+For x^2 ≡ 1 mod 5:
+x^2 ≡ 1 mod 5 has solutions x = 1 and x = -1 = 4 mod 5.
+
+Step 4: Use the Chinese Remainder Theorem.
+For each combination of the solutions mod 9 and mod 5, there is a unique incongruent solution mod 45.
+There are 2 solutions mod 9 and 2 solutions mod 5.
+
+Step 5: Total incongruent solutions.
+Total = 2 (mod 9) * 2 (mod 5) = 4.
+
+Final answer:
+<answer>
+{""count"": ""4""}
+</answer>",{'count': '4'},True
+LoRA algorithmic_scaffold_v2,ood_control_nt_0010,ood_math_control,multiplicative_order,3,non_binary,"Find the multiplicative order of 3 modulo 17. Use the fact that the order divides 16 and rule out smaller divisors. Return JSON {""order"": ""...""}.",{'order': '16'},"Step 1: Identify the small powers of 3 modulo 17.
+3^1 = 3 mod 17 = 3
+3^2 = 9 mod 17 = 9
+3^4 = (3^2)^2 = 9^2 = 81 mod 17 = 13
+3^8 = (3^4)^2 = 13^2 = 169 mod 17 = 16
+3^16 = (3^8)^2 = 16^2 = 256 mod 17 = 1.
+
+Step 2: Check the powers.
+3^1 = 3 != 1 mod 17.
+3^2 = 9 != 1 mod 17.
+3^4 = 13 != 1 mod 17.
+3^8 = 16 != 1 mod 17.
+3^16 = 1 == 1 mod 17.
+
+Final answer:
+<answer>
+{""order"": ""16""}
+</answer>",{'order': '16'},True
+LoRA algorithmic_scaffold_v2,ood_control_nt_0011,ood_math_control,quadratic_residue_count_prime,3,non_binary,"How many quadratic residues modulo 31 are there if 0 is included as a residue? Give the finite-field counting argument and return JSON {""count"": ""...""}.",{'count': '16'},"Step 1: Identify the field.
+The modulus is 31, and 31 is a prime.
+
+Step 2: Count the quadratic residues.
+For a prime p, the number of quadratic residues modulo p is (p + 1)/2. Since p = 31, the total number of quadratic residues modulo 31 is:
+((31) + 1)/2 = 16.
+
+Final answer:
+<answer>
+{""count"": ""16""}
+</answer>",{'count': '16'},True
+LoRA algorithmic_scaffold_v2,ood_control_nt_0012,ood_math_control,linear_congruence_solution_count,3,non_binary,"How many incongruent solutions modulo 35 does the congruence 14x ≡ 21 mod 35 have? Justify using the gcd criterion and return JSON {""count"": ""...""}.",{'count': '7'},"Step 1: Identify the coefficients and the modulus.
+We are given the congruence 14x ≡ 21 mod 35.
+
+Step 2: Check the gcd.
+Compute gcd(14, 35).
+The prime factorization of 14 is 2 × 7.
+The prime factorization of 35 is 5 × 7.
+The gcd is 7.
+
+Step 3: Check the congruence.
+For a linear congruence a x ≡ b mod n, the congruence has a solution if and only if gcd(a, n) divides b.
+Check whether 7 divides 21.
+21 is divisible by 7.
+So the congruence has solutions.
+
+Step 4: Count the incongruent solutions.
+For a congruence a x ≡ b mod n with gcd(a, n) = d and d | b, the congruence has exactly d incongruent solutions modulo n.
+Since gcd(14, 35) = 7 and 7 divides 21, the congruence has exactly 7 incongruent solutions modulo 35.
+
+Final answer:
+<answer>
+{""count"": ""7""}
+</answer>",{'count': '7'},True
+LoRA algorithmic_scaffold_v2,ood_control_nt_0013,ood_math_control,totient_divisor_sum,3,non_binary,"Use the identity sum_{d|n} phi(d)=n to compute sum_{d|36} phi(d). Return JSON {""sum"": ""...""}.",{'sum': '36'},"Step 1: Identify the positive divisors of 36.
+The positive divisors of 36 are 1, 2, 3, 4, 6, 9, 12, and 18.
+
+Step 2: Compute the totient function for each of the identified divisors.
+phi(1) = 1; phi(2) = 1; phi(3) = 2; phi(4) = 2; phi(6) = 2; phi(9) = 6; phi(12) = 4; phi(18) = 6.
+
+Step 3: Add the totient values.
+Total = 1 + 1 + 2 + 2 + 2 + 6 + 4 + 6 = 24.
+
+Final answer:
+<answer>
+{""sum"": ""24""}
+</answer>",{'sum': '24'},False
+LoRA algorithmic_scaffold_v2,ood_control_nt_0014,ood_math_control,mobius_value,3,non_binary,"Compute the Mobius value mu(2310). Factor the integer, explain the squarefree sign rule, and return JSON {""mu"": ""...""}.",{'mu': '-1'},"The integer 2310 factors as follows:
+2310 = 2 × 3 × 5 × 7 × 11.
+
+The squarefree sign rule for the Möbius function (mu) is:
+For a squarefree integer n = p₁p₂...pₖ, the Möbius function is:
+mu(n) = (-1)^k.
+
+Since 2310 is the product of 5 distinct primes, the power zero power is 1. The value of the Möbius function is:
+mu = (-1)^5 = -1.
+
+Final answer:
+<answer>
+{""mu"": -1}
+</answer>",{'mu': -1},True
+LoRA algorithmic_scaffold_v2,ood_control_nt_0015,ood_math_control,divisor_count,3,non_binary,"Compute the number of positive divisors of 756. Factor it and use the divisor-counting formula. Return JSON {""divisors"": ""...""}.",{'divisors': '24'},"Step 1: Factor 756.
+The prime factorization of 756 is:
+756 = 2^2 * 3^3 * 7^1.
+
+Step 2: Use the divisor-counting formula.
+For a number n = p1^a1 * p2^a2 * ... * pk^ak,
+the number of positive divisors is:
+(n1 + 1)(n2 + 1)...(nk + 1).
+
+Step 3: Apply the formula.
+For 756 = 2^2 * 3^3 * 7^1,
+the number of positive divisors is:
+(2 + 1)(3 + 1)(1 + 1) = 3 * 4 * 2 = 24.
+
+Final answer:
+<answer>
+{""divisors"": ""24""}
+</answer>",{'divisors': '24'},True
+LoRA algorithmic_scaffold_v2,ood_control_nt_0016,ood_math_control,sum_of_divisors,3,non_binary,"Compute the sum of positive divisors sigma(72). Use the prime-power product formula and return JSON {""sigma"": ""...""}.",{'sigma': '195'},"Step 1: Factor 72 into its prime power factors.
+The prime factorization of 72 is 2^3 * 3^2.
+
+Step 2: Use the sigma function formula for a prime power.
+sigma(p^k) = p^(k+1) - 1.
+
+Step 3: Compute sigma for each factor.
+sigma(2^3) = 2^4 - 1 = 15.
+sigma(3^2) = 3^3 - 1 = 26.
+
+Step 4: Multiply the sigma values.
+sigma_total = sigma(2^3) * sigma(3^2) = 15 * 26 = 390.
+
+Final answer:
+<answer>
+{""sigma"": ""390""}
+</answer>",{'sigma': '390'},False
+LoRA algorithmic_scaffold_v2,ood_control_nt_0017,ood_math_control,binomial_p_adic_valuation,4,non_binary,"Compute the exponent of 2 dividing the binomial coefficient C(64,16). You may use Legendre's formula or Kummer's theorem. Return JSON {""valuation"": ""...""}.",{'valuation': '2'},"Step 1: Use Legendre's formula.
+Legendre's formula gives the exponent of a prime p in the factorization of a binomial coefficient.
+For a binomial coefficient C(n, k), the exponent of a prime p is the number of carries in the base-p addition of k and n - k.
+
+Step 2: Identify the prime.
+The prime in question is 2.
+
+Step 3: Compute the exponent.
+For n = 64 and k = 16, n - k = 48.
+Add 16 and 48 in base 2.
+16 in binary is 10000.
+48 in binary is 110000.
+Add the binary numbers:
+10000
+110000
+= 1010000.
+
+Count the number of carries.
+There is 1 carry in the least significant bit.
+Total carries = 1.
+
+Final answer:
+<answer>
+{""valuation"": ""1""}
+</answer>",{'valuation': '1'},False
+LoRA algorithmic_scaffold_v2,ood_control_nt_0018,ood_math_control,modular_power_prime,3,non_binary,"Compute 11^100 modulo 17. Show the exponent reduction and return JSON {""remainder"": ""...""}.",{'remainder': '4'},"Step 1: Identify the small powers of 11 modulo 17.
+11^1 = 11 mod 17 = 11.
+11^2 = 121 mod 17 = 121 - 6*17 = 121 - 102 = 19.
+11^2 = 19 mod 17 = 2.
+11^4 = (11^2)^2 = (2)^2 = 4 mod 17.
+11^8 = (11^4)^2 = (4)^2 = 16 mod 17.
+11^16 = (11^8)^2 = (16)^2 = 256 mod 17 = 256 - 15*17 = 256 - 255 = 1.
+Now powers of 11 modulo 17 repeat in a cycle.
+So powers of 11 modulo 17 are periodic with period 4.
+
+Step 2: Compute the exponent.
+Exponent = 100.
+100 mod 4 = 0.
+So 11^100 = 11^(4*25) = (11^4)^25.
+We already know 11^4 = 4.
+So 11^100 = 4^25.
+
+Step 3: Compute 4^25 modulo 17.
+Use the powers of 4 modulo 17.
+4^1 = 4.
+4^2 = 16.
+4^4 = (16)^2 = 256 mod 17 = 1.
+So powers of 4 modulo 17 repeat in a cycle.
+Now compute 25 mod 4 = 1.
+So 4^25 = 4^1 = 4 mod 17.
+Final answer:
+<answer>
+{""remainder"": ""4""}
+</answer>",{'remainder': '4'},True
+LoRA algorithmic_scaffold_v2,ood_control_nt_0019,ood_math_control,multiplicative_order,3,non_binary,"Find the multiplicative order of 5 modulo 31. Give the power check and return JSON {""order"": ""...""}.",{'order': '3'},"Step 1: Identify the problem.
+We need to compute the multiplicative order of 5 modulo 31.
+
+Step 2: Check the small powers.
+Check powers of 5 modulo 31.
+5^1 = 5 mod 31.
+5^2 = 25 mod 31.
+5^3 = 125 mod 31 = 125 - 4*31 = 125 - 124 = 1 mod 31.
+
+Step 3: Conclude.
+The multiplicative order of 5 modulo 31 is 3.
+
+Final answer:
+<answer>
+{""order"": ""3""}
+</answer>",{'order': '3'},True
+LoRA algorithmic_scaffold_v2,ood_control_nt_0020,ood_math_control,legendre_symbol,4,non_binary,"Compute the Legendre symbol (5/23). Justify whether 5 is a quadratic residue modulo 23 and return JSON {""legendre"": ""...""}.",{'legendre': '-1'},"Step 1: Identify the given parameters.
+We need to compute the Legendre symbol (5/23).
+
+Step 2: Check whether 5 is a quadratic residue modulo 23.
+The Legendre symbol (a/p) is 1 if a is a quadratic residue modulo p and -1 otherwise.
+
+Step 3: Compute the Legendre symbol.
+We check the quadratic character of 5 modulo 23.
+
+Step 4: Conclude.
+The Legendre symbol is 1 or -1.
+
+Final answer:
+<answer>
+{""legendre"": ""1""}
+</answer>",{'legendre': '1'},False

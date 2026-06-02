@@ -1,0 +1,25 @@
+{
+  "accuracy": 0.9,
+  "by_answer_type": {
+    "binary": {
+      "accuracy": 1.0,
+      "num_correct": 30,
+      "num_records": 30
+    },
+    "non_binary": {
+      "accuracy": 0.8,
+      "num_correct": 24,
+      "num_records": 30
+    }
+  },
+  "checkpointed_after_each_record": true,
+  "dataset": "benchmark/data/test/*.jsonl",
+  "grading_policy": "schema_tolerant_exact_match_v1",
+  "model": "openai/gpt-oss-20b:free",
+  "num_api_errors": 0,
+  "num_correct": 54,
+  "num_empty_outputs": 0,
+  "num_output_errors": 0,
+  "num_records": 60,
+  "provider": "openrouter"
+}
